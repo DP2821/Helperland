@@ -1,11 +1,15 @@
 body {
+}
+
+.main{
+  
   top: 0px;
   left: 0px;
 
   background-image: url("/images/Landing-Page-background-image.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  opacity: 0.8;
+  /* opacity: 0.8; */
 }
 
 .logo{
@@ -54,5 +58,83 @@ nav{
 }
 
 ul{
-    list-style-image: url("images/");
+    list-style-image: url("images/ic-check.png");
+    margin-left: 45px;
+}
+
+.lorem-random-text{
+  margin-top: 140px;
+  margin-left: 55px;
+}
+
+
+.lets-book-a-cleaner{
+  width: 225px;
+  height: 54px;
+  border: 1px solid #FFFFFF;
+  border-radius: 27px;
+  opacity: 1;
+  text-align: center;
+  margin-left: 42%;
+  background-color: #006072;
+font-size: 18px;
+box-sizing: border-box;
+padding-top: 10px;
+}
+
+.first-col{
+  margin-left: 95px;
+  width: fit-content
+}
+
+.step-to-enroll{
+  margin-top: 150px;
+}
+
+.step-enroll-instruction{
+  /* margin-left: 130px; */
+}
+
+.last-col{
+  width: fit-content;
+  
+}
+
+
+.step-1-img{
+  margin-left: 35%;
+  
+}
+
+.step-2-img{
+  margin-left: 30%;
+}
+
+.step-3-img{
+  margin-left: 28%;
+}
+
+.step-4-img{
+  margin-left: 35%;
+}
+
+.first-col, .second-col, .third-col, .fourth-col, .fifth-col, .sixth-col, .last-col{
+  width: fit-content;
+}
+
+.second-col, .fourth-col, .sixth-col{
+  padding-top: 20px;
+}
+
+.down-arrow{
+  height: 10px;
+  margin-left: 48%;
+  /* border: 1px solid red; */
+}
+
+
+.why-helperland{
+  margin-top: 100px;
+  margin-left: 43%;
+  width: fit-content;
 }
