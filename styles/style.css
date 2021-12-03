@@ -1,24 +1,42 @@
 body {
+  overflow-x: hidden;
 }
-
+html {
+	scroll-behavior: smooth;
+}
 .main{
-  
   top: 0px;
   left: 0px;
-
   background-image: url("/images/Landing-Page-background-image.png");
   background-repeat: no-repeat;
   background-size: 100%;
+  background-attachment: fixed;
   /* opacity: 0.8; */
 }
+.navbar-top{
+  /* position: fixed; */
+    top: 0px;
+    right: 0px;
+    z-index: 2000;
+    /* background-color: red; */
+    /* width: 100%; */
+}
 
+header {
+	padding-top: 175px;
+	z-index: 1000;
+}
 .logo{
     display: inline-block;
-    margin: 10px;
+    margin: 25px;
+}
+.img{
+    width: 120px;
 }
 nav{
     float: right;
 }
+
 .book-a-cleaner {
   width: 161px;
   height: 40px;
@@ -63,19 +81,32 @@ ul{
 }
 
 .lorem-random-text{
-  margin-top: 140px;
+  /* margin-top: 140px; */
   margin-left: 55px;
 }
+.blue-btn{ 
+  display: inline-block; 
+  background-color: rgba(0, 96, 114, 0.6); 
+  border-radius: 27px; 
+  border: 1px solid #FFFFFF; 
+  height: 54px; 
+  line-height: 52px; 
+  color: #fff !important; 
+  text-decoration: none; 
+  min-width: 225px; 
+  font-size: 18px; 
+  transition: all 0.3s ease; 
+}
 
-
+.btn-wrapper { margin-bottom: 160px; }
 .lets-book-a-cleaner{
   width: 225px;
   height: 54px;
   border: 1px solid #FFFFFF;
   border-radius: 27px;
   opacity: 1;
-  text-align: center;
-  margin-left: 42%;
+  /* text-align: center; */
+  /* margin-left: 42%; */
   background-color: #006072;
 font-size: 18px;
 box-sizing: border-box;
@@ -127,14 +158,72 @@ padding-top: 10px;
 }
 
 .down-arrow{
-  height: 10px;
+  /* height: 10px; */
+  margin-top: 20px;
   margin-left: 48%;
-  /* border: 1px solid red; */
 }
+
 
 
 .why-helperland{
-  margin-top: 100px;
-  margin-left: 43%;
-  width: fit-content;
+  margin-top: 79px;
+  
 }
+.temp{
+  float: none;
+  align-items: center;
+    margin: 0 auto;
+}
+
+.why-helperland-cards{
+  margin-top: 82.5px;
+}
+
+.threeimg{
+  margin-top: 170px;
+}
+
+.blog-three-card{
+  margin-top: 50px;
+}
+
+
+.arrow-link { font-size: 18px; color: #4f4f4f !important; font-weight: 400; text-decoration: none; }
+.arrow-link em { margin-left: 10px; position: relative; right: 0; transition: all 0.5s; }
+
+.what-our-customer-say{
+  margin-top: 57px;
+}
+
+.three-customers{
+  margin-top: 80px;
+}
+
+.person-name { font-weight: 700; font-size: 20px; line-height: 1; }
+.person-city { color: #8E8E8E; font-size: 14px; }
+.person-detail{
+  margin-top: 15px;
+}
+
+.left-border{
+  border-left: 3px solid #1D7A8C;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.get-our-newsletter{
+  margin-top: 50px;
+}
+
+.email-input{
+  margin-left: 40%;
+}
+
+.email{
+  border-radius: 20px; border: solid 1px #565656; background-color: #f4f5f8; color: #565656; font-size: 14px; height: 40px; line-height: 40px; padding: 0 22px; 
+}
+
+.btn-submit { 
+  background-color: #FF7B6D; 
+  font-size: 14px; line-height: 37px; height: 40px; border-radius: 20px; border: none; outline: none; color: #fff; width: 88px; transition: 0.3s all; }
+.btn-submit:hover { background-color: #eb6e61; color: #fff; }
