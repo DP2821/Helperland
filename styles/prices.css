@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+body {
+  overflow-x: hidden;
+  font-family: 'Roboto';
+}
+.logo{
+    display: inline-block;
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.main{
+    background-color:  #737381;
+    position: fixed;
+    width: 100%;
+}
+
+.navbar-top{
+    top: 0px;
+    right: 0px;
+    z-index: 2000;
+    /* background-color: red; */
+    /* width: 100%; */
+}
+
+nav{
+    float: right;
+    z-index: 10000;
+    
+}
+.prices{
+    border: 1px solid #ffffff80;
+    border-radius: 20px;
+    opacity: 1;
+    text-align: center;
+}
+
+.book-a-cleaner {
+    width: 120px;
+    height: 40px;
+    background: #1D7A8C 0% 0% no-repeat padding-box;
+    border: 1px solid #ffffff80;
+    border-radius: 20px;
+    opacity: 1;
+    text-align: center;
+}
+.login {
+    width: 97px;
+    height: 40px;
+    background: #1D7A8C 0% 0% no-repeat padding-box;
+    border: 1px solid #ffffff80;
+    border-radius: 20px;
+    opacity: 1;
+    text-align: center;
+}
+.become-a-helper {
+    width: 161px;
+    height: 40px;
+    background: #1D7A8C 0% 0% no-repeat padding-box;
+    border: 1px solid #ffffff80;
+    border-radius: 20px;
+    opacity: 1;
+    text-align: center;
+}
+
+.book-a-cleaner, .prices, .our-guarantee, .blog, .contact-us, .login, .become-a-helper{
+    margin-right: 15px;
+}
+.bg-img{
+    padding-top: 58px;
+}
+.price-ul-list {
+  list-style: none;
+}
+.btn-one-time {
+  border: none;
+  background-color: #1d7a8c;
+  width: 400px;
+  height: 45px;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+}
+
+.text-left {
+  display: inline-block;
+  text-align: left;
+}
+
+.work-time{
+    color: #1D7A8C;
+}
+.card-border {
+  display: inline-block;
+  border: 1px solid #b0c9ce;
+}
+
+.extra-services {
+  margin-top: 50px;
+}
+
+.rounded-grey-box {
+  height: 108px;
+  width: 108px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #B0C9CE;
+  border-radius: 50%;
+}
+
+.extra-services-row{
+    margin-top: 50px;
+}
+
+.what-we-include-in-cleaning-ul{
+    list-style: none;
+    list-style-image: url('/images/right-arrow-grey.png');
+}
+
+
+.get-our-newsletter{
+    margin-top: 50px;
+  }
+  
+  .email{
+    border-radius: 20px; border: solid 1px #565656; background-color: #f4f5f8; color: #565656; font-size: 14px; height: 40px; line-height: 40px; padding: 0 22px; 
+  }
+  
+  .btn-submit { 
+    background-color: #FF7B6D;
+    font-size: 18px; line-height: 3px; height: 40px; border-radius: 20px; border: none; outline: none; color: #fff; width: 88px; transition: 0.3s all; }
+  .btn-submit:hover { background-color: #eb6e61; color: #fff; }
+  
+  
+  .footer-main{
+    background-color: #111111;
+    height: fit-content;
+    padding-top: 40px;
+    padding-bottom: 30px;
+  }
+  
+  .footer-list{
+    list-style: none;
+    margin-top: 10px;
+  }
+  
+  .footer-list-item{
+  
+    color: #f4f5f8;
+    text-decoration: none;
+    margin-left: 30px;
+  }
+  
+  .footer-logo{
+    margin-left: 55px;
+  }
+
+  .red-border{
+      border: 5px solid red;
+  }
