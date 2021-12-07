@@ -84,7 +84,7 @@ nav{
 }
 
 ul{
-    list-style-image: url("images/ic-check.png");
+    list-style-image: url("/Homepage/images/ic-check.png");
     margin-left: 45px;
 }
 
