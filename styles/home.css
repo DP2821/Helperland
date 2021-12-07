@@ -8,7 +8,7 @@ body {
 .main{
   top: 0px;
   left: 0px;
-  background-image: url("/images/Landing-Page-background-image.png");
+  background-image: url("Homepage/images/Landing-Page-background-image.png");
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
