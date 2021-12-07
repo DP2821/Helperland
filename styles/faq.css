@@ -13,13 +13,13 @@ body {
 .main{
     background-color:  #737381;
     position: fixed;
+    z-index: 10000;
     width: 100%;
 }
 
 .navbar-top{
     top: 0px;
     right: 0px;
-    z-index: 2000;
     /* background-color: red; */
     /* width: 100%; */
 }
@@ -27,6 +27,9 @@ body {
 nav{
     float: right;
     
+}
+.nav-item {
+  margin-top: 5px;
 }
 .book-a-cleaner {
   width: 120px;
@@ -175,3 +178,27 @@ nav{
   .footer-logo{
     margin-left: 55px;
   }
+
+  
+@media screen and (max-width: 992px) {
+  .nav-item{
+    text-align: left;
+  }
+  .book-a-cleaner {
+    background: none;
+    border: none;
+  }
+  .prices {
+    background: none;
+    border: none;
+  }
+  
+  .login {
+    background: none;
+    border: none;
+  }
+  .become-a-helper {
+    background: none;
+    border: none;
+  }
+}

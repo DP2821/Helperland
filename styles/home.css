@@ -14,22 +14,33 @@ body {
   background-attachment: fixed;
   /* opacity: 0.8; */
 }
+.nav-header-bg{
+  position: fixed;
+  width: 100%;
+  background-color: #73706C;
+  z-index: 10000;
+}
 .navbar-top{
   /* position: fixed; */
     top: 0px;
     right: 0px;
-    z-index: 2000;
+  
     /* background-color: red; */
     /* width: 100%; */
 }
-
+.nav-item {
+  margin-top: 5px;
+}
 header {
 	padding-top: 175px;
 	z-index: 1000;
 }
 .logo{
+  position: fixed;
     display: inline-block;
-    margin: 25px;
+    margin-left: 10px;
+    margin-top: 3px;
+    /* margin: 25px; */
 }
 .img{
     width: 120px;
@@ -66,10 +77,6 @@ nav{
   border-radius: 20px;
   opacity: 1;
   text-align: center;
-}
-
-.nav-1{
-    padding-top: 43px;
 }
 
 .book-a-cleaner, .prices, .our-guarantee, .blog, .contact-us, .login, .become-a-helper{
@@ -244,4 +251,28 @@ padding-top: 10px;
 
 .footer-logo{
   margin-left: 55px;
+}
+
+
+@media screen and (max-width: 992px) {
+  .nav-item{
+    text-align: left;
+  }
+  .book-a-cleaner {
+    background: none;
+    border: none;
+  }
+  .prices {
+    background: none;
+    border: none;
+  }
+  
+  .login {
+    background: none;
+    border: none;
+  }
+  .become-a-helper {
+    background: none;
+    border: none;
+  }
 }
