@@ -6,17 +6,19 @@ body {
 }
 
 .main{
+  width: 100%;
   top: 0px;
   left: 0px;
   background-image: url("/Homepage/images/Landing-Page-background-image.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
+  /* background-repeat: no-repeat; */
+  background-size:cover;
   background-attachment: fixed;
   /* opacity: 0.8; */
 }
 .nav-header-bg{
   position: fixed;
   width: 100%;
+  /* height: 100px; */
   background-color: #73706C;
   z-index: 10000;
 }
@@ -38,12 +40,13 @@ header {
 .logo{
   position: fixed;
     display: inline-block;
+    
     margin-left: 10px;
     margin-top: 3px;
     /* margin: 25px; */
 }
 .img{
-    width: 120px;
+    width: 110px;
 }
 nav{
     float: right;
@@ -121,21 +124,9 @@ box-sizing: border-box;
 padding-top: 10px;
 }
 
-.first-col{
-  margin-left: 95px;
-  width: fit-content
-}
-
 .step-to-enroll{
   margin-top: 150px;
 }
-
-
-.last-col{
-  width: fit-content;
-  
-}
-
 
 .step-1-img{
   margin-left: 35%;
@@ -173,11 +164,6 @@ padding-top: 10px;
 .why-helperland{
   margin-top: 79px;
   
-}
-.temp{
-  float: none;
-  align-items: center;
-    margin: 0 auto;
 }
 
 .why-helperland-cards{
@@ -255,6 +241,9 @@ padding-top: 10px;
 
 
 @media screen and (max-width: 992px) {
+  .img{
+    width: 65px;
+  }
   .nav-item{
     text-align: left;
   }
@@ -274,5 +263,11 @@ padding-top: 10px;
   .become-a-helper {
     background: none;
     border: none;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .second-col, .fourth-col, .sixth-col{
+    display: none;
   }
 }
