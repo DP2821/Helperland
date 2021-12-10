@@ -13,20 +13,26 @@ body {
 .main{
     background-color:  #737381;
     position: fixed;
+    z-index: 10000;
     width: 100%;
 }
 
 .navbar-top{
     top: 0px;
     right: 0px;
-    z-index: 2000;
     /* background-color: red; */
     /* width: 100%; */
 }
-
+.nav-ul-vertical-list{
+  width: fit-content;
+  float: right;
+}
 nav{
     float: right;
     
+}
+.nav-item {
+  margin-top: 5px;
 }
 .book-a-cleaner {
   width: 120px;
@@ -85,7 +91,7 @@ nav{
     margin-top: 50px;
 }
 .img{
-    width: 50px;
+    /* width: 50px; */
 }
 .container{
     margin-top: 30px;
@@ -102,6 +108,7 @@ nav{
     text-align: center;
     border: none;
     border-radius: 0px;
+    color: #111111;
     border-bottom: 3px solid #1D7A8C;
     width: 100%;
 }
@@ -140,9 +147,13 @@ nav{
 
 
 .get-our-newsletter{
+    width: 100%;
     margin-top: 50px;
-  }
+}
   
+  .enter-your-mail-and-submit{
+    width: 100%;
+  }
   .email{
     border-radius: 20px; border: solid 1px #565656; background-color: #f4f5f8; color: #565656; font-size: 14px; height: 40px; line-height: 40px; padding: 0 22px; 
   }
@@ -154,6 +165,7 @@ nav{
   
   
   .footer-main{
+    width: 101%;
     background-color: #111111;
     height: fit-content;
     padding-top: 40px;
@@ -172,6 +184,36 @@ nav{
     margin-left: 30px;
   }
   
-  .footer-logo{
-    margin-left: 55px;
+  
+@media screen and (max-width: 992px) {
+  .nav-btn {
+    width: 100%;
   }
+  .nav-item{
+    text-align: left;
+  }
+  .book-a-cleaner {
+    background: none;
+    border: none;
+  }
+  .prices {
+    background: none;
+    border: none;
+  }
+  
+  .login {
+    background: none;
+    border: none;
+  }
+  .become-a-helper {
+    background: none;
+    border: none;
+  }
+}
+
+@media screen and (max-width: 600px){
+  
+  .footer-main{
+    width: calc(100% + 10px);
+  }
+}

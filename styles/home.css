@@ -6,33 +6,52 @@ body {
 }
 
 .main{
+  width: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("/images/Landing-Page-background-image.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background-image: url("/Helperland/images/Landing-Page-background-image.png");
+  /* background-repeat: no-repeat; */
+  background-size:cover;
   background-attachment: fixed;
   /* opacity: 0.8; */
 }
+.nav-header-bg{
+  position: fixed;
+  width: 100%;
+  /* height: 100px; */
+  background-color: #73706C;
+  z-index: 10000;
+}
+
 .navbar-top{
   /* position: fixed; */
     top: 0px;
     right: 0px;
-    z-index: 2000;
+  
     /* background-color: red; */
     /* width: 100%; */
 }
-
+.nav-ul-vertical-list{
+  width: fit-content;
+  float: right;
+}
+.nav-item {
+  margin-top: 5px;
+}
 header {
 	padding-top: 175px;
 	z-index: 1000;
 }
 .logo{
+  position: fixed;
     display: inline-block;
-    margin: 25px;
+    
+    margin-left: 10px;
+    margin-top: 3px;
+    /* margin: 25px; */
 }
 .img{
-    width: 120px;
+    width: 110px;
 }
 nav{
     float: right;
@@ -68,16 +87,12 @@ nav{
   text-align: center;
 }
 
-.nav-1{
-    padding-top: 43px;
-}
-
 .book-a-cleaner, .prices, .our-guarantee, .blog, .contact-us, .login, .become-a-helper{
     margin-right: 15px;
 }
 
 ul{
-    list-style-image: url("images/ic-check.png");
+    list-style-image: url("/Homepage/images/ic-check.png");
     margin-left: 45px;
 }
 
@@ -114,21 +129,9 @@ box-sizing: border-box;
 padding-top: 10px;
 }
 
-.first-col{
-  margin-left: 95px;
-  width: fit-content
-}
-
 .step-to-enroll{
   margin-top: 150px;
 }
-
-
-.last-col{
-  width: fit-content;
-  
-}
-
 
 .step-1-img{
   margin-left: 35%;
@@ -166,11 +169,6 @@ padding-top: 10px;
 .why-helperland{
   margin-top: 79px;
   
-}
-.temp{
-  float: none;
-  align-items: center;
-    margin: 0 auto;
 }
 
 .why-helperland-cards{
@@ -210,7 +208,12 @@ padding-top: 10px;
 }
 
 .get-our-newsletter{
+  width: 100%;
   margin-top: 50px;
+}
+
+.enter-your-mail-and-submit{
+  width: 100%;
 }
 
 .email{
@@ -224,6 +227,7 @@ padding-top: 10px;
 
 
 .footer-main{
+  width: 101%;
   background-color: #111111;
   height: fit-content;
   padding-top: 40px;
@@ -242,6 +246,46 @@ padding-top: 10px;
   margin-left: 30px;
 }
 
-.footer-logo{
-  margin-left: 55px;
+
+
+@media screen and (max-width: 992px) {
+  .nav-btn {
+    width: 100%;
+  }
+  .img{
+    width: 65px;
+  }
+  .nav-item{
+    text-align: left;
+  }
+  .book-a-cleaner {
+    background: none;
+    border: none;
+  }
+  .prices {
+    background: none;
+    border: none;
+  }
+  
+  .login {
+    background: none;
+    border: none;
+  }
+  .become-a-helper {
+    background: none;
+    border: none;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .second-col, .fourth-col, .sixth-col{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px){
+  
+  .footer-main{
+    width: calc(100% + 10px);
+  }
 }

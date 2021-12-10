@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./styles/Faq.css" />
+    <link rel="stylesheet" href="/Helperland/styles/faq.css" />
 </head>
 
 <body>
@@ -24,45 +24,49 @@
             <nav class="navbar navbar-expand-lg navbar-dark navbar-top">
     
                 <div class="container-fluid nav-1">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapsibleNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <div class="nav-btn">
+                        <button style="float: right;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapsibleNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
     
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                        <ul class="navbar-nav">
-                            <li class="nav-item text-white book-a-cleaner">
-                                <a class="nav-link text-white" href="#">Book now</a>
-                            </li>
-                            <li class="nav-item text-white prices">
-                                <a class="nav-link text-white" href="prices.html">Prices & services</a>
-                            </li>
-                            <li class="nav-item text-white our-guarantee">
-                                <a class="nav-link text-white" href="#">Warrenty</a>
-                            </li>
-                            <li class="nav-item text-white blog">
-                                <a class="nav-link text-white" href="#">Blog</a>
-                            </li>
-                            <li class="nav-item text-white contact-us">
-                                <a class="nav-link text-white" href="#">Contact</a>
-                            </li>
-                            <li class="nav-item text-white login">
-                                <a class="nav-link text-white" href="#">Login</a>
-                            </li>
-                            <li class="nav-item text-white become-a-helper">
-                                <a class="nav-link text-white" href="#">Become a Helper</a>
-                            </li>
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><img
-                                        src="./images/ic-flag.png" alt=""></a>
-    
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Item 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Item 2</a></li>
-                                    <li><a class="dropdown-item" href="#">Item 3</a></li>
-                                </ul>
-                            </li> -->
-                        </ul>
+                        <div class="nav-ul-vertical-list">
+                            <ul class="navbar-nav">
+                                <li class="nav-item text-white book-a-cleaner">
+                                    <a class="nav-link text-white" href="#">Book now</a>
+                                </li>
+                                <li class="nav-item text-white prices">
+                                    <a class="nav-link text-white" href="prices.html">Prices & services</a>
+                                </li>
+                                <li class="nav-item text-white our-guarantee">
+                                    <a class="nav-link text-white" href="#">Warrenty</a>
+                                </li>
+                                <li class="nav-item text-white blog">
+                                    <a class="nav-link text-white" href="#">Blog</a>
+                                </li>
+                                <li class="nav-item text-white contact-us">
+                                    <a class="nav-link text-white" href="#">Contact</a>
+                                </li>
+                                <li class="nav-item text-white login">
+                                    <a class="nav-link text-white" href="#">Login</a>
+                                </li>
+                                <li class="nav-item text-white become-a-helper">
+                                    <a class="nav-link text-white" href="#">Become a Helper</a>
+                                </li>
+                                <!-- <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><img
+                                            src="./images/ic-flag.png" alt=""></a>
+        
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                        <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                        <li><a class="dropdown-item" href="#">Item 3</a></li>
+                                    </ul>
+                                </li> -->
+                            </ul>
+                        </div>
                     </div>
                 </div>
     
@@ -334,14 +338,15 @@
             </div>
         </div>
     </section>
-    <section>
-        <div class="row justify-content-md-center get-our-newsletter">
-            <div class="col col-lg-auto get-our-newslwtter">
+      <!-- Get our newsletter -->
+      <section>
+        <div class="row justify-content-center get-our-newsletter">
+            <div class="col col-auto get-our-newslwtter">
                 <h6>GET OUR NEWSLWTTER</h6>
             </div>
         </div>
-        <div class="row justify-content-md-center">
-            <div class="col col-lg-auto">
+        <div class="row justify-content-center enter-your-mail-and-submit">
+            <div class="col col-auto">
                 <form class="row g-3">
                     <div class="col-auto text-center">
                         <label for="inputEmail" class="visually-hidden">E-mail</label>
@@ -354,34 +359,40 @@
             </div>
         </div>
     </section>
+
+
     <footer>
-        <div class="row footer-main">
+        <div class="row justify-content-center footer-main">
 
             <div class="col-lg-1 col-sm-10 footer-logo text-center">
                 <img class="" src="./images/logo-large.png" alt="" width="100px">
             </div>
-            <div class="col-lg-9 col-sm-12 text-center">
-                <ul class="footer-list d-flex">
-                    <li>
+            <div class="col-lg-9 col-sm-12 text-center m-3">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-auto">
                         <a class="footer-list-item" href="home.html" title="Home">Home</a>
-                    </li>
-                    <li>
+                        
+                    </div>
+                    <div class="col-12 col-lg-auto">
                         <a class="footer-list-item" href="#" title="About">About</a>
-                    </li>
-                    <li>
-                        <a class="footer-list-item" href="#" title="Testimonials">Testimonials</a>
-                    </li>
-                    <li>
-                        <a class="footer-list-item" href="faq.html" title="FAQs">FAQs</a>
-                    </li>
-                    <li>
-                        <a class="footer-list-item" href="#" title="Insurance Policy">Insurance Policy</a>
-                    </li>
-                    <li>
-                        <a class="footer-list-item" href="#" title="Impressum">Impressum</a>
-                    </li>
-                </ul>
 
+                    </div>
+                    <div class="col-12 col-lg-auto">
+                        <a class="footer-list-item" href="#" title="Testimonials">Testimonials</a>
+
+                    </div>
+                    <div class="col-12 col-lg-auto">
+                        <a class="footer-list-item" href="faq.html" title="FAQs">FAQs</a>
+
+                    </div>
+                    <div class="col-12 col-lg-auto">
+
+                        <a class="footer-list-item" href="#" title="Insurance Policy">Insurance Policy</a>
+                    </div>
+                    <div class="col-12 col-lg-auto">
+                        <a class="footer-list-item" href="#" title="Impressum">Impressum</a>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-1 col-sm-12 text-center">
                 <img src="./images/ic-facebook.png" alt="">
@@ -392,7 +403,7 @@
 
 
     </footer>
-    <script src="./JS/Faq.js"></script>
+    <script src="/Helperland/JS/faq.js"></script>
 </body>
 
 </html>
