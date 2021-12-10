@@ -22,6 +22,7 @@ body {
   background-color: #73706C;
   z-index: 10000;
 }
+
 .navbar-top{
   /* position: fixed; */
     top: 0px;
@@ -203,7 +204,12 @@ padding-top: 10px;
 }
 
 .get-our-newsletter{
+  width: 100%;
   margin-top: 50px;
+}
+
+.enter-your-mail-and-submit{
+  width: 100%;
 }
 
 .email{
@@ -217,6 +223,7 @@ padding-top: 10px;
 
 
 .footer-main{
+  width: 100%;
   background-color: #111111;
   height: fit-content;
   padding-top: 40px;
@@ -238,6 +245,9 @@ padding-top: 10px;
 
 
 @media screen and (max-width: 992px) {
+  .nav-btn {
+    width: 100%;
+  }
   .img{
     width: 65px;
   }

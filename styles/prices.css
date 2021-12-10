@@ -13,6 +13,7 @@ body {
 
 .main {
   background-color: #737381;
+  /* border: 5px solid red; */
   position: fixed;
   z-index: 10000;
   width: 100%;
@@ -129,7 +130,12 @@ nav {
 }
 
 .get-our-newsletter {
+  width: 100%;
   margin-top: 50px;
+}
+
+.enter-your-mail-and-submit{
+  width: 100%;
 }
 
 .email {
@@ -161,6 +167,7 @@ nav {
 }
 
 .footer-main {
+  width: 100%;
   background-color: #111111;
   height: fit-content;
   padding-top: 40px;
@@ -187,6 +194,9 @@ nav {
 }
 
 @media screen and (max-width: 992px) {
+  .nav-btn {
+    width: 100%;
+  }
   .nav-item{
     text-align: left;
   }
