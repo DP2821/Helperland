@@ -218,3 +218,13 @@ nav {
     border: none;
   }
 }
+
+
+@media screen and (max-width: 470px) {
+  .btn-one-time {
+    width: 100%;
+  }
+  .card-border {
+    width: 100%;
+  }
+}
