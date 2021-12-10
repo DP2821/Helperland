@@ -31,6 +31,10 @@ body {
     /* background-color: red; */
     /* width: 100%; */
 }
+.nav-ul-vertical-list{
+  width: fit-content;
+  float: right;
+}
 .nav-item {
   margin-top: 5px;
 }
