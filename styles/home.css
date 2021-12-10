@@ -223,7 +223,7 @@ padding-top: 10px;
 
 
 .footer-main{
-  width: 100%;
+  width: 101%;
   background-color: #111111;
   height: fit-content;
   padding-top: 40px;
@@ -276,5 +276,12 @@ padding-top: 10px;
 @media screen and (max-width: 1200px) {
   .second-col, .fourth-col, .sixth-col{
     display: none;
+  }
+}
+
+@media screen and (max-width: 600px){
+  
+  .footer-main{
+    width: calc(100% + 10px);
   }
 }

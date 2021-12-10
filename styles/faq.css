@@ -162,7 +162,7 @@ nav{
   
   
   .footer-main{
-    width: 100%;
+    width: 101%;
     background-color: #111111;
     height: fit-content;
     padding-top: 40px;
@@ -181,10 +181,6 @@ nav{
     margin-left: 30px;
   }
   
-  .footer-logo{
-    /* margin-left: 55px; */
-  }
-
   
 @media screen and (max-width: 992px) {
   .nav-btn {
@@ -209,5 +205,12 @@ nav{
   .become-a-helper {
     background: none;
     border: none;
+  }
+}
+
+@media screen and (max-width: 600px){
+  
+  .footer-main{
+    width: calc(100% + 10px);
   }
 }
