@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/Helperland/styles/style.css">
     <link rel="stylesheet" href="/Helperland/styles/faq.css" />
 </head>
 
@@ -22,9 +23,9 @@
                     <img class="img" src="./images/logo-small.png" alt="">
                 </a>
             </div>
-    
+
             <nav class="navbar navbar-expand-lg navbar-dark navbar-top">
-    
+
                 <div class="container-fluid nav-1">
                     <div class="nav-btn">
                         <button style="float: right;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -32,7 +33,7 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                     </div>
-    
+
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                         <div class="nav-ul-vertical-list">
                             <ul class="navbar-nav">
@@ -49,7 +50,7 @@
                                     <a class="nav-link text-white" href="#">Blog</a>
                                 </li>
                                 <li class="nav-item text-white contact-us">
-                                    <a class="nav-link text-white" href="#">Contact</a>
+                                    <a class="nav-link text-white" href="contact-us.html">Contact</a>
                                 </li>
                                 <li class="nav-item text-white login">
                                     <a class="nav-link text-white" href="#">Login</a>
@@ -71,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-    
+
             </nav>
         </div>
     </section>
@@ -102,122 +103,163 @@
                 </p>
             </div>
             <div class="text-center">
-    
+
                 <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
                     <li class=" col-lg-4 col-sm-6 nav-item" role="presentation">
-                      <button onclick="customerChangeColor()" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">FOR CUSTOMER</button>
+                        <button onclick="customerChangeColor()" class="nav-link active" id="pills-home-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab"
+                            aria-controls="pills-home" aria-selected="true">FOR CUSTOMER</button>
                     </li>
                     <li class=" col-lg-4 col-sm-6 nav-item" role="presentation">
-                      <button onclick="serviceChangeColor()" class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">FOR SERVICE PROVIDER</button>
+                        <button onclick="serviceChangeColor()" class="nav-link" id="pills-profile-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab"
+                            aria-controls="pills-profile" aria-selected="false">FOR SERVICE PROVIDER</button>
                     </li>
-                  </ul>
-                  <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                        aria-labelledby="pills-home-tab">
 
                         <div class="forcustomer">
-                            <img class="dowm-arrow" id="img1" src="./images/right-arrow-grey.png" alt="" onclick="fun('p2')">
+                            <img class="dowm-arrow" id="img1" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p2')">
                             <p1 id="p1" style="font-weight: bold;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae adipisci mollitia?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae
+                                adipisci mollitia?
                             </p1>
                             <div class="detail">
                                 <p2 id="p2">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia quia cumque delectus.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus
+                                    ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia
+                                    quia cumque delectus.
                                 </p2>
                             </div>
                         </div>
 
                         <div class="forcustomer">
-                            <img class="dowm-arrow" id="img2" src="./images/right-arrow-grey.png" alt="" onclick="fun('p4')">
+                            <img class="dowm-arrow" id="img2" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p4')">
                             <p3 id="p3" style="font-weight: bold;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae adipisci mollitia?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae
+                                adipisci mollitia?
                             </p3>
                             <div class="detail">
                                 <p4 id="p4">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia quia cumque delectus.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus
+                                    ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia
+                                    quia cumque delectus.
                                 </p4>
                             </div>
                         </div>
 
                         <div class="forcustomer">
-                            <img class="dowm-arrow" id="img3" src="./images/right-arrow-grey.png" alt="" onclick="fun('p6')">
+                            <img class="dowm-arrow" id="img3" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p6')">
                             <p5 id="p5" style="font-weight: bold;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae adipisci mollitia?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae
+                                adipisci mollitia?
                             </p5>
                             <div class="detail">
                                 <p6 id="p6">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia quia cumque delectus.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus
+                                    ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia
+                                    quia cumque delectus.
                                 </p6>
                             </div>
                         </div>
 
                         <div class="forcustomer">
-                            <img class="dowm-arrow" id="img4" src="./images/right-arrow-grey.png" alt="" onclick="fun('p8')">
+                            <img class="dowm-arrow" id="img4" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p8')">
                             <p7 id="p7" style="font-weight: bold;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae adipisci mollitia?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae
+                                adipisci mollitia?
                             </p7>
                             <div class="detail">
                                 <p8 id="p8">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia quia cumque delectus.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus
+                                    ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia
+                                    quia cumque delectus.
                                 </p8>
                             </div>
                         </div>
 
                         <div class="forcustomer">
-                            <img class="dowm-arrow" id="img5" src="./images/right-arrow-grey.png" alt="" onclick="fun('p10')">
+                            <img class="dowm-arrow" id="img5" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p10')">
                             <p9 id="p9" style="font-weight: bold;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae adipisci mollitia?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae
+                                adipisci mollitia?
                             </p9>
                             <div class="detail">
                                 <p10 id="p10">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia quia cumque delectus.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus
+                                    ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia
+                                    quia cumque delectus.
                                 </p10>
                             </div>
                         </div>
 
                         <div class="forcustomer">
-                            <img class="dowm-arrow" id="img6" src="./images/right-arrow-grey.png" alt="" onclick="fun('p12')">
+                            <img class="dowm-arrow" id="img6" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p12')">
                             <p11 id="p11" style="font-weight: bold;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae adipisci mollitia?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae
+                                adipisci mollitia?
                             </p11>
                             <div class="detail">
                                 <p12 id="p12">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia quia cumque delectus.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus
+                                    ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia
+                                    quia cumque delectus.
                                 </p12>
                             </div>
                         </div>
 
                         <div class="forcustomer">
-                            <img class="dowm-arrow" id="img7" src="./images/right-arrow-grey.png" alt="" onclick="fun('p14')">
+                            <img class="dowm-arrow" id="img7" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p14')">
                             <p13 id="p13" style="font-weight: bold;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae adipisci mollitia?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae
+                                adipisci mollitia?
                             </p13>
                             <div class="detail">
                                 <p14 id="p14">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia quia cumque delectus.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus
+                                    ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia
+                                    quia cumque delectus.
                                 </p14>
                             </div>
                         </div>
 
                         <div class="forcustomer">
-                            <img class="dowm-arrow" id="img8" src="./images/right-arrow-grey.png" alt="" onclick="fun('p16')">
+                            <img class="dowm-arrow" id="img8" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p16')">
                             <p15 id="p15" style="font-weight: bold;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae adipisci mollitia?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae
+                                adipisci mollitia?
                             </p15>
                             <div class="detail">
                                 <p16 id="p16">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia quia cumque delectus.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus
+                                    ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia
+                                    quia cumque delectus.
                                 </p16>
                             </div>
                         </div>
 
                         <div class="forcustomer">
-                            <img class="dowm-arrow" id="img9" src="./images/right-arrow-grey.png" alt="" onclick="fun('p18')">
+                            <img class="dowm-arrow" id="img9" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p18')">
                             <p17 id="p17" style="font-weight: bold;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae adipisci mollitia?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem repudiandae
+                                adipisci mollitia?
                             </p17>
                             <div class="detail">
                                 <p18 id="p18">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia quia cumque delectus.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repellendus
+                                    ratione excepturi rem sit, vitae dolore in nobis porro temporibus expedita officia
+                                    quia cumque delectus.
                                 </p18>
                             </div>
                         </div>
@@ -227,121 +269,157 @@
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
                         <div class="forserviceprovider">
-                            <img class="dowm-arrow" id="img10" src="./images/right-arrow-grey.png" alt="" onclick="fun('p20')">
+                            <img class="dowm-arrow" id="img10" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p20')">
                             <p19 id="p19" style="font-weight: bold;">
-                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs  sdvsdvsdv   vsdv sdvsdv vsd?
+                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs sdvsdvsdv vsdv
+                                sdvsdv vsd?
                             </p19>
                             <div class="detail1">
                                 <p20 id="p20">
-                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba  djbdhvbhdvbdh bhdvb dbhavbdhvbdh dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb ddhbvdhvb hvdhvbd hvdhv.
+                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba djbdhvbhdvbdh bhdvb dbhavbdhvbdh
+                                    dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb
+                                    ddhbvdhvb hvdhvbd hvdhv.
                                 </p20>
                             </div>
                         </div>
 
                         <div class="forserviceprovider">
-                            <img class="dowm-arrow" id="img11" src="./images/right-arrow-grey.png" alt="" onclick="fun('p22')">
+                            <img class="dowm-arrow" id="img11" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p22')">
                             <p21 id="p21" style="font-weight: bold;">
-                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs  sdvsdvsdv   vsdv sdvsdv vsd?
+                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs sdvsdvsdv vsdv
+                                sdvsdv vsd?
                             </p21>
                             <div class="detail1">
                                 <p22 id="p22">
-                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba  djbdhvbhdvbdh bhdvb dbhavbdhvbdh dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb ddhbvdhvb hvdhvbd hvdhv.
+                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba djbdhvbhdvbdh bhdvb dbhavbdhvbdh
+                                    dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb
+                                    ddhbvdhvb hvdhvbd hvdhv.
                                 </p22>
                             </div>
                         </div>
 
                         <div class="forserviceprovider">
-                            <img class="dowm-arrow" id="img12" src="./images/right-arrow-grey.png" alt="" onclick="fun('p24')">
+                            <img class="dowm-arrow" id="img12" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p24')">
                             <p23 id="p23" style="font-weight: bold;">
-                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs  sdvsdvsdv   vsdv sdvsdv vsd?
+                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs sdvsdvsdv vsdv
+                                sdvsdv vsd?
                             </p23>
                             <div class="detail1">
                                 <p24 id="p24">
-                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba  djbdhvbhdvbdh bhdvb dbhavbdhvbdh dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb ddhbvdhvb hvdhvbd hvdhv.
+                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba djbdhvbhdvbdh bhdvb dbhavbdhvbdh
+                                    dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb
+                                    ddhbvdhvb hvdhvbd hvdhv.
                                 </p24>
                             </div>
                         </div>
 
                         <div class="forserviceprovider">
-                            <img class="dowm-arrow" id="img13" src="./images/right-arrow-grey.png" alt="" onclick="fun('p26')">
+                            <img class="dowm-arrow" id="img13" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p26')">
                             <p25 id="p25" style="font-weight: bold;">
-                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs  sdvsdvsdv   vsdv sdvsdv vsd?
+                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs sdvsdvsdv vsdv
+                                sdvsdv vsd?
                             </p25>
                             <div class="detail1">
                                 <p26 id="p26">
-                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba  djbdhvbhdvbdh bhdvb dbhavbdhvbdh dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb ddhbvdhvb hvdhvbd hvdhv.
+                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba djbdhvbhdvbdh bhdvb dbhavbdhvbdh
+                                    dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb
+                                    ddhbvdhvb hvdhvbd hvdhv.
                                 </p26>
                             </div>
                         </div>
 
                         <div class="forserviceprovider">
-                            <img class="dowm-arrow" id="img14" src="./images/right-arrow-grey.png" alt="" onclick="fun('p28')">
+                            <img class="dowm-arrow" id="img14" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p28')">
                             <p27 id="p27" style="font-weight: bold;">
-                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs  sdvsdvsdv   vsdv sdvsdv vsd?
+                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs sdvsdvsdv vsdv
+                                sdvsdv vsd?
                             </p27>
                             <div class="detail1">
                                 <p28 id="p28">
-                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba  djbdhvbhdvbdh bhdvb dbhavbdhvbdh dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb ddhbvdhvb hvdhvbd hvdhv.
+                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba djbdhvbhdvbdh bhdvb dbhavbdhvbdh
+                                    dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb
+                                    ddhbvdhvb hvdhvbd hvdhv.
                                 </p28>
                             </div>
                         </div>
 
                         <div class="forserviceprovider">
-                            <img class="dowm-arrow" id="img15" src="./images/right-arrow-grey.png" alt="" onclick="fun('p30')">
+                            <img class="dowm-arrow" id="img15" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p30')">
                             <p29 id="p29" style="font-weight: bold;">
-                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs  sdvsdvsdv   vsdv sdvsdv vsd?
+                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs sdvsdvsdv vsdv
+                                sdvsdv vsd?
                             </p29>
                             <div class="detail1">
                                 <p30 id="p30">
-                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba  djbdhvbhdvbdh bhdvb dbhavbdhvbdh dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb ddhbvdhvb hvdhvbd hvdhv.
+                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba djbdhvbhdvbdh bhdvb dbhavbdhvbdh
+                                    dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb
+                                    ddhbvdhvb hvdhvbd hvdhv.
                                 </p30>
                             </div>
                         </div>
 
                         <div class="forserviceprovider">
-                            <img class="dowm-arrow" id="img16" src="./images/right-arrow-grey.png" alt="" onclick="fun('p32')">
+                            <img class="dowm-arrow" id="img16" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p32')">
                             <p31 id="p31" style="font-weight: bold;">
-                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs  sdvsdvsdv   vsdv sdvsdv vsd?
+                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs sdvsdvsdv vsdv
+                                sdvsdv vsd?
                             </p31>
                             <div class="detail1">
                                 <p32 id="p32">
-                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba  djbdhvbhdvbdh bhdvb dbhavbdhvbdh dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb ddhbvdhvb hvdhvbd hvdhv.
+                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba djbdhvbhdvbdh bhdvb dbhavbdhvbdh
+                                    dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb
+                                    ddhbvdhvb hvdhvbd hvdhv.
                                 </p32>
                             </div>
                         </div>
 
                         <div class="forserviceprovider">
-                            <img class="dowm-arrow" id="img17" src="./images/right-arrow-grey.png" alt="" onclick="fun('p34')">
+                            <img class="dowm-arrow" id="img17" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p34')">
                             <p33 id="p33" style="font-weight: bold;">
-                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs  sdvsdvsdv   vsdv sdvsdv vsd?
+                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs sdvsdvsdv vsdv
+                                sdvsdv vsd?
                             </p33>
                             <div class="detail1">
                                 <p34 id="p34">
-                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba  djbdhvbhdvbdh bhdvb dbhavbdhvbdh dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb ddhbvdhvb hvdhvbd hvdhv.
+                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba djbdhvbhdvbdh bhdvb dbhavbdhvbdh
+                                    dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb
+                                    ddhbvdhvb hvdhvbd hvdhv.
                                 </p34>
                             </div>
                         </div>
 
                         <div class="forserviceprovider">
-                            <img class="dowm-arrow" id="img18" src="./images/right-arrow-grey.png" alt="" onclick="fun('p36')">
+                            <img class="dowm-arrow" id="img18" src="./images/right-arrow-grey.png" alt=""
+                                onclick="fun('p36')">
                             <p35 id="p35" style="font-weight: bold;">
-                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs  sdvsdvsdv   vsdv sdvsdv vsd?
+                                Lorem ipsuman dmn zdn zn zzdvbjdjvhbvbhjdbv dvxdvd vs dssdsb vsdvdsvs sdvsdvsdv vsdv
+                                sdvsdv vsd?
                             </p35>
                             <div class="detail1">
                                 <p36 id="p36">
-                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba  djbdhvbhdvbdh bhdvb dbhavbdhvbdh dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb ddhbvdhvb hvdhvbd hvdhv.
+                                    ahhabhc cssjajbjbasv cbdhvbdhvbdhvdh jjadbvjdbvvba djbdhvbhdvbdh bhdvb dbhavbdhvbdh
+                                    dhvbdhvdh dhbdhvbdhvb dhbdhvbshd ddhbdhvb ddhdhv dbvhdbvhsd ddhvdhvb dhdvdhvb
+                                    ddhbvdhvb hvdhvbd hvdhv.
                                 </p36>
                             </div>
                         </div>
 
                     </div>
-                  </div>
+                </div>
 
             </div>
         </div>
     </section>
-      <!-- Get our newsletter -->
-      <section>
+    <!-- Get our newsletter -->
+    <section>
         <div class="row justify-content-center get-our-newsletter">
             <div class="col col-auto get-our-newslwtter">
                 <h6>GET OUR NEWSLWTTER</h6>
@@ -373,7 +451,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-auto">
                         <a class="footer-list-item" href="home.html" title="Home">Home</a>
-                        
+
                     </div>
                     <div class="col-12 col-lg-auto">
                         <a class="footer-list-item" href="#" title="About">About</a>
