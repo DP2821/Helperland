@@ -59,37 +59,3 @@
   margin-left: 6%;
   margin-right: 6%;
 }
-
-
-@media screen and (max-width: 992px) {
-.nav-btn {
-  width: 100%;
-}
-.nav-item{
-  text-align: left;
-}
-.book-a-cleaner {
-  background: none;
-  border: none;
-}
-.prices {
-  background: none;
-  border: none;
-}
-
-.login {
-  background: none;
-  border: none;
-}
-.become-a-helper {
-  background: none;
-  border: none;
-}
-}
-
-@media screen and (max-width: 600px){
-
-.footer-main{
-  width: calc(100% + 10px);
-}
-}

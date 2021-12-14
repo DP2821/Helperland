@@ -76,62 +76,92 @@ nav {
   margin-right: 15px;
 }
 
-
-
 /* footer */
 .get-our-newsletter {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.enter-your-mail-and-submit {
+  width: 100%;
+}
+
+.email {
+  border-radius: 20px;
+  border: solid 1px #565656;
+  background-color: #f4f5f8;
+  color: #565656;
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 22px;
+}
+
+.btn-submit {
+  background-color: #ff7b6d;
+  font-size: 18px;
+  line-height: 3px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  color: #fff;
+  width: 88px;
+  transition: 0.3s all;
+}
+.btn-submit:hover {
+  background-color: #eb6e61;
+  color: #fff;
+}
+
+.footer-main {
+  width: 101%;
+  background-color: #111111;
+  height: fit-content;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.footer-list {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.footer-list-item {
+  color: #f4f5f8;
+  text-decoration: none;
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 992px) {
+  .nav-btn {
     width: 100%;
-    margin-top: 50px;
   }
-  
-  .enter-your-mail-and-submit{
-    width: 100%;
+  .nav-item {
+    text-align: left;
   }
-  
-  .email {
-    border-radius: 20px;
-    border: solid 1px #565656;
-    background-color: #f4f5f8;
-    color: #565656;
-    font-size: 14px;
-    height: 40px;
-    line-height: 40px;
-    padding: 0 22px;
-  }
-  
-  .btn-submit {
-    background-color: #ff7b6d;
-    font-size: 18px;
-    line-height: 3px;
-    height: 40px;
-    border-radius: 20px;
+  .book-a-cleaner {
+    background: none;
     border: none;
-    outline: none;
-    color: #fff;
-    width: 88px;
-    transition: 0.3s all;
   }
-  .btn-submit:hover {
-    background-color: #eb6e61;
-    color: #fff;
+  .prices {
+    background: none;
+    border: none;
   }
+
+  .login {
+    background: none;
+    border: none;
+  }
+  .become-a-helper {
+    background: none;
+    border: none;
+  }
+}
+
+@media screen and (max-width: 600px){
   
-  .footer-main {
-    width: 101%;
-    background-color: #111111;
-    height: fit-content;
-    padding-top: 40px;
-    padding-bottom: 30px;
+  .footer-main{
+    width: calc(100% + 10px);
   }
-  
-  .footer-list {
-    list-style: none;
-    margin-top: 10px;
-  }
-  
-  .footer-list-item {
-    color: #f4f5f8;
-    text-decoration: none;
-    margin-left: 30px;
-  }
-  
+}
