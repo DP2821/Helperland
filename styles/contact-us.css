@@ -24,6 +24,13 @@
   border: none;
   font-weight: bold;
 }
+.map{
+  margin-left: 3%;
+  margin-right: 3%;
+}
+.map-img{
+  width: 100%;
+}
 
 @media screen and (max-width: 634px) {
   .form-div {

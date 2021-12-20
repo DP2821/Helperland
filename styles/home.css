@@ -1,3 +1,9 @@
+.blue-rounded-btn{
+  background: none;
+}
+.prices{
+  border: none;
+}
 .nav-header-bg{
   width: 100%;
   background-image: url("../images/Landing-Page-background-image.png");
@@ -9,7 +15,7 @@ ul {
 }
 
 .lorem-random-text {
-  padding-top: 140px;
+  padding-top: 280px;
 }
 
 .blue-btn {
@@ -27,43 +33,15 @@ ul {
 }
 
 .btn-wrapper {
-  margin-bottom: 160px;
+  /* margin-bottom: 160px; */
 }
 
 .step-to-enroll {
   margin-top: 150px;
 }
 
-.step-1-img {
-  margin-left: 35%;
-}
-
-.step-2-img {
-  margin-left: 30%;
-}
-
-.step-3-img {
-  margin-left: 28%;
-}
-
-.step-4-img {
-  margin-left: 35%;
-}
-
-.first-col,
-.second-col,
-.third-col,
-.fourth-col,
-.fifth-col,
-.sixth-col,
-.last-col {
-  width: fit-content;
-}
-
-.second-col,
-.fourth-col,
-.sixth-col {
-  padding-top: 20px;
+.step-arrow {
+  /* padding-top: 20px; */
 }
 
 .down-arrow-img {
@@ -100,7 +78,7 @@ ul {
 }
 
 .what-our-customer-say {
-  margin-top: 57px;
+  margin-top: 70px;
 }
 
 .three-customers {
@@ -133,9 +111,7 @@ ul {
 }
 
 @media screen and (max-width: 1200px) {
-  .second-col,
-  .fourth-col,
-  .sixth-col {
+  .step-arrow {
     display: none;
   }
 }

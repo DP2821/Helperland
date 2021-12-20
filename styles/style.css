@@ -28,10 +28,7 @@ nav {
   margin-top: 5px;
 }
 
-.book-a-cleaner,
-.prices,
-.login,
-.become-a-helper {
+.blue-rounded-btn {
   background: #1d7a8c 0% 0% no-repeat padding-box;
   border: 1px solid #ffffff80;
   border-radius: 20px;
