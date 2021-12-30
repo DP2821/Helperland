@@ -32,36 +32,8 @@ ul {
   transition: all 0.3s ease;
 }
 
-.btn-wrapper {
-  /* margin-bottom: 160px; */
-}
-
 .step-to-enroll {
   margin-top: 150px;
-}
-
-.step-arrow {
-  /* padding-top: 20px; */
-}
-
-.down-arrow-img {
-  margin-top: 20px;
-}
-
-.why-helperland {
-  margin-top: 79px;
-}
-
-.why-helperland-cards {
-  margin-top: 82.5px;
-}
-
-.threeimg {
-  margin-top: 170px;
-}
-
-.blog-three-card {
-  margin-top: 50px;
 }
 
 .arrow-link {
@@ -76,15 +48,6 @@ ul {
   right: 0;
   transition: all 0.5s;
 }
-
-.what-our-customer-say {
-  margin-top: 70px;
-}
-
-.three-customers {
-  margin-top: 80px;
-}
-
 .person-name {
   font-weight: 700;
   font-size: 20px;
@@ -93,9 +56,6 @@ ul {
 .person-city {
   color: #8e8e8e;
   font-size: 14px;
-}
-.person-detail {
-  margin-top: 15px;
 }
 
 .left-border {
