@@ -1,8 +1,15 @@
-function fun(nameOfParagraph){
+function fun(nameOfParagraph,img){
     if(document.getElementById(nameOfParagraph).style.display == "block"){
+        document.getElementById(img).style.transform = "rotate(360deg)";
         document.getElementById(nameOfParagraph).style.display ="none";
     }
     else{
+        document.getElementById(sessionStorage.getItem("openedParagraph")).style.display = "none";
+        document.getElementById(sessionStorage.getItem("opendImg")).style.transform = "rotate(360deg)";
+        document.getElementById(img).style.transform = "rotate(90deg)";
+
+        sessionStorage.setItem("openedParagraph",nameOfParagraph);
+        sessionStorage.setItem("opendImg",img);
         document.getElementById(nameOfParagraph).style.display ="block";
     }
 }

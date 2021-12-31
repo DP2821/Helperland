@@ -1,291 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-body {
-  overflow-x: hidden;
-  font-family: 'Roboto';
+.blue-rounded-btn{
+  background: none;
 }
-
-.main{
-  width: 100%;
-  top: 0px;
-  left: 0px;
-  background-image: url("/Helperland/images/Landing-Page-background-image.png");
-  /* background-repeat: no-repeat; */
-  background-size:cover;
-  background-attachment: fixed;
-  /* opacity: 0.8; */
+.prices{
+  border: none;
 }
 .nav-header-bg{
-  position: fixed;
   width: 100%;
-  /* height: 100px; */
-  background-color: #73706C;
-  z-index: 10000;
+  background-image: url("../images/Landing-Page-background-image.png");
+  background-size:cover;
+  background-attachment: fixed;
+}
+ul {
+  list-style-image: url("../images/ic-check.png");
 }
 
-.navbar-top{
-  /* position: fixed; */
-    top: 0px;
-    right: 0px;
-  
-    /* background-color: red; */
-    /* width: 100%; */
-}
-.nav-ul-vertical-list{
-  width: fit-content;
-  float: right;
-}
-.nav-item {
-  margin-top: 5px;
-}
-header {
-	padding-top: 175px;
-	z-index: 1000;
-}
-.logo{
-  position: fixed;
-    display: inline-block;
-    
-    margin-left: 10px;
-    margin-top: 3px;
-    /* margin: 25px; */
-}
-.img{
-    width: 110px;
-}
-nav{
-    float: right;
+.lorem-random-text {
+  padding-top: 280px;
 }
 
-.book-a-cleaner {
-  width: 161px;
-  height: 40px;
-  background: #00607200 0% 0% no-repeat padding-box;
-  border: 1px solid #ffffff80;
-  border-radius: 20px;
-  opacity: 1;
-  text-align: center;
-}
-
-.login {
-  width: 97px;
-  height: 40px;
-  background: #ffffff00 0% 0% no-repeat padding-box;
-  border: 1px solid #ffffff80;
-  border-radius: 20px;
-  opacity: 1;
-  text-align: center;
-}
-
-.become-a-helper {
-  width: 161px;
-  height: 40px;
-  background: #ffffff00 0% 0% no-repeat padding-box;
-  border: 1px solid #ffffff80;
-  border-radius: 20px;
-  opacity: 1;
-  text-align: center;
-}
-
-.book-a-cleaner, .prices, .our-guarantee, .blog, .contact-us, .login, .become-a-helper{
-    margin-right: 15px;
-}
-
-ul{
-    list-style-image: url("/Homepage/images/ic-check.png");
-    margin-left: 45px;
-}
-
-.lorem-random-text{
-  /* margin-top: 140px; */
-  margin-left: 55px;
-}
-.blue-btn{ 
-  display: inline-block; 
-  background-color: rgba(0, 96, 114, 0.6); 
-  border-radius: 27px; 
-  border: 1px solid #FFFFFF; 
-  height: 54px; 
-  line-height: 52px; 
-  color: #fff !important; 
-  text-decoration: none; 
-  min-width: 225px; 
-  font-size: 18px; 
-  transition: all 0.3s ease; 
-}
-
-.btn-wrapper { margin-bottom: 160px; }
-.lets-book-a-cleaner{
-  width: 225px;
-  height: 54px;
-  border: 1px solid #FFFFFF;
+.blue-btn {
+  display: inline-block;
+  background-color: rgba(0, 96, 114, 0.6);
   border-radius: 27px;
-  opacity: 1;
-  /* text-align: center; */
-  /* margin-left: 42%; */
-  background-color: #006072;
-font-size: 18px;
-box-sizing: border-box;
-padding-top: 10px;
+  border: 1px solid #ffffff;
+  height: 54px;
+  line-height: 52px;
+  color: #fff !important;
+  text-decoration: none;
+  min-width: 225px;
+  font-size: 18px;
+  transition: all 0.3s ease;
 }
 
-.step-to-enroll{
+.step-to-enroll {
   margin-top: 150px;
 }
 
-.step-1-img{
-  margin-left: 35%;
-  
+.arrow-link {
+  font-size: 18px;
+  color: #4f4f4f !important;
+  font-weight: 400;
+  text-decoration: none;
+}
+.arrow-link em {
+  margin-left: 10px;
+  position: relative;
+  right: 0;
+  transition: all 0.5s;
+}
+.person-name {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+}
+.person-city {
+  color: #8e8e8e;
+  font-size: 14px;
 }
 
-.step-2-img{
-  margin-left: 30%;
-}
-
-.step-3-img{
-  margin-left: 28%;
-}
-
-.step-4-img{
-  margin-left: 35%;
-}
-
-.first-col, .second-col, .third-col, .fourth-col, .fifth-col, .sixth-col, .last-col{
-  width: fit-content;
-}
-
-.second-col, .fourth-col, .sixth-col{
-  padding-top: 20px;
-}
-
-.down-arrow{
-  /* height: 10px; */
-  margin-top: 20px;
-  margin-left: 48%;
-}
-
-
-
-.why-helperland{
-  margin-top: 79px;
-  
-}
-
-.why-helperland-cards{
-  margin-top: 82.5px;
-}
-
-.threeimg{
-  margin-top: 170px;
-}
-
-.blog-three-card{
-  margin-top: 50px;
-}
-
-
-.arrow-link { font-size: 18px; color: #4f4f4f !important; font-weight: 400; text-decoration: none; }
-.arrow-link em { margin-left: 10px; position: relative; right: 0; transition: all 0.5s; }
-
-.what-our-customer-say{
-  margin-top: 57px;
-}
-
-.three-customers{
-  margin-top: 80px;
-}
-
-.person-name { font-weight: 700; font-size: 20px; line-height: 1; }
-.person-city { color: #8E8E8E; font-size: 14px; }
-.person-detail{
-  margin-top: 15px;
-}
-
-.left-border{
-  border-left: 3px solid #1D7A8C;
+.left-border {
+  border-left: 3px solid #1d7a8c;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.get-our-newsletter{
-  width: 100%;
-  margin-top: 50px;
-}
-
-.enter-your-mail-and-submit{
-  width: 100%;
-}
-
-.email{
-  border-radius: 20px; border: solid 1px #565656; background-color: #f4f5f8; color: #565656; font-size: 14px; height: 40px; line-height: 40px; padding: 0 22px; 
-}
-
-.btn-submit { 
-  background-color: #FF7B6D;
-  font-size: 18px; line-height: 3px; height: 40px; border-radius: 20px; border: none; outline: none; color: #fff; width: 88px; transition: 0.3s all; }
-.btn-submit:hover { background-color: #eb6e61; color: #fff; }
-
-
-.footer-main{
-  width: 101%;
-  background-color: #111111;
-  height: fit-content;
-  padding-top: 40px;
-  padding-bottom: 30px;
-}
-
-.footer-list{
-  list-style: none;
-  margin-top: 10px;
-}
-
-.footer-list-item{
-
-  color: #f4f5f8;
-  text-decoration: none;
-  margin-left: 30px;
-}
-
-
-
 @media screen and (max-width: 992px) {
-  .nav-btn {
-    width: 100%;
-  }
-  .img{
+  .img {
     width: 65px;
-  }
-  .nav-item{
-    text-align: left;
-  }
-  .book-a-cleaner {
-    background: none;
-    border: none;
-  }
-  .prices {
-    background: none;
-    border: none;
-  }
-  
-  .login {
-    background: none;
-    border: none;
-  }
-  .become-a-helper {
-    background: none;
-    border: none;
   }
 }
 
 @media screen and (max-width: 1200px) {
-  .second-col, .fourth-col, .sixth-col{
+  .step-arrow {
     display: none;
-  }
-}
-
-@media screen and (max-width: 600px){
-  
-  .footer-main{
-    width: calc(100% + 10px);
   }
 }

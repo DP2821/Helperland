@@ -10,17 +10,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/Helperland/styles/style.css">
     <link rel="stylesheet" href="/Helperland/styles/home.css">
+
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/home.css">
 
     <title>Homepage</title>
 </head>
 
 <body>
-    <div class="main">
 
-        <div class="nav-header-bg">
+    <div class="nav-header-bg">
+
+        <div class="main">
             <div class="logo">
-                <img class="img" src="./images/logo-large.png" alt="">
+                <a href="home.html" title="Home">
+                    <img class="img" src="./images/logo-small.png" alt="">
+                </a>
             </div>
 
             <nav class="navbar navbar-expand-lg navbar-dark navbar-top">
@@ -36,10 +43,10 @@
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                         <div class="nav-ul-vertical-list">
                             <ul class="navbar-nav">
-                                <li class="nav-item text-white book-a-cleaner">
+                                <li class="nav-item text-white book-a-cleaner blue-rounded-btn">
                                     <a class="nav-link text-white" href="#">Book a Cleaner</a>
                                 </li>
-                                <li class="nav-item text-white prices">
+                                <li class="nav-item text-white prices blue-rounded-btn">
                                     <a class="nav-link text-white" href="prices.html">Prices</a>
                                 </li>
                                 <li class="nav-item text-white our-guarantee">
@@ -49,18 +56,18 @@
                                     <a class="nav-link text-white" href="#">Blog</a>
                                 </li>
                                 <li class="nav-item text-white contact-us">
-                                    <a class="nav-link text-white" href="#">Contact Us</a>
+                                    <a class="nav-link text-white" href="contact-us.html">Contact Us</a>
                                 </li>
-                                <li class="nav-item text-white login">
+                                <li class="nav-item text-white login blue-rounded-btn">
                                     <a class="nav-link text-white" href="#">Login</a>
                                 </li>
-                                <li class="nav-item text-white become-a-helper">
-                                    <a class="nav-link text-white" href="#">Become a Helper</a>
+                                <li class="nav-item text-white become-a-helper blue-rounded-btn">
+                                    <a class="nav-link text-white" href="Service-provider-become-a-provider.html">Become a Helper</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button"
                                         data-bs-toggle="dropdown"><img src="./images/ic-flag.png" alt=""></a>
-    
+
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="#">Item 1</a></li>
                                         <li><a class="dropdown-item" href="#">Item 2</a></li>
@@ -77,8 +84,8 @@
 
 
         <header>
-            <div>
-                <h1 class="text-white lorem-random-text">Lorem, ipsum dolor.</h1>
+            <div class="container">
+                <h1 class="text-white lorem-random-text ">Lorem, ipsum dolor.</h1>
                 <ul>
                     <li class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing.</li>
                     <li class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing.</li>
@@ -91,37 +98,37 @@
             </div>
 
             <div class="container step-to-enroll">
-                <div class="row justify-content-between">
+                <div class="row justify-content-center">
 
-                    <div class="col-2 first-col text-white">
-                        <img class="step-1-img" src="./images/step-1.png" alt=""><br>
+                    <div class="col-md-auto col-6 text-white text-center">
+                        <img class="step-1-img" src="./images/step-1.png" alt=""  height="50px"><br>
                         One of two columns
                     </div>
-                    <div class="col-1 second-col">
+                    <div class="col-1 step-arrow">
                         <img src="./images/step-arrow-1.png" alt="">
                     </div>
-                    <div class="col-2 third-col text-white temp">
-                        <img class="step-2-img" src="./images/step-2.png" alt=""><br>
+                    <div class="col-md-auto col-6 text-white text-center">
+                        <img class="step-2-img" src="./images/step-2.png" alt="" height="50px"><br>
                         One of two columns
                     </div>
-                    <div class="col-1 fourth-col">
+                    <div class="col-1 step-arrow">
                         <img src="./images/step-arrow-1-copy.png" alt="">
                     </div>
-                    <div class="col-2 fifth-col text-white">
-                        <img class="step-3-img" src="./images/step-3.png" alt=""><br>
+                    <div class="col-md-auto col-6 text-white text-center">
+                        <img class="step-3-img" src="./images/step-3.png" alt="" height="50px"><br>
                         One of two columns
                     </div>
-                    <div class="col-1 sixth-col">
+                    <div class="col-1 step-arrow">
                         <img src="./images/step-arrow-1.png" alt="">
                     </div>
-                    <div class="col-2 last-col text-white">
-                        <img class="step-4-img" src="./images/step-4.png" alt=""><br>
+                    <div class="col-md-auto col-6 text-white text-center">
+                        <img class="step-4-img" src="./images/step-4.png" alt="" height="50px"><br>
                         One of two columns
                     </div>
                 </div>
             </div>
-            <div style="padding-bottom: 15px;">
-                <img class="down-arrow" src="./images/group-18_5.png" alt="">
+            <div class="text-center" style="padding-bottom: 15px;">
+                <img class="mt-5" src="./images/group-18_5.png" alt="">
             </div>
 
         </header>
@@ -129,12 +136,12 @@
 
     <!-- Why Helperland -->
     <section>
-        <div class="container">
+        <div class="container mt-5">
             <div class="text-center why-helperland">
                 <h2> Why Helperland</h2>
             </div>
 
-            <div class="row why-helperland-cards justify-content-center">
+            <div class="row why-helperland-cards mt-5 justify-content-center">
                 <div class="col-auto col-lg-4 col-sm-6">
                     <div class="card border-0 justify-content-center" style="width: 18rem;">
                         <img src="./images/helper-img-1.png" class="card-img-top" alt="...">
@@ -178,7 +185,7 @@
     <!-- Lorem three images -->
     <section>
         <div class="container">
-            <div class="threeimg">
+            <div class="threeimg mt-5">
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-6">
                         <h2 class="h3">Lorem ipsum dolor sit amet, consectetur</h2>
@@ -203,7 +210,7 @@
             <div class="our-blog-three-card">
                 <h2 class="text-center">Our Blog</h2>
 
-                <div class="blog-three-card">
+                <div class="blog-three-card mt-5">
                     <div class="row justify-content-center">
                         <div class="col-auto col-lg-4 col-sm-6">
                             <div class="card border-0 justify-content-center" style="width: 18rem;">
@@ -253,10 +260,10 @@
 
     <!-- What our customer say -->
     <section>
-        <div class="container what-our-customer-say">
+        <div class="container mt-5 ps-4">
             <h2 class="text-center">What Our Customer Say</h2>
 
-            <div class="three-customers">
+            <div class="mt-5">
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 left-border">
                         <div class="row">
@@ -268,7 +275,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="person-detail">
+                                <div class="mt-3">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum metus
                                         pulvinar aliquet consequat. Praesent nec malesuada nibh.</p>
                                     <p>Nullam et metus congue, auctor augue sit amet, consectetur tortor.</p>
@@ -288,7 +295,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="person-detail">
+                                <div class="mt-3">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum metus
                                         pulvinar aliquet consequat. Praesent nec malesuada nibh.</p>
                                     <p>Nullam et metus congue, auctor augue sit amet, consectetur tortor.</p>
@@ -308,7 +315,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="person-detail">
+                                <div class="mt-3">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum metus
                                         pulvinar aliquet consequat. Praesent nec malesuada nibh.</p>
                                     <p>Nullam et metus congue, auctor augue sit amet, consectetur tortor.</p>
@@ -360,7 +367,7 @@
 
                     </div>
                     <div class="col-12 col-lg-auto">
-                        <a class="footer-list-item" href="#" title="About">About</a>
+                        <a class="footer-list-item" href="about.html" title="About">About</a>
 
                     </div>
                     <div class="col-12 col-lg-auto">
@@ -385,6 +392,9 @@
                 <img src="./images/ic-instagram.png" alt="">
             </div>
 
+            <div style="text-align: end;" class="text-white">
+                Ver: 1.1
+            </div>
         </div>
 
 

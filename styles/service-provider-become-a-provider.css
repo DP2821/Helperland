@@ -1,0 +1,69 @@
+.main{
+    background: none;
+}
+.nav-header-bg{
+    width: 100%;
+    /* height: 100%; */
+    background-image: url("../images/become-a-pro-banner.png");  
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+.book-a-cleaner,
+.login,
+.become-a-helper {
+    background: none;
+}
+.register-now{
+    max-width: 400px;
+    margin-top: 100px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: white;
+}
+.text-blue{
+    color: #1FB6FF;
+}
+.captcha{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    background-color: #00000026;
+}
+.blue-btn {
+    display: inline-block;
+    background-color: #1D7A8C;
+    border-radius: 27px;
+    border: 1px solid #ffffff;
+    height: 40px;
+    line-height: 40px;
+    color: #fff !important;
+    text-decoration: none;
+    min-width: 150px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .how-it-works{
+      max-width: 700px;
+  }
+  .arrow-link {
+    font-size: 18px;
+    color: #4f4f4f !important;
+    font-weight: 400;
+    text-decoration: none;
+  }
+  .rounded-img{
+      /* border-radius: 50%; */
+  }
+.red-border{
+    border: 5px solid red;
+}
+
+@media screen and (max-width : 420px) {
+
+    .register-now{   
+        margin-left: 10px;
+        margin-right: 10px;
+        width: auto;
+    }
+}
