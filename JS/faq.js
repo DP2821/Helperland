@@ -4,8 +4,10 @@ function fun(nameOfParagraph,img){
         document.getElementById(nameOfParagraph).style.display ="none";
     }
     else{
-        document.getElementById(sessionStorage.getItem("openedParagraph")).style.display = "none";
-        document.getElementById(sessionStorage.getItem("opendImg")).style.transform = "rotate(360deg)";
+        if(sessionStorage.getItem("openedParagraph") != null)
+            document.getElementById(sessionStorage.getItem("openedParagraph")).style.display = "none";
+        if(sessionStorage.getItem("opendImg"))
+            document.getElementById(sessionStorage.getItem("opendImg")).style.transform = "rotate(360deg)";
         document.getElementById(img).style.transform = "rotate(90deg)";
 
         sessionStorage.setItem("openedParagraph",nameOfParagraph);
