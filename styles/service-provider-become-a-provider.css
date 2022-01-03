@@ -1,5 +1,6 @@
 .main{
-    background: none;
+    background-color: #737381;
+    position: fixed;
 }
 .nav-header-bg{
     width: 100%;

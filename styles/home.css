@@ -4,6 +4,9 @@
 .prices{
   border: none;
 }
+.main {
+  position: fixed;
+}
 .nav-header-bg{
   width: 100%;
   background-image: url("../images/Landing-Page-background-image.png");
