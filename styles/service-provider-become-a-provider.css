@@ -53,9 +53,6 @@
     font-weight: 400;
     text-decoration: none;
   }
-  .rounded-img{
-      /* border-radius: 50%; */
-  }
 .red-border{
     border: 5px solid red;
 }

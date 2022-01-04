@@ -39,6 +39,34 @@
 
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                         <div class="nav-ul-vertical-list">
+
+                            <div class="vertical-navbar" id="dashboard-nav-right">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item text-white">
+                                        <a class="nav-link text-white" href="#">Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#">New Service Request</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#">Upcoming Services</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#">Service Schedule</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#">Service History</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#">My Ratings</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#">Block Customer</a>
+                                    </li>
+                                </ul>
+                                <hr>
+                            </div>
+
                             <ul class="navbar-nav">
 
                                 <li class="nav-item text-white prices">
@@ -79,17 +107,33 @@
 
 
     <section>
-        <div class="verticalNavbar">
-            <div class="hamburger"></div>
-            <ul class="verticalNavItems p-0">
-                <li class="verticalNavItem">Dashboard</li>
-                <li class="verticalNavItem">New Service Request</li>
-                <li class="verticalNavItem active">Upcoming Services</li>
-                <li class="verticalNavItem">Service Schedule</li>
-                <li class="verticalNavItem">Service History</li>
-                <li class="verticalNavItem">My Ratings</li>
-                <li class="verticalNavItem">Block Customer</li>
-            </ul>
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-3" id="dashboard-nav-left">
+                    <div class="vertical-navbar" >
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white li-left">Dashboard</li>
+                            <li class="nav-item text-white li-left">New Service Request</li>
+                            <li class="nav-item text-white li-left">Upcoming Services</li>
+                            <li class="nav-item text-white li-left">Service Schedule</li>
+                            <li class="nav-item text-white li-left">Service History</li>
+                            <li class="nav-item text-white li-left">My Ratings</li>
+                            <li class="nav-item text-white li-left">Block Customer</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <table class="" id="table-main">
+                        <tr style="background-color: #E1E1E1;">
+                            <th>Service ID <img src="./images/sort.png" alt=""></th>
+                            <th>Service date <img src="./images/sort.png" alt=""></th>
+                            <th>Customer details <img src="./images/sort.png" alt=""></th>
+                            <th>Distance <img src="./images/sort.png" alt=""></th>
+                            <th>Action <img src="./images/sort.png" alt=""></th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -136,6 +180,8 @@
 
 
     </footer>
+
+    <script src="./JS/service-provider-upcoming-service.js"></script>
 </body>
 
 </html>
