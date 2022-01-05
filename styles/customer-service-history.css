@@ -7,16 +7,16 @@
 #dashboard-nav-right {
   display: none;
 }
-.vertical-navbar{
-  height: 100%;
-  border: 1px solid #1d7a8c;
+.vertical-navbar {
+    height: 100%;
   background-color: #1d7a8c;
+  border: 1px solid #1d7a8c;
 }
 .li-left {
   border-bottom: 1px solid white;
   padding-left: 10px;
 }
-.active-tab{
+.active-tab {
   background-color: #146371;
 }
 ul {
@@ -29,15 +29,17 @@ ul {
 h1 {
   font-weight: lighter;
 }
-.sp-name{
-  font-weight: bold;
+span {
+  /* font-weight: bold; */
 }
 
 .welcome-user {
   padding: 25px;
   background-color: #f9f9f9;
 }
-
+.customer-name {
+  font-weight: bold;
+}
 table,
 tr {
   border: 1px solid #e1e1e1;
@@ -50,13 +52,36 @@ td {
   /* width: 100px; */
   padding-left: 20px;
 }
-.btn-cancel {
+.cap-border {
+  border: 2px solid #aaaaaa;
+  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 50%;
+}
+.blue-price {
+  font-size: 24px;
+  color: #1d7a8c;
+}
+.btn-SP {
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #ff6b6b;
+  background-color: #6da9b5;
   color: white;
+}
+.status-complete {
+  background-color: #67b644;
+  text-decoration: none;
+  padding: 5px;
+}
+.status-cancel {
+  background-color: #ff6b6b;
+  text-decoration: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .temp {
   /* height: 100%; */
