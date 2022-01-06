@@ -1,6 +1,4 @@
-.bg-img {
-  padding-top: 58px;
-}
+
 .price-ul-list {
   list-style: none;
 }
@@ -47,7 +45,7 @@
 
 .what-we-include-in-cleaning-ul {
   list-style: none;
-  list-style-image: url("/images/right-arrow-grey.png");
+  list-style-image: url("/HTML/assets/images/right-arrow-grey.png");
 }
 .red-border {
   border: 5px solid red;

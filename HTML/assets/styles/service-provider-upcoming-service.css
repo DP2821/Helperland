@@ -1,0 +1,87 @@
+.notification-icon {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 15px;
+  border-left: 2px solid #e1e1e1;
+}
+#dashboard-nav-right {
+  display: none;
+}
+.vertical-navbar{
+  height: 100%;
+  border: 1px solid #1d7a8c;
+  background-color: #1d7a8c;
+}
+.li-left {
+  border-bottom: 1px solid white;
+  padding-left: 10px;
+}
+.active-tab{
+  background-color: #146371;
+}
+ul {
+  list-style: none;
+}
+.user-icon {
+  padding-left: 10px;
+  border-left: 2px solid #e1e1e1;
+}
+h1 {
+  font-weight: lighter;
+}
+.sp-name{
+  font-weight: bold;
+}
+
+.welcome-user {
+  padding: 25px;
+  background-color: #f9f9f9;
+}
+
+table,
+tr {
+  border: 1px solid #e1e1e1;
+}
+th,
+td {
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* width: 100px; */
+  padding-left: 20px;
+}
+.btn-cancel {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #ff6b6b;
+  color: white;
+}
+.temp {
+  /* height: 100%; */
+  border: 5px solid red;
+}
+@media screen and (max-width: 992px) {
+  .book-a-cleaner,
+  .prices,
+  .our-guarantee,
+  .blog,
+  .contact-us,
+  .login,
+  .become-a-helper {
+    padding: 0px;
+    margin: 0px;
+  }
+  .vertical-navbar {
+    margin-top: 5px;
+    background-color: #737381;
+    border: none;
+  }
+  #dashboard-nav-right {
+    display: block;
+  }
+  #dashboard-nav-left {
+    display: none;
+  }
+}

@@ -1,5 +1,6 @@
 .main{
-    background: none;
+    background-color: #737381;
+    position: fixed;
 }
 .nav-header-bg{
     width: 100%;
@@ -51,9 +52,6 @@
     color: #4f4f4f !important;
     font-weight: 400;
     text-decoration: none;
-  }
-  .rounded-img{
-      /* border-radius: 50%; */
   }
 .red-border{
     border: 5px solid red;
