@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  for (i = 0; i < 10; i++) {
+  for (i = 0; i < 50; i++) {
     var table = document.getElementById("table-main");
     var row = table.insertRow();
     var cell1 = row.insertCell(0);
@@ -24,5 +24,5 @@ $(document).ready(function () {
     cell5.innerHTML =
       '<input class="blue-rounded-btn btn-cancel" type="button" value="Cancel">';
   }
-  // $("#table-main").DataTable();
+  $("#table-main").DataTable();
 });

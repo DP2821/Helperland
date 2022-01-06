@@ -58,5 +58,5 @@ $(document).ready(function () {
     cell5.innerHTML =
       '<input class="blue-rounded-btn btn-SP" type="button" value="Rate SP">';
   }
-//   $("#table-main").DataTable();
+  $("#table-main").DataTable();
 });
