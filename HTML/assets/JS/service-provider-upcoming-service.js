@@ -10,14 +10,14 @@ $(document).ready(function () {
 
     cell1.innerHTML = Math.floor(Math.random() * 1000);
     cell2.innerHTML =
-      '<img src="./images/calendar2.png" alt="">' +
+      '<img src="./assets/images/calendar2.png" alt="">' +
       '<span id="date">' + ((Math.floor(Math.random() * 27)) + 1) + '/' + (Math.floor(Math.random() * 11) + 1) +'/2021</span><br>' +
-      '<img src="./images/layer-14.png" alt="">' +
+      '<img src="./assets/images/layer-14.png" alt="">' +
       '<span id="time">12:00 - 6:00</span>';
 
     cell3.innerHTML =
       "John wick <br>" +
-      '<img src="./images/layer-15.png" alt="">' +
+      '<img src="./assets/images/layer-15.png" alt="">' +
       "<span>131 Pearl Street, New York</span>";
 
     cell4.innerHTML = Math.floor(Math.random() * 100) + " km";
