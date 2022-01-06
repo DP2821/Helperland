@@ -98,6 +98,11 @@ td {
     padding: 0px;
     margin: 0px;
   }
+  .vertical-navbar {
+  margin-top: 5px;
+  background-color: #737381;
+  border: none;
+}
   #dashboard-nav-right {
     display: block;
   }
