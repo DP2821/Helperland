@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Service request</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="/Helperland/HTML/assets/styles/style.css">
+    <link rel="stylesheet" href="/Helperland/HTML/assets/styles/admin-user-management.css">
+
+    <link rel="stylesheet" href="../HTML/assets/styles/style.css">
+    <link rel="stylesheet" href="../HTML/assets/styles/admin-user-management.css">
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <div class="header-main">
+            <div class="helperland-header">
+                <h2 class="text-white ms-2 mt-lg-2">helperland</h2>
+            </div>
+
+            <div class="temp">
+                <a href="#"><img class="mt-2" src="./assets/images/user.png" alt=""></a>
+                <a class="nav-link text-white" href="#">
+                    <p class="mt-2">James Smith</p>
+                </a>
+                <a href="#"><img class="me-3 mt-3" src="./assets/images/logout.png" alt=""></a>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="row mt-3 mb-5">
+            <div class="col-lg-3" id="dashboard-nav-left">
+                <div class="vertical-navbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Service Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Role Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Coupon Code Management <img class="admin-arrow"
+                                    src="./assets/images/admin-small-arrow.png" alt=""></a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Escalation Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey active-tab" href="#">Service Requests</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Service Providers</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link" href="#">User Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Finance Module <img class="admin-arrow"
+                                    src="./assets/images/admin-small-arrow.png" alt=""></a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Zip Code Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Rating Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Inquiry Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Newsletter Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Content Management <img class="admin-arrow"
+                                    src="./assets/images/admin-small-arrow.png" alt=""></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-9">
+                <div class="row me-2">
+                    <div class="col">
+                        <h4 class="text-grey">Service Requests</h4>
+                    </div>
+                </div>
+                <div class="row bg-white mt-2 mb-2 me-3 ms-0 pt-3 pb-2">
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="number" class="form-control" placeholder="Service ID">
+                            </div>
+                            <div class="col-4">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option value="" disabled selected>Customer</option>
+                                    <option value="1">Customer 1</option>
+                                    <option value="2">Customer 2</option>
+                                    <option value="3">Customer 3</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option value="" disabled selected>Service Provider</option>
+                                    <option value="1">SP 1</option>
+                                    <option value="2">SP 2</option>
+                                    <option value="3">SP 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="row justify-content-end">
+                            <div class="col-4">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option value="" disabled selected>Status</option>
+                                    <option value="1">Status 1</option>
+                                    <option value="2">Status 2</option>
+                                    <option value="3">Status 3</option>
+                                </select>
+                            </div>
+                            <div class="col-3">
+                                <input type="date" class="form-control" placeholder="From Date">
+                            </div>
+                            <div class="col-3">
+                                <input type="date" class="form-control" placeholder="To Date">
+                            </div>
+                            <div class="col-2">
+                                <button type="submit"
+                                    class="btn btn-primary btn-submit-form btn-blue-adminPage">Search</button>
+                            </div>
+                            <div class="col-2 mt-1">
+                                <button type="submit" class="btn btn-submit-form btn-clear">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row me-2">
+                    <table class="" id="table-main">
+                        <thead>
+                            <tr style="background-color: #F9F9F9;">
+                                <th><span>Service ID</span></th>
+                                <th><span>Service date</span></th>
+                                <th><span>Customer details</span></th>
+                                <th><span>Service provider</span></th>
+                                <th><span>Status</span></th>
+                                <th><span>Action </span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span>323436</span>
+                                </td>
+                                <td>
+                                    <img src="./assets/images/calendar2.png" alt="">
+                                    <span id="date">06/09/2021</span><br>
+                                    <img src="./assets/images/layer-14.png" alt="">
+                                    <span id="time">12:00 - 6:00</span>
+                                </td>
+                                <td>
+                                    John wick <br>
+                                    <img src="./assets/images/layer-15.png" alt="">
+                                    <span>131 Pearl Street, New York</span>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-6 col-md-3">
+                                            <img class="cap-border" src="./assets/images/cap.png" alt="">
+                                        </div>
+                                        <div class="col-6 col-md-9">
+                                            John wick <br>
+                                            <span><img src="./assets/images/star1.png" alt=""><img
+                                                    src="./assets/images/star1.png" alt=""><img
+                                                    src="./assets/images/star1.png" alt=""><img
+                                                    src="./assets/images/star1.png" alt=""><img
+                                                    src="./assets/images/star2.png" alt="">4</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input class="btn-user-status-active" type="button" value="New">
+                                </td>
+                                <td>
+                                    <a href="#"><img class="mt-2" src="./assets/images/group-38.png" alt=""></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./assets/JS/admin-service-requests.js"></script>
+</body>
+
+</html>

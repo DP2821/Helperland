@@ -1,21 +1,17 @@
-
-input[type=number] {
-    -moz-appearance: textfield;
-  }
-body{
-    background-color: rgb(242, 244, 245);
+body {
+  background-color: rgb(242, 244, 245);
 }
 .header-main {
   background-color: #1fb6ff;
   height: 60px;
 }
-.btn-blue-adminPage{
-    background-color: #1FB6FF;
-    border: 1px solid #1FB6FF;
-    border: none;
+.btn-blue-adminPage {
+  background-color: #1fb6ff;
+  border: 1px solid #1fb6ff;
+  border: none;
 }
-.btn-clear{
-    border: 1px solid #646464;
+.btn-clear {
+  border: 1px solid #646464;
 }
 .temp {
   float: right;
@@ -25,61 +21,95 @@ body{
   display: inline-block;
 }
 .vertical-navbar {
-    height: 100%;
-    box-shadow: 2px 0px 6px #0000001A;
-  }
-.active-tab{
-    color: #1FB6FF;
+  height: 100%;
+  box-shadow: 2px 0px 6px #0000001a;
+}
+.active-tab {
+  color: #1fb6ff;
 }
 .li-left {
-  border-bottom: 1px solid #E5E5E5;
+  border-bottom: 1px solid #e5e5e5;
   padding-left: 10px;
 }
-.admin-arrow{
-    float: right;
-    margin-top: 10px;
-    margin-right: 10px;
-    transform: rotate(270deg);
+.admin-arrow {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  transform: rotate(270deg);
 }
-.text-grey{
-    color: #646464;
+.text-grey {
+  color: #646464;
 }
-
-
 table,
 tr {
-  border: 1px solid #E1E1E1;
+  border: 1px solid #e1e1e1;
 }
 th,
 td {
-  /* padding-right: 10px; */
   padding-top: 10px;
   padding-bottom: 10px;
-  /* width: 100px; */
   padding-left: 20px;
 }
-span{
-    color: #646464;
+span {
+  color: #646464;
 }
-.btn-user-status-active{
-    background-color: #67b644;
-    text-decoration: none;
-    border: none;
-    padding-left: 16px;
-    padding-right: 15px;
-    color: white;
+.cap-border {
+  border: 2px solid #aaaaaa;
+  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 50%;
 }
-.btn-user-status-inactive{
-    background-color: #FF6B6B;
-    text-decoration: none;
-    border: none;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: white;
+.btn-user-status-active {
+  background-color: #67B644;
+  text-decoration: none;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
 }
-
+.btn-user-status-inactive {
+  background-color: #FF6B6B;
+  text-decoration: none;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+.btn-status-new{
+  background-color: #F2BB37;
+  text-decoration: none;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+.btn-status-pending{
+  background-color: #1FB6FF;
+  text-decoration: none;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+.btn-status-completed {
+  background-color: #67B644;
+  text-decoration: none;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+.btn-status-cancelled {
+  background-color: #FF6B6B;
+  text-decoration: none;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
 table td:last-child {
-    text-align: center;
+  text-align: center;
 }
 
 /* Data Table class */
@@ -89,7 +119,7 @@ table.dataTable thead td {
   padding-bottom: 10px;
   border-bottom: 1px solid #efefef;
 }
-table.dataTable thead th{
+table.dataTable thead th {
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -115,21 +145,21 @@ table.dataTable tbody td {
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   border: 1px solid #e1e1e1;
-  margin-left: 10px;
-  border-radius: 50%;
+  margin-left: 0px;
+  
 }
-.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-  color: #FFFFFF !important;
-  border: 1px solid #1d7a8c;
-  background: #1d7a8c;
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #ffffff !important;
+  border: 1px solid #565656;
+  background: #565656;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
   color: white !important;
-  border: 1px solid #1d7a8c;
-  background: #1d7a8c;
+  border: 1px solid #565656;
+  background: #565656;
 }
 #table-main_previous,
-#table-main_next{
+#table-main_next {
   border: none;
-  border-radius: 3%;
 }
