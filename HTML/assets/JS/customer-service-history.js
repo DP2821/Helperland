@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  for (i = 0; i < 10; i++) {
+  for (i = 0; i < 50; i++) {
     var table = document.getElementById("table-main");
     var row = table.insertRow();
     var cell1 = row.insertCell(0);
@@ -8,9 +8,15 @@ $(document).ready(function () {
     var cell4 = row.insertCell(3);
     var cell5 = row.insertCell(4);
 
+    cell1.setAttribute("data-label","Service Details");
+    cell2.setAttribute("data-label","Service Provider");
+    cell3.setAttribute("data-label","Payment");
+    cell4.setAttribute("data-label","Status");
+    cell5.setAttribute("data-label","Rate SP");
+
     cell1.innerHTML =
       '<img src="./assets/images/calendar.png" alt="">' +
-      '<span id="date">' + ((Math.floor(Math.random() * 27)) + 1) + '/' + (Math.floor(Math.random() * 11) + 1) +'/2021</span><br>' +
+      '<span id="date"> ' + ((Math.floor(Math.random() * 27)) + 1) + '/' + (Math.floor(Math.random() * 11) + 1) +'/2021</span><br>' +
       '<span id="time">12:00 - 6:00</span>';
 
     const rating = Math.ceil(Math.random() * 5);

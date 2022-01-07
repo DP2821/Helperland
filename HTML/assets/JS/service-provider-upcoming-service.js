@@ -8,6 +8,12 @@ $(document).ready(function () {
     var cell4 = row.insertCell(3);
     var cell5 = row.insertCell(4);
 
+    cell1.setAttribute("data-label","Service ID");
+    cell2.setAttribute("data-label","Service date");
+    cell3.setAttribute("data-label","Customer details");
+    cell4.setAttribute("data-label","Distance");
+    cell5.setAttribute("data-label","Action");
+
     cell1.innerHTML = Math.floor(Math.random() * 1000);
     cell2.innerHTML =
       '<img src="./assets/images/calendar2.png" alt="">' +
