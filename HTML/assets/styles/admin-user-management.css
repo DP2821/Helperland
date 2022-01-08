@@ -163,3 +163,48 @@ table.dataTable tbody td {
 #table-main_next {
   border: none;
 }
+
+@media screen and (max-width: 769px) {
+  table {
+    border: 0;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    display: block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: .625em;
+  
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  table td::before{
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+  
+  table td:last-child {
+    text-align: center;
+    border-bottom: 0;
+  }
+  .cap-border{
+    display: none;
+  }
+}

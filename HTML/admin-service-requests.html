@@ -98,12 +98,12 @@
                     </div>
                 </div>
                 <div class="row bg-white mt-2 mb-2 me-3 ms-0 pt-3 pb-2">
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-4 col-lg-2">
                                 <input type="number" class="form-control" placeholder="Service ID">
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 col-lg-2">
                                 <select class="form-select" aria-label="Default select example">
                                     <option value="" disabled selected>Customer</option>
                                     <option value="1">Customer 1</option>
@@ -111,7 +111,7 @@
                                     <option value="3">Customer 3</option>
                                 </select>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 col-lg-2">
                                 <select class="form-select" aria-label="Default select example">
                                     <option value="" disabled selected>Service Provider</option>
                                     <option value="1">SP 1</option>
@@ -119,12 +119,7 @@
                                     <option value="3">SP 3</option>
                                 </select>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="row justify-content-end">
-                            <div class="col-4">
+                            <div class="col-4 col-lg-2 mt-2 mt-lg-0">
                                 <select class="form-select" aria-label="Default select example">
                                     <option value="" disabled selected>Status</option>
                                     <option value="1">Status 1</option>
@@ -132,22 +127,20 @@
                                     <option value="3">Status 3</option>
                                 </select>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4 col-lg-2 mt-2 mt-lg-0">
                                 <input type="date" class="form-control" placeholder="From Date">
                             </div>
-                            <div class="col-3">
+                            <div class="col-4 col-lg-2 mt-2 mt-lg-0">
                                 <input type="date" class="form-control" placeholder="To Date">
-                            </div>
-                            <div class="col-2">
-                                <button type="submit"
-                                    class="btn btn-primary btn-submit-form btn-blue-adminPage">Search</button>
-                            </div>
-                            <div class="col-2 mt-1">
-                                <button type="submit" class="btn btn-submit-form btn-clear">Clear</button>
                             </div>
                         </div>
                     </div>
 
+                    <div class="text-center mt-2">
+                        <button type="submit" class="btn btn-primary btn-submit-form btn-blue-adminPage">Search</button>
+                        <button type="submit" class="btn btn-submit-form btn-clear">Clear</button>
+
+                    </div>
                 </div>
                 <div class="row me-2">
                     <table class="" id="table-main">
