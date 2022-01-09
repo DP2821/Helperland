@@ -1,9 +1,20 @@
 body {
   background-color: rgb(242, 244, 245);
 }
-.header-main {
+.main {
   background-color: #1fb6ff;
-  height: 60px;
+}
+.helperland-name {
+  font-size: 40px;
+}
+#dashboard-nav-right {
+  display: none;
+}
+.navbar-top {
+  background: none;
+}
+a {
+  text-decoration: none;
 }
 .btn-blue-adminPage {
   background-color: #1fb6ff;
@@ -14,12 +25,11 @@ body {
   border: 1px solid #646464;
 }
 .temp {
-  float: right;
-  display: flex;
+  border: 5px solid red;
 }
-.helperland-header {
+/* .helperland-header {
   display: inline-block;
-}
+} */
 .vertical-navbar {
   height: 100%;
   box-shadow: 2px 0px 6px #0000001a;
@@ -61,7 +71,7 @@ span {
   border-radius: 50%;
 }
 .btn-user-status-active {
-  background-color: #67B644;
+  background-color: #67b644;
   text-decoration: none;
   border: none;
   padding-left: 10px;
@@ -69,23 +79,23 @@ span {
   color: white;
 }
 .btn-user-status-inactive {
-  background-color: #FF6B6B;
+  background-color: #ff6b6b;
   text-decoration: none;
   border: none;
   padding-left: 10px;
   padding-right: 10px;
   color: white;
 }
-.btn-status-new{
-  background-color: #F2BB37;
+.btn-status-new {
+  background-color: #f2bb37;
   text-decoration: none;
   border: none;
   padding-left: 10px;
   padding-right: 10px;
   color: white;
 }
-.btn-status-pending{
-  background-color: #1FB6FF;
+.btn-status-pending {
+  background-color: #1fb6ff;
   text-decoration: none;
   border: none;
   padding-left: 10px;
@@ -93,7 +103,7 @@ span {
   color: white;
 }
 .btn-status-completed {
-  background-color: #67B644;
+  background-color: #67b644;
   text-decoration: none;
   border: none;
   padding-left: 10px;
@@ -101,7 +111,7 @@ span {
   color: white;
 }
 .btn-status-cancelled {
-  background-color: #FF6B6B;
+  background-color: #ff6b6b;
   text-decoration: none;
   border: none;
   padding-left: 10px;
@@ -146,7 +156,6 @@ table.dataTable tbody td {
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   border: 1px solid #e1e1e1;
   margin-left: 0px;
-  
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
@@ -168,7 +177,7 @@ table.dataTable tbody td {
   table {
     border: 0;
   }
-  
+
   table thead {
     border: none;
     clip: rect(0 0 0 0);
@@ -179,32 +188,45 @@ table.dataTable tbody td {
     position: absolute;
     width: 1px;
   }
-  
+
   table tr {
     display: block;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: .625em;
-  
+    margin-bottom: 0.625em;
   }
 
   table td {
     border-bottom: 1px solid #ddd;
     display: block;
-    font-size: .8em;
+    font-size: 0.8em;
     text-align: right;
   }
 
-  table td::before{
+  table td::before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
   }
-  
+
   table td:last-child {
     text-align: center;
     border-bottom: 0;
   }
-  .cap-border{
+  .cap-border {
+    display: none;
+  }
+}
+@media screen and (max-width: 992px) {
+  .navbar-top {
+    background: #1fb6ff;
+  }
+  .nav-btn{
+    margin-top: -60px;
+  } 
+  #dashboard-nav-right {
+    display: block;
+  }
+  #dashboard-nav-left {
     display: none;
   }
 }
