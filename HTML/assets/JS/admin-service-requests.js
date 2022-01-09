@@ -9,6 +9,13 @@ $(document).ready(function () {
     var cell5 = row.insertCell(4);
     var cell6 = row.insertCell(5);
 
+    cell1.setAttribute("data-label","Service ID");
+    cell2.setAttribute("data-label","Service date");
+    cell3.setAttribute("data-label","Customer details");
+    cell4.setAttribute("data-label","Service provider");
+    cell5.setAttribute("data-label","Status");
+    cell6.setAttribute("data-label","Action");
+
     service_ID = Math.floor(Math.random() * 100000) + 300000;
     cell1.innerHTML = "<span>" + service_ID + "</span>";
 

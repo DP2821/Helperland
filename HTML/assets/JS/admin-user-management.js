@@ -36,6 +36,15 @@ $(document).ready(function () {
     var cell7 = row.insertCell(6);
     var cell8 = row.insertCell(7);
 
+    cell1.setAttribute("data-label","User Name");
+    cell2.setAttribute("data-label","User Type");
+    cell3.setAttribute("data-label","Role");
+    cell4.setAttribute("data-label","Postal Code");
+    cell5.setAttribute("data-label","City");
+    cell6.setAttribute("data-label","Radius");
+    cell7.setAttribute("data-label","User Status");
+    cell8.setAttribute("data-label","Action");
+
     userName_id = Math.floor(Math.random() * userName.length);
     cell1.innerHTML = "<span>" + userName[userName_id] + "</span>";
 
