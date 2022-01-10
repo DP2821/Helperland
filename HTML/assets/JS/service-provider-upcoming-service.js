@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  for (i = 0; i < 10; i++) {
+  for (i = 0; i < 50; i++) {
     var table = document.getElementById("table-main");
     var row = table.insertRow();
     var cell1 = row.insertCell(0);
@@ -7,6 +7,12 @@ $(document).ready(function () {
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
     var cell5 = row.insertCell(4);
+
+    cell1.setAttribute("data-label","Service ID");
+    cell2.setAttribute("data-label","Service date");
+    cell3.setAttribute("data-label","Customer details");
+    cell4.setAttribute("data-label","Distance");
+    cell5.setAttribute("data-label","Action");
 
     cell1.innerHTML = Math.floor(Math.random() * 1000);
     cell2.innerHTML =
@@ -24,5 +30,5 @@ $(document).ready(function () {
     cell5.innerHTML =
       '<input class="blue-rounded-btn btn-cancel" type="button" value="Cancel">';
   }
-  // $("#table-main").DataTable();
+  $("#table-main").DataTable();
 });

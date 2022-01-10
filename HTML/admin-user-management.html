@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin User management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="/Helperland/HTML/assets/styles/style.css">
+    <link rel="stylesheet" href="/Helperland/HTML/assets/styles/admin-user-management.css">
+
+    <link rel="stylesheet" href="../HTML/assets/styles/style.css">
+    <link rel="stylesheet" href="../HTML/assets/styles/admin-user-management.css">
+</head>
+
+<body>
+    
+    <header>
+        <div class="main">
+            <a href="home.html" title="Home">
+                <span class="helperland-name text-white ms-2 mt-3">helperland</span>
+            </a>
+            <nav class="navbar navbar-expand-lg navbar-dark navbar-top">
+
+                <div class="container-fluid nav-1">
+                    <div class="nav-btn">
+                        <button style="float: right;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapsibleNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <div class="nav-ul-vertical-list">
+
+                            <div class="vertical-navbar" id="dashboard-nav-right">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Service Management</a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Role Management</a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Coupon Code Management <img class="admin-arrow"
+                                                src="./assets/images/admin-small-arrow.png" alt=""></a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Escalation Management</a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Service Requests</a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Service Providers</a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link active-tab" href="#">User Management</a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Finance Module <img class="admin-arrow"
+                                                src="./assets/images/admin-small-arrow.png" alt=""></a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Zip Code Management</a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Rating Management</a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Inquiry Management</a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Newsletter Management</a>
+                                    </li>
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Content Management</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a href="#"><img src="./assets/images/user.png" alt=""><span class="text-white ms-2 me-2">James Smith</span></a>
+                                </li>
+                                <li class="nav-item mt-2 text-center">
+                                    <a href="#"><img src="./assets/images/logout.png" alt=""></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+<div><br></div>
+    <section>
+        <div class="row mt-3 mb-5">
+            <div class="col-lg-3" id="dashboard-nav-left">
+                <div class="vertical-navbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Service Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Role Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Coupon Code Management <img class="admin-arrow"
+                                    src="./assets/images/admin-small-arrow.png" alt=""></a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Escalation Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Service Requests</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Service Providers</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link active-tab" href="#">User Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Finance Module <img class="admin-arrow"
+                                    src="./assets/images/admin-small-arrow.png" alt=""></a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Zip Code Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Rating Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Inquiry Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Newsletter Management</a>
+                        </li>
+                        <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Content Management</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-9">
+                <div class="row me-2 ">
+                    <div class="col-6">
+                        <h4 class="text-grey">User Management</h4>
+                    </div>
+                    <div class="col-6 text-end">
+                        <button type="submit" class="btn btn-primary btn-submit-form btn-blue-adminPage"><img
+                                class="mb-1" src="./assets/images/add.png" alt=""> Add New User</button>
+                    </div>
+                </div>
+                <div class="row bg-white mt-2 mb-2 me-3 ms-0 pt-3 pb-2">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6 col-md-3">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option value="" disabled selected>User name</option>
+                                    <option value="1">User 1</option>
+                                    <option value="2">User 2</option>
+                                    <option value="3">User 3</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option value="" disabled selected>User role</option>
+                                    <option value="1">Role 1</option>
+                                    <option value="2">Role 2</option>
+                                    <option value="3">Role 3</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-md-3 mt-2 mt-md-0">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon1">+49</span>
+                                    <input type="number" class="form-control" placeholder="Phone number"
+                                        id="phone-be-a-pro">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 mt-2 mt-md-0">
+                                <input type="number" class="form-control" placeholder="Zipcode" id="phone-be-a-pro">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-submit-form btn-blue-adminPage">Search</button>
+                        <button type="submit" class="btn btn-submit-form btn-clear">Clear</button>
+                    </div>
+
+                </div>
+                <div class="row me-2">
+                    <table class="" id="table-main">
+                        <thead>
+                            <tr style="background-color: #F9F9F9;">
+                                <th><span>User Name </span></th>
+                                <th><span>User Type</span></th>
+                                <th><span>Role </span></th>
+                                <th><span>Postal Code </span></th>
+                                <th><span>City </span></th>
+                                <th><span>Radius </span></th>
+                                <th><span>User Status</span></th>
+                                <th><span>Action </span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="User Name">
+                                    <span>Lyum watson</span>
+                                </td>
+                                <td data-label="User Type">
+                                    <span>Call Center</span>
+                                </td>
+                                <td data-label="Role">
+                                    <span>Inquiry Manager</span>
+                                </td>
+                                <td data-label="Postal Code">
+                                    <span>123456</span>
+                                </td>
+                                <td data-label="City">
+                                    <span>Berlin</span>
+                                </td>
+                                <td data-label="Radius">
+                                    <span>10 km</span>
+                                </td>
+                                <td data-label="User Status">
+                                    <input class="btn-user-status-active" type="button" value="Active">
+                                </td>
+                                <td data-label="Action">
+                                    <a href="#"><img class="mt-2" src="./assets/images/group-38.png" alt=""></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./assets/JS/admin-user-management.js"></script>
+</body>
+
+</html>
