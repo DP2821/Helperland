@@ -42,7 +42,14 @@ ul {
 .step-to-enroll {
   margin-top: 150px;
 }
-
+.lorem-three-images{
+  margin-top: 150px;
+}
+.lorem-three-images-bg{
+  background-image: url("../images/blog-right-bg.png"), url("../images/blog-left-bg.png");
+  background-position: right, left;
+  background-repeat: no-repeat, no-repeat;
+}
 .arrow-link {
   font-size: 18px;
   color: #4f4f4f !important;
@@ -67,8 +74,11 @@ ul {
 
 .left-border {
   border-left: 3px solid #1d7a8c;
+}
+
+.rounded-rectangle{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 3px;
+  border-radius: 4px;
   margin-top: 5px;
   margin-bottom: 5px;
 }

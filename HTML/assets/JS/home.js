@@ -1,7 +1,7 @@
 window.addEventListener("scroll", () => {
 
-	if (window.scrollY > 130) {
-        document.getElementById("home-main-nav").style.backgroundColor = "#737381";
+	if (window.scrollY > 80) {
+        document.getElementById("home-main-nav").style.backgroundColor = "#73706c";
         document.getElementById("nav-menu").style.marginTop = "10px";
         document.getElementById("home-nav-logo").style.height = "55px";
         // document.getElementById("home-nav-logo").style.src = "./assets/images/logo-small.png";
