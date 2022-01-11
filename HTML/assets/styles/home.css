@@ -7,6 +7,10 @@
 .main {
   position: fixed;
 }
+.navbar-top{
+  margin-top: 43px;
+  background: none;
+}
 .nav-header-bg{
   width: 100%;
   background-image: url("../images/Landing-Page-background-image.png");
@@ -73,10 +77,26 @@ ul {
   .img {
     width: 65px;
   }
+  .img-logo{
+    padding-bottom: 5px;
+  }
 }
 
 @media screen and (max-width: 1200px) {
   .step-arrow {
     display: none;
+  }
+  .nav-btn{
+    width: 100%;
+  }
+  .nav-item {
+    text-align: left;
+  }
+  .book-a-cleaner,
+  .prices,
+  .login,
+  .become-a-helper {
+    background: none;
+    border: none;
   }
 }
