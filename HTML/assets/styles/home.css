@@ -6,6 +6,7 @@
 }
 .main {
   position: fixed;
+  background: none;
 }
 .navbar-top{
   margin-top: 43px;
@@ -16,6 +17,9 @@
   background-image: url("../images/Landing-Page-background-image.png");
   background-size:cover;
   background-attachment: fixed;
+}
+.dropdown-toggle::after {
+  display: none;
 }
 ul {
   list-style-image: url("../images/ic-check.png");
@@ -49,6 +53,12 @@ ul {
   background-image: url("../images/blog-right-bg.png"), url("../images/blog-left-bg.png");
   background-position: right, left;
   background-repeat: no-repeat, no-repeat;
+}
+.date{
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  color: #a3a3a3;
 }
 .arrow-link {
   font-size: 18px;

@@ -23,6 +23,11 @@ h3,
   color: #565656;
   line-height: 1.2;
 }
+h4{
+  font-size: 20px;
+  font-weight: 700;
+  color: #3d4046;
+}
 p {
   font-size: 16px;
   font-weight: 400;
