@@ -1,17 +1,27 @@
-.about-banner{
-    width: 100%;
+.main {
+  background-color: #525252;
 }
-
-.a-few-words-about-us{
-    margin-top: 32px;
+.navbar-top {
+  background-color: #525252;
 }
-.a-few-word-about-us-details{
-    margin-top: 35px;
+.book-a-cleaner,
+.login,
+.become-a-helper {
+  background-color: #29626d;
 }
-
-.our-story{
-    margin-top: 39px;
+.about-banner {
+  margin-top: -2px;
+  width: 100%;
 }
-.our-story-details{
-    margin-top: 35px;
+.a-few-words-about-us {
+  margin-top: 32px;
+}
+.a-few-word-about-us-details {
+  margin-top: 14px;
+}
+.our-story {
+  margin-top: 78px;
+}
+.our-story-details {
+  margin-top: 17px;
 }

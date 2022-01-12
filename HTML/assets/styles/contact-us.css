@@ -1,3 +1,14 @@
+.main {
+  background-color: #525252;
+}
+.navbar-top {
+  background-color: #525252;
+}
+.book-a-cleaner,
+.login,
+.become-a-helper {
+  background-color: #29626d;
+}
 #pills-home-tab {
   background-color: #1d7a8c;
   color: white;
@@ -8,13 +19,19 @@
 }
 .contact-us-banner {
   width: 100%;
-
 }
 
 .bottom-margin-5 {
   margin-bottom: 15px;
 }
 
+form input, form select{
+  height: 46px;
+}
+form textarea{
+  height: 146px;
+  resize: none;
+}
 .btn-submit-form {
   width: 163px;
   height: 46px;
@@ -24,11 +41,12 @@
   border: none;
   font-weight: bold;
 }
-.map{
+.map {
+  margin-top: 80px;
   margin-left: 3%;
   margin-right: 3%;
 }
-.map-img{
+.map-img {
   width: 100%;
 }
 

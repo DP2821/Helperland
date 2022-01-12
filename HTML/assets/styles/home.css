@@ -1,21 +1,21 @@
-.blue-rounded-btn{
+.blue-rounded-btn {
   background: none;
 }
-.prices{
+.prices {
   border: none;
 }
 .main {
   position: fixed;
   background: none;
 }
-.navbar-top{
+.navbar-top {
   margin-top: 43px;
   background: none;
 }
-.nav-header-bg{
+.nav-header-bg {
   width: 100%;
   background-image: url("../images/Landing-Page-background-image.png");
-  background-size:cover;
+  background-size: cover;
   background-attachment: fixed;
 }
 .dropdown-toggle::after {
@@ -46,15 +46,16 @@ ul {
 .step-to-enroll {
   margin-top: 150px;
 }
-.lorem-three-images{
+.lorem-three-images {
   margin-top: 150px;
 }
-.lorem-three-images-bg{
-  background-image: url("../images/blog-right-bg.png"), url("../images/blog-left-bg.png");
+.lorem-three-images-bg {
+  background-image: url("../images/blog-right-bg.png"),
+    url("../images/blog-left-bg.png");
   background-position: right, left;
   background-repeat: no-repeat, no-repeat;
 }
-.date{
+.date {
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -86,7 +87,7 @@ ul {
   border-left: 3px solid #1d7a8c;
 }
 
-.rounded-rectangle{
+.rounded-rectangle {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 4px;
   margin-top: 5px;
@@ -97,7 +98,7 @@ ul {
   .img {
     width: 65px;
   }
-  .img-logo{
+  .img-logo {
     padding-bottom: 5px;
   }
 }
@@ -106,7 +107,7 @@ ul {
   .step-arrow {
     display: none;
   }
-  .nav-btn{
+  .nav-btn {
     width: 100%;
   }
   .nav-item {
