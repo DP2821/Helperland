@@ -56,13 +56,13 @@ body {
   margin-bottom: 5px;
 }
 .navbar-top {
-  background-color: #737381;
+  background-color: #525252;
 }
 .red-b {
   border: 5px solid red;
 }
 .main {
-  background-color: #737381;
+  background-color: #525252;
   position: sticky;
   top: 0;
   left: 0;
