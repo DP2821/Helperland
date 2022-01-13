@@ -41,7 +41,9 @@
 }
 
 .rounded-grey-box {
-  margin-left: 25px;
+  margin-left: 50%;
+  margin-top: 10%;
+  transform: translate(-50%);
   height: 108px;
   width: 108px;
   display: flex;
