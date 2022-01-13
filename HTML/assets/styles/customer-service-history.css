@@ -4,6 +4,9 @@
   margin-right: 15px;
   border-left: 2px solid #e1e1e1;
 }
+.book-a-cleaner{
+  background-color: #24626d;
+}
 #dashboard-nav-right {
   display: none;
 }
@@ -26,19 +29,22 @@ ul {
   padding-left: 10px;
   border-left: 2px solid #e1e1e1;
 }
-h1 {
-  font-weight: lighter;
-}
-span {
-  /* font-weight: bold; */
-}
 
 .welcome-user {
   padding: 25px;
   background-color: #f9f9f9;
 }
+.welcome{
+  font-weight: normal;
+}
 .customer-name {
+  font-size: 30px;
   font-weight: bold;
+}
+.export{
+  width: fit-content;
+  padding: 5px 14px 5px 16px;
+  color: white;
 }
 table,
 tr {
@@ -51,6 +57,8 @@ td {
   padding-bottom: 10px;
   /* width: 100px; */
   padding-left: 20px;
+  font-size: 16px;
+  color: #646464;
 }
 .cap-border {
   border: 2px solid #aaaaaa;
@@ -141,6 +149,20 @@ table.dataTable tbody td {
   border: none;
   border-radius: 3%;
 }
+#table-main_last, #table-main_next, #table-main_previous, #table-main_first{
+  border: 1px solid #e1e1e1;
+  border-radius: 50%;
+}
+
+.dataTables_wrapper .dataTables_info{
+  float: left;
+  clear: none;
+  padding-top: 15px;
+  padding-left: 8px;
+}
+.dataTables_wrapper .dataTables_length{
+  padding-top: 12px;
+}
 
 @media screen and (max-width: 992px) {
   .book-a-cleaner,
@@ -156,7 +178,7 @@ table.dataTable tbody td {
   
 .vertical-navbar {
   margin-top: 5px;
-  background-color: #737381;
+  background-color: #525252;
   border: none;
 }
   #dashboard-nav-right {

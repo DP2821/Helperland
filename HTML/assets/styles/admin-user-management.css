@@ -2,7 +2,7 @@ body {
   background-color: rgb(242, 244, 245);
 }
 .main {
-  background-color: #1fb6ff;
+  background-color: #19b7ff;
 }
 .helperland-name {
   font-size: 40px;
@@ -32,6 +32,7 @@ a {
 } */
 .vertical-navbar {
   height: 100%;
+  background-color: white;
   box-shadow: 2px 0px 6px #0000001a;
 }
 .active-tab {
@@ -59,6 +60,8 @@ td {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 20px;
+  font-size: 16px;
+  color: #646464;
 }
 span {
   color: #646464;
@@ -173,6 +176,21 @@ table.dataTable tbody td {
   border: none;
 }
 
+#table-main_last, #table-main_next, #table-main_previous, #table-main_first{
+  border: 1px solid #e1e1e1;
+}
+#table-main_length{
+  margin-top: 15px;
+  color:  #646464;
+  padding-bottom: 15px;
+}
+#table-main_length select{
+  color: #646464;
+  height: 40px;
+}
+#table-main_wrapper{
+  background-color: white;
+}
 @media screen and (max-width: 769px) {
   table {
     border: 0;

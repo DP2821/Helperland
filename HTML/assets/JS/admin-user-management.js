@@ -76,5 +76,16 @@ $(document).ready(function () {
     cell8.innerHTML =
       '<a href="#"><img class="mt-2" src="./assets/images/group-38.png" alt=""></a>';
   }
-  $("#table-main").DataTable();
+  $("#table-main").DataTable({
+    dom: "tlp",
+    language: {
+      lengthMenu: "Show _MENU_ Entries",
+      paginate: {
+        previous:
+          "<img src='./assets/images/polygon-1-copy-5.png' alt='previous' />",
+        next: "<img style='transform: rotate(180deg);' src='./assets/images/polygon-1-copy-5.png' alt='previous' />",
+      },
+    },
+    columnDefs: [{ orderable: false, targets: [1,2,4,7] }],
+  });
 });

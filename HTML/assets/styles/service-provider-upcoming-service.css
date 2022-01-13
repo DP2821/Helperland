@@ -24,20 +24,25 @@ ul {
 }
 .user-icon {
   padding-left: 10px;
-  border-left: 2px solid #e1e1e1;
-}
-h1 {
-  font-weight: lighter;
-}
-.sp-name{
-  font-weight: bold;
+  border-left: 2px solid #e1e1e1;  
 }
 
 .welcome-user {
   padding: 25px;
   background-color: #f9f9f9;
 }
-
+.welcome{
+  font-weight: normal;
+}
+.sp-name{
+  font-size: 30px;
+  font-weight: bold;
+}
+.export{
+  width: fit-content;
+  padding: 5px 14px 5px 16px;
+  color: white;
+}
 table,
 tr {
   border: 1px solid #e1e1e1;
@@ -49,6 +54,8 @@ td {
   padding-bottom: 10px;
   /* width: 100px; */
   padding-left: 20px;
+  font-size: 16px;
+  color: #646464;
 }
 .btn-cancel {
   padding-top: 5px;
@@ -111,7 +118,20 @@ table.dataTable tbody td {
   border: none;
   border-radius: 3%;
 }
+#table-main_last, #table-main_next, #table-main_previous, #table-main_first{
+  border: 1px solid #e1e1e1;
+  border-radius: 50%;
+}
 
+.dataTables_wrapper .dataTables_info{
+  float: left;
+  clear: none;
+  padding-top: 15px;
+  padding-left: 8px;
+}
+.dataTables_wrapper .dataTables_length{
+  padding-top: 12px;
+}
 
 @media screen and (max-width: 992px) {
   .book-a-cleaner,
@@ -126,7 +146,7 @@ table.dataTable tbody td {
   }
   .vertical-navbar {
     margin-top: 5px;
-    background-color: #737381;
+    background-color: #525252;
     border: none;
   }
   #dashboard-nav-right {

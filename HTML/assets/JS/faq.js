@@ -17,23 +17,24 @@ function fun(nameOfParagraph,img){
 }
 
 function customerChangeColor(){
-    if(document.getElementById("pills-home-tab").style.backgroundColor != "#1D7A8C"){
-        document.getElementById("pills-home-tab").style.backgroundColor = "#1D7A8C";
+    if(document.getElementById("pills-home-tab").style.backgroundColor != "#177b8d"){
+        document.getElementById("pills-home-tab").style.backgroundColor = "#177b8d";
         document.getElementById("pills-home-tab").style.color = "white"
 
         document.getElementById("pills-profile-tab").style.backgroundColor = "white";
-        document.getElementById("pills-profile-tab").style.color = "black"
+        document.getElementById("pills-profile-tab").style.color = "#646464"
         
     }
 }
 
 
 function serviceChangeColor(){
-    if(document.getElementById("pills-profile-tab").style.backgroundColor != "#1D7A8C"){
-        document.getElementById("pills-profile-tab").style.backgroundColor = "#1D7A8C";
+    if(document.getElementById("pills-profile-tab").style.backgroundColor != "#177b8d"){
+
+        document.getElementById("pills-profile-tab").style.backgroundColor = "#177b8d";
         document.getElementById("pills-profile-tab").style.color = "white"
 
         document.getElementById("pills-home-tab").style.backgroundColor = "white";
-        document.getElementById("pills-home-tab").style.color = "black"
+        document.getElementById("pills-home-tab").style.color = "#646464"
     }
 }
