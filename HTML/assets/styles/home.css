@@ -94,6 +94,9 @@ ul {
   margin-bottom: 5px;
 }
 
+.bottom-two-btn{
+  width: 100%;
+}
 @media screen and (max-width: 992px) {
   .img {
     width: 65px;
