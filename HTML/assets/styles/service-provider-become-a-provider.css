@@ -90,6 +90,12 @@ form .input-check {
   border: 5px solid red;
 }
 
+
+@media screen and (max-width: 992px) {
+  .img-logo {
+    padding-bottom: 10px;
+  }
+}
 @media screen and (max-width: 420px) {
   
 form input,
