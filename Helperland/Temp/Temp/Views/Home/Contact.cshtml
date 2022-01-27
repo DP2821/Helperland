@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Contact us";
+    Layout = "_StaticLayout";
+}
+<asp:content contentplaceholder id="css" runat="server">
+    <link href="~/assets/css/contact-us.css" rel="stylesheet" />
+</asp:content>
+
+<section>
+    <div>
+        <img class="contact-us-banner" src="~/assets/images/group-16_2.png" alt="" />
+    </div>
+</section>
+
+<!-- contact-us -->
+<section>
+    <div class="container">
+        <div class="text-center m-4">
+            <h2>Contact us</h2>
+            <hr class="star-hr">
+            <img style="margin-bottom: 24px;" class="text-center" src="~/assets/images/forma-1-copy-5.png" alt="">
+            <hr class="star-hr">
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-auto col-lg-4 col-12">
+                <div class="text-center">
+                    <div class="m-3">
+                        <img src="~/assets/images/forma-1_2.png" alt="">
+                    </div>
+                    1111 Lorem ipsum text 100 <br>
+                    Lorem, ipsum dolor.
+                </div>
+            </div>
+            <div class="col-auto col-lg-4 col-12">
+                <div class="text-center">
+                    <div class="m-3">
+                        <img src="~/assets/images/phone-call.png" alt="">
+                    </div>
+                    +49(40) 123 56 7890 <br>
+                    +49(40) 123 56 7890
+                </div>
+            </div>
+            <div class="col-auto col-lg-4 col-12">
+                <div class="text-center">
+                    <div class="m-3">
+                        <img src="~/assets/images/vector-smart-object.png" alt="">
+                    </div>
+                    info@helperland.com
+                </div>
+            </div>
+        </div>
+        <hr class="mt-5">
+    </div>
+</section>
+
+<!-- form -->
+<section>
+    <div class="container form-div">
+
+        <div class="text-center mt-5 mb-4">
+            <h3>Get in touch with us</h3>
+        </div>
+
+        <form action="" method="post">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-12 bottom-margin-5">
+                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                </div>
+                <div class="col-md-6 col-12 bottom-margin-5">
+                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-12 bottom-margin-5">
+                    <div class="input-group mb-2">
+                        <span class="input-group-text" id="basic-addon1">+49</span>
+                        <input type="number" class="form-control" placeholder="Phone Number" id="phone-be-a-pro">
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 bottom-margin-5">
+                    <input type="email" class="form-control" placeholder="Email address" aria-label="Email address">
+                </div>
+            </div>
+
+            <div class="row bottom-margin-5 justify-content-center">
+                <div class="col">
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="" disabled selected>Subject</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row justify-content-center bottom-margin-5">
+                <div class="col">
+                    <textarea class="form-control" placeholder="Message" id="floatingTextarea"></textarea>
+                </div>
+            </div>
+
+            <div class="row bottom-margin-5 justify-content-center">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary btn-submit-form">Submit</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</section>
+
+<!-- map -->
+<section>
+    <div class="map">
+        <img class="map-img" src="~/assets/images/group-16.png" alt="">
+    </div>
+</section>

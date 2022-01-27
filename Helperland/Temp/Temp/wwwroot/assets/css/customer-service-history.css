@@ -1,0 +1,241 @@
+.notification-icon {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 15px;
+  border-left: 2px solid #e1e1e1;
+}
+.book-a-cleaner{
+  background-color: #24626d;
+}
+#dashboard-nav-right {
+  display: none;
+}
+.vertical-navbar {
+  height: 100%;
+  background-color: #1d7a8c;
+  border: 1px solid #1d7a8c;
+}
+.li-left {
+  border-bottom: 1px solid white;
+  padding-left: 10px;
+}
+.active-tab {
+  background-color: #146371;
+}
+ul {
+  list-style: none;
+}
+.user-icon {
+  padding-left: 10px;
+  border-left: 2px solid #e1e1e1;
+}
+
+.welcome-user {
+  padding: 25px;
+  background-color: #f9f9f9;
+}
+.welcome{
+  font-weight: normal;
+}
+.customer-name {
+  font-size: 30px;
+  font-weight: bold;
+}
+.export{
+  width: fit-content;
+  padding: 5px 14px 5px 16px;
+  color: white;
+}
+table,
+tr {
+  border: 1px solid #e1e1e1;
+}
+th,
+td {
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* width: 100px; */
+  padding-left: 20px;
+  font-size: 16px;
+  color: #646464;
+}
+.cap-border {
+  border: 2px solid #aaaaaa;
+  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 50%;
+}
+.blue-price {
+  font-size: 24px;
+  color: #1d7a8c;
+}
+.btn-SP {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #6da9b5;
+  color: white;
+}
+.status-complete {
+  background-color: #67b644;
+  text-decoration: none;
+  padding: 5px;
+}
+.status-cancel {
+  background-color: #ff6b6b;
+  text-decoration: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.temp {
+  /* height: 100%; */
+  border: 5px solid red;
+}
+
+
+
+/* Data Table class */
+table.dataTable thead th,
+table.dataTable thead td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #efefef;
+}
+table.dataTable thead th{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+table.dataTable thead .sorting {
+  background-image: url("../images/sort.png");
+  background-position: center right 30px;
+}
+table.dataTable thead .sorting_asc {
+  background-image: url("../images/acendingSort.png") !important;
+  background-position: center right 30px;
+}
+table.dataTable thead .sorting_desc {
+  background-image: url("../images/decendingSort.png") !important;
+  background-position: center right 30px;
+}
+table.dataTable tbody td {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top: 1px solid #efefef;
+}
+.dataTables_wrapper .dataTables_filter {
+  display: none;
+}
+.dataTables_wrapper .dataTables_paginate {
+  margin-top: 5px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  border: 1px solid #e1e1e1;
+  margin-left: 10px;
+  border-radius: 50%;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #FFFFFF !important;
+  border: 1px solid #1d7a8c;
+  background: #1d7a8c;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  color: white !important;
+  border: 1px solid #1d7a8c;
+  background: #1d7a8c;
+}
+#table-main_previous,
+#table-main_next{
+  border: none;
+  border-radius: 3%;
+}
+#table-main_last, #table-main_next, #table-main_previous, #table-main_first{
+  border: 1px solid #e1e1e1;
+  border-radius: 50%;
+}
+
+.dataTables_wrapper .dataTables_info{
+  float: left;
+  clear: none;
+  padding-top: 15px;
+  padding-left: 8px;
+}
+.dataTables_wrapper .dataTables_length{
+  padding-top: 12px;
+}
+
+@media screen and (max-width: 992px) {
+  .book-a-cleaner,
+  .prices,
+  .our-guarantee,
+  .blog,
+  .contact-us,
+  .login,
+  .become-a-helper {
+    padding: 0px;
+    margin: 0px;
+  }
+  
+.vertical-navbar {
+  margin-top: 5px;
+  background-color: #525252;
+  border: none;
+}
+  #dashboard-nav-right {
+    display: block;
+  }
+  #dashboard-nav-left {
+    display: none;
+  }
+}
+
+
+
+@media screen and (max-width: 769px) {
+  table {
+    border: 0;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    display: block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: .625em;
+  
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  table td::before{
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+  
+  
+  table td:last-child {
+    text-align: center;
+    border-bottom: 0;
+  }
+  .cap-border{
+    display: none;
+  }
+}

@@ -1,0 +1,73 @@
+#pills-home-tab {
+    background-color: #177b8d;
+    color: white;
+}
+
+.faq-banner {
+    width: 100%;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+#pills-home-tab {
+    text-align: center;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 3px solid #177b8d;
+    width: 100%;
+}
+
+#pills-profile-tab {
+    text-align: center;
+    border: none;
+    border-radius: 0px;
+    color: #646464;
+    border-bottom: 3px solid #177b8d;
+    width: 100%;
+}
+
+#pills-tab {
+    border: none;
+}
+
+#pills-tabContent {
+    margin-left: 17%;
+    margin-right: 17%;
+}
+
+.forcustomer {
+    margin-top: 35px;
+}
+
+.dowm-arrow {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.detail {
+    margin-top: 10px;
+    margin-left: 6%;
+    margin-right: 6%;
+    display: unset;
+}
+
+.forserviceprovider {
+    margin-top: 35px;
+}
+
+p1 {
+    color: #646464;
+}
+
+#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9, #p10, #p11, #p12, #p13, #p14, #p15, #p16, #p17, #p18 {
+    color: #646464;
+    display: none;
+}
+
+.detail1 {
+    margin-top: 10px;
+    margin-left: 6%;
+    margin-right: 6%;
+}

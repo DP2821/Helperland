@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+  font-family: "Roboto";
+}
+h1,
+.h1 {
+  font-size: 50px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.08;
+}
+h2,
+.h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #4f4f4f;
+  line-height: 1.2;
+}
+h3,
+.h3 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #565656;
+  line-height: 1.2;
+}
+h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #565656;
+}
+p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #4f4f4f;
+  line-height: 1.3;
+}
+span {
+  font-size: 16px;
+  font-weight: 400;
+  color: #4f4f4f;
+  line-height: 1.3;
+}
+.star-hr {
+  display: inline-block;
+  width: 62px;
+  height: 1px;
+  background-color: #ccc;
+}
+body {
+  overflow-x: hidden;
+}
+.logo {
+  display: inline-block;
+  margin-left: 17px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.navbar-top {
+  background-color: #525252;
+}
+.red-b {
+  border: 5px solid red;
+}
+.main {
+  background-color: #525252;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  height: fit-content;
+  width: 100%;
+}
+
+.nav-ul-vertical-list {
+  width: fit-content;
+  float: right;
+}
+nav {
+  float: right;
+  z-index: 1000;
+}
+.nav-item {
+  margin-top: 5px;
+}
+
+.blue-rounded-btn {
+  background: #1d7a8c 0% 0% no-repeat padding-box;
+  border: 1px solid #ffffff80;
+  border-radius: 20px;
+  opacity: 1;
+  text-align: center;
+}
+.prices {
+  background: none;
+}
+.book-a-cleaner,
+.prices,
+.our-guarantee,
+.blog,
+.contact-us,
+.login,
+.become-a-helper {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 15px;
+}
+
+.arrow-up {
+  border-radius: 50%;
+  background-color: black;
+  padding: 15px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+/* footer */
+.get-our-newsletter {
+  width: 100%;
+}
+
+.enter-your-mail-and-submit {
+  width: 100%;
+}
+
+.email {
+  border-radius: 20px;
+  border: solid 1px #565656;
+  background-color: #f4f5f8;
+  color: #565656;
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 22px;
+}
+
+.btn-submit {
+  background-color: #ff7b6d;
+  font-size: 18px;
+  line-height: 3px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  color: #fff;
+  width: 88px;
+  transition: 0.3s all;
+}
+.btn-submit:hover {
+  background-color: #eb6e61;
+  color: #fff;
+}
+
+.footer-main {
+  width: 101%;
+  background-color: #111111;
+  height: fit-content;
+  padding-top: 40px;
+  padding-bottom: 22px;
+}
+
+.footer-list {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.footer-list-item {
+  color: #f4f5f8;
+  text-decoration: none;
+  /* margin-left: 30px; */
+}
+
+@media screen and (max-width: 992px) {
+  .nav-btn {
+    width: 100%;
+  }
+  .logo {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 10000;
+  }
+  .img-logo {
+    height: 40px;
+    padding-bottom: 5px;
+  }
+  .navbar-top {
+    width: 100%;
+  }
+  .nav-item {
+    text-align: left;
+  }
+  .book-a-cleaner,
+  .prices,
+  .login,
+  .become-a-helper {
+    background: none;
+    border: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer-main {
+    width: 100%;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}

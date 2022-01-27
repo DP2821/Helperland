@@ -1,0 +1,51 @@
+.book-a-cleaner,
+.login,
+.become-a-helper {
+  background-color: #29626d;
+}
+#pills-home-tab {
+  background-color: #1d7a8c;
+  color: white;
+}
+
+.form-div {
+  width: 614px;
+}
+.contact-us-banner {
+  width: 100%;
+}
+
+.bottom-margin-5 {
+  margin-bottom: 15px;
+}
+
+form input, form select{
+  height: 46px;
+}
+form textarea{
+  height: 146px;
+  resize: none;
+}
+.btn-submit-form {
+  width: 163px;
+  height: 46px;
+  outline: none;
+  background: #1d7a8c 0% 0% no-repeat padding-box;
+  border-radius: 23px;
+  border: none;
+  font-weight: bold;
+}
+.map {
+  margin-top: 80px;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+.map-img {
+  width: 100%;
+}
+
+@media screen and (max-width: 634px) {
+  .form-div {
+    width: 100%;
+  }
+}

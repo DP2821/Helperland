@@ -1,0 +1,157 @@
+﻿@{
+    ViewData["Title"] = "Become a Service Provider";
+}
+<asp:content contentplaceholder id="css" runat="server">
+    <link href="~/assets/css/service-provider-become-a-provider.css" rel="stylesheet" />
+</asp:content>
+
+@section headerBgAndContent{
+<section>
+    <div><br></div>
+
+    <div class=" container register-now mb-5">
+        <h4 class="text-center pt-3 mb-4">Register Now!</h4>
+        <form action="">
+            <div class="row justify-content-center">
+                <div class="col">
+                    <input type="text" class="form-control mb-3" placeholder="First name"
+                           id="first-name-be-a-pro">
+                    <input type="text" class="form-control mb-3" placeholder="Last name"
+                           id="last-name-be-a-pro">
+                    <input type="email" class="form-control mb-3" placeholder="Email Address"
+                           id="email-be-a-pro">
+                    <div class="input-group mb-3 input-number">
+                        <span class="input-group-text" id="basic-addon1">+46</span>
+                        <input type="number" class="form-control" placeholder="Phone Number"
+                               id="phone-be-a-pro">
+                    </div>
+                    <input type="password" class="form-control mb-3" placeholder="Password"
+                           id="password-be-a-pro">
+                    <input type="password" class="form-control mb-2" placeholder="Confirm Password"
+                           id="confirm-password-be-a-pro">
+                    <div class="form-check mb-2 input-check">
+                        <input class="form-check-input" type="checkbox" value="" id="send-news">
+                        <label class="form-check-label" for="send-news">
+                            Send me newsletters from Helperland
+                        </label>
+                    </div>
+                    <div class="form-check mb-2 input-check">
+                        <input class="form-check-input" type="checkbox" value="" id="terms">
+                        <label class="form-check-label" for="terms">
+                            I accept <span class="text-blue">terms and conditions</span> & <span class="text-blue">privacy policy</span>
+                        </label>
+                    </div>
+                    <div class="form-check captcha mb-2 input-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            &nbsp; I'm not a robot <img src="./assets/images/RecaptchaLogo.png" alt=""
+                                                        width="32px">
+                        </label>
+                    </div>
+                    <div class="text-center pb-3 mt-3">
+                        <a href="" class="blue-btn text-white text-center">
+                            Get Started&nbsp; <img src="./assets/images/arrow-white.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="text-center pb-5">
+        <img class="down-arrow-img" src="./assets/images/group-18_5.png" alt="">
+    </div>
+</section>
+}
+
+
+<!-- How it works -->
+<section class="how-it-works-bg">
+
+    <div class="container mt-5 how-it-works">
+        <h3 class="text-center mb-5">How it works</h3>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-auto col-md-6 mt-auto">
+                <h4>Register yourself</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit natus ipsam quod? Optio
+                    dicta ex deserunt iure neque repellendus quaerat.
+                </p>
+                <br>
+                <a href="#" title="Read More" class="arrow-link">
+                    Read More <em>
+                        <img src="~/assets/images/shape-2.png" alt="Right Arrow">
+                    </em>
+                </a>
+            </div>
+            <div class="col-auto col-md-6 text-end">
+                <img src="~/assets/images/become-a-helper-register-your-self-step-1.png" alt="" width="250px">
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-auto col-md-6 order-2 order-md-1">
+                <img src="~/assets/images/become-a-helper-register-your-self-step-2.png" alt="" width="250px">
+            </div>
+            <div class="col-auto col-md-6 order-1 order-md-2 mt-auto">
+                <h4>Get service requests</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit natus ipsam quod? Optio
+                    dicta ex deserunt iure neque repellendus quaerat.
+                </p>
+                <br>
+                <a href="#" title="Read More" class="arrow-link">
+                    Read More <em>
+                        <img src="~/assets/images/shape-2.png" alt="Right Arrow">
+                    </em>
+                </a>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-auto col-md-6 mt-auto">
+                <h4>Complete service</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit natus ipsam quod? Optio
+                    dicta ex deserunt iure neque repellendus quaerat.
+                </p>
+                <br>
+                <a href="#" title="Read More" class="arrow-link">
+                    Read More <em>
+                        <img src="~/assets/images/shape-2.png" alt="Right Arrow">
+                    </em>
+                </a>
+            </div>
+            <div class="col-auto col-md-6 text-end">
+                <img src="~/assets/images/become-a-helper-register-your-self-step-3.png" alt="" width="250px">
+            </div>
+        </div>
+    </div>
+    <!-- Get our newsletter -->
+    <section>
+        <div class="row justify-content-center get-our-newsletter mt-5">
+            <div class="col col-auto get-our-newslwtter">
+                <h6>GET OUR NEWSLWTTER</h6>
+            </div>
+        </div>
+        <div class="row justify-content-center enter-your-mail-and-submit mb-5">
+            <div class="col col-auto">
+                <form class="row g-3">
+                    <div class="col-12 text-center col-sm-auto">
+                        <label for="inputEmail" class="visually-hidden">E-mail</label>
+                        <input type="email" class="form-control email m-0" id="inputEmail" placeholder="YOUR EMAIL">
+                    </div>
+                    <div class="col-12 text-center col-sm-auto">
+                        <button type="submit" class="btn btn-primary mb-3 btn-submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+<asp:content contentplaceholder id="script" runat="server">
+    <script src="~/assets/js/Service-provider-become-a-provider.js"></script>
+</asp:content>

@@ -1,0 +1,76 @@
+.book-a-cleaner,
+.login,
+.become-a-helper {
+  background-color: #29626d;
+}
+.price-ul-list {
+  list-style: none;
+}
+.btn-one-time {
+  border: none;
+  background-color: #1d7a8c;
+  width: 400px;
+  height: 45px;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+}
+
+.text-left {
+  display: inline-block;
+  text-align: left;
+}
+
+.work-time {
+  margin-top: -15px;
+  color: #1d7a8c;
+}
+.card-border {
+  display: inline-block;
+  border: 1px solid #b0c9ce;
+}
+.card-body-bg {
+  background-color: #f6f6f6;
+}
+.price-ul-list li {
+  margin-top: 19px;
+}
+
+.extra-services {
+  margin-top: 50px;
+}
+
+.rounded-grey-box {
+  margin-left: 50%;
+  margin-top: 10%;
+  transform: translate(-50%);
+  height: 108px;
+  width: 108px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #b0c9ce;
+  border-radius: 50%;
+}
+.what-we-include-in-cleaning {
+  background-color: #f6f6f6;
+}
+.what-we-include-in-cleaning-ul {
+  list-style: none;
+  margin-left: -30px;
+}
+.what-we-include-in-cleaning-ul li {
+  margin-top: 10px;
+}
+.bottom-two-btn {
+  width: 100%;
+}
+
+@media screen and (max-width: 470px) {
+  .btn-one-time {
+    width: 100%;
+  }
+  .card-border {
+    width: 100%;
+  }
+}

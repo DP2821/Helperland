@@ -1,0 +1,129 @@
+.img-logo{
+  height: 130px;
+}
+.blue-rounded-btn {
+  background: none;
+}
+.prices {
+  border: none;
+}
+.main {
+  position: fixed;
+  background: none;
+}
+.navbar-top {
+  margin-top: 43px;
+  background: none;
+}
+.nav-header-bg {
+    width: 100%;
+    background-image: url("/assets/images/Landing-Page-background-image.png");
+    background-size: cover;
+    background-attachment: fixed;
+}
+.dropdown-toggle::after {
+  display: none;
+}
+ul {
+  list-style-image: url("../images/ic-check.png");
+}
+
+.lorem-random-text {
+  padding-top: 280px;
+}
+
+.blue-btn {
+  display: inline-block;
+  background-color: rgba(0, 96, 114, 0.6);
+  border-radius: 27px;
+  border: 1px solid #ffffff;
+  height: 54px;
+  line-height: 52px;
+  color: #fff !important;
+  text-decoration: none;
+  min-width: 225px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.step-to-enroll {
+  margin-top: 150px;
+}
+.lorem-three-images {
+  margin-top: 150px;
+}
+.lorem-three-images-bg {
+  background-image: url("../images/blog-right-bg.png"),
+    url("../images/blog-left-bg.png");
+  background-position: right, left;
+  background-repeat: no-repeat, no-repeat;
+}
+.date {
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  color: #a3a3a3;
+}
+.arrow-link {
+  font-size: 18px;
+  color: #4f4f4f !important;
+  font-weight: 400;
+  text-decoration: none;
+}
+.arrow-link em {
+  margin-left: 10px;
+  position: relative;
+  right: 0;
+  transition: all 0.5s;
+}
+.person-name {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+}
+.person-city {
+  color: #8e8e8e;
+  font-size: 14px;
+}
+
+.left-border {
+  border-left: 3px solid #1d7a8c;
+}
+
+.rounded-rectangle {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.bottom-two-btn{
+  width: 100%;
+}
+@media screen and (max-width: 992px) {
+  .img {
+    width: 65px;
+  }
+  .img-logo {
+    padding-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .step-arrow {
+    display: none;
+  }
+  .nav-btn {
+    width: 100%;
+  }
+  .nav-item {
+    text-align: left;
+  }
+  .book-a-cleaner,
+  .prices,
+  .login,
+  .become-a-helper {
+    background: none;
+    border: none;
+  }
+}
