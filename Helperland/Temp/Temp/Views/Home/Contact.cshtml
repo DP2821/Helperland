@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Helperland.Models.ViewModel.ViewContactU
+
+@{
     ViewData["Title"] = "Contact us";
     Layout = "_StaticLayout";
 }
@@ -62,13 +64,15 @@
             <h3>Get in touch with us</h3>
         </div>
 
-        <form action="" method="post">
+        <form asp-action="Contact">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="row justify-content-center">
                 <div class="col-md-6 col-12 bottom-margin-5">
-                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                    <input asp-for="FirstName" type="text" class="form-control" placeholder="First name" aria-label="First name">
                 </div>
                 <div class="col-md-6 col-12 bottom-margin-5">
-                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                    <input asp-for="LastName" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
                 </div>
             </div>
 
@@ -76,17 +80,17 @@
                 <div class="col-md-6 col-12 bottom-margin-5">
                     <div class="input-group mb-2">
                         <span class="input-group-text" id="basic-addon1">+49</span>
-                        <input type="number" class="form-control" placeholder="Phone Number" id="phone-be-a-pro">
+                        <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Phone Number" id="phone-be-a-pro">
                     </div>
                 </div>
                 <div class="col-md-6 col-12 bottom-margin-5">
-                    <input type="email" class="form-control" placeholder="Email address" aria-label="Email address">
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Email address" aria-label="Email address">
                 </div>
             </div>
 
             <div class="row bottom-margin-5 justify-content-center">
                 <div class="col">
-                    <select class="form-select" aria-label="Default select example">
+                    <select  asp-for="Subject" class="form-select" aria-label="Default select example">
                         <option value="" disabled selected>Subject</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -97,7 +101,7 @@
 
             <div class="row justify-content-center bottom-margin-5">
                 <div class="col">
-                    <textarea class="form-control" placeholder="Message" id="floatingTextarea"></textarea>
+                    <textarea asp-for="Message" class="form-control" placeholder="Message" id="floatingTextarea"></textarea>
                 </div>
             </div>
 

@@ -1,3 +1,4 @@
+using Helperland.Data;
 using Helperland.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,7 +25,7 @@ namespace Helperland
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            /*services.AddDbContext<Demo2Context>();*/
+            services.AddDbContext<HelperlandContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

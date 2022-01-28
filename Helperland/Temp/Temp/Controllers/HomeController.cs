@@ -1,4 +1,7 @@
-﻿using Helperland.Models;
+﻿using Helperland.Data;
+using Helperland.Models;
+using Helperland.Models.ViewModel;
+using Helperland.Models.ViewModelRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,13 +13,16 @@ namespace Helperland.Controllers
 {
     public class HomeController : Controller
     {
+
+        HelperlandContext _helperlandContext;
     
 
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,HelperlandContext helperlandContext)
         {
             _logger = logger;
+            _helperlandContext = helperlandContext;
         }
 
         public IActionResult Index()
@@ -54,7 +60,14 @@ namespace Helperland.Controllers
             return View();
         }
 
-        
+        [Route("contact-us")]
+        [HttpPost]
+        public IActionResult Contact(ViewContactU viewContactU)
+        {
+            _helperlandContext.ContactUs.Add(new ContactUsRepository().getContactU(viewContactU));
+            _helperlandContext.SaveChanges();
+            return RedirectToAction("Index");
+        }        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
