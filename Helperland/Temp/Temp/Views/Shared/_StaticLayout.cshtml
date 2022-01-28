@@ -55,7 +55,8 @@
                                 <a class="nav-link text-white" asp-controller="Home" asp-action="Contact">Contact</a>
                             </li>
                             <li class="nav-item text-white login blue-rounded-btn">
-                                <a class="nav-link text-white" href="#">Login</a>
+                                <a class="nav-link text-white" href="#" data-bs-toggle="modal"
+                                   data-bs-target="#loginModal">Login</a>
                             </li>
                             <li class="nav-item text-white become-a-helper blue-rounded-btn">
                                 <a class="nav-link text-white" asp-controller="Home" asp-action="BecomeProvider">
@@ -72,7 +73,71 @@
         </nav>
     </div>
 
+    <section>
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="max-width: 300px; margin-left: 100px;">
+                    <div class="container mt-3 ms-1" style="display: flex;">
+                        <h4 class="modal-title" id="exampleModalLabel">Login to your account</h4>
+                        <button style="margin-left: auto;" type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body mt-3">
+                        <form>
+                            <div class="mb-3 login-email">
+                                <input type="email" class="border-0 form-control" id="exampleInputEmail1"
+                                       aria-describedby="emailHelp" placeholder="Email">
+                                <i style="font-size: x-large;" class="fa fa-user icon mt-auto mb-auto pe-1"></i>
+                            </div>
+                            <div class="mb-3 login-password">
+                                <input type="password" class="border-0 form-control" id="exampleInputPassword1"
+                                       placeholder="Password">
+                                <i style="font-size: x-large;" class="fa fa-lock icon mt-auto mb-auto pe-1"></i>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                            </div>
+                            <button type="submit" class="modal-btn">Login</button>
+                        </form>
+                    </div>
+                    <div class="container text-center mt-3">
+                        <a href="#" class="modallink" data-bs-toggle="modal" data-bs-target="#forgotPassModal">
+                            Forgot
+                            password?
+                        </a>
+                        <p>Don't have an account? <a href="#" class="modallink">Create an account</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Forgot Password Modal -->
+        <div class="modal fade" id="forgotPassModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="max-width: 300px; margin-left: 100px;">
+                    <div class="container mt-3 ms-1" style="display: flex;">
+                        <h4 class="modal-title" id="exampleModalLabel">Login to your account</h4>
+                        <button style="margin-left: auto;" type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body mt-3">
+                        <form>
+                            <div class="mb-3 login-email">
+                                <input type="email" class="border-0 form-control" id="exampleInputEmail1"
+                                       aria-describedby="emailHelp" placeholder="Email Address">
+                            </div>
+                            <button type="submit" class="modal-btn">Send</button>
+                        </form>
+                    </div>
+                    <div class="container text-center mb-3">
+                        <a href="#" class="modallink" data-bs-toggle="modal" data-bs-target="#loginModal">login now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div>
         @RenderBody()
     </div>
