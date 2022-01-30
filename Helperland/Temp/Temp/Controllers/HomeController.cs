@@ -64,6 +64,9 @@ namespace Helperland.Controllers
         [HttpPost]
         public IActionResult Contact(ViewContactU viewContactU)
         {
+            /*MailRequest mailRequest = new MailRequest();
+            mailRequest.SendEmail(viewContactU.Email,viewContactU.FirstName,viewContactU.Subject,viewContactU.Message);*/
+
             _helperlandContext.ContactUs.Add(new ContactUsRepository().getContactU(viewContactU));
             _helperlandContext.SaveChanges();
             return RedirectToAction("Index");

@@ -129,13 +129,13 @@
                 <h3>Get in touch with us</h3>
             </div>
 
-            <form action="" method="post">
+            <form action="" method="post" onsubmit="return validateForm()">
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-12 bottom-margin-5">
-                        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                        <input type="text" class="form-control" placeholder="First name" aria-label="First name" id="fName">
                     </div>
                     <div class="col-md-6 col-12 bottom-margin-5">
-                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" id="lName">
                     </div>
                 </div>
 
@@ -143,28 +143,28 @@
                     <div class="col-md-6 col-12 bottom-margin-5">
                         <div class="input-group mb-2">
                             <span class="input-group-text" id="basic-addon1">+49</span>
-                            <input type="number" class="form-control" placeholder="Phone Number" id="phone-be-a-pro">
+                            <input type="number" class="form-control" placeholder="Phone Number" id="number">
                         </div>
                     </div>
                     <div class="col-md-6 col-12 bottom-margin-5">
-                        <input type="email" class="form-control" placeholder="Email address" aria-label="Email address">
+                        <input type="email" class="form-control" placeholder="Email address" aria-label="Email address" id="email">
                     </div>
                 </div>
 
                 <div class="row bottom-margin-5 justify-content-center">
                     <div class="col">
                         <select class="form-select" aria-label="Default select example">
-                            <option value="" disabled selected>Subject</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="General" selected>General</option>
+                            <option value="Inquiry">Inquiry</option>
+                            <option value="Renewal">Renewal</option>
+                            <option value="Revocation">Revocation</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="row justify-content-center bottom-margin-5">
                     <div class="col">
-                        <textarea class="form-control" placeholder="Message" id="floatingTextarea"></textarea>
+                        <textarea class="form-control" placeholder="Message" id="message"></textarea>
                     </div>
                 </div>
 
@@ -258,6 +258,8 @@
         </div>
 
     </footer>
+
+    <script src="../HTML/assets/JS/field-validation.js"></script>
 </body>
 
 </html>

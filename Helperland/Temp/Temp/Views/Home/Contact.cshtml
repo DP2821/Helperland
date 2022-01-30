@@ -64,15 +64,15 @@
             <h3>Get in touch with us</h3>
         </div>
 
-        <form asp-action="Contact">
+        <form asp-action="Contact" onsubmit="return validateForm()">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="row justify-content-center">
                 <div class="col-md-6 col-12 bottom-margin-5">
-                    <input asp-for="FirstName" type="text" class="form-control" placeholder="First name" aria-label="First name">
+                    <input asp-for="FirstName" type="text" class="form-control" placeholder="First name" aria-label="First name" id="fName">
                 </div>
                 <div class="col-md-6 col-12 bottom-margin-5">
-                    <input asp-for="LastName" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                    <input asp-for="LastName" type="text" class="form-control" placeholder="Last name" aria-label="Last name" id="lName">
                 </div>
             </div>
 
@@ -80,28 +80,28 @@
                 <div class="col-md-6 col-12 bottom-margin-5">
                     <div class="input-group mb-2">
                         <span class="input-group-text" id="basic-addon1">+49</span>
-                        <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Phone Number" id="phone-be-a-pro">
+                        <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Phone Number" id="number">
                     </div>
                 </div>
                 <div class="col-md-6 col-12 bottom-margin-5">
-                    <input asp-for="Email" type="email" class="form-control" placeholder="Email address" aria-label="Email address">
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Email address" aria-label="Email address" id="email">
                 </div>
             </div>
 
             <div class="row bottom-margin-5 justify-content-center">
                 <div class="col">
                     <select  asp-for="Subject" class="form-select" aria-label="Default select example">
-                        <option value="" disabled selected>Subject</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="General" selected>General</option>
+                            <option value="Inquiry">Inquiry</option>
+                            <option value="Renewal">Renewal</option>
+                            <option value="Revocation">Revocation</option>
                     </select>
                 </div>
             </div>
 
             <div class="row justify-content-center bottom-margin-5">
                 <div class="col">
-                    <textarea asp-for="Message" class="form-control" placeholder="Message" id="floatingTextarea"></textarea>
+                    <textarea asp-for="Message" class="form-control" placeholder="Message" id="message"></textarea>
                 </div>
             </div>
 
@@ -122,3 +122,8 @@
         <img class="map-img" src="~/assets/images/group-16.png" alt="">
     </div>
 </section>
+
+
+<asp:content contentplaceholder id="validation-js" runat="server">
+    <script src="~/assets/js/contact-us-field-validation.js"></script>
+</asp:content>
