@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "About";
+    Layout = "_StaticLayout";
+}
+<asp:content contentplaceholder id="css" runat="server">
+    <link href="~/assets/css/signup.css" rel="stylesheet" />
+</asp:content>
+
+
+<p><br></p>
+<section>
+    <div class="container form-div mb-5">
+        <h2 class="text-center">Create an account</h2>
+        <div class="text-center">
+            <hr class="star-hr">
+            <img style="margin-bottom: 24px;" class="text-center" src="./assets/images/forma-1-copy-5.png" alt="">
+            <hr class="star-hr">
+        </div>
+
+        <form action="" method="post" onsubmit="return validateForm()">
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-6 col-12 mb-3">
+                    <input type="text" class="form-control" placeholder="First name" aria-label="First name"
+                           id="fName">
+                </div>
+                <div class="col-md-6 col-12 mb-3">
+                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"
+                           id="lName">
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-12 mb-3">
+                    <input type="email" class="form-control" placeholder="Email address" aria-label="Email address"
+                           id="email">
+                </div>
+                <div class="col-md-6 col-12 mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">+49</span>
+                        <input type="number" class="form-control" placeholder="Phone Number" id="number">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-12 mb-3">
+                    <input type="password" class="form-control" placeholder="Password" id="password">
+                </div>
+                <div class="col-md-6 col-12 mb-3">
+                    <input type="password" class="form-control" placeholder="Confirm Password"
+                           id="confirm-password">
+                </div>
+            </div>
+
+            <div class="form-check mb-2 input-check">
+                <input class="form-check-input" type="checkbox" value="" id="is-read-privacy-policy">
+                <label class="form-check-label" for="is-read-privacy-policy">
+                    I have read the <a href="#" class="link">privacy policy</a>
+                </label>
+            </div>
+
+            <div class="row bottom-margin-5 justify-content-center">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary btn-submit-form">Register</button>
+                </div>
+            </div>
+
+        </form>
+
+        <p class="text-center mt-3">
+            Already registered? <a asp-controller="Home" asp-action="Index" class="link">Login now</a>
+        </p>
+    </div>
+</section>
+
+<script src="~/assets/js/sign-up-field-validation.js"></script>

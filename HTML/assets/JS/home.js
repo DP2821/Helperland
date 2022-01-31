@@ -19,3 +19,7 @@ if (window.matchMedia("(max-width:992px").matches) {
   document.getElementById("nav-menu").style.marginTop = "10px";
   document.getElementById("home-nav-logo").style.height = "55px";
 }
+
+if(document.location.search.includes("loginModal=true")){
+  document.getElementById("loginbtn").click();
+}

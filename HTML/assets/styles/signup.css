@@ -1,0 +1,22 @@
+.btn-submit-form {
+  width: 163px;
+  height: 46px;
+  outline: none;
+  background: #1d7a8c 0% 0% no-repeat padding-box;
+  border-radius: 23px;
+  border: none;
+  font-weight: bold;
+}
+.form-div {
+  width: 670px;
+}
+
+form input,
+form select {
+  height: 46px;
+}
+
+.link{
+    color: #1d7a8c;
+    text-decoration: none;
+}

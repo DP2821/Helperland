@@ -72,6 +72,12 @@ namespace Helperland.Controllers
             return RedirectToAction("Index");
         }        
 
+        [Route("signup")]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
