@@ -1,0 +1,120 @@
+G:\Helperland\Helperland\bin\Debug\net6.0\appsettings.Development.json
+G:\Helperland\Helperland\bin\Debug\net6.0\appsettings.json
+G:\Helperland\Helperland\bin\Debug\net6.0\Helperland.staticwebassets.runtime.json
+G:\Helperland\Helperland\bin\Debug\net6.0\Helperland.exe
+G:\Helperland\Helperland\bin\Debug\net6.0\Helperland.deps.json
+G:\Helperland\Helperland\bin\Debug\net6.0\Helperland.runtimeconfig.json
+G:\Helperland\Helperland\bin\Debug\net6.0\Helperland.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\ref\Helperland.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Helperland.pdb
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.csproj.AssemblyReference.cache
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.GeneratedMSBuildEditorConfig.editorconfig
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.AssemblyInfoInputs.cache
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.AssemblyInfo.cs
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.csproj.CoreCompileInputs.cache
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.MvcApplicationPartsAssemblyInfo.cache
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.RazorAssemblyInfo.cache
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.RazorAssemblyInfo.cs
+G:\Helperland\Helperland\obj\Debug\net6.0\staticwebassets.build.json
+G:\Helperland\Helperland\obj\Debug\net6.0\staticwebassets.development.json
+G:\Helperland\Helperland\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+G:\Helperland\Helperland\obj\Debug\net6.0\scopedcss\bundle\Helperland.styles.css
+G:\Helperland\Helperland\obj\Debug\net6.0\scopedcss\projectbundle\Helperland.bundle.scp.css
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.dll
+G:\Helperland\Helperland\obj\Debug\net6.0\ref\Helperland.dll
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.pdb
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.genruntimeconfig.cache
+G:\Helperland\Helperland\bin\Debug\net6.0\Humanizer.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\System.Drawing.Common.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\System.Runtime.Caching.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\System.Security.Permissions.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\System.Windows.Extensions.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+G:\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+G:\Helperland\Helperland\obj\Debug\net6.0\Helperland.csproj.CopyComplete
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\appsettings.Development.json
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\appsettings.json
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Helperland.staticwebassets.runtime.json
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Helperland.exe
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Helperland.deps.json
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Helperland.runtimeconfig.json
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Helperland.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\ref\Helperland.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Helperland.pdb
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Humanizer.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\System.Drawing.Common.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\System.Runtime.Caching.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\System.Security.Permissions.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\System.Windows.Extensions.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.csproj.AssemblyReference.cache
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.GeneratedMSBuildEditorConfig.editorconfig
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.AssemblyInfoInputs.cache
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.AssemblyInfo.cs
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.csproj.CoreCompileInputs.cache
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.MvcApplicationPartsAssemblyInfo.cache
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.RazorAssemblyInfo.cache
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.RazorAssemblyInfo.cs
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\staticwebassets.build.json
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\staticwebassets.development.json
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\scopedcss\bundle\Helperland.styles.css
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\scopedcss\projectbundle\Helperland.bundle.scp.css
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.csproj.CopyComplete
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\ref\Helperland.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.pdb
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\Helperland.genruntimeconfig.cache
