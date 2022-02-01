@@ -64,15 +64,17 @@
             <h3>Get in touch with us</h3>
         </div>
 
-        <form asp-action="Contact" onsubmit="return validateForm()">
+        <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="row justify-content-center">
                 <div class="col-md-6 col-12 bottom-margin-5">
                     <input asp-for="FirstName" type="text" class="form-control" placeholder="First name" aria-label="First name" id="fName">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 col-12 bottom-margin-5">
                     <input asp-for="LastName" type="text" class="form-control" placeholder="Last name" aria-label="Last name" id="lName">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
             </div>
 
@@ -82,9 +84,11 @@
                         <span class="input-group-text" id="basic-addon1">+49</span>
                         <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Phone Number" id="number">
                     </div>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 col-12 bottom-margin-5">
                     <input asp-for="Email" type="email" class="form-control" placeholder="Email address" aria-label="Email address" id="email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
             </div>
 
@@ -102,6 +106,7 @@
             <div class="row justify-content-center bottom-margin-5">
                 <div class="col">
                     <textarea asp-for="Message" class="form-control" placeholder="Message" id="message"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
                 </div>
             </div>
 
@@ -158,8 +163,11 @@
         </div>
     </div>
 </section>
-
+@*
 <asp:content contentplaceholder id="validation-js" runat="server">
     <script src="~/assets/js/contact-us-field-validation.js"></script>
-</asp:content>
+</asp:content>*@
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

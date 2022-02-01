@@ -8,65 +8,61 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Helperland
 build_property.RootNamespace = Helperland
-build_property.ProjectDir = S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\
+build_property.ProjectDir = s:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland
+build_property.MSBuildProjectDirectory = s:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland
 build_property._RazorSourceGeneratorDebug = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/About.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/BecomeProvider.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/BecomeProvider.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCZWNvbWVQcm92aWRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/Contact.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/Faq.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/Faq.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGYXEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/Index.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/Prices.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/Prices.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcmljZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/SignUp.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Shared/Error.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Shared/_StaticLayout.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Shared/_StaticLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdGF0aWNMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Shared/_ValidationScriptsPartial.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/_ViewImports.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/_ViewStart.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Shared/_Layout.cshtml]
+[s:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-oly2lupp25
