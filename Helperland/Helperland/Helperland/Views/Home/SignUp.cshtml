@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Helperland.Models.ViewModel.SignUpViewModel
+@{
     ViewData["Title"] = "About";
     Layout = "_StaticLayout";
 }
@@ -17,47 +18,56 @@
             <hr class="star-hr">
         </div>
 
-        <form action="" method="post" onsubmit="return validateForm()">
+        <form method="post">
             <div class="row justify-content-center mt-3">
                 <div class="col-md-6 col-12 mb-3">
-                    <input type="text" class="form-control" placeholder="First name" aria-label="First name"
-                           id="fName">
+                    <input asp-for="FirstName" type="text" class="form-control" placeholder="First name"
+                        aria-label="First name" id="fName">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 col-12 mb-3">
-                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"
-                           id="lName">
+                    <input asp-for="LastName" type="text" class="form-control" placeholder="Last name"
+                        aria-label="Last name" id="lName">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="col-md-6 col-12 mb-3">
-                    <input type="email" class="form-control" placeholder="Email address" aria-label="Email address"
-                           id="email">
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Email address"
+                        aria-label="Email address" id="email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 col-12 mb-3">
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">+49</span>
-                        <input type="number" class="form-control" placeholder="Phone Number" id="number">
+                        <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Phone Number"
+                            id="number">
                     </div>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="col-md-6 col-12 mb-3">
-                    <input type="password" class="form-control" placeholder="Password" id="password">
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Password" id="password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 col-12 mb-3">
-                    <input type="password" class="form-control" placeholder="Confirm Password"
-                           id="confirm-password">
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password"
+                        id="confirm-password">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="form-check mb-2 input-check">
-                <input class="form-check-input" type="checkbox" value="" id="is-read-privacy-policy">
+                <input asp-for="IsPrivacyPolicy" class="form-check-input" type="checkbox" value=""
+                    id="is-read-privacy-policy">
                 <label class="form-check-label" for="is-read-privacy-policy">
                     I have read the <a href="#" class="link">privacy policy</a>
                 </label>
             </div>
+            <span asp-validation-for="IsPrivacyPolicy" class="text-danger"></span>
 
             <div class="row bottom-margin-5 justify-content-center">
                 <div class="col text-center">
@@ -73,4 +83,8 @@
     </div>
 </section>
 
-<script src="~/assets/js/sign-up-field-validation.js"></script>
+@* <script src="~/assets/js/sign-up-field-validation.js"></script> *@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

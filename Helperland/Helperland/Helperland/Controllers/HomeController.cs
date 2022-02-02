@@ -89,6 +89,16 @@ namespace Helperland.Controllers
             return View();
         }
 
+        [HttpPost]
+        [Route("signup")]
+        public IActionResult SignUp(SignUpViewModel signUpViewModel)
+        {
+            SignUpRepository signUpRepository = new SignUpRepository();
+            User user = signUpRepository.GetUser(signUpViewModel);
+            _helperlandContext.Users.Add(user);
+            _helperlandContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
