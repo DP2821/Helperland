@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace Helperland.Models
 {
     public partial class ServiceRequest
@@ -18,15 +16,15 @@ namespace Helperland.Models
         public int UserId { get; set; }
         public int ServiceId { get; set; }
         public DateTime ServiceStartDate { get; set; }
-        public string ZipCode { get; set; }
+        public string ZipCode { get; set; } = null!;
         public decimal? ServiceHourlyRate { get; set; }
         public double ServiceHours { get; set; }
         public double? ExtraHours { get; set; }
         public decimal SubTotal { get; set; }
         public decimal? Discount { get; set; }
         public decimal TotalCost { get; set; }
-        public string Comments { get; set; }
-        public string PaymentTransactionRefNo { get; set; }
+        public string? Comments { get; set; }
+        public string? PaymentTransactionRefNo { get; set; }
         public bool PaymentDue { get; set; }
         public int? ServiceProviderId { get; set; }
         public DateTime? SpacceptedDate { get; set; }
@@ -41,8 +39,8 @@ namespace Helperland.Models
         public bool? PaymentDone { get; set; }
         public Guid? RecordVersion { get; set; }
 
-        public virtual User ServiceProvider { get; set; }
-        public virtual User User { get; set; }
+        public virtual User? ServiceProvider { get; set; }
+        public virtual User User { get; set; } = null!;
         public virtual ICollection<Rating> Ratings { get; set; }
         public virtual ICollection<ServiceRequestAddress> ServiceRequestAddresses { get; set; }
         public virtual ICollection<ServiceRequestExtra> ServiceRequestExtras { get; set; }

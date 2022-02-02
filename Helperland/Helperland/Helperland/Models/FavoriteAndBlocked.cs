@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace Helperland.Models
 {
     public partial class FavoriteAndBlocked
@@ -13,7 +11,7 @@ namespace Helperland.Models
         public bool IsFavorite { get; set; }
         public bool IsBlocked { get; set; }
 
-        public virtual User TargetUser { get; set; }
-        public virtual User User { get; set; }
+        public virtual User TargetUser { get; set; } = null!;
+        public virtual User User { get; set; } = null!;
     }
 }

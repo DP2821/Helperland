@@ -36,6 +36,17 @@ namespace Helperland.Controllers
             return View();
         }
 
+        [HttpPost]
+        [Route("become-a-service-provider")]
+        public IActionResult BecomeProvider(BecomeProviderViewModel becomeProviderViewModel)
+        {
+            BecomeProviderRepository becomeProviderRepository = new BecomeProviderRepository();
+            User user = becomeProviderRepository.GetUser(becomeProviderViewModel);
+            _helperlandContext.Users.Add(user);
+            _helperlandContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         [Route("prices")]
         public IActionResult Prices()
         {
@@ -67,7 +78,7 @@ namespace Helperland.Controllers
             /*MailRequest mailRequest = new MailRequest();
             mailRequest.SendEmail(viewContactU.Email,viewContactU.FirstName,viewContactU.Subject,viewContactU.Message);*/
 
-            _helperlandContext.ContactUs.Add(new ContactUsRepository().getContactU(viewContactU));
+            _helperlandContext.ContactUs.Add(new ContactUsRepository().GetContactU(viewContactU));
             _helperlandContext.SaveChanges();
             return RedirectToAction("Index");
         }        

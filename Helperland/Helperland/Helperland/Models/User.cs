@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace Helperland.Models
 {
     public partial class User
@@ -19,18 +17,17 @@ namespace Helperland.Models
         }
 
         public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Mobile { get; set; }
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string? Password { get; set; }
+        public string Mobile { get; set; } = null!;
         public int UserTypeId { get; set; }
         public int? Gender { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public string UserProfilePicture { get; set; }
-        public bool IsRegisteredUser { get; set; }
-        public string PaymentGatewayUserRef { get; set; }
-        public string ZipCode { get; set; }
+        public string? UserProfilePicture { get; set; }
+        public string? PaymentGatewayUserRef { get; set; }
+        public string? ZipCode { get; set; }
         public bool WorksWithPets { get; set; }
         public int? LanguageId { get; set; }
         public int? NationalityId { get; set; }
@@ -38,11 +35,9 @@ namespace Helperland.Models
         public DateTime ModifiedDate { get; set; }
         public int ModifiedBy { get; set; }
         public bool IsApproved { get; set; }
-        public bool IsActive { get; set; }
-        public bool IsDeleted { get; set; }
         public int? Status { get; set; }
-        public string BankTokenId { get; set; }
-        public string TaxNo { get; set; }
+        public string? BankTokenId { get; set; }
+        public string? TaxNo { get; set; }
 
         public virtual ICollection<FavoriteAndBlocked> FavoriteAndBlockedTargetUsers { get; set; }
         public virtual ICollection<FavoriteAndBlocked> FavoriteAndBlockedUsers { get; set; }

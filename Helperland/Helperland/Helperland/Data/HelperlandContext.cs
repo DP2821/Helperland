@@ -1,9 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Helperland.Models;
-
-#nullable disable
 
 namespace Helperland.Data
 {
@@ -18,17 +17,17 @@ namespace Helperland.Data
         {
         }
 
-        public virtual DbSet<City> Cities { get; set; }
-        public virtual DbSet<ContactU> ContactUs { get; set; }
-        public virtual DbSet<FavoriteAndBlocked> FavoriteAndBlockeds { get; set; }
-        public virtual DbSet<Rating> Ratings { get; set; }
-        public virtual DbSet<ServiceRequest> ServiceRequests { get; set; }
-        public virtual DbSet<ServiceRequestAddress> ServiceRequestAddresses { get; set; }
-        public virtual DbSet<ServiceRequestExtra> ServiceRequestExtras { get; set; }
-        public virtual DbSet<State> States { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UserAddress> UserAddresses { get; set; }
-        public virtual DbSet<Zipcode> Zipcodes { get; set; }
+        public virtual DbSet<City> Cities { get; set; } = null!;
+        public virtual DbSet<ContactU> ContactUs { get; set; } = null!;
+        public virtual DbSet<FavoriteAndBlocked> FavoriteAndBlockeds { get; set; } = null!;
+        public virtual DbSet<Rating> Ratings { get; set; } = null!;
+        public virtual DbSet<ServiceRequest> ServiceRequests { get; set; } = null!;
+        public virtual DbSet<ServiceRequestAddress> ServiceRequestAddresses { get; set; } = null!;
+        public virtual DbSet<ServiceRequestExtra> ServiceRequestExtras { get; set; } = null!;
+        public virtual DbSet<State> States { get; set; } = null!;
+        public virtual DbSet<User> Users { get; set; } = null!;
+        public virtual DbSet<UserAddress> UserAddresses { get; set; } = null!;
+        public virtual DbSet<Zipcode> Zipcodes { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -41,15 +40,11 @@ namespace Helperland.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
             modelBuilder.Entity<City>(entity =>
             {
                 entity.ToTable("City");
 
-                entity.Property(e => e.CityName)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.CityName).HasMaxLength(50);
 
                 entity.HasOne(d => d.State)
                     .WithMany(p => p.Cities)
@@ -64,23 +59,15 @@ namespace Helperland.Data
 
                 entity.Property(e => e.CreatedOn).HasColumnType("datetime");
 
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(200);
+                entity.Property(e => e.Email).HasMaxLength(200);
 
                 entity.Property(e => e.FileName)
                     .HasMaxLength(500)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Message).IsRequired();
+                entity.Property(e => e.Name).HasMaxLength(50);
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.PhoneNumber)
-                    .IsRequired()
-                    .HasMaxLength(20);
+                entity.Property(e => e.PhoneNumber).HasMaxLength(20);
 
                 entity.Property(e => e.Subject).HasMaxLength(500);
 
@@ -173,9 +160,7 @@ namespace Helperland.Data
 
                 entity.Property(e => e.TotalCost).HasColumnType("decimal(8, 2)");
 
-                entity.Property(e => e.ZipCode)
-                    .IsRequired()
-                    .HasMaxLength(10);
+                entity.Property(e => e.ZipCode).HasMaxLength(10);
 
                 entity.HasOne(d => d.ServiceProvider)
                     .WithMany(p => p.ServiceRequestServiceProviders)
@@ -228,9 +213,7 @@ namespace Helperland.Data
             {
                 entity.ToTable("State");
 
-                entity.Property(e => e.StateName)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.StateName).HasMaxLength(50);
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -243,21 +226,13 @@ namespace Helperland.Data
 
                 entity.Property(e => e.DateOfBirth).HasColumnType("datetime");
 
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.Email).HasMaxLength(100);
 
-                entity.Property(e => e.FirstName)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.FirstName).HasMaxLength(100);
 
-                entity.Property(e => e.LastName)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.LastName).HasMaxLength(100);
 
-                entity.Property(e => e.Mobile)
-                    .IsRequired()
-                    .HasMaxLength(20);
+                entity.Property(e => e.Mobile).HasMaxLength(20);
 
                 entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
 
@@ -279,23 +254,17 @@ namespace Helperland.Data
 
                 entity.ToTable("UserAddress");
 
-                entity.Property(e => e.AddressLine1)
-                    .IsRequired()
-                    .HasMaxLength(200);
+                entity.Property(e => e.AddressLine1).HasMaxLength(200);
 
                 entity.Property(e => e.AddressLine2).HasMaxLength(200);
 
-                entity.Property(e => e.City)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.City).HasMaxLength(50);
 
                 entity.Property(e => e.Email).HasMaxLength(100);
 
                 entity.Property(e => e.Mobile).HasMaxLength(20);
 
-                entity.Property(e => e.PostalCode)
-                    .IsRequired()
-                    .HasMaxLength(20);
+                entity.Property(e => e.PostalCode).HasMaxLength(20);
 
                 entity.Property(e => e.State).HasMaxLength(50);
 
@@ -310,9 +279,7 @@ namespace Helperland.Data
             {
                 entity.ToTable("Zipcode");
 
-                entity.Property(e => e.ZipcodeValue)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.ZipcodeValue).HasMaxLength(50);
 
                 entity.HasOne(d => d.City)
                     .WithMany(p => p.Zipcodes)

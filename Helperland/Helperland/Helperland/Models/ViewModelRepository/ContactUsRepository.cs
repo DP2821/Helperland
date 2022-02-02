@@ -8,7 +8,7 @@ namespace Helperland.Models.ViewModelRepository
 {
     public class ContactUsRepository
     {
-        public ContactU getContactU(ContactUViewModel viewContactU)
+        public ContactU GetContactU(ContactUViewModel viewContactU)
         {
             ContactU contactU = new ContactU();
             contactU.Name = viewContactU.FirstName + " " + viewContactU.LastName;

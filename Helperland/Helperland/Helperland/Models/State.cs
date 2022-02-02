@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace Helperland.Models
 {
     public partial class State
@@ -13,7 +11,7 @@ namespace Helperland.Models
         }
 
         public int Id { get; set; }
-        public string StateName { get; set; }
+        public string StateName { get; set; } = null!;
 
         public virtual ICollection<City> Cities { get; set; }
     }
