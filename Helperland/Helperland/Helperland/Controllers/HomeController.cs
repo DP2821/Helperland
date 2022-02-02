@@ -62,7 +62,7 @@ namespace Helperland.Controllers
 
         [Route("contact-us")]
         [HttpPost]
-        public IActionResult Contact(ViewContactU viewContactU)
+        public IActionResult Contact(ContactUViewModel viewContactU)
         {
             /*MailRequest mailRequest = new MailRequest();
             mailRequest.SendEmail(viewContactU.Email,viewContactU.FirstName,viewContactU.Subject,viewContactU.Message);*/

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Helperland.Models.ViewModel
 {
-    public class ViewContactU
+    public class ContactUViewModel
     {
         [Required]
         [Display(Name = "First name")]
