@@ -71,7 +71,7 @@
                                            data-bs-target="#loginModal" id="loginbtn">Login</a>
                                         </li>
                                         <li class="nav-item text-white become-a-helper blue-rounded-btn">
-                                            <a asp-controller="Home" asp-action="BecomeProvider" class="nav-link text-white">
+                                            <a asp-controller="Account" asp-action="BecomeProvider" class="nav-link text-white">
                                                 Become
                                                 a Helper
                                             </a>
@@ -127,7 +127,7 @@
                                             <a class="nav-link text-white" href="#"><img src="./assets/images/user.png" alt="" height="28px"><span class="text-white ms-2 me-2">@CurrentUserName</span></a>
                                         </li>
                                         <li class="nav-item text-center">
-                                            <a asp-action="LogOut"><img src="./assets/images/logout.png" alt="" height="28px"></a>
+                                            <a asp-controller="Account" asp-action="LogOut"><img src="./assets/images/logout.png" alt="" height="28px"></a>
                                         </li>
                                     }
 
@@ -154,7 +154,7 @@
                                 aria-label="Close"></button>
                     </div>
                     <div class="modal-body mt-3">
-                        <form asp-action="Login" method="post">
+                        <form asp-controller="Account" asp-action="Login" method="post">
 
                             <div class="mb-3 login-email">
                                 <input asp-for="Login.Email" type="email" class="border-0 form-control" id="exampleInputEmail1"
@@ -182,7 +182,7 @@
                             Forgot
                             password?
                         </a>
-                        <p>Don't have an account? <a asp-controller="Home" asp-action="SignUp" class="modallink">Create an account</a></p>
+                        <p>Don't have an account? <a asp-controller="Account" asp-action="SignUp" class="modallink">Create an account</a></p>
                     </div>
                 </div>
             </div>
@@ -198,7 +198,7 @@
                                 aria-label="Close"></button>
                     </div>
                     <div class="modal-body mt-3">
-                        <form asp-action="ForgotPassword" method="post">
+                        <form asp-controller="Account" asp-action="ForgotPassword" method="post">
                             <div class="mb-3 login-email">
                                 <input asp-for="Forgot.Email" type="email" class="border-0 form-control" id="exampleInputEmail1"
                                        aria-describedby="emailHelp" placeholder="Email Address">

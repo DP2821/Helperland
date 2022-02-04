@@ -65,7 +65,7 @@
                                     <a class="nav-link text-white" asp-action="Index" asp-route-loginModal="true">Login</a>
                                 </li>
                                 <li class="nav-item text-white become-a-helper blue-rounded-btn">
-                                    <a class="nav-link text-white" asp-controller="Home" asp-action="BecomeProvider">
+                                    <a class="nav-link text-white" asp-controller="Account" asp-action="BecomeProvider">
                                         Become
                                         a
                                         Helper
@@ -78,7 +78,7 @@
                                     <a class="nav-link text-white" href="#"><img src="./assets/images/user.png" alt="" height="25px"><span class="text-white ms-2 me-2">@CurrentUserName</span></a>
                                 </li>
                                 <li class="nav-item text-center">
-                                    <a asp-action="LogOut"><img src="./assets/images/logout.png" alt=""></a>
+                                    <a asp-controller="Account" asp-action="LogOut"><img src="./assets/images/logout.png" alt=""></a>
                                 </li>
                             }
                         </ul>
