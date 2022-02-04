@@ -1,8 +1,6 @@
 ﻿@model Helperland.Models.ViewModel.HomeViewModel
 @{
-    String CurrentUserID = Context.Request.Cookies["CurrentUserID"];
-    String CurrentUserName = Context.Request.Cookies["CurrentUserName"];
-
+    String CurrentUserName = new KeepMeLoggedInValidToken().GetName(Context.Request.Cookies["keepMeLoggedInToken"]);
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +62,7 @@
                                     <li class="nav-item text-white contact-us">
                                         <a class="nav-link text-white" asp-controller="Home" asp-action="Contact">Contact Us</a>
                                     </li>
-                                    @if (@CurrentUserID == null)
+                                    @if (@CurrentUserName == null)
                                     {
                                         <li class="nav-item text-white login blue-rounded-btn">
                                             <a class="nav-link text-white" data-bs-toggle="modal"

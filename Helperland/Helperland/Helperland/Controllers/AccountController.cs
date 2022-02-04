@@ -1,4 +1,5 @@
 ﻿using Helperland.Data;
+using Helperland.Functionality;
 using Helperland.GlobalVariable;
 using Helperland.Models;
 using Helperland.Models.ViewModel;
@@ -58,13 +59,18 @@ namespace Helperland.Controllers
             if (user != null)
             {
                 GlobalData globalData = new GlobalData();
+
+
                 if (user.UserTypeId == globalData.CustomerTypeId)
                 {
                     if (user.Password == homeViewModel.Login.Password)
                     {
-                        Response.Cookies.Append("CurrentUserID", user.UserId + "");
-                        Response.Cookies.Append("CurrentUserName", user.FirstName + "");
+                        String token = new TokenGenerator().GetToken();
+                        user.KeepMeLoggedInToken = token;
+                        Response.Cookies.Append("keepMeLoggedInToken", token);
 
+                        _helperlandContext.Users.Update(user);
+                        _helperlandContext.SaveChanges();
 
                         return RedirectToAction("TempCustomer");
                     }
@@ -78,9 +84,12 @@ namespace Helperland.Controllers
                 {
                     if (user.Password == homeViewModel.Login.Password)
                     {
-                        Response.Cookies.Append("CurrentUserID", user.UserId + "");
-                        Response.Cookies.Append("CurrentUserName", user.FirstName + "");
+                        String token = new TokenGenerator().GetToken();
+                        user.KeepMeLoggedInToken = token;
+                        Response.Cookies.Append("keepMeLoggedInToken", token);
 
+                        _helperlandContext.Users.Update(user);
+                        _helperlandContext.SaveChanges();
 
                         return RedirectToAction("TempServiceProvider");
                     }
@@ -94,9 +103,12 @@ namespace Helperland.Controllers
                 {
                     if (user.Password == homeViewModel.Login.Password)
                     {
-                        Response.Cookies.Append("CurrentUserID", user.UserId + "");
-                        Response.Cookies.Append("CurrentUserName", user.FirstName + "");
+                        String token = new TokenGenerator().GetToken();
+                        user.KeepMeLoggedInToken = token;
+                        Response.Cookies.Append("keepMeLoggedInToken", token);
 
+                        _helperlandContext.Users.Update(user);
+                        _helperlandContext.SaveChanges();
 
                         return RedirectToAction("TempAdmin");
                     }
@@ -124,13 +136,7 @@ namespace Helperland.Controllers
             User user = _helperlandContext.Users.Where(u => u.Email == homeViewModel.Forgot.Email).FirstOrDefault();
             if (user != null)
             {
-                var allChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%";
-                var random = new Random();
-                var resultToken = new string(
-                   Enumerable.Repeat(allChar, 128)
-                   .Select(token => token[random.Next(token.Length)]).ToArray());
-
-                string token = resultToken.ToString();
+                String token = new TokenGenerator().GetToken();
                 user.ResetToken = token;
                 _helperlandContext.Users.Update(user);
                 _helperlandContext.SaveChanges();
@@ -177,6 +183,12 @@ namespace Helperland.Controllers
 
         public IActionResult LogOut()
         {
+            String keepMeLoggedInToken = Request.Cookies["keepMeLoggedInToken"];
+            User user = _helperlandContext.Users.Where(u => u.KeepMeLoggedInToken == keepMeLoggedInToken).FirstOrDefault();
+            user.KeepMeLoggedInToken = null;
+            _helperlandContext.Users.Update(user);
+            _helperlandContext.SaveChanges();
+
             foreach (var cookie in HttpContext.Request.Cookies)
             {
                 Response.Cookies.Delete(cookie.Key);

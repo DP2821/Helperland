@@ -16313,8 +16313,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Account\\TempCustomer.cshtml",
+      "TargetPath": "Views\\Account\\TempCustomer.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Home\\Contact.cshtml",
       "TargetPath": "Views\\Home\\Contact.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Account\\TempAdmin.cshtml",
+      "TargetPath": "Views\\Account\\TempAdmin.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16338,11 +16348,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Home\\TempCustomer.cshtml",
-      "TargetPath": "Views\\Home\\TempCustomer.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Account\\SignUp.cshtml",
       "TargetPath": "Views\\Account\\SignUp.cshtml",
       "FileKind": "mvc"
@@ -16358,13 +16363,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Home\\TempAdmin.cshtml",
-      "TargetPath": "Views\\Home\\TempAdmin.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Home\\TempServiceProvider.cshtml",
-      "TargetPath": "Views\\Home\\TempServiceProvider.cshtml",
+      "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Account\\TempServiceProvider.cshtml",
+      "TargetPath": "Views\\Account\\TempServiceProvider.cshtml",
       "FileKind": "mvc"
     },
     {

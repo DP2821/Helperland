@@ -238,8 +238,6 @@ namespace Helperland.Data
 
                 entity.Property(e => e.PaymentGatewayUserRef).HasMaxLength(200);
 
-                entity.Property(e => e.TaxNo).HasMaxLength(50);
-
                 entity.Property(e => e.UserProfilePicture).HasMaxLength(200);
 
                 entity.Property(e => e.ZipCode).HasMaxLength(20);

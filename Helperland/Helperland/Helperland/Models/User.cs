@@ -37,7 +37,7 @@ namespace Helperland.Models
         public bool IsApproved { get; set; }
         public int? Status { get; set; }
         public string? ResetToken { get; set; }
-        public string? TaxNo { get; set; }
+        public string? KeepMeLoggedInToken { get; set; }
 
         public virtual ICollection<FavoriteAndBlocked> FavoriteAndBlockedTargetUsers { get; set; }
         public virtual ICollection<FavoriteAndBlocked> FavoriteAndBlockedUsers { get; set; }
