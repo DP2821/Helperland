@@ -1,4 +1,5 @@
 ﻿using Helperland.Data;
+using Helperland.GlobalVariable;
 using Helperland.Models;
 using Helperland.Models.ViewModel;
 using Helperland.Models.ViewModelRepository;
@@ -30,6 +31,91 @@ namespace Helperland.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Index(LoginViewModel loginViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = _helperlandContext.Users.Where(u => u.Email == loginViewModel.Email).FirstOrDefault();
+
+                if(user != null)
+                {
+                    GlobalData globalData = new GlobalData();
+                    if (user.UserTypeId == globalData.CustomerTypeId)
+                    {
+                        if(user.Password == loginViewModel.Password)
+                        {
+                            Response.Cookies.Append("CurrentUserID", user.UserId +"");
+                            Response.Cookies.Append("CurrentUserName", user.FirstName + "");
+                            
+
+                            return RedirectToAction("TempCustomer");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Email or password is wrong");
+                            return RedirectToAction("Error");
+                        }
+                    }
+                    else if(user.UserTypeId == globalData.SpTypeId)
+                    {
+                        if (user.Password == loginViewModel.Password)
+                        {
+                            Response.Cookies.Append("CurrentUserID", user.UserId + "");
+                            Response.Cookies.Append("CurrentUserName", user.FirstName + "");
+
+
+                            return RedirectToAction("TempServiceProvider");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Email or password is wrong");
+                            return RedirectToAction("Error");
+                        }
+                    }
+                    else if(user.UserTypeId == globalData.AdminTypeId)
+                    {
+                        if (user.Password == loginViewModel.Password)
+                        {
+                            Response.Cookies.Append("CurrentUserID", user.UserId + "");
+                            Response.Cookies.Append("CurrentUserName", user.FirstName + "");
+
+
+                            return RedirectToAction("TempAdmin");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Email or password is wrong");
+                            return RedirectToAction("Error");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("UserId is not valid");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("User not found");
+                }
+                
+            }
+            else
+            {
+                Console.WriteLine("Data don't met the requirement");
+            }
+
+            return View();
+        }
+
+        public IActionResult LogOut()
+        {
+            foreach (var cookie in HttpContext.Request.Cookies)
+            {
+                Response.Cookies.Delete(cookie.Key);
+            }
+            return RedirectToAction("Index");
+        }
         [Route("become-a-service-provider")]
         public IActionResult BecomeProvider()
         {
@@ -103,6 +189,19 @@ namespace Helperland.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult TempCustomer()
+        {
+            return View();
+        }
+        public IActionResult TempServiceProvider()
+        {
+            return View();
+        }
+        public IActionResult TempAdmin()
+        {
+            return View();
         }
     }
 }

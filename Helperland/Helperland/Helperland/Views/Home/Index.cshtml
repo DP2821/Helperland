@@ -363,3 +363,7 @@
 <asp:content contentplaceholder id="script" runat="server">
     <script src="~/assets/js/home.js"></script>
 </asp:content>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

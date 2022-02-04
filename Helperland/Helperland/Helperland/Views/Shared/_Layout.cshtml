@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@model Helperland.Models.ViewModel.LoginViewModel
+@{
+    String CurrentUserID = Context.Request.Cookies["CurrentUserID"];
+    String CurrentUserName = Context.Request.Cookies["CurrentUserName"];
+
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -58,16 +64,18 @@
                                     <li class="nav-item text-white contact-us">
                                         <a class="nav-link text-white" asp-controller="Home" asp-action="Contact">Contact Us</a>
                                     </li>
-                                    <li class="nav-item text-white login blue-rounded-btn">
-                                        <a class="nav-link text-white" data-bs-toggle="modal"
+                                    @if (@CurrentUserID == null)
+                                    {
+                                        <li class="nav-item text-white login blue-rounded-btn">
+                                            <a class="nav-link text-white" data-bs-toggle="modal"
                                            data-bs-target="#loginModal" id="loginbtn">Login</a>
-                                    </li>
-                                    <li class="nav-item text-white become-a-helper blue-rounded-btn">
-                                        <a asp-controller="Home" asp-action="BecomeProvider" class="nav-link text-white">
-                                            Become
-                                            a Helper
-                                        </a>
-                                    </li>
+                                        </li>
+                                        <li class="nav-item text-white become-a-helper blue-rounded-btn">
+                                            <a asp-controller="Home" asp-action="BecomeProvider" class="nav-link text-white">
+                                                Become
+                                                a Helper
+                                            </a>
+                                        </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button"
                                            data-bs-toggle="dropdown"><img src="./assets/images/ic-flag.png" alt=""> <img src="./assets/images/sp-arrow-down.png" alt=""></a>
@@ -90,6 +98,39 @@
                                             </li>
                                         </ul>
                                     </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                               data-bs-toggle="dropdown"><img src="./assets/images/ic-flag.png" alt=""> <img src="./assets/images/sp-arrow-down.png" alt=""></a>
+
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <img src="./assets/images/in-img.bmp" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <img src="./assets/images/au-img.bmp" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <img src="./assets/images/us-img.bmp" alt="">
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" href="#"><img src="./assets/images/user.png" alt="" height="28px"><span class="text-white ms-2 me-2">@CurrentUserName</span></a>
+                                        </li>
+                                        <li class="nav-item text-center">
+                                            <a asp-action="LogOut"><img src="./assets/images/logout.png" alt="" height="28px"></a>
+                                        </li>
+                                    }
+
                                 </ul>
                             </div>
                         </div>
@@ -109,21 +150,26 @@
                 <div class="modal-content" style="max-width: 300px; margin-left: 100px;">
                     <div class="container mt-3 ms-1" style="display: flex;">
                         <h4 class="modal-title" id="exampleModalLabel">Login to your account</h4>
-                        <button style="margin-left: auto;" type="button" class="btn-close" data-bs-dismiss="modal"
+                        <button style="margin-left: auto;" type="button" class="btn-close pt-2" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                     </div>
                     <div class="modal-body mt-3">
-                        <form>
+                        <form method="post">
+
                             <div class="mb-3 login-email">
-                                <input type="email" class="border-0 form-control" id="exampleInputEmail1"
+                                <input asp-for="Email" type="email" class="border-0 form-control" id="exampleInputEmail1"
                                        aria-describedby="emailHelp" placeholder="Email">
                                 <i style="font-size: x-large;" class="fa fa-user icon mt-auto mb-auto pe-1"></i>
                             </div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+
                             <div class="mb-3 login-password">
-                                <input type="password" class="border-0 form-control" id="exampleInputPassword1"
+                                <input asp-for="Password" type="password" class="border-0 form-control" id="exampleInputPassword1"
                                        placeholder="Password">
                                 <i style="font-size: x-large;" class="fa fa-lock icon mt-auto mb-auto pe-1"></i>
                             </div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Remember me</label>

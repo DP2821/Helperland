@@ -43,6 +43,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/TempAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZW1wQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/TempCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZW1wQ3VzdG9tZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Home/TempServiceProvider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZW1wU2VydmljZVByb3ZpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [S:/Tatvasoft/PSD to HTML/Helperland/Helperland/Helperland/Helperland/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
