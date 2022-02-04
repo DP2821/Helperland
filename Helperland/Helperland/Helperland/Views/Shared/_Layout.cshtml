@@ -1,4 +1,4 @@
-﻿@model Helperland.Models.ViewModel.LoginViewModel
+﻿@model Helperland.Models.ViewModel.HomeViewModel
 @{
     String CurrentUserID = Context.Request.Cookies["CurrentUserID"];
     String CurrentUserName = Context.Request.Cookies["CurrentUserName"];
@@ -154,21 +154,21 @@
                                 aria-label="Close"></button>
                     </div>
                     <div class="modal-body mt-3">
-                        <form method="post">
+                        <form asp-action="Login" method="post">
 
                             <div class="mb-3 login-email">
-                                <input asp-for="Email" type="email" class="border-0 form-control" id="exampleInputEmail1"
+                                <input asp-for="Login.Email" type="email" class="border-0 form-control" id="exampleInputEmail1"
                                        aria-describedby="emailHelp" placeholder="Email">
                                 <i style="font-size: x-large;" class="fa fa-user icon mt-auto mb-auto pe-1"></i>
                             </div>
-                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <span asp-validation-for="Login.Email" class="text-danger"></span>
 
                             <div class="mb-3 login-password">
-                                <input asp-for="Password" type="password" class="border-0 form-control" id="exampleInputPassword1"
+                                <input asp-for="Login.Password" type="password" class="border-0 form-control" id="exampleInputPassword1"
                                        placeholder="Password">
                                 <i style="font-size: x-large;" class="fa fa-lock icon mt-auto mb-auto pe-1"></i>
                             </div>
-                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <span asp-validation-for="Login.Password" class="text-danger"></span>
 
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -198,10 +198,11 @@
                                 aria-label="Close"></button>
                     </div>
                     <div class="modal-body mt-3">
-                        <form>
+                        <form asp-action="ForgotPassword" method="post">
                             <div class="mb-3 login-email">
-                                <input type="email" class="border-0 form-control" id="exampleInputEmail1"
+                                <input asp-for="Forgot.Email" type="email" class="border-0 form-control" id="exampleInputEmail1"
                                        aria-describedby="emailHelp" placeholder="Email Address">
+                                <span asp-validation-for="Forgot.Email" class="text-danger"></span>
                             </div>
                             <button type="submit" class="modal-btn">Send</button>
                         </form>

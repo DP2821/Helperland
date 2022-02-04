@@ -36,7 +36,7 @@ namespace Helperland.Models
         public int ModifiedBy { get; set; }
         public bool IsApproved { get; set; }
         public int? Status { get; set; }
-        public string? BankTokenId { get; set; }
+        public string? ResetToken { get; set; }
         public string? TaxNo { get; set; }
 
         public virtual ICollection<FavoriteAndBlocked> FavoriteAndBlockedTargetUsers { get; set; }
