@@ -16,15 +16,22 @@ namespace Helperland.Functionality
                 {
                     return user.FirstName;
                 }
-                else
+            }
+            return null;
+        }
+
+        public int? GetUserTypeId(String token)
+        {
+            if (token != null)
+            {
+                User user = _helperlandContext.Users.Where(u => u.KeepMeLoggedInToken == token).FirstOrDefault();
+
+                if (user != null)
                 {
-                    return null;
+                    return user.UserTypeId;
                 }
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
     }
 }

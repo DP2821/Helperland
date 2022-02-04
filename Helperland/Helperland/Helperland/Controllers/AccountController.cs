@@ -58,12 +58,10 @@ namespace Helperland.Controllers
 
             if (user != null)
             {
-                GlobalData globalData = new GlobalData();
-
-
-                if (user.UserTypeId == globalData.CustomerTypeId)
+                if (user.Password == homeViewModel.Login.Password)
                 {
-                    if (user.Password == homeViewModel.Login.Password)
+                    GlobalData globalData = new GlobalData();
+                    if(user.UserTypeId == globalData.CustomerTypeId || user.UserTypeId == globalData.SpTypeId || user.UserTypeId == globalData.AdminTypeId)
                     {
                         String token = new TokenGenerator().GetToken();
                         user.KeepMeLoggedInToken = token;
@@ -72,62 +70,39 @@ namespace Helperland.Controllers
                         _helperlandContext.Users.Update(user);
                         _helperlandContext.SaveChanges();
 
-                        return RedirectToAction("TempCustomer");
+                        if (user.UserTypeId == globalData.CustomerTypeId)
+                        {
+                            return RedirectToAction("TempCustomer");
+                        }
+                        else if (user.UserTypeId == globalData.SpTypeId)
+                        {
+                            return RedirectToAction("TempServiceProvider");
+                        }
+                        else
+                        {
+                            return RedirectToAction("TempAdmin");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Email or password is wrong");
-                        return RedirectToAction("Error");
-                    }
-                }
-                else if (user.UserTypeId == globalData.SpTypeId)
-                {
-                    if (user.Password == homeViewModel.Login.Password)
-                    {
-                        String token = new TokenGenerator().GetToken();
-                        user.KeepMeLoggedInToken = token;
-                        Response.Cookies.Append("keepMeLoggedInToken", token);
-
-                        _helperlandContext.Users.Update(user);
-                        _helperlandContext.SaveChanges();
-
-                        return RedirectToAction("TempServiceProvider");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Email or password is wrong");
-                        return RedirectToAction("Error");
-                    }
-                }
-                else if (user.UserTypeId == globalData.AdminTypeId)
-                {
-                    if (user.Password == homeViewModel.Login.Password)
-                    {
-                        String token = new TokenGenerator().GetToken();
-                        user.KeepMeLoggedInToken = token;
-                        Response.Cookies.Append("keepMeLoggedInToken", token);
-
-                        _helperlandContext.Users.Update(user);
-                        _helperlandContext.SaveChanges();
-
-                        return RedirectToAction("TempAdmin");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Email or password is wrong");
+                        //In case of UserId is not 1 2 3
+                        Console.WriteLine("UserId is not valid");
                         return RedirectToAction("Error");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("UserId is not valid");
+                    //Password is wrong
+                    Console.WriteLine("Email or password is wrong");
+                    return RedirectToAction("Error");
                 }
             }
             else
             {
+                //Email is wrong
                 Console.WriteLine("User not found");
+                return RedirectToAction("Error");
             }
-            return RedirectToAction("Index","Home");
         }
 
 
@@ -144,6 +119,12 @@ namespace Helperland.Controllers
                 var passwordResetLink = Url.Action("ResetPassword", "Account",
                     new { email = homeViewModel.Forgot.Email, token = token }, Request.Scheme);
                 Console.WriteLine(passwordResetLink);
+            }
+            else
+            {
+                //Email is wrong
+                Console.WriteLine("User not found");
+                return RedirectToAction("Error");
             }
             return RedirectToAction("Index","Home");
         }
@@ -176,7 +157,9 @@ namespace Helperland.Controllers
             }
             else
             {
-                return RedirectToAction("Index","Home");
+                //In a case of user recored has been deleted
+                Console.WriteLine("User not found");
+                return RedirectToAction("Error");
             }
         }
 
@@ -189,6 +172,7 @@ namespace Helperland.Controllers
             _helperlandContext.Users.Update(user);
             _helperlandContext.SaveChanges();
 
+            //Removing all cookies...
             foreach (var cookie in HttpContext.Request.Cookies)
             {
                 Response.Cookies.Delete(cookie.Key);
