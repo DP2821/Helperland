@@ -125,7 +125,9 @@
                                             <a class="nav-link text-white" href="#"><img src="./assets/images/user.png" alt="" height="28px"><span class="text-white ms-2 me-2">@CurrentUserName</span></a>
                                         </li>
                                         <li class="nav-item text-center">
-                                            <a asp-controller="Account" asp-action="LogOut"><img src="./assets/images/logout.png" alt="" height="28px"></a>
+                                            <a asp-controller="Account" asp-action="LogOut">
+                                                <img src="./assets/images/logout.png" alt="Logout" height="28px">
+                                            </a>
                                         </li>
                                     }
 
@@ -274,7 +276,7 @@
     <asp:contentPlaceholder id="script" runat="server" />
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@*    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
