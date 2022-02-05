@@ -30,7 +30,7 @@ namespace Helperland.Controllers
             User user = becomeProviderRepository.GetUser(becomeProviderViewModel);
             _helperlandContext.Users.Add(user);
             _helperlandContext.SaveChanges();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home", new { loginModal = "true" });
         }
 
 
@@ -47,7 +47,7 @@ namespace Helperland.Controllers
             User user = signUpRepository.GetUser(signUpViewModel);
             _helperlandContext.Users.Add(user);
             _helperlandContext.SaveChanges();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home", new { loginModal = "true" });
         }
 
 
@@ -87,21 +87,21 @@ namespace Helperland.Controllers
                     {
                         //In case of UserId is not 1 2 3
                         Console.WriteLine("UserId is not valid");
-                        return RedirectToAction("Error");
+                        return RedirectToAction("Error","Home");
                     }
                 }
                 else
                 {
                     //Password is wrong
                     Console.WriteLine("Email or password is wrong");
-                    return RedirectToAction("Error");
+                    return RedirectToAction("Index", "Home", new { loginModal = "true" });
                 }
             }
             else
             {
                 //Email is wrong
                 Console.WriteLine("User not found");
-                return RedirectToAction("Error");
+                return RedirectToAction("Index", "Home", new { loginModal = "true" });
             }
         }
 
@@ -124,7 +124,7 @@ namespace Helperland.Controllers
             {
                 //Email is wrong
                 Console.WriteLine("User not found");
-                return RedirectToAction("Error");
+                return RedirectToAction("Error","Home");
             }
             return RedirectToAction("Index","Home");
         }
@@ -153,13 +153,16 @@ namespace Helperland.Controllers
                 user.ResetToken = null;
                 _helperlandContext.Users.Update(user);
                 _helperlandContext.SaveChanges();
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home", new {loginModal = "true"});
             }
             else
             {
+
+            }
+            {
                 //In a case of user recored has been deleted
                 Console.WriteLine("User not found");
-                return RedirectToAction("Error");
+                return RedirectToAction("Error","Home");
             }
         }
 
