@@ -1,0 +1,198 @@
+/* ul{
+    border: 1px solid grey;
+} */
+.nav-pills li {
+  border-right: 1px solid #dcdcdc;
+  background-color: #F3F3F3;
+}
+.nav-pills li:last-child {
+  border: none;
+}
+.tab-border-bottom{
+  border-bottom: 1px solid #dcdcdc;
+}
+.nav-pills .nav-link {
+  padding-left: 5px;
+  padding-top: 19px;
+  padding-right: 5px;
+  padding-bottom: 19px;
+  border-radius: 0px;
+  color: #646476;
+  width: 100%;
+}
+#pill-setupService-tab {
+  background-color: #1d7a8c;
+  color: white;
+}
+.setup-img-white{
+  width: 32px; 
+  height: 32px;
+  object-fit: cover;
+  object-position: 0px -32px;
+}
+.setup-img{
+  width: 32px; 
+  height: 32px;
+  object-fit: cover;
+  object-position: 0px 0px;
+}
+
+p1 {
+  color: #646464;
+}
+label{
+  color: #565656;
+}
+hr{
+  color: #424242;
+}
+#p1,
+#p2,
+#p3 {
+  color: #646464;
+  display: none;
+}
+.down-arrow {
+  padding: 5px;
+}
+
+.card-header{
+  background-color: #1d7a8c;
+  color: white;
+  padding: 22px 20px 22px 20px;
+}
+.card-footer{
+  background-color: #F3F3F3;
+}
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+
+.totalPayment{
+  font-size: 40px;
+  font-weight: 700;
+  color: #1d7a8c;
+  line-height: 1.2;
+
+}
+.color-darkBlue{
+  color: #1d7a8c;
+}
+
+.more-help{
+  text-decoration: none;
+}
+
+.btn-submit-form {
+  /* width: 163px; */
+  width: fit-content;
+  padding-left: 25px;
+  padding-right: 25px;
+  height: 46px;
+  outline: none;
+  background: #1d7a8c 0% 0% no-repeat padding-box;
+  border-radius: 23px;
+  border: none;
+}
+
+.btn-submit-form:hover, .btn-submit-form:focus {
+  background-color: #146371;
+}
+
+.rounded-grey-box {
+  margin-left: 50%;
+  margin-top: 10%;
+  transform: translate(-50%);
+  height: 108px;
+  width: 108px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #dcdcdc;
+  border-radius: 50%;
+}
+
+.my-col-2{
+  width: 20%;
+}
+
+textarea{
+  height: 100px;
+  resize: none;
+}
+.address{
+  border: 1px solid #424242;
+  border-radius: 4px;
+}
+.btn-add-new-address{
+  height: 46px;
+  outline: none;
+  background: none;
+  border: 2px solid #1d7a8c ;
+  border-radius: 23px;
+  color: #1d7a8c;
+  font-weight: bold;
+}
+.btn-add-new-address:hover, .btn-add-new-address:focus{
+  background-color: #1d7a8c;
+  border: #1d7a8c;
+}
+.btn-select-sp{
+  background: none;
+  border: 1px solid #424242;
+  color: #424242;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.btn-select-sp:hover, .btn-select-sp:focus{
+  background-color: #424242;
+  border: #424242;
+}
+.fev-sp-icon{
+  width: 50px;
+}
+.new-address{
+  background-color: #F3F3F3;
+  border: 1px solid #646464;
+  border-radius: 3px;
+  padding: 10px;
+  display: none;
+}
+.btn-address-cancel{
+  margin-left: 5px;
+  width: fit-content;
+  border-radius: 23px;
+  background: none;
+  border: 1px solid #424242;
+  color: #424242;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.btn-apply{
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 25px;
+  padding-right: 25px;
+  outline: none;
+  background: none;
+  border: 2px solid #1d7a8c ;
+  border-radius: 23px;
+  color: #1d7a8c;
+  font-weight: bold;
+}
+.btn-apply:hover, .btn-apply:focus{
+  background-color: #1d7a8c;
+  border: #1d7a8c;
+}
+@media screen and (max-width:768px) {
+  .my-col-2{
+    width: 33.333%;
+  }
+}
+
+
+@media screen and (max-width:576px) {
+  .my-col-2{
+    width: 50%
+  }
+}

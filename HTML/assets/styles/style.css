@@ -37,6 +37,9 @@ p {
   color: #4f4f4f;
   line-height: 1.3;
 }
+b{
+  color: #565656;
+}
 span {
   font-size: 16px;
   font-weight: 400;
@@ -90,8 +93,11 @@ nav {
   background: #1d7a8c 0% 0% no-repeat padding-box;
   border: 1px solid #ffffff80;
   border-radius: 20px;
-  opacity: 1;
+  outline: none;
   text-align: center;
+}
+.blue-rounded-btn:hover{
+  background-color: #146371;
 }
 .prices {
   background: none;

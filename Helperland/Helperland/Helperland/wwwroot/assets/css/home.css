@@ -107,6 +107,9 @@ ul {
   .img-logo {
     padding-bottom: 5px;
   }
+    #login-modal-width, #forgot-modal-width {
+        margin: 0;
+    }
 }
 
 @media screen and (max-width: 1200px) {
