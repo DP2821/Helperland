@@ -7,12 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="C:\Users\patel\OneDrive\Desktop\BookService.cshtml" Link="BookService.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />
     <None Include="Views\_ViewStart.cshtml" />
+    <None Include="wwwroot\assets\images\arrow-down.svg" />
+    <None Include="wwwroot\assets\images\arrow-up.svg" />
+    <None Include="wwwroot\assets\images\circle.svg" />
+    <None Include="wwwroot\assets\images\euro-currency-symbol.svg" />
+    <None Include="wwwroot\assets\images\fb-img.svg" />
+    <None Include="wwwroot\assets\images\first-page-ic.svg" />
+    <None Include="wwwroot\assets\images\insta-img.svg" />
+    <None Include="wwwroot\assets\images\message.svg" />
+    <None Include="wwwroot\assets\images\right-arrow.svg" />
+    <None Include="wwwroot\assets\images\right-black-arrow.svg" />
+    <None Include="wwwroot\assets\images\step-1.svg" />
+    <None Include="wwwroot\assets\images\step-3.svg" />
+    <None Include="wwwroot\assets\images\step-4.svg" />
+    <None Include="wwwroot\assets\images\Thumbs.db" />
+    <None Include="wwwroot\assets\images\white-logo-transparent-background-copy-4.svg" />
   </ItemGroup>
 
   <ItemGroup>

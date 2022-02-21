@@ -33,5 +33,17 @@ namespace Helperland.Functionality
             }
             return null;
         }
+
+        public int GetUserId(string token){
+            if(token != null){
+                User user = _helperlandContext.Users.Where(u => u.KeepMeLoggedInToken == token).FirstOrDefault();
+
+                if(user != null){
+                    return user.UserId;
+                }
+            }
+
+            return -1;
+        }        
     }
 }

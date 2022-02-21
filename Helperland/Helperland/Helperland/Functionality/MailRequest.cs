@@ -13,7 +13,8 @@ namespace Helperland.Models
 
             MailMessage mailMessage = new MailMessage("SenderEmail", receiverEmail);
             mailMessage.Subject = subject;
-            mailMessage.Body = body + "\n\n" + "Your Faithful\n" + nameOfUser;
+            // mailMessage.Body = body + "\n\n" + "Your Faithful\n" + nameOfUser;
+            mailMessage.Body = body;
 
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
             client.Credentials = new System.Net.NetworkCredential()

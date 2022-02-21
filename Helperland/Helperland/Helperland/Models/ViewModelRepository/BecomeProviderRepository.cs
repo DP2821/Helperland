@@ -1,7 +1,7 @@
 ﻿using Helperland.Data;
 using Helperland.GlobalVariable;
 using Helperland.Models.ViewModel;
-using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
 
 namespace Helperland.Models.ViewModelRepository
 {
@@ -9,6 +9,7 @@ namespace Helperland.Models.ViewModelRepository
     {
 
         HelperlandContext _helperlandContext = new HelperlandContext();
+        MD5 md5Hash = MD5.Create();
 
         public User GetUser(BecomeProviderViewModel becomeProviderViewModel)
         {
@@ -28,7 +29,9 @@ namespace Helperland.Models.ViewModelRepository
             user.LastName = becomeProviderViewModel.LastName;
             user.Email = becomeProviderViewModel.Email;
             user.Mobile = becomeProviderViewModel.PhoneNumber;
-            user.Password = becomeProviderViewModel.Password;
+
+            string hashPassword = new MD5Hashing().GetMd5Hash(md5Hash, becomeProviderViewModel.Password);
+            user.Password = hashPassword;
             user.UserTypeId = SpTypeId;
             user.CreatedDate = DateTime.Now;
             user.ModifiedDate = DateTime.Now;

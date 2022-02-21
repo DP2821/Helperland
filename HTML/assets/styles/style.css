@@ -62,13 +62,13 @@ body {
   margin-bottom: 5px;
 }
 .navbar-top {
-  background-color: #525252;
+  /* background-color: rgba(82, 82, 82, 0.8); */
 }
 .red-b {
   border: 5px solid red;
 }
 .main {
-  background-color: #525252;
+  background-color: rgba(82, 82, 82, 0.8);
   position: sticky;
   top: 0;
   left: 0;
@@ -215,6 +215,9 @@ i {
 }
 
 @media screen and (max-width: 992px) {
+  .navbar-top {
+    background-color: rgba(82, 82, 82, 0.8);
+  }
   .nav-btn {
     width: 100%;
   }

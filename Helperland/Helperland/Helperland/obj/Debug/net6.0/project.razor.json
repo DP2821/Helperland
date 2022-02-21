@@ -16303,6 +16303,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "C:\\Users\\patel\\OneDrive\\Desktop\\BookService.cshtml",
+      "TargetPath": "BookService.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Shared\\_StaticLayout.cshtml",
       "TargetPath": "Views\\Shared\\_StaticLayout.cshtml",
       "FileKind": "mvc"
@@ -16360,6 +16365,11 @@
     {
       "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Home\\Prices.cshtml",
       "TargetPath": "Views\\Home\\Prices.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Customer\\BookService.cshtml",
+      "TargetPath": "Views\\Customer\\BookService.cshtml",
       "FileKind": "mvc"
     },
     {

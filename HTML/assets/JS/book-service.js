@@ -36,3 +36,4 @@ $("#btn-add-new-address").click(function(){
     document.getElementById("add-new-address-div").style.display = "block";
     document.getElementById("btn-add-new-address").style.display = "none";
 });
+document.getElementById("date-Book-Service").min = "2022-02-12"

@@ -7,5 +7,10 @@
         public int SpTypeId { get; } = 2;
         public int AdminTypeId { get; } = 3;
 
+        public int SERVICE_HOURLY_RATE { get; } = 18;    
+        public int SERVICE_REQUEST_STATUS_NEW { get; set; } = 1;
+        public int SERVICE_REQUEST_STATUS_COMPLETED { get; set; } = 2;
+        public int SERVICE_REQUEST_STATUS_CANCELLED { get; } = 3;
+
     }
 }

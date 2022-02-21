@@ -1,0 +1,21 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace Helperland.Models.ViewModel
+{
+    public class CompleteBookingViewModel
+    {
+        [Required]
+        public string ZipCode { get; set; }
+        [Required]
+        public string ServiceStartDate { get; set; }
+        [Required]
+        public double ServiceHours { get; set; }
+        public int[]? ExtraHoursList { get; set; }
+        public string? Comments { get; set; }
+        public bool HasPets { get; set; }
+        [Required]
+        public int AddressId { get; set; }
+        public int? FevServiceProviderID { get; set; }
+    }
+
+}

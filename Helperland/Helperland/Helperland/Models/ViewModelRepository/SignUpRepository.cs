@@ -1,12 +1,14 @@
 ﻿using Helperland.Data;
 using Helperland.GlobalVariable;
 using Helperland.Models.ViewModel;
+using System.Security.Cryptography;
 
 namespace Helperland.Models.ViewModelRepository
 {
     public class SignUpRepository : GlobalData
     {
         HelperlandContext _helperlandContext = new HelperlandContext();
+        MD5 md5Hash = MD5.Create();
 
         public User GetUser(SignUpViewModel signUpViewModel)
         {
@@ -26,7 +28,9 @@ namespace Helperland.Models.ViewModelRepository
             user.LastName = signUpViewModel.LastName;
             user.Email = signUpViewModel.Email;
             user.Mobile = signUpViewModel.PhoneNumber;
-            user.Password = signUpViewModel.Password;
+            
+            string hashPassword = new MD5Hashing().GetMd5Hash(md5Hash, signUpViewModel.Password);
+            user.Password = hashPassword;
             user.UserTypeId = CustomerTypeId;
             user.CreatedDate = DateTime.Now;
             user.ModifiedDate = DateTime.Now;

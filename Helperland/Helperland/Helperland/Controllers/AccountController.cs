@@ -5,12 +5,14 @@ using Helperland.Models;
 using Helperland.Models.ViewModel;
 using Helperland.Models.ViewModelRepository;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
 
 namespace Helperland.Controllers
 {
     public class AccountController : Controller
     {
         HelperlandContext _helperlandContext;
+        MD5 md5Hash = MD5.Create();
         public AccountController(HelperlandContext helperlandContext)
         {
             _helperlandContext = helperlandContext;
@@ -58,7 +60,8 @@ namespace Helperland.Controllers
 
             if (user != null)
             {
-                if (user.Password == homeViewModel.Login.Password)
+                string hashPassword = new MD5Hashing().GetMd5Hash(md5Hash, homeViewModel.Login.Password);
+                if (user.Password == hashPassword)
                 {
                     GlobalData globalData = new GlobalData();
                     if(user.UserTypeId == globalData.CustomerTypeId || user.UserTypeId == globalData.SpTypeId || user.UserTypeId == globalData.AdminTypeId)
@@ -149,16 +152,14 @@ namespace Helperland.Controllers
             User user = _helperlandContext.Users.Where(u => u.Email == resetPasswordViewModel.Email && u.ResetToken == resetPasswordViewModel.Token).FirstOrDefault();
             if (user != null)
             {
-                user.Password = resetPasswordViewModel.Password;
+                string hashPassword = new MD5Hashing().GetMd5Hash(md5Hash, resetPasswordViewModel.Password);
+                user.Password = hashPassword;
                 user.ResetToken = null;
                 _helperlandContext.Users.Update(user);
                 _helperlandContext.SaveChanges();
                 return RedirectToAction("Index", "Home", new {loginModal = "true"});
             }
             else
-            {
-
-            }
             {
                 //In a case of user recored has been deleted
                 Console.WriteLine("User not found");
