@@ -1,7 +1,7 @@
 ﻿@model Helperland.Models.ViewModel.HomeViewModel
 @{
-    String CurrentUserName = new KeepMeLoggedInValidToken().GetName(Context.Request.Cookies["keepMeLoggedInToken"]);
-    int? UserTypeID = new KeepMeLoggedInValidToken().GetUserTypeId(Context.Request.Cookies["keepMeLoggedInToken"]);
+    String CurrentUserName = new CurrentLoggedInUser().GetName(Context.Request.Cookies["keepMeLoggedInToken"]);
+    int? UserTypeID = new CurrentLoggedInUser().GetUserTypeId(Context.Request.Cookies["keepMeLoggedInToken"]);
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -146,17 +146,18 @@
 
                                                 <div class="popover__content">
                                                     <p class="ps-3 pe-3">
+                                                        <small>Welcome</small>
                                                         <b>@CurrentUserName</b>
                                                     </p>
                                                     <hr>
                                                     <ul class="ps-0 popover-ul">
                                                         <li>
-                                                            <a class="nav-link" href="#">
+                                                            <a class="nav-link" asp-action="ServiceHistory" asp-controller="Customer">
                                                                 <span>Overview</span>
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a class="nav-link" href="#">
+                                                            <a class="nav-link" asp-action="ServiceHistory" asp-controller="Customer" asp-route-my-account="true">
                                                                 <span>My&nbsp;Settings</span>
                                                             </a>
                                                         </li>

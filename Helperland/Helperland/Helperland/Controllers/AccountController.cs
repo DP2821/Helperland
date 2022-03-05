@@ -75,7 +75,7 @@ namespace Helperland.Controllers
 
                         if (user.UserTypeId == globalData.CustomerTypeId)
                         {
-                            return RedirectToAction("TempCustomer");
+                            return RedirectToAction("ServiceHistory","Customer");
                         }
                         else if (user.UserTypeId == globalData.SpTypeId)
                         {

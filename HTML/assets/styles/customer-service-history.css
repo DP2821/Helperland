@@ -20,7 +20,7 @@
   padding-left: 10px;
 }
 .active-tab {
-  background-color: #146371;
+  background-color: #146371 !important;
 }
 ul {
   list-style: none;
@@ -40,11 +40,6 @@ ul {
 .customer-name {
   font-size: 30px;
   font-weight: bold;
-}
-.export{
-  width: fit-content;
-  padding: 5px 14px 5px 16px;
-  color: white;
 }
 table,
 tr {
@@ -97,6 +92,58 @@ td {
 }
 
 
+/* New CSS for .NET Integration */
+.modal-btn{
+  width: auto;
+}
+
+/* Modal Reschedule  */
+.date-div {
+  position: relative;
+}
+
+.img-calendar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+}
+.input-date {
+  z-index: 2;
+  position: relative;
+  padding-left: 40px;
+}
+.input-date,
+.input-start-time {
+  border: 1px solid #dedddd;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border-radius: 4px;
+}
+.input-date:focus,
+.input-start-time:focus {
+  border: 1px solid #1d7a8c;
+}
+.input-date:focus,
+.input-start-time:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+.table-dashboard tr{
+  cursor: pointer;
+}
+.table-dashboard td:nth-child(5){
+  cursor: auto;
+}
+.table-dashboard tr:hover{
+  background-color: #e4e2e2;
+}
+
 
 /* Data Table class */
 table.dataTable thead th,
@@ -111,15 +158,15 @@ table.dataTable thead th{
 }
 table.dataTable thead .sorting {
   background-image: url("../images/sort.png");
-  background-position: center right 30px;
+  /* background-position: center right 10px; */
 }
 table.dataTable thead .sorting_asc {
   background-image: url("../images/acendingSort.png") !important;
-  background-position: center right 30px;
+  /* background-position: center right 10px; */
 }
 table.dataTable thead .sorting_desc {
   background-image: url("../images/decendingSort.png") !important;
-  background-position: center right 30px;
+  /* background-position: center right 10px; */
 }
 table.dataTable tbody td {
   padding-top: 15px;

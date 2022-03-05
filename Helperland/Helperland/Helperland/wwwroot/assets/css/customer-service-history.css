@@ -4,7 +4,7 @@
   margin-right: 15px;
   border-left: 2px solid #e1e1e1;
 }
-.book-a-cleaner{
+.book-a-cleaner {
   background-color: #24626d;
 }
 #dashboard-nav-right {
@@ -19,8 +19,11 @@
   border-bottom: 1px solid white;
   padding-left: 10px;
 }
-.active-tab {
+.li-left:hover {
   background-color: #146371;
+}
+.active-tab {
+  background-color: #146371 !important;
 }
 ul {
   list-style: none;
@@ -34,17 +37,12 @@ ul {
   padding: 25px;
   background-color: #f9f9f9;
 }
-.welcome{
+.welcome {
   font-weight: normal;
 }
 .customer-name {
   font-size: 30px;
   font-weight: bold;
-}
-.export{
-  width: fit-content;
-  padding: 5px 14px 5px 16px;
-  color: white;
 }
 table,
 tr {
@@ -80,14 +78,18 @@ td {
   color: white;
 }
 .status-complete {
+  border: none;
   background-color: #67b644;
   text-decoration: none;
-  padding: 5px;
+  /* padding: 5px; */
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .status-cancel {
+  border: none;
   background-color: #ff6b6b;
   text-decoration: none;
-  padding: 5px;
+  /* padding: 5px; */
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -96,75 +98,229 @@ td {
   border: 5px solid red;
 }
 
+/* New CSS for .NET Integration */
+.modal-btn {
+  width: auto;
+}
 
+/* Modal Reschedule  */
+.date-div {
+  position: relative;
+}
+
+.img-calendar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+}
+.input-date {
+  z-index: 2;
+  position: relative;
+  padding-left: 40px;
+}
+.input-date,
+.input-start-time {
+  border: 1px solid #dedddd;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border-radius: 4px;
+}
+.form-control{
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+.input-date:focus,
+.input-start-time:focus {
+  border: 1px solid #1d7a8c;
+}
+.input-date:focus,
+.input-start-time:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+.table-dashboard tr,
+.table-service-history tr {
+  cursor: pointer;
+}
+.table-dashboard td:nth-child(5),
+.table-service-history td:nth-child(5),
+.table-service-history td:last-child {
+  cursor: auto;
+}
+.table-dashboard tr:hover,
+.table-service-history tr:hover {
+  background-color: #e4e2e2;
+}
+.star-cover-div {
+  width: 150px;
+  height: 30px;
+  top: -46px;
+  left: 125.4px;
+}
+.rating-p-star {
+  font-size: 30px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.my-details-ul li{
+  border-bottom: 3px solid grey;
+  padding: 15px;
+}
+.my-address-main-div{
+  border: 1px solid #dcdcdc;
+}
+.my-address-row-header{
+  background-color: #f0f0f0;
+}
+.my-address-row{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  padding-left: 40px;
+  padding-right: 0px;
+  border: 1px solid #dcdcdc;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+
+/*
+Fev pros table
+*/
+.table-fev-pros {
+  border: 0;
+  margin: 0px;
+  width: 100% !important;
+  display: flex;
+}
+
+.table-fev-pros thead {
+  border: none;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  /* width: 1px; */
+}
+
+.table-fev-pros tr {
+  display: inline-block;
+  width: 21vw;
+  margin: 1vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: .625em;
+}
+
+.table-fev-pros td {
+  /* border-bottom: 1px solid #ddd; */
+  border: none !important;
+  display: block;
+  font-size: .8em;
+  text-align: center;
+}
+
+.table-fev-pros td::before {
+  content: attr(data-label);
+  float: left;
+  font-weight: bold;
+}
+
+.table-fev-pros td:last-child {
+  text-align: center;
+  border-bottom: 0;
+}
+
+.fev-pros-cap-border {
+  border: 2px solid #aaaaaa;
+  width: 60px;
+  padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 50%;
+}
 
 /* Data Table class */
 table.dataTable thead th,
 table.dataTable thead td {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #efefef;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  border-bottom: 1px solid #efefef !important;
 }
-table.dataTable thead th{
-  padding-top: 15px;
-  padding-bottom: 15px;
+table.dataTable thead th {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
 }
 table.dataTable thead .sorting {
-  background-image: url("../images/sort.png");
-  background-position: center right 30px;
+  background-image: url("../images/sort.png") !important;
+  /* background-position: center right 10px; */
 }
 table.dataTable thead .sorting_asc {
   background-image: url("../images/acendingSort.png") !important;
-  background-position: center right 30px;
+  /* background-position: center right 10px; */
 }
 table.dataTable thead .sorting_desc {
   background-image: url("../images/decendingSort.png") !important;
-  background-position: center right 30px;
+  /* background-position: center right 10px; */
 }
 table.dataTable tbody td {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-top: 1px solid #efefef;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  border-top: 1px solid #efefef ;
 }
 .dataTables_wrapper .dataTables_filter {
-  display: none;
+  display: none !important;
 }
 .dataTables_wrapper .dataTables_paginate {
-  margin-top: 5px;
+  margin-top: 5px !important;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
-  border: 1px solid #e1e1e1;
-  margin-left: 10px;
-  border-radius: 50%;
+  border: 1px solid #e1e1e1 !important;
+  margin-left: 10px !important;
+  border-radius: 50% !important;
 }
-.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-  color: #FFFFFF !important;
-  border: 1px solid #1d7a8c;
-  background: #1d7a8c;
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #ffffff !important;
+  border: 1px solid #1d7a8c !important;
+  background: #1d7a8c !important;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
   color: white !important;
-  border: 1px solid #1d7a8c;
-  background: #1d7a8c;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  color: white !important;
+  border: 1px solid #1d7a8c !important;
+  background: #1d7a8c !important;
 }
 #table-main_previous,
-#table-main_next{
-  border: none;
-  border-radius: 3%;
+#table-main_next {
+  border: none !important;
+  border-radius: 3% !important;
 }
-#table-main_last, #table-main_next, #table-main_previous, #table-main_first{
-  border: 1px solid #e1e1e1;
-  border-radius: 50%;
+#table-main_last,
+#table-main_next,
+#table-main_previous,
+#table-main_first {
+  border: 1px solid #e1e1e1 !important;
+  border-radius: 50% !important;
 }
 
-.dataTables_wrapper .dataTables_info{
-  float: left;
-  clear: none;
-  padding-top: 15px;
-  padding-left: 8px;
+.dataTables_wrapper .dataTables_info {
+  float: left !important;
+  clear: none !important;
+  padding-top: 15px !important;
+  padding-left: 8px !important;
 }
-.dataTables_wrapper .dataTables_length{
-  padding-top: 12px;
+.dataTables_wrapper .dataTables_length {
+  padding-top: 12px !important;
 }
 
 @media screen and (max-width: 992px) {
@@ -178,27 +334,28 @@ table.dataTable tbody td {
     padding: 0px;
     margin: 0px;
   }
-  
-.vertical-navbar {
-  margin-top: 5px;
-  background-color: #525252;
-  border: none;
-}
+
+  .vertical-navbar {
+    margin-top: 5px;
+    background-color: #525252;
+    border: none;
+  }
   #dashboard-nav-right {
     display: block;
   }
   #dashboard-nav-left {
     display: none;
   }
+  .table-fev-pros tr {
+    width: 29vw;
+  }
 }
-
-
 
 @media screen and (max-width: 769px) {
   table {
     border: 0;
   }
-  
+
   table thead {
     border: none;
     clip: rect(0 0 0 0);
@@ -209,33 +366,47 @@ table.dataTable tbody td {
     position: absolute;
     width: 1px;
   }
-  
+
   table tr {
     display: block;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: .625em;
-  
+    margin-bottom: 0.625em;
   }
 
   table td {
     border-bottom: 1px solid #ddd;
     display: block;
-    font-size: .8em;
+    font-size: 0.8em;
     text-align: right;
   }
 
-  table td::before{
+  table td::before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
   }
-  
-  
+
   table td:last-child {
     text-align: center;
     border-bottom: 0;
   }
-  .cap-border{
+  .cap-border {
     display: none;
+  }
+  .table-fev-pros tr {
+    width: 44vw;
+  }
+}
+
+
+@media screen and (max-width: 468px) {
+  .table-fev-pros tr {
+    width: 94vw;
+  }
+  .my-details-ul li{
+    padding: 5px;
+  }
+  .my-details-ul li b{
+    font-size: small;
   }
 }

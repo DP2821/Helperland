@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KsfJWSJly5rxEP8Q3ApAVUUvapIcUgv0QjyHPnmOaig=",
+  "Hash": "kXzhynF6PgZlzw8a7sJolKMgh7wy23w8pk/qi1Mb7fo=",
   "Source": "Helperland",
   "BasePath": "_content/Helperland",
   "Mode": "Default",
@@ -780,6 +780,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\down-arrow.png"
+    },
+    {
+      "Identity": "S:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\wwwroot\\assets\\images\\edit-address.png",
+      "SourceId": "Helperland",
+      "SourceType": "Discovered",
+      "ContentRoot": "S:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\wwwroot\\",
+      "BasePath": "_content/Helperland",
+      "RelativePath": "assets/images/edit-address.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\edit-address.png"
     },
     {
       "Identity": "S:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\wwwroot\\assets\\images\\euro-currency-symbol.svg",
@@ -1834,6 +1851,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\RecaptchaLogo.png"
+    },
+    {
+      "Identity": "S:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\wwwroot\\assets\\images\\remove-address.png",
+      "SourceId": "Helperland",
+      "SourceType": "Discovered",
+      "ContentRoot": "S:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\wwwroot\\",
+      "BasePath": "_content/Helperland",
+      "RelativePath": "assets/images/remove-address.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\remove-address.png"
     },
     {
       "Identity": "S:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\wwwroot\\assets\\images\\right-arrow-grey.png",

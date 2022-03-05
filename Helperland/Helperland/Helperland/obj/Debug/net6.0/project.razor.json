@@ -16338,6 +16338,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Customer\\ServiceHistory.cshtml",
+      "TargetPath": "Views\\Customer\\ServiceHistory.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"

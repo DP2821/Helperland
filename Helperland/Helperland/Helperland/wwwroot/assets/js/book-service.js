@@ -1,5 +1,3 @@
-// Enable button when prev task complete
-// document.getElementById("pill-yourDetails-tab").disabled = false;
 for (var i = 1; i <= 3; i++) {
     document.getElementById("some-faqs").innerHTML +=
         "<img style=\"transform: rotate(-90deg); cursor: pointer;\" class=\"down-arrow\" id=\"img" + i + "\" src=\"/assets/images/keyboard-right-arrow-button.png\"" +
@@ -13,7 +11,6 @@ for (var i = 1; i <= 3; i++) {
         "</p>" +
         "</div><hr/>"
 }
-
 function fun(nameOfParagraph, img) {
     if (document.getElementById(nameOfParagraph).style.display == "block") {
         document.getElementById(img).style.transform = "rotate(-90deg)";
@@ -32,70 +29,24 @@ function fun(nameOfParagraph, img) {
     }
 }
 
-$("#btn-add-new-address").click(function () {
-    document.getElementById("add-new-address-div").style.display = "block";
-    document.getElementById("btn-add-new-address").style.display = "none";
-});
-
-$("#add-new-address-btn-cancel").click(function () {
-    document.getElementById("add-new-address-div").style.display = "none";
-    document.getElementById("btn-add-new-address").style.display = "block";
-});
-
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-
-today = yyyy + '-' + mm + '-' + dd;
-
-document.getElementById("date-book-service").min = today;
-
-
-
-
-function checkZipCode() {
-    var postalCode = document.getElementById("postalCode").value;
-
-    if (postalCode.length == 6) {
-        document.getElementById("error-postalCode").innerHTML = "";
-
-        $.post("IsValidPostalCode", { PostalCode: postalCode }, function (data) {
-
-            if (data == "true") {
-                //If pinocde match
-                document.getElementById("pill-schedulePlan-tab").disabled = false;
-                document.getElementById("pill-schedulePlan-tab").click();
-
-                updateAddressList();
-                updateFevoriteServiceProviderList();
-            }
-            else {
-                //If pinocde don't match
-                document.getElementById("pill-schedulePlan-tab").disabled = true;
-                document.getElementById("pill-yourDetails-tab").disabled = true;
-                document.getElementById("pill-payment-tab").disabled = true;
-                document.getElementById("error-postalCode").innerHTML = "We are not providing service in this area. We'll notify you if any helper would start working near your area.";
-            }
-        });
-    }
-    else {
-        document.getElementById("pill-schedulePlan-tab").disabled = true;
-        document.getElementById("error-postalCode").innerHTML = "Pincode should be 6 digit"
-    }
-}
-
 $(document).ready(function () {
     /**
      * When page start or refresh, 
      * Reset Enabled tab-button, pinocde field and checkbox etc...
      */
-     document.getElementById("pill-schedulePlan-tab").disabled = true;
-     document.getElementById("pill-yourDetails-tab").disabled = true;
-     document.getElementById("pill-payment-tab").disabled = true;
-     document.getElementById("postalCode").value = "";
-     $(".checkbox-extra-service").prop("checked", false);
+    document.getElementById("pill-schedulePlan-tab").disabled = true;
+    document.getElementById("pill-yourDetails-tab").disabled = true;
+    document.getElementById("pill-payment-tab").disabled = true;
+    document.getElementById("postalCode").value = "";
+    $(".checkbox-extra-service").prop("checked", false);
 
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("date-book-service").min = today;
 
 
     $("#form-pincode").submit(function (event) {
@@ -171,112 +122,91 @@ $(document).ready(function () {
 
     $('#start-time-book-service').change(function () {
         updateDateTime();
-    })
+    });
 
     $('#basic-stay-time').change(function () {
-        //adding basic hours to Payment summary card from dropdown
+        //Adding basic hours to Payment summary card from dropdown
         $("#span-basic-hours").html($("#basic-stay-time").val());
 
         updateTotalServiceTime();
         updateTotalPayment();
-    })
+    });
+
+    $('.checkbox-extra-service').change(function () {
+        /**
+         * When to add Extra service title to Payment summary card
+         */
+        if ($('.checkbox-extra-service').filter(':checked').length < 1) {
+            //If there is no extra service added remove Extra service title 
+            document.getElementById("extras-title").innerHTML = "";
+        }
+        else {
+            //If there is more than 1 extra service add Extra service title
+            document.getElementById("extras-title").innerHTML = "<br>" + "Extras" + "<br>";
+        }
+
+        updateTotalServiceTime();
+        updateTotalPayment();
 
 
-
-
-    $('.checkbox-extra-service').change(
-        function () {
+        if ($(this).is(':checked')) {
             /**
-             * When to add Extra service title to Payment summary card
+             * Extra service blue border and blue image adding
              */
-            if ($('.checkbox-extra-service').filter(':checked').length < 1) {
-                //If there is no extra service added remove Extra service title 
-                document.getElementById("extras-title").innerHTML = "";
+            $(this).parent().addClass('rounded-grey-box-active');
+            $(this).siblings().addClass('img-extra-service-active');
+
+
+            /**
+             * Showing extra service span tag in the payment summary card
+             */
+            switch ($(this).val()) {
+                case '1':
+                    $("#span-inside-cabinet").addClass("display-inline-important");
+                    break;
+                case '2':
+                    $("#span-inside-fridge").addClass("display-inline-important");
+                    break;
+                case '3':
+                    $("#span-inside-oven").addClass("display-inline-important");
+                    break;
+                case '4':
+                    $("#span-laundry-wash").addClass("display-inline-important");
+                    break;
+                case '5':
+                    $("#span-interior-window").addClass("display-inline-important");
+                    break;
             }
-            else {
-                //If there is more than 1 extra service add Extra service title
-                document.getElementById("extras-title").innerHTML = "<br>" + "Extras" + "<br>";
+        }
+        else {
+            /**
+             * Extra service blue border and blue image remove
+             */
+            $(this).parent().removeClass('rounded-grey-box-active');
+            $(this).siblings().removeClass('img-extra-service-active');
+
+            /**
+             * Hiding extra service span tag in the payment summary card
+             */
+            switch ($(this).val()) {
+                case '1':
+                    $("#span-inside-cabinet").removeClass("display-inline-important");
+                    break;
+                case '2':
+                    $("#span-inside-fridge").removeClass("display-inline-important");
+                    break;
+                case '3':
+                    $("#span-inside-oven").removeClass("display-inline-important");
+                    break;
+                case '4':
+                    $("#span-laundry-wash").removeClass("display-inline-important");
+                    break;
+                case '5':
+                    $("#span-interior-window").removeClass("display-inline-important");
+                    break;
             }
-
-            updateTotalServiceTime();
-            updateTotalPayment();
-
-
-            if ($(this).is(':checked')) {
-                /**
-                 * Extra service blue border and blue image adding
-                 */
-                $(this).parent().addClass('rounded-grey-box-active');
-                $(this).siblings().addClass('img-extra-service-active');
-
-
-                /**
-                 * Showing extra service span tag in the payment summary card
-                 */
-                switch ($(this).val()) {
-                    case '1':
-                        $("#span-inside-cabinet").addClass("display-inline-important");
-                        break;
-                    case '2':
-                        $("#span-inside-fridge").addClass("display-inline-important");
-                        break;
-                    case '3':
-                        $("#span-inside-oven").addClass("display-inline-important");
-                        break;
-                    case '4':
-                        $("#span-laundry-wash").addClass("display-inline-important");
-                        break;
-                    case '5':
-                        $("#span-interior-window").addClass("display-inline-important");
-                        break;
-                }
-            }
-            else {
-                /**
-                 * Extra service blue border and blue image remove
-                 */
-                $(this).parent().removeClass('rounded-grey-box-active');
-                $(this).siblings().removeClass('img-extra-service-active');
-
-                /**
-                 * Hiding extra service span tag in the payment summary card
-                 */
-                switch ($(this).val()) {
-                    case '1':
-                        $("#span-inside-cabinet").removeClass("display-inline-important");
-                        break;
-                    case '2':
-                        $("#span-inside-fridge").removeClass("display-inline-important");
-                        break;
-                    case '3':
-                        $("#span-inside-oven").removeClass("display-inline-important");
-                        break;
-                    case '4':
-                        $("#span-laundry-wash").removeClass("display-inline-important");
-                        break;
-                    case '5':
-                        $("#span-interior-window").removeClass("display-inline-important");
-                        break;
-                }
-            }
-        });
-
-    // $(".fev-sp-input").change(function () {
-    //     //make all select btn normal
-    //     $(".fev-sp-input").parent().removeClass('btn-select-sp-active');
-    //     if ($(this).is(':checked')) {
-    //         //If current btn checkbox is active than set active class
-    //         $(this).parent().addClass('btn-select-sp-active');
-    //         //uncheck all checkbox
-    //         $(".fev-sp-input").prop("checked", false);
-    //         //make current checkbox checked because it was already checked and above line made it uncheck
-    //         $(this).prop("checked", true);
-    //     }
-    //     else {
-    //         //uncheck all checkbox
-    //         $(".fev-sp-input").prop("checked", false);
-    //     }
-    // });
+        }
+    });
 
     $("#schedule-plan-btn-continue").click(function () {
         if (document.getElementById("date-book-service").value != "") {
@@ -297,41 +227,66 @@ $(document).ready(function () {
             document.getElementById("pill-yourDetails-tab").disabled = true;
         }
     });
-
-    $("#pill-yourDetails-tab").click(function () {
+    
+    $("#btn-add-new-address").click(function () {
         $("#add-new-address-form-postal-code").val($("#postalCode").val());
+        document.getElementById("add-new-address-div").style.display = "block";
+        document.getElementById("btn-add-new-address").style.display = "none";
+    });
+
+    $("#add-new-address-btn-cancel").click(function () {
+        document.getElementById("add-new-address-div").style.display = "none";
+        document.getElementById("btn-add-new-address").style.display = "block";
     });
 
     $("#add-new-address-btn-save").click(function () {
         var streetName = $("#add-new-address-form-street-name").val();
         var houseNumber = $("#add-new-address-form-house-number").val();
         var postalCode = $("#add-new-address-form-postal-code").val();
-        var city = $("#add-new-address-form-city").val();
+        // var city = $("#add-new-address-form-city").val();
         var phone = $("#add-new-address-form-phone").val();
 
-        var model = {
-            StreetName: streetName,
-            HouseNumber: houseNumber,
-            PostalCode: postalCode,
-            City: city,
-            Phone: phone
-        }
-        alert(model);
+        if (streetName != "" && houseNumber != "" && city != "" && phone != "") {
+            if (phone.length == 10) {
+                if (!isNaN(phone)) {
+                    var model = {
+                        StreetName: streetName,
+                        HouseNumber: houseNumber,
+                        PostalCode: postalCode,
+                        City: city,
+                        Phone: phone
+                    }
 
-        $.post("SaveUserAddress", model, function (data) {
+                    $.post("SaveUserAddress", model, function (data) {
 
-            if (parseInt(data) >= 1) {
-                document.getElementById("add-new-address-btn-cancel").click();
-                updateAddressList();
+                        if (parseInt(data) >= 1) {
+                            document.getElementById("add-new-address-btn-cancel").click();
+                            updateAddressList();
+                        }
+                        else {
+                            alert("Something went wrong")
+                        }
+                    });
+                }
+                else {
+                    alert("Phone number should be all digit");
+                }
+
             }
             else {
-                alert("Something went wrong")
+                alert("Phone number should be 10 digit");
             }
-        });
+
+        }
+        else {
+            alert("Please insert all fields");
+        }
+
+
     });
 
     $("#your-details-continue").click(function () {
-        
+
         var isAnyAddressSelected = false;
         var x = document.getElementsByName("address");
         for (var i = 0; i < x.length; i++) {
@@ -350,13 +305,13 @@ $(document).ready(function () {
         }
     });
 
-    $("#payment-complete-booking").click(function(){
+    $("#payment-complete-booking").click(function () {
         var pincode = $("#postalCode").val();
         var serviceStartDate = $("#date-book-service").val();
         var serviceStartTime = $("#start-time-book-service").val();
         var serviceBasicHours = $("#basic-stay-time").val();
         var extraServieList = [];
-        $("input:checkbox[name=extra-services]:checked").each(function(){
+        $("input:checkbox[name=extra-services]:checked").each(function () {
 
             extraServieList.push($(this).val());
         });
@@ -365,43 +320,41 @@ $(document).ready(function () {
         var addressID = document.querySelector('input[name="address"]:checked').value;
         var fevServiceProviderID;
         var inputSPID = document.getElementsByName("fev-sp");
-        for(var i=0; i<inputSPID.length; i++){
-            if(inputSPID[i].checked){
+        for (var i = 0; i < inputSPID.length; i++) {
+            if (inputSPID[i].checked) {
                 fevServiceProviderID = inputSPID[i].value;
                 break;
             }
         }
 
         var model = {
-            ZipCode : pincode,
-            ServiceHours : serviceBasicHours,
-            ExtraHoursList : extraServieList,
-            Comments : comments,
-            HasPets : havePet,
-            AddressId : addressID,
-            FevServiceProviderID : fevServiceProviderID
+            ZipCode: pincode,
+            ServiceHours: serviceBasicHours,
+            ExtraHoursList: extraServieList,
+            Comments: comments,
+            HasPets: havePet,
+            AddressId: addressID,
+            FevServiceProviderID: fevServiceProviderID
         }
-        if(parseInt(serviceStartTime.split(":")[0]) >= 12){
+        if (parseInt(serviceStartTime.split(":")[0]) >= 12) {
             model["ServiceStartDate"] = serviceStartDate + " " + serviceStartTime;
         }
-        else{
+        else {
             model["ServiceStartDate"] = serviceStartDate + " " + serviceStartTime;
         }
 
-        $.post("CompleteBooking",model,function(data){
-            if(data != "false"){
-                // alert("your Service has been booked successfully!");
+        $.post("CompleteBooking", model, function (data) {
+            if (data != "false") {
                 document.getElementById("payment-complete-booking").disabled = true;
                 $("#booking-service-span-service-id").html(parseInt(data));
 
                 document.getElementById("booking-modal-link").click();
-                
-                $("#booking-modal-btn-ok").click(function(){
+
+                $("#booking-modal-btn-ok").click(function () {
                     document.getElementById("helperland-logo-big").click();
                 })
             }
-            else{
-                // alert("Something went wrong");
+            else {
                 $("#booking-modal-right-arrow-div").addClass("bg-danger");
                 $("#booking-modal-content-div").html('<h3 class="text-danger">Error</h3>');
             }
@@ -410,6 +363,36 @@ $(document).ready(function () {
 
 });
 
+function checkZipCode() {
+    var postalCode = document.getElementById("postalCode").value;
+
+    if (postalCode.length == 6) {
+        document.getElementById("error-postalCode").innerHTML = "";
+
+        $.post("IsValidPostalCode", { PostalCode: postalCode }, function (data) {
+            var city = JSON.parse(data);
+            if (data != "false") {
+                //If pinocde match
+                document.getElementById("pill-schedulePlan-tab").disabled = false;
+                document.getElementById("pill-schedulePlan-tab").click();
+                $("#add-new-address-form-city").val(city.CityName);
+                updateAddressList();
+                updateFevoriteServiceProviderList();
+            }
+            else {
+                //If pinocde don't match
+                document.getElementById("pill-schedulePlan-tab").disabled = true;
+                document.getElementById("pill-yourDetails-tab").disabled = true;
+                document.getElementById("pill-payment-tab").disabled = true;
+                document.getElementById("error-postalCode").innerHTML = "We are not providing service in this area. We'll notify you if any helper would start working near your area.";
+            }
+        });
+    }
+    else {
+        document.getElementById("pill-schedulePlan-tab").disabled = true;
+        document.getElementById("error-postalCode").innerHTML = "Pincode should be 6 digit"
+    }
+}
 
 function updateTotalPayment() {
     /**
@@ -465,10 +448,10 @@ function updateFevoriteServiceProviderList() {
     $.post("GetFevoriteServiceProviders", model, function (data) {
         var json = JSON.parse(data);
         document.getElementById("list-of-favourite-sp").innerHTML = "";
-        if(json.length == 0){
+        if (json.length == 0) {
             $("#fev-sp-header-div").addClass("d-none");
         }
-        else{
+        else {
             $("#fev-sp-header-div").removeClass("d-none");
         }
         for (var i = 0; i < json.length; i++) {

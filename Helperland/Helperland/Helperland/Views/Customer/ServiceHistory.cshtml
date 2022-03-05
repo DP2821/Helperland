@@ -1,0 +1,830 @@
+@{
+    ViewData["Title"] = "Service History";
+    Layout = "_StaticLayout";
+    String CurrentUserName = new CurrentLoggedInUser().GetName(Context.Request.Cookies["keepMeLoggedInToken"]);
+}
+<asp:content contentplaceholder id="css" runat="server">
+    <link href="~/assets/css/customer-service-history.css" rel="stylesheet" />
+</asp:content>
+
+<section>
+    <div class="container-fluid welcome-user">
+        <h3 class="text-center welcome">Welcome, <span class="customer-name">@CurrentUserName!</span></h3>
+    </div>
+</section>
+
+<section>
+    <div class="ms-auto me-auto" style="width: 95%;">
+        <div class="row mt-3 mb-5">
+            <div class="col-lg-3" id="dashboard-nav-left">
+                <div class="vertical-navbar">
+                    <ul class="nav navbar-nav" role="tablist">
+                        <li class="nav-item li-left m-0 active-tab" role="presentation" id="pills-dashboard-list">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-dashboard" type="button" role="tab"
+                                aria-controls="pills-dashboard" aria-selected="true">Dashboard</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-service-history" type="button" role="tab"
+                                aria-controls="pills-service-history" aria-selected="false">Service History</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-service-schedule" type="button" role="tab"
+                                aria-controls="pills-service-schedule" aria-selected="false">Service Schedule</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-fev-pros" type="button" role="tab" aria-controls="pills-fev-pros"
+                                aria-selected="false" id="pills-fev-pros-a-tag">Favorite Pros</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-invoices" type="button" role="tab" aria-controls="pills-invoices"
+                                aria-selected="false">Invoices</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-notifications" type="button" role="tab"
+                                aria-controls="pills-notifications" aria-selected="false">Notifications</a>
+                        </li>
+                        <li class="d-none nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-my-account" type="button" role="tab"
+                                aria-controls="pills-my-account" aria-selected="false" id="pills-my-account-a-tag">My
+                                Account</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-9 tab-content" id="pills-tabContent">
+
+                <div class="tab-pane fade show active" id="pills-dashboard" role="tabpanel"
+                    aria-labelledby="pills-dashboard-tab">
+                    <div class="row mb-1">
+                        <div class="col-6">
+                            <h4>Current Service Request</h4>
+                        </div>
+                        <div class="col-6 text-end">
+                            <a class="blue-rounded-btn text-decoration-none text-white p-2 ps-3 pe-3"
+                                asp-action="BookService" , asp-controller="Customer">
+                                Add New Service Request
+                            </a>
+                        </div>
+                    </div>
+
+                    <table class="table-dashboard" id="table-dashboard">
+                        <thead>
+                            <tr style="background-color: #efefef;">
+                                <th style="width: 12%;">Service Id</th>
+                                <th style="width: 22%;">Service Date</th>
+                                <th style="width: 24%;">Service Provider</th>
+                                <th style="width: 15%;">Payment</th>
+                                <th>Actions</th>
+
+                                <th hidden>Extras</th>
+                                <th hidden>Service Address</th>
+                                <th hidden>Phone</th>
+                                <th hidden>Email</th>
+                                <th hidden>Comments</th>
+
+                                <th hidden>Duration</th>
+                                <th hidden>HavePet</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr hidden>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <!-- <tr>
+                                    <td data-label="Service Id">
+                                        <p>1</p>
+                                    </td>
+                                    <td data-label="Service Date">
+                                        <img src="./assets/images/calendar2.png" alt="">
+                                        <strong id="date"> 06/09/2021</strong><br>
+                                        <img src="./assets/images/layer-14.png" alt="">
+                                        <span id="time">12:00 - 6:00</span>
+                                    </td>
+                                    <td data-label="Service Provider">
+                                        <div class="row">
+                                            <div class="col-6 col-md-3">
+                                                <img class="cap-border" src="./assets/images/cap.png" alt="">
+                                            </div>
+                                            <div class="col-6 col-md-9">
+                                                John wick <br>
+                                                <span><img src="./assets/images/star1.png" alt=""><img
+                                                        src="./assets/images/star1.png" alt=""><img
+                                                        src="./assets/images/star1.png" alt=""><img
+                                                        src="./assets/images/star1.png" alt=""><img
+                                                        src="./assets/images/star2.png" alt="">4</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td data-label="Payment">
+                                        <span class="blue-price">
+                                            &euro;63
+                                        </span>
+                                    </td>
+                                    <td data-label="Actions">
+                                        <button class="blue-rounded-btn text-white p-2">Reschedule</button>
+                                        <button class="blue-rounded-btn text-white p-2 bg-danger">Cancel</button>
+                                    </td>
+                                </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade" id="pills-service-history" role="tabpanel"
+                    aria-labelledby="pills-service-history-tab">
+                    <div class="row mb-1">
+                        <div class="col-6">
+                            <h4>Service History</h4>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button class="blue-rounded-btn text-white p-2" onclick="export_excel()">
+                                Export
+                            </button>
+                        </div>
+                    </div>
+                    <table class="table-service-history" id="table-service-history">
+                        <thead>
+                            <tr style="background-color: #efefef;">
+                                <th style="width: 12%;">Service Id</th>
+                                <th style="width: 174px;">Service Date1</th>
+                                <th style="width: 193px;">Service Provider</th>
+                                <th style="width: 107px;">Payment</th>
+                                <th>Status</th>
+
+                                <th>Rate SP</th>
+                                <th hidden>Service Address</th>
+                                <th hidden>Phone</th>
+                                <th hidden>Email</th>
+                                <th hidden>Comments</th>
+
+                                <th hidden>Duration</th>
+                                <th hidden>Extras</th>
+                                <th hidden>HavePet</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr hidden>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade" id="pills-service-schedule" role="tabpanel"
+                    aria-labelledby="pills-service-schedule-tab">
+                    <h2>Service Schedule</h2>
+                </div>
+
+                <div class="tab-pane fade" id="pills-fev-pros" role="tabpanel" aria-labelledby="pills-fev-pros-tab">
+                    <table class="table-fev-pros" id="table-fev-pros">
+                        <thead>
+                            <tr style="background-color: #efefef;">
+                                <th>Image</th>
+                                <th>SP name</th>
+                                <th>Rating star</th>
+                                <th>Num of Cleaning</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr hidden>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade" id="pills-invoices" role="tabpanel" aria-labelledby="pills-invoices-tab">
+                    <h2>Invoices</h2>
+                </div>
+
+                <div class="tab-pane fade" id="pills-notifications" role="tabpanel"
+                    aria-labelledby="pills-notifications-tab">
+                    <h2>Notifications</h2>
+                </div>
+                <div class="tab-pane fade" id="pills-my-account" role="tabpanel" aria-labelledby="pills-my-account-tab">
+                    <section>
+                        <ul class="nav nav-pills mb-3 my-details-ul" id="pills-tab" role="tablist">
+                            <li style="border-bottom: 3px solid #1d7a8c;" class="text-center col-sm-4 nav-item"
+                                role="presentation">
+                                <button class="border-0 bg-white" id="pills-my-details-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-my-details" type="button" role="tab"
+                                    aria-controls="pills-my-details" aria-selected="true"><b style="color: #1d7a8c;">My Details</b></button>
+                            </li>
+                            <li class="text-center col-sm-4 nav-item"
+                                role="presentation">
+                                <button class="border-0 bg-white" id="pills-my-address-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-my-address" type="button" role="tab"
+                                    aria-controls="pills-my-address" aria-selected="false"><b>My Address</b></button>
+                            </li>
+                            <li class="text-center col-sm-4 nav-item"
+                                role="presentation">
+                                <button class="border-0 bg-white" id="pills-change-password-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-change-password" type="button" role="tab"
+                                    aria-controls="pills-change-password" aria-selected="false"><b>Change Password</b></button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-my-details" role="tabpanel"
+                                aria-labelledby="pills-my-details-tab">
+                                <div class="row">
+                                    <div class="col-sm-4 mt-3">
+                                        <label for="my-details-first-name">First name</label>
+                                        <input class="form-control" type="text" name="" id="my-details-first-name"
+                                            placeholder="First name">
+                                    </div>
+                                    <div class="col-sm-4 mt-3">
+                                        <label for="my-details-last-name">Last name</label>
+                                        <input class="form-control" type="text" name="" id="my-details-last-name"
+                                            placeholder="Last name">
+                                    </div>
+                                    <div class="col-sm-4 mt-3">
+                                        <label for="my-details-email">E-mail address</label>
+                                        <input disabled class="form-control" type="email" name="" id="my-details-email"
+                                            placeholder="E-mail address">
+                                    </div>
+                                    <div class="col-sm-4 mt-3">
+                                        <label for="my-details-mobile">Mobile number</label>
+                                        <div class="input-group mb-3 input-number">
+                                            <span class="input-group-text" id="basic-addon1">+46</span>
+                                            <input type="number" class="form-control" placeholder="Mobile Number"
+                                                id="my-details-mobile">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 mt-3">
+                                        <label for="my-details-dob">Date of Birth</label>
+                                        <div class="date-div">
+                                            <img class="img-calendar" src="~/assets/images/calendar-setup-service.png"
+                                                alt="">
+                                            <input class="input-date" type="date" name="" id="my-details-dob">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row">
+                                    <label for="my-details-lan">My Preferred Language</label>
+                                    <div class="col-auto mt-1">
+                                        <select class="form-select" id="my-details-lan">
+                                            <option value="english">
+                                                English
+                                            </option>
+                                            <option value="french">
+                                                French
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button class="blue-rounded-btn text-white p-2 mt-3 ps-4 pe-4"
+                                    id="my-details-save-btn">Save</button>
+
+                            </div>
+
+                            <div class="tab-pane fade" id="pills-my-address" role="tabpanel"
+                                aria-labelledby="pills-my-address-tab">
+                                <div class="my-address-main-div" id="my-address-main-div">
+                                    <div class="my-address-row my-address-row-header">
+                                        <div class="col">
+                                            Address
+                                        </div>
+                                        <div class="col-2">
+                                            Action
+                                        </div>
+                                    </div>
+
+                                    <div id="my-address-list-of-address">
+                                        <div class="my-address-row">
+                                            <div class="col">
+                                                <b>Address: </b>New primary school, Sakariya <br>
+                                                <b>Phone number: </b>99663355887
+                                            </div>
+                                            <div class="col-2">
+                                                <a class="text-decoration-none" href="#">
+                                                    <img src="~/assets/images/edit-address.png" alt="edit" width="20px">
+                                                </a>
+                                                <a class="text-decoration-none" href="#">
+                                                    <img src="~/assets/images/remove-address.png" alt="remove"
+                                                        width="20px">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show" id="pills-change-password" role="tabpanel"
+                                aria-labelledby="pills-change-password-tab">
+
+                                <div class="row">
+                                    <div class="col-md-12" style="max-width: 350px">
+                                        <div>
+                                            <label for="old-password">Old Password</label>
+                                            <input type="password" class="form-control" placeholder="Current Password"
+                                                id="old-password">
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="new-password">New Password</label>
+                                            <input type="password" class="form-control" placeholder="Password"
+                                                id="new-password">
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="confirm-password">Confirm Password</label>
+                                            <input type="password" class="form-control" placeholder="Confirm Password"
+                                                id="confirm-password">
+                                        </div>
+                                        <div class="mt-3">
+                                            <button type="submit" class="blue-rounded-btn text-white p-2 ps-4 pe-4"
+                                                id="change-password-btn-save">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Dashboard Service Modal -->
+<section>
+    <a href="#" class="modallink d-none" data-bs-toggle="modal" data-bs-target="#dashboard-service-details-modal"
+        id="dashboard-service-details-a-tag">
+        Dashboard
+        Service details
+    </a>
+    <div class="modal fade" id="dashboard-service-details-modal" tabindex="-1"
+        aria-labelledby="dashboardServiceDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="container mt-1 ms-1 d-flex">
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <p>Service Details</p>
+                    <h4 class="m-1" id="dashboard-service-modal-date">05/10/2021 08:00 - 11:30</h4>
+                    <p class="m-1"><b>Duration:</b> <span id="dashboard-service-modal-duration">3.5</span> Hrs</p>
+                    <hr class="m-2">
+
+                    <p class="m-1"><b>Service Id: </b><span id="dashboard-service-modal-serviceId">8485</span></p>
+                    <p class="m-1">
+                        <b>Extras: </b><span id="dashboard-service-modal-extras">Inside cabinates</span>
+                    </p>
+                    <p class="m-1">
+                        <b>Net Amount: </b><span class="ms-5 fs-2 text-primary">
+                            <span class="ms-5 fs-3 text-primary" id="dashboard-service-modal-amount"></span>
+                            &euro;
+                        </span>
+                    </p>
+                    <hr class="m-2">
+
+                    <p class="m-1"><b>Service Address: </b><span id="dashboard-service-modal-address"></span></p>
+                    <p class="m-1"><b>Billing Address: </b><span>Same as cleaning Address</span></p>
+                    <p class="m-1"><b>Phone: </b><span id="dashboard-service-modal-phone"></span></p>
+                    <p class="m-1"><b>Email: </b><span id="dashboard-service-modal-email"></span></p>
+                    <hr class="m-2">
+
+                    <p class="m-1"><b>Comments </b></p>
+                    <!-- <img src="" alt="red-cross-img">  -->
+                    <p class="m-1"><span id="dashboard-service-modal-comments">&nbsp;</span></p>
+                    <p class="m-1"><span id="dashboard-service-modal-havePet">&nbsp;</span></p>
+                    <div id="dashboard-service-modal-btns-div">
+                        <hr class="m-2">
+
+                        <button class="blue-rounded-btn text-white p-2"
+                            id="dashboard-service-modal-reschedule">Reschedule</button>
+                        <button class="blue-rounded-btn text-white p-2 bg-danger"
+                            id="dashboard-service-modal-cancel">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reschedule Service Modal -->
+<section>
+    <a href="#" class="modallink d-none" data-bs-toggle="modal" data-bs-target="#reschedule-service-modal"
+        id="reschedule-service-modal-a-tag">Reschedule</a>
+
+    <div class="modal fade" id="reschedule-service-modal" tabindex="-1" aria-labelledby="rescheduleServiceModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="max-width: 350px; margin-left: 100px;">
+                <div class="container mt-1 ms-1 d-flex">
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"
+                        id="reschedule-service-modal-btn-close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <h4>Reschedule Service Request</h4>
+
+                    <p class="mt-4 mb-0">Select New Date & Time</p>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <!-- Input type date -->
+                            <div class="date-div">
+                                <img class="img-calendar" src="~/assets/images/calendar-setup-service.png" alt="">
+                                <input class="input-date" type="date" name="" id="start-date-reschedule-service">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <select class="input-start-time form-select" aria-label="Default select example"
+                                id="start-time-reschedule-service">
+                                <option value="08:00" selected>8:00</option>
+                                <option value="08:30">8:30</option>
+                                <option value="09:00">9:00</option>
+                                <option value="09:30">9:30</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:30">10:30</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:30">13:30</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:30">15:30</option>
+                                <option value="16:00">16:00</option>
+                                <option value="16:30">16:30</option>
+                                <option value="17:00">17:00</option>
+                                <option value="17:30">17:30</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+
+                            </select>
+
+                            <input hidden type="number" id="serviceId-reschedule-service">
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <button class="blue-rounded-btn text-white p-2 w-100"
+                            id="reschedule-service-modal-update">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cancel Service Modal -->
+<section>
+    <a href="#" class="modallink d-none" data-bs-toggle="modal" data-bs-target="#cancel-service-modal"
+        id="cancel-service-modal-a-tag">Cancel</a>
+    <div class="modal fade" id="cancel-service-modal" tabindex="-1" aria-labelledby="cancelServiceModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="max-width: 350px; margin-left: 100px;">
+                <div class="container mt-1 ms-1 d-flex">
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"
+                        id="cancel-service-modal-btn-close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <h4>Cancel Service Request</h4>
+
+                    <p class="mt-4 mb-0">Why you want to cancel the service request?</p>
+                    <textarea class="form-control" id="cancel-service-modal-reason"></textarea>
+                    <input hidden type="number" id="serviceId-cancel-service">
+                    <div class="text-center mt-3">
+                        <button class="blue-rounded-btn text-white p-2 w-100"
+                            id="cancel-service-modal-cancel-now">Cancel Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Rating Service Modal -->
+<section>
+    <a href="#" class="modallink d-none" data-bs-toggle="modal" data-bs-target="#rating-service-modal"
+        id="rating-service-modal-a-tag">Ratings</a>
+    <div class="modal fade" id="rating-service-modal" tabindex="-1" aria-labelledby="ratingServiceModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="max-width: 450px; ">
+                <div class="container mt-1 ms-1 d-flex">
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"
+                        id="rate-service-modal-btn-close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <div class="row">
+                        <div class="col-2">
+                            <img width="65px" class="cap-border" src="~/assets/images/cap.png" alt="">
+                        </div>
+                        <div class="col-10">
+                            <p id="rating-modal-sp-name"></p>
+                            <span>
+                                <div class="d-flex">
+                                    <div style="width: 30px;">
+                                        <p class="text-warning" style="font-size: 30px;">★</p>
+                                    </div>
+                                    <div style="width: 30px;">
+                                        <p class="text-warning" style="font-size: 30px;">★</p>
+                                    </div>
+
+                                    <div style="width: 30px;">
+                                        <p class="text-warning" style="font-size: 30px;">★</p>
+                                    </div>
+
+                                    <div style="width: 30px;">
+                                        <p class="text-warning" style="font-size: 30px;">★</p>
+                                    </div>
+
+                                    <div style="width: 30px;">
+                                        <p class="text-warning" style="font-size: 30px;">★</p>
+                                    </div>
+                                    <p class="m-2" style="z-index: 10;" id="rating-modal-average-ratings">1</p>
+                                </div>
+                            </span>
+                            <div class="bg-white position-relative star-cover-div" id="rating-modal-white-bg-div">
+                            </div>
+
+                            <div class="d-flex position-absolute" style="margin-top: -85px; z-index: 5;">
+                                <div style="width: 30px;">
+                                    <p class="text-warning" style="font-size: 30px;">☆</p>
+                                </div>
+                                <div style="width: 30px;">
+                                    <p class="text-warning" style="font-size: 30px;">☆</p>
+                                </div>
+
+                                <div style="width: 30px;">
+                                    <p class="text-warning" style="font-size: 30px;">☆</p>
+                                </div>
+
+                                <div style="width: 30px; z-index: 100;">
+                                    <p class="text-warning" style="font-size: 30px;">☆</p>
+                                </div>
+
+                                <div style="width: 30px;">
+                                    <p class="text-warning" style="font-size: 30px;">☆</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="m-0">Rate your service provider</h4>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-auto">
+                            <p>On time arriaval</p>
+                            <p>Friendly</p>
+                            <p>Quality of service</p>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex">
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star rating-p-star"
+                                            id="on-time-arrival-rating-p-1">★</p>
+                                        <input class="d-none" type="radio" name="on-time-arrival-rating"
+                                            id="on-time-arrival-rating-1" value="1">
+                                    </label>
+                                </div>
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="on-time-arrival-rating-p-2">☆</p>
+                                        <input class="d-none" type="radio" name="on-time-arrival-rating"
+                                            id="on-time-arrival-rating-2" value="2">
+                                    </label>
+                                </div>
+
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="on-time-arrival-rating-p-3">☆</p>
+                                        <input class="d-none" type="radio" name="on-time-arrival-rating"
+                                            id="on-time-arrival-rating-3" value="3">
+                                    </label>
+                                </div>
+
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="on-time-arrival-rating-p-4">☆</p>
+                                        <input class="d-none" type="radio" name="on-time-arrival-rating"
+                                            id="on-time-arrival-rating-4" value="4">
+                                    </label>
+                                </div>
+
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="on-time-arrival-rating-p-5">☆</p>
+                                        <input class="d-none" type="radio" name="on-time-arrival-rating"
+                                            id="on-time-arrival-rating-5" value="5">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="d-flex">
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="friendly-rating-p-1">★</p>
+                                        <input class="d-none" type="radio" name="friendly-rating" id="friendly-rating-1"
+                                            value="1">
+                                    </label>
+                                </div>
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="friendly-rating-p-2">☆</p>
+                                        <input class="d-none" type="radio" name="friendly-rating" id="friendly-rating-2"
+                                            value="2">
+                                    </label>
+                                </div>
+
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="friendly-rating-p-3">☆</p>
+                                        <input class="d-none" type="radio" name="friendly-rating" id="friendly-rating-3"
+                                            value="3">
+                                    </label>
+                                </div>
+
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="friendly-rating-p-4">☆</p>
+                                        <input class="d-none" type="radio" name="friendly-rating" id="friendly-rating-4"
+                                            value="4">
+                                    </label>
+                                </div>
+
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="friendly-rating-p-5">☆</p>
+                                        <input class="d-none" type="radio" name="friendly-rating" id="friendly-rating-5"
+                                            value="5">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="d-flex">
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="quality-of-service-rating-p-1">★</p>
+                                        <input class="d-none" type="radio" name="quality-of-service-rating"
+                                            id="quality-of-service-rating-1" value="1">
+                                    </label>
+                                </div>
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="quality-of-service-rating-p-2">☆</p>
+                                        <input class="d-none" type="radio" name="quality-of-service-rating"
+                                            id="quality-of-service-rating-2" value="2">
+                                    </label>
+                                </div>
+
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="quality-of-service-rating-p-3">☆</p>
+                                        <input class="d-none" type="radio" name="quality-of-service-rating"
+                                            id="quality-of-service-rating-3" value="3">
+                                    </label>
+                                </div>
+
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="quality-of-service-rating-p-4">☆</p>
+                                        <input class="d-none" type="radio" name="quality-of-service-rating"
+                                            id="quality-of-service-rating-4" value="4">
+                                    </label>
+                                </div>
+
+                                <div style="width: 30px;">
+                                    <label>
+                                        <p class="text-warning rating-p-star" id="quality-of-service-rating-p-5">☆</p>
+                                        <input class="d-none" type="radio" name="quality-of-service-rating"
+                                            id="quality-of-service-rating-5" value="5">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="p-0 m-0">Feedback on service provider</p>
+                    <textarea class="form-control" id="rating-service-comments"></textarea>
+                    <input hidden type="number" id="rate-service-service-id">
+                    <input hidden type="number" id="rate-service-service-provider-id">
+                    <button class="btn bg-success text-white modal-btn p-2 ps-3 pe-3 mt-2"
+                        id="rating-service-submit-btn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Edit Address Modal -->
+<section>
+    <a href="#" class="modallink d-none" data-bs-toggle="modal" data-bs-target="#edit-address-modal"
+        id="edit-address-modal-a-tag">Edit</a>
+    <div class="modal fade" id="edit-address-modal" tabindex="-1" aria-labelledby="editAddressModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="container mt-1 ms-1 d-flex">
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"
+                        id="edit-address-modal-btn-close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <h4>Edit Address</h4>
+
+                    <div id="add-new-address-div" class="mt-3 new-address">
+                        <div class="row">
+                            <input hidden type="text" id="edit-address-form-addres-id">
+                            <div class="col-6">
+                                <label for="street-name">Street name</label>
+                                <input type="text" class="form-control mb-3" placeholder="Street name"
+                                    id="edit-address-form-street-name">
+                            </div>
+                            <div class="col-6">
+                                <label for="house-number">House number</label>
+                                <input type="text" class="form-control mb-3" placeholder="House number"
+                                    id="edit-address-form-house-number">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="address-postal-code">Postal code</label>
+                                <input disabled type="number" class="form-control mb-3" placeholder="Postal code"
+                                    id="edit-address-form-postal-code">
+                            </div>
+                            <div class="col-6">
+                                <label for="city">City</label>
+                                <input disabled type="text" class="form-control mb-3" placeholder="City"
+                                    id="edit-address-form-city">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="phone">Phone number</label>
+                                <div class="input-group mb-3 input-number">
+                                    <span class="input-group-text" id="basic-addon1">+49</span>
+                                    <input type="number" class="form-control" placeholder="Phone Number"
+                                        id="edit-address-form-phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="blue-rounded-btn text-white p-2"
+                                id="edit-address-btn-edit">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/assets/js/customer-service-history.js"></script>
+<link href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section Scripts {
+@{
+    <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
