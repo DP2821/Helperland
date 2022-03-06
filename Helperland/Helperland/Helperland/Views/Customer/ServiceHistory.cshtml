@@ -1,7 +1,7 @@
 @{
     ViewData["Title"] = "Service History";
     Layout = "_StaticLayout";
-    String CurrentUserName = new CurrentLoggedInUser().GetName(Context.Request.Cookies["keepMeLoggedInToken"]);
+    string? CurrentUserName = new CurrentLoggedInUser().GetName(Context.Request.Cookies["keepMeLoggedInToken"]);
 }
 <asp:content contentplaceholder id="css" runat="server">
     <link href="~/assets/css/customer-service-history.css" rel="stylesheet" />
@@ -111,41 +111,6 @@
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <!-- <tr>
-                                    <td data-label="Service Id">
-                                        <p>1</p>
-                                    </td>
-                                    <td data-label="Service Date">
-                                        <img src="./assets/images/calendar2.png" alt="">
-                                        <strong id="date"> 06/09/2021</strong><br>
-                                        <img src="./assets/images/layer-14.png" alt="">
-                                        <span id="time">12:00 - 6:00</span>
-                                    </td>
-                                    <td data-label="Service Provider">
-                                        <div class="row">
-                                            <div class="col-6 col-md-3">
-                                                <img class="cap-border" src="./assets/images/cap.png" alt="">
-                                            </div>
-                                            <div class="col-6 col-md-9">
-                                                John wick <br>
-                                                <span><img src="./assets/images/star1.png" alt=""><img
-                                                        src="./assets/images/star1.png" alt=""><img
-                                                        src="./assets/images/star1.png" alt=""><img
-                                                        src="./assets/images/star1.png" alt=""><img
-                                                        src="./assets/images/star2.png" alt="">4</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td data-label="Payment">
-                                        <span class="blue-price">
-                                            &euro;63
-                                        </span>
-                                    </td>
-                                    <td data-label="Actions">
-                                        <button class="blue-rounded-btn text-white p-2">Reschedule</button>
-                                        <button class="blue-rounded-btn text-white p-2 bg-danger">Cancel</button>
-                                    </td>
-                                </tr> -->
                         </tbody>
                     </table>
                 </div>
