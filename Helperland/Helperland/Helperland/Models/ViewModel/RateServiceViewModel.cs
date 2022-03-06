@@ -8,7 +8,7 @@ namespace Helperland.Models.ViewModel
         [Required]
         public int ServiceProviderId { get; set; }
         [Required]
-        public string Comments { get; set; }
+        public string? Comments { get; set; }
         [Required]
         public int OnTime { get; set; }
         [Required]

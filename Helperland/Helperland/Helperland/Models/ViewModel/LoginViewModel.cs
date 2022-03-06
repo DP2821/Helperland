@@ -7,11 +7,11 @@ namespace Helperland.Models.ViewModel
         [Required]
         [Display(Name = "E-mail")]
         [EmailAddress]
-        public String Email { get; set; }
+        public string Email { get; set; } = null!;
 
         [Required]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
-        public String Password { get; set; }
+        public string Password { get; set; } = null!;
     }
 }

@@ -1,5 +1,5 @@
 ﻿@{
-    String CurrentUserName = new CurrentLoggedInUser().GetName(Context.Request.Cookies["keepMeLoggedInToken"]);
+    string? CurrentUserName = new CurrentLoggedInUser().GetName(Context.Request.Cookies["keepMeLoggedInToken"]);
     int? UserTypeID = new CurrentLoggedInUser().GetUserTypeId(Context.Request.Cookies["keepMeLoggedInToken"]);
 }
 <!DOCTYPE html>

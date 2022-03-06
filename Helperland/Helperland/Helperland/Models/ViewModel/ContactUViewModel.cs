@@ -10,28 +10,28 @@ namespace Helperland.Models.ViewModel
     {
         [Required]
         [Display(Name = "First name")]
-        public string? FirstName { get; set; }
+        public string FirstName { get; set; } = null!;
 
         [Required]
         [Display(Name = "Last name")]
-        public string? LastName { get; set; }
+        public string LastName { get; set; } = null!;
 
         [Required]
         [Display(Name = "Phone number")]
         [DataType(DataType.PhoneNumber)]
-        public string? PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } = null!;
 
         [Required]
         [Display(Name = "E-mail")]
         [EmailAddress]
-        public string? Email { get; set; }
+        public string Email { get; set; } = null!;
 
         [Required]
         [Display(Name = "Subject")]
-        public string? Subject { get; set; }
+        public string Subject { get; set; } = null!;
 
         [Required]
         [Display(Name ="Message")]
-        public string? Message { get; set; }
+        public string Message { get; set; } = null!;
     }
 }
