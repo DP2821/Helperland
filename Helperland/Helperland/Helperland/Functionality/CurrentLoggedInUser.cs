@@ -7,7 +7,7 @@ namespace Helperland.Functionality
     {
         HelperlandContext _helperlandContext = new HelperlandContext();
         
-        public String? GetName(String token)
+        public string? GetName(string? token)
         {
             if (token != null)
             {
@@ -21,7 +21,7 @@ namespace Helperland.Functionality
             return null;
         }
 
-        public int GetUserTypeId(String token)
+        public int GetUserTypeId(string? token)
         {
             if (token != null)
             {
@@ -35,7 +35,7 @@ namespace Helperland.Functionality
             return -1;
         }
 
-        public int GetUserId(string token){
+        public int GetUserId(string? token){
             if(token != null){
                 int  userId = _helperlandContext.Users.Where(u => u.KeepMeLoggedInToken == token).Select(u => u.UserId).FirstOrDefault();
 
@@ -46,7 +46,7 @@ namespace Helperland.Functionality
             return -1;
         }        
 
-        public string? GetEmail(string token){
+        public string? GetEmail(string? token){
             if(token != null){
                 string? userEmail = _helperlandContext.Users.Where(u => u.KeepMeLoggedInToken == token).Select(u => u.Email).FirstOrDefault();
 

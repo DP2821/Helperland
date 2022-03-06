@@ -54,9 +54,9 @@ namespace Helperland.Controllers
 
 
         [HttpPost]
-        public IActionResult Login(HomeViewModel homeViewModel)
+        public IActionResult Login(HomeViewModel? homeViewModel)
         {
-            User user = _helperlandContext.Users.Where(u => u.Email == homeViewModel.Login.Email).FirstOrDefault();
+            User? user = _helperlandContext.Users.Where(u => u.Email == homeViewModel.Login.Email).FirstOrDefault();
 
             if (user != null)
             {
@@ -64,7 +64,7 @@ namespace Helperland.Controllers
                 if (user.Password == hashPassword)
                 {
                     GlobalData globalData = new GlobalData();
-                    if(user.UserTypeId == globalData.CustomerTypeId || user.UserTypeId == globalData.SpTypeId || user.UserTypeId == globalData.AdminTypeId)
+                    if (user.UserTypeId == globalData.CustomerTypeId || user.UserTypeId == globalData.SpTypeId || user.UserTypeId == globalData.AdminTypeId)
                     {
                         String token = new TokenGenerator().GetToken();
                         user.KeepMeLoggedInToken = token;
@@ -75,7 +75,7 @@ namespace Helperland.Controllers
 
                         if (user.UserTypeId == globalData.CustomerTypeId)
                         {
-                            return RedirectToAction("ServiceHistory","Customer");
+                            return RedirectToAction("ServiceHistory", "Customer");
                         }
                         else if (user.UserTypeId == globalData.SpTypeId)
                         {
@@ -90,7 +90,7 @@ namespace Helperland.Controllers
                     {
                         //In case of UserId is not 1 2 3
                         Console.WriteLine("UserId is not valid");
-                        return RedirectToAction("Error","Home");
+                        return RedirectToAction("Error", "Home");
                     }
                 }
                 else
@@ -111,7 +111,7 @@ namespace Helperland.Controllers
 
         public IActionResult ForgotPassword(HomeViewModel homeViewModel)
         {
-            User user = _helperlandContext.Users.Where(u => u.Email == homeViewModel.Forgot.Email).FirstOrDefault();
+            User? user = _helperlandContext.Users.Where(u => u.Email == homeViewModel.Forgot.Email).FirstOrDefault();
             if (user != null)
             {
                 String token = new TokenGenerator().GetToken();
@@ -127,29 +127,29 @@ namespace Helperland.Controllers
             {
                 //Email is wrong
                 Console.WriteLine("User not found");
-                return RedirectToAction("Error","Home");
+                return RedirectToAction("Error", "Home");
             }
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
 
         public IActionResult ResetPassword(string email, string token)
         {
-            User user = _helperlandContext.Users.Where(u => u.Email == email && u.ResetToken == token).FirstOrDefault();
+            User? user = _helperlandContext.Users.Where(u => u.Email == email && u.ResetToken == token).FirstOrDefault();
             if (user != null)
             {
                 return View();
             }
             else
             {
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
         }
         [HttpPost]
         public IActionResult ResetPassword(ResetPasswordViewModel resetPasswordViewModel)
         {
 
-            User user = _helperlandContext.Users.Where(u => u.Email == resetPasswordViewModel.Email && u.ResetToken == resetPasswordViewModel.Token).FirstOrDefault();
+            User? user = _helperlandContext.Users.Where(u => u.Email == resetPasswordViewModel.Email && u.ResetToken == resetPasswordViewModel.Token).FirstOrDefault();
             if (user != null)
             {
                 string hashPassword = new MD5Hashing().GetMd5Hash(md5Hash, resetPasswordViewModel.Password);
@@ -157,31 +157,46 @@ namespace Helperland.Controllers
                 user.ResetToken = null;
                 _helperlandContext.Users.Update(user);
                 _helperlandContext.SaveChanges();
-                return RedirectToAction("Index", "Home", new {loginModal = "true"});
+                return RedirectToAction("Index", "Home", new { loginModal = "true" });
             }
             else
             {
                 //In a case of user recored has been deleted
                 Console.WriteLine("User not found");
-                return RedirectToAction("Error","Home");
+                return RedirectToAction("Error", "Home");
             }
         }
 
 
         public IActionResult LogOut()
         {
-            String keepMeLoggedInToken = Request.Cookies["keepMeLoggedInToken"];
-            User user = _helperlandContext.Users.Where(u => u.KeepMeLoggedInToken == keepMeLoggedInToken).FirstOrDefault();
-            user.KeepMeLoggedInToken = null;
-            _helperlandContext.Users.Update(user);
-            _helperlandContext.SaveChanges();
-
-            //Removing all cookies...
-            foreach (var cookie in HttpContext.Request.Cookies)
+            String? keepMeLoggedInToken = Request.Cookies["keepMeLoggedInToken"];
+            if (keepMeLoggedInToken != null)
             {
-                Response.Cookies.Delete(cookie.Key);
+
+                User? user = _helperlandContext.Users.Where(u => u.KeepMeLoggedInToken == keepMeLoggedInToken).FirstOrDefault();
+                if (user != null)
+                {
+                    user.KeepMeLoggedInToken = null;
+                    _helperlandContext.Users.Update(user);
+                    _helperlandContext.SaveChanges();
+
+                    //Removing all cookies...
+                    foreach (var cookie in HttpContext.Request.Cookies)
+                    {
+                        Response.Cookies.Delete(cookie.Key);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("User not found");
+                }
             }
-            return RedirectToAction("Index","Home");
+            else
+            {
+                Console.WriteLine("Token not found");
+            }
+            return RedirectToAction("Index", "Home");
         }
 
 

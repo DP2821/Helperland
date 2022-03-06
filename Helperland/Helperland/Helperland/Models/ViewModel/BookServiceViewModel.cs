@@ -36,7 +36,7 @@ namespace Helperland.Models.ViewModel
     public class FavoriteServiceProvider
     {
         public int? Id { get;}
-        public string Name { get;}
+        public string? Name { get;}
 
     }
 }

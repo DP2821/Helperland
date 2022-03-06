@@ -1,6 +1,7 @@
 $(document).ready(function () {
   updateDashboardTable();
   updateServiceHistoryTabel();
+  resetRateToOneStar();
 
   if (document.location.search.includes("my-account=true")) {
     document.getElementById("pills-my-account-a-tag").click();
@@ -183,7 +184,6 @@ $(document).ready(function () {
     var postalCode = $("#edit-address-form-postal-code").val();
     var city = $("#edit-address-form-city").val();
     var mobile = $("#edit-address-form-phone").val();
-
     var modal = {
       AddressId: parseInt(addressID),
       AddressLine1: addressLine1,
@@ -193,18 +193,53 @@ $(document).ready(function () {
       Mobile: mobile
     }
 
-    $.post("UpdateEditAddress", modal, function (data) {
 
-      if (data == "true") {
-        updateAddressList();
-        document.getElementById("edit-address-modal-btn-close").click();
-        alert("Address is Successfully updated");
+    if (addressID == "") {
+      var model2 = {
+        StreetName: addressLine1,
+        HouseNumber: addressLine2,
+        PostalCode: postalCode,
+        City: city,
+        Phone: mobile
       }
-      else {
-        alert(data);
-      }
+      $.post("SaveUserAddress", model2, function (data) {
 
-    });
+        if (parseInt(data) >= 1) {
+          updateAddressList();
+          document.getElementById("edit-address-modal-btn-close").click();
+          alert("Address is Successfully added");
+        }
+        else {
+          alert("No data changed");
+        }
+
+      });
+    }
+    else {
+      $.post("UpdateEditAddress", modal, function (data) {
+
+        if (data == "true") {
+          updateAddressList();
+          document.getElementById("edit-address-modal-btn-close").click();
+          alert("Address is Successfully updated");
+        }
+        else {
+          alert(data);
+        }
+
+      });
+    }
+
+  });
+
+  $("#my-details-add-new-address-btn").click(function () {
+    document.getElementById("edit-address-form-postal-code").disabled = false;
+    $("#edit-address-form-street-name").val("");
+    $("#edit-address-form-house-number").val("");
+    $("#edit-address-form-postal-code").val("");
+    $("#edit-address-form-city").val("");
+    $("#edit-address-form-phone").val("");
+    document.getElementById("edit-address-modal-a-tag").click();
   });
 
   $("#change-password-btn-save").click(function () {
@@ -242,17 +277,19 @@ $(document).ready(function () {
     updateFevPros();
   });
 
-  $("#on-time-arrival-rating-1").prop("checked", true);
-  $("#friendly-rating-1").prop("checked", true);
-  $("#quality-of-service-rating-1").prop("checked", true);
+  $("#edit-address-form-postal-code").change(function () {
+    var postalcode = $(this).val();
 
-  var onTimeArrivalRating = document.querySelector('input[name="on-time-arrival-rating"]:checked').value;
-  var friendlyRating = document.querySelector('input[name="friendly-rating"]:checked').value;
-  var qualityOfServiceRating = document.querySelector('input[name="quality-of-service-rating"]:checked').value;
-
-  var x = (parseInt(onTimeArrivalRating) + parseInt(friendlyRating) + parseInt(qualityOfServiceRating)) / 3 + "";
-  $("#rating-modal-average-ratings").html(x);
-  document.getElementById("rating-modal-white-bg-div").style.left = (parseInt(x.split(".")[0]) * 30) + 1 + (parseFloat("0." + x.split(".")[1]) * 22) + "px";
+    $.post("GetCityByZipCode", { postalcode: postalcode }, function (data) {
+      if (data != "false") {
+        $("#edit-address-form-city").val(data);
+      }
+      else {
+        $("#edit-address-form-city").val("");
+        alert("Invalid Zipcode");
+      }
+    });
+  });
 
   $("input:radio[name=on-time-arrival-rating]").change(function () {
     var onTimeArrivalRating = document.querySelector('input[name="on-time-arrival-rating"]:checked').value;
@@ -383,22 +420,22 @@ $(document).ready(function () {
     }
   });
 
-  $("#pills-my-details-tab").click(function(){
+  $("#pills-my-details-tab").click(function () {
     $(".my-details-ul").children().css("border-bottom", "3px solid grey");
     $(".my-details-ul").children().children().children().css("color", "#565656");
-    $(this).children().css( "color", "#1d7a8c" );
+    $(this).children().css("color", "#1d7a8c");
     $(this).parent().css("border-bottom", "3px solid #1d7a8c");
   });
-  $("#pills-my-address-tab").click(function(){
+  $("#pills-my-address-tab").click(function () {
     $(".my-details-ul").children().css("border-bottom", "3px solid grey");
     $(".my-details-ul").children().children().children().css("color", "#565656");
-    $(this).children().css( "color", "#1d7a8c" );
+    $(this).children().css("color", "#1d7a8c");
     $(this).parent().css("border-bottom", "3px solid #1d7a8c");
   });
-  $("#pills-change-password-tab").click(function(){
+  $("#pills-change-password-tab").click(function () {
     $(".my-details-ul").children().css("border-bottom", "3px solid grey");
     $(".my-details-ul").children().children().children().css("color", "#565656");
-    $(this).children().css( "color", "#1d7a8c" );
+    $(this).children().css("color", "#1d7a8c");
     $(this).parent().css("border-bottom", "3px solid #1d7a8c");
   });
 
@@ -543,6 +580,21 @@ function rescheduleService(serviceId, date, time) {
 function cancelService(serviceId) {
   $("#serviceId-cancel-service").val(serviceId);
   document.getElementById("cancel-service-modal-a-tag").click();
+}
+
+function resetRateToOneStar() {
+  $("#on-time-arrival-rating-1").prop("checked", true);
+  $("#friendly-rating-1").prop("checked", true);
+  $("#quality-of-service-rating-1").prop("checked", true);
+
+  var onTimeArrivalRating = document.querySelector('input[name="on-time-arrival-rating"]:checked').value;
+  var friendlyRating = document.querySelector('input[name="friendly-rating"]:checked').value;
+  var qualityOfServiceRating = document.querySelector('input[name="quality-of-service-rating"]:checked').value;
+
+  var x = (parseInt(onTimeArrivalRating) + parseInt(friendlyRating) + parseInt(qualityOfServiceRating)) / 3 + "";
+  $("#rating-modal-average-ratings").html(x);
+  document.getElementById("rating-modal-white-bg-div").style.left = (parseInt(x.split(".")[0]) * 30) + 1 + (parseFloat("0." + x.split(".")[1]) * 22) + "px";
+
 }
 
 function rateService(serviceId, serviceProviderId, serviceProviderName) {
