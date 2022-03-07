@@ -54,7 +54,7 @@ namespace Helperland.Controllers
 
 
         [HttpPost]
-        public IActionResult Login(HomeViewModel? homeViewModel)
+        public IActionResult Login(HomeViewModel homeViewModel)
         {
             User? user = _helperlandContext.Users.Where(u => u.Email == homeViewModel.Login.Email).FirstOrDefault();
 

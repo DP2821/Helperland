@@ -7,8 +7,8 @@ namespace Helperland.Models.ViewModel
         [Required]
         public int ServiceId { get; set; } 
         [Required]
-        public string? NewServiceDate { get; set; }
+        public string NewServiceDate { get; set; } = null!;
         [Required]
-        public string? NewServicetime { get; set; }
+        public string NewServicetime { get; set; } = null!;
     }
 }
