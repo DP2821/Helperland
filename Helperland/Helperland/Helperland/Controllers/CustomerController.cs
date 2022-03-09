@@ -244,7 +244,7 @@ namespace Helperland.Controllers
             var serviceRequests = (from sr in _helperlandContext.ServiceRequests
                                    join sa in _helperlandContext.ServiceRequestAddresses on sr.ServiceRequestId equals sa.ServiceRequestId
                                    // join se in _helperlandContext.ServiceRequestExtras on sr.ServiceRequestId equals se.ServiceRequestId
-                                   where sr.UserId == userId && sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW
+                                   where sr.UserId == userId && (sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW || sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_ACCEPTED) 
                                    select new
                                    {
                                        ServiceId = sr.ServiceRequestId,
@@ -283,7 +283,7 @@ namespace Helperland.Controllers
             var serviceRequests = (from sr in _helperlandContext.ServiceRequests
                                    join sa in _helperlandContext.ServiceRequestAddresses on sr.ServiceRequestId equals sa.ServiceRequestId
                                    // join se in _helperlandContext.ServiceRequestExtras on sr.ServiceRequestId equals se.ServiceRequestId
-                                   where sr.UserId == userId && sr.Status != new GlobalData().SERVICE_REQUEST_STATUS_NEW
+                                   where sr.UserId == userId && (sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_CANCELLED || sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_COMPLETED)
                                    select new
                                    {
                                        ServiceId = sr.ServiceRequestId,
@@ -315,7 +315,6 @@ namespace Helperland.Controllers
 
             return JsonSerializer.Serialize(serviceRequests);
         }
-
 
         public string RescheduleService(RescheduleServiceViewModel rescheduleServiceViewModel)
         {
@@ -392,8 +391,11 @@ namespace Helperland.Controllers
                         }
                     }
 
+                    int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
+
                     serviceRequest.ServiceStartDate = DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime, "yyyy-MM-dd HH:mm", null);
                     serviceRequest.ModifiedDate = DateTime.Now;
+                    serviceRequest.ModifiedBy = userId;
                     _helperlandContext.ServiceRequests.Update(serviceRequest);
                     _helperlandContext.SaveChanges();
                 }
@@ -409,7 +411,7 @@ namespace Helperland.Controllers
             return "true";
         }
 
-        public string CancelService(string ServiceId, string Comments)
+        public string CancelService(int ServiceId, string Comments)
         {
 
             if (ModelState.IsValid)
@@ -432,10 +434,12 @@ namespace Helperland.Controllers
                            );
                         }
                     }
+                    int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
 
                     serviceRequest.Comments = Comments;
                     serviceRequest.Status = new GlobalData().SERVICE_REQUEST_STATUS_CANCELLED;
                     serviceRequest.ModifiedDate = DateTime.Now;
+                    serviceRequest.ModifiedBy = userId;
                     _helperlandContext.ServiceRequests.Update(serviceRequest);
                     _helperlandContext.SaveChanges();
                 }
@@ -452,7 +456,6 @@ namespace Helperland.Controllers
 
             return "true";
         }
-
 
         public string RateService(RateServiceViewModel rateServiceViewModel)
         {

@@ -38,6 +38,7 @@ $(document).ready(function () {
     document.getElementById("pill-yourDetails-tab").disabled = true;
     document.getElementById("pill-payment-tab").disabled = true;
     document.getElementById("postalCode").value = "";
+    document.getElementById("payment-complete-booking").disabled = false;
     $(".checkbox-extra-service").prop("checked", false);
 
 
@@ -355,6 +356,7 @@ $(document).ready(function () {
                 })
             }
             else {
+                alert("Error"); //remove this alert
                 $("#booking-modal-right-arrow-div").addClass("bg-danger");
                 $("#booking-modal-content-div").html('<h3 class="text-danger">Error</h3>');
             }

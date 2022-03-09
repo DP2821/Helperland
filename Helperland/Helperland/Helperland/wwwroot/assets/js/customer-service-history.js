@@ -35,7 +35,7 @@ $(document).ready(function () {
       var time = $("#start-time-reschedule-service").val();
 
       var model = {
-        ServiceId: serviceId,
+        ServiceId: parseInt(serviceId),
         NewServiceDate: date,
         NewServicetime: time
       };
@@ -62,7 +62,7 @@ $(document).ready(function () {
       var reason = $("#cancel-service-modal-reason").val();
 
       var model = {
-        ServiceId: serviceId,
+        ServiceId: parseInt(serviceId),
         Comments: reason
       }
 
@@ -466,38 +466,6 @@ $(document).ready(function () {
     getDataFromDashboardTable(this, "serviceHistory");
   });
 
-  $("#table-dashboard").DataTable({
-    dom: "tlip",
-    pagingType: "full_numbers",
-    language: {
-      lengthMenu: "Show _MENU_ Entries",
-      info: "Total Reocrd : _MAX_",
-      paginate: {
-        first: "<img src='/assets/images/first-page-ic.svg' alt='first' />",
-        previous:
-          "<img style='transform: rotate(90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
-        next: "<img style='transform: rotate(-90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
-        last: "<img style='transform: rotate(180deg);' src='/assets/images/first-page-ic.svg' alt='first' />",
-      },
-    },
-    columnDefs: [{ orderable: false, targets: 4 }],
-  });
-  $("#table-service-history").DataTable({
-    dom: "tlip",
-    pagingType: "full_numbers",
-    language: {
-      lengthMenu: "Show _MENU_ Entries",
-      info: "Total Reocrd : _MAX_",
-      paginate: {
-        first: "<img src='/assets/images/first-page-ic.svg' alt='first' />",
-        previous:
-          "<img style='transform: rotate(90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
-        next: "<img style='transform: rotate(-90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
-        last: "<img style='transform: rotate(180deg);' src='/assets/images/first-page-ic.svg' alt='first' />",
-      },
-    },
-    columnDefs: [{ orderable: false, targets: [4, 5] }],
-  });
   $("#table-fev-pros").DataTable({
     dom: "tlip",
     pagingType: "full_numbers",
@@ -512,7 +480,12 @@ $(document).ready(function () {
         last: "<img style='transform: rotate(180deg);' src='./assets/images/first-page-ic.svg' alt='first' />",
       },
     },
-    columnDefs: [{ orderable: false, targets: 4 }],
+    columnDefs: [
+      {
+        "defaultContent": "-", 
+        "targets": "_all", 
+      }
+    ],
   });
 });
 function export_excel() {
@@ -535,11 +508,11 @@ function getDataFromDashboardTable(thisTd, tableName) {
   var col8_Phone = currentRow.find("td:eq(7)").text();
   var col9_Email = currentRow.find("td:eq(8)").text();
   var col10_Comments = currentRow.find("td:eq(9)").text();
-  var col11_Comments = currentRow.find("td:eq(10)").text();
+  var col11_Duration = currentRow.find("td:eq(10)").text();
   var col12_HavePet = currentRow.find("td:eq(11)").text();
 
   $("#dashboard-service-modal-date").html(col2_ServiceDate);
-  $("#dashboard-service-modal-duration").html(col11_Comments);
+  $("#dashboard-service-modal-duration").html(col11_Duration);
   $("#dashboard-service-modal-serviceId").html(col1_ServiceId);
   $("#dashboard-service-modal-extras").html(col6_Extras);
   $("#dashboard-service-modal-amount").html(col4_Payment);
@@ -604,6 +577,7 @@ function rateService(serviceId, serviceProviderId, serviceProviderName) {
   document.getElementById("rating-service-modal-a-tag").click();
 }
 
+var isDashboardUpdated = false;
 function updateDashboardTable() {
   $.post("GetNewServices", { modal: "Modal" }, function (data) {
     var serviceRequests = JSON.parse(data);
@@ -760,9 +734,35 @@ function updateDashboardTable() {
         cell12.innerHTML = "I don't have pets at home";
       cell12.setAttribute("hidden", true);
     }
+    if(!isDashboardUpdated){
+      isDashboardUpdated = true;
+      $("#table-dashboard").DataTable({
+        dom: "tlip",
+        pagingType: "full_numbers",
+        language: {
+          lengthMenu: "Show _MENU_ Entries",
+          info: "Total Reocrd : _MAX_",
+          paginate: {
+            first: "<img src='/assets/images/first-page-ic.svg' alt='first' />",
+            previous:
+              "<img style='transform: rotate(90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
+            next: "<img style='transform: rotate(-90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
+            last: "<img style='transform: rotate(180deg);' src='/assets/images/first-page-ic.svg' alt='first' />",
+          },
+        },
+        columnDefs: [
+          {
+            "defaultContent": "-", 
+            "targets": "_all", 
+          },
+          { orderable: false, targets: 4 }
+        ]
+      });
+    }
   });
 }
 
+var isServiceHistoryUpdated = false;
 function updateServiceHistoryTabel() {
 
   $.post("GetCompletedCancelledServices", { modal: "Modal" }, function (data) {
@@ -938,6 +938,31 @@ function updateServiceHistoryTabel() {
         cell12.innerHTML = "I don't have pets at home";
       cell12.setAttribute("hidden", true);
     }
+    if(!isServiceHistoryUpdated){
+      isServiceHistoryUpdated = true;
+      $("#table-service-history").DataTable({
+        dom: "tlip",
+        pagingType: "full_numbers",
+        language: {
+          lengthMenu: "Show _MENU_ Entries",
+          info: "Total Reocrd : _MAX_",
+          paginate: {
+            first: "<img src='/assets/images/first-page-ic.svg' alt='first' />",
+            previous:
+              "<img style='transform: rotate(90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
+            next: "<img style='transform: rotate(-90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
+            last: "<img style='transform: rotate(180deg);' src='/assets/images/first-page-ic.svg' alt='first' />",
+          },
+        },
+        columnDefs: [
+          {
+            "defaultContent": "-", 
+            "targets": "_all", 
+          },
+          { orderable: false, targets: 4 }
+        ],
+      });
+    }
   });
 }
 
@@ -1012,88 +1037,96 @@ function updateFevPros() {
   $.post("GetFevouriteBlockedSPList", {}, function (data) {
     var fevPros = JSON.parse(data);
 
-    $("#table-fev-pros tr").remove();
-    for (i = 0; i < fevPros.length; i++) {
-      var table = document.getElementById("table-fev-pros");
-      var row = table.insertRow();
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3);
-      var cell5 = row.insertCell(4);
-
-      var name = fevPros[i].FirstName + ' ' + fevPros[i].LastName;
-      var spId = fevPros[i].SpId;
-
-      cell1.innerHTML = '<img class="fev-pros-cap-border" src="/assets/images/cap.png" alt="">';
-      cell2.innerHTML = '<b>' + name + '</b>';
-
-      var sum = 0.0;
-      for (var rat = 0; rat < fevPros[i].Ratings.length; rat++) {
-        sum += parseFloat(fevPros[i].Ratings[rat]);
-      }
-      var averageRatings = 0;
-      if (fevPros[i].Ratings.length != 0) {
-        averageRatings = sum / fevPros[i].Ratings.length;
-      }
-
-      temp_end_cell3 =
-        "</span>" + "<span>" + averageRatings + "</span>" + "</div>" + "</div>";
-
-      temp_middle_cell3 = "";
-      for (let i = 0; i < averageRatings; i++) {
-        temp_middle_cell3 =
-          temp_middle_cell3 + '<img src="/assets/images/star1.png" alt="">';
-      }
-      for (let i = 0; i < 5 - averageRatings; i++) {
-        temp_middle_cell3 =
-          temp_middle_cell3 + '<img src="/assets/images/star2.png" alt="">';
-      }
-      cell3.innerHTML = temp_middle_cell3 + temp_end_cell3;
-
-      cell4.innerHTML =
-        '<span class="">1 Cleaning</span>';
-
-      var cell5_fev = "";
-      if (fevPros[i].IsFavorite) {
-        cell5_fev =
-          '<label>' +
-          '<div class="d-inline-block blue-rounded-btn text-white cursor-pointer p-2 ps-3 pe-3 bg-danger">' +
-          '<span style="user-select:none;" class="text-white">Unfavourite</span>' +
-          '<input checked id="fev-sp-' + spId + '" name="favourite-sp" class="d-none" type="checkbox" onclick="addToFavouriteUnFavourite(\'' + spId + '\')">' +
-          '</div>' +
+    if(fevPros.length > 0){
+    
+      $("#table-fev-pros tr").remove();
+      for (i = 0; i < fevPros.length; i++) {
+        var table = document.getElementById("table-fev-pros");
+        var row = table.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+  
+        var name = fevPros[i].FirstName + ' ' + fevPros[i].LastName;
+        var spId = fevPros[i].SpId;
+  
+        cell1.innerHTML = '<img class="fev-pros-cap-border" src="/assets/images/cap.png" alt="">';
+        cell2.innerHTML = '<b>' + name + '</b>';
+  
+        var sum = 0.0;
+        for (var rat = 0; rat < fevPros[i].Ratings.length; rat++) {
+          sum += parseFloat(fevPros[i].Ratings[rat]);
+        }
+        var averageRatings = 0;
+        if (fevPros[i].Ratings.length != 0) {
+          averageRatings = sum / fevPros[i].Ratings.length;
+        }
+  
+        temp_end_cell3 =
+          "</span>" + "<span>" + averageRatings + "</span>" + "</div>" + "</div>";
+  
+        temp_middle_cell3 = "";
+        for (let i = 0; i < averageRatings; i++) {
+          temp_middle_cell3 =
+            temp_middle_cell3 + '<img src="/assets/images/star1.png" alt="">';
+        }
+        for (let i = 0; i < 5 - averageRatings; i++) {
+          temp_middle_cell3 =
+            temp_middle_cell3 + '<img src="/assets/images/star2.png" alt="">';
+        }
+        cell3.innerHTML = temp_middle_cell3 + temp_end_cell3;
+  
+        cell4.innerHTML =
+          '<span class="">1 Cleaning</span>';
+  
+        var cell5_fev = "";
+        if (fevPros[i].IsFavorite) {
+          cell5_fev =
+            '<label>' +
+            '<div class="d-inline-block blue-rounded-btn text-white cursor-pointer p-2 ps-3 pe-3 bg-danger">' +
+            '<span style="user-select:none;" class="text-white">Unfavourite</span>' +
+            '<input checked id="fev-sp-' + spId + '" name="favourite-sp" class="d-none" type="checkbox" onclick="addToFavouriteUnFavourite(\'' + spId + '\')">' +
+            '</div>' +
+            '</label>';
+        }
+        else {
+          cell5_fev =
+            '<label>' +
+            '<div class="d-inline-block blue-rounded-btn text-white cursor-pointer p-2 ps-3 pe-3">' +
+            '<span style="user-select:none;" class="text-white">Favourite</span>' +
+            '<input id="fev-sp-' + spId + '" name="favourite-sp" class="d-none" type="checkbox" onclick="addToFavouriteUnFavourite(\'' + spId + '\')">' +
+            '</div>' +
+            '</label>';
+        }
+        var cell5_block = "";
+        if (fevPros[i].IsBlocked) {
+          cell5_block =
+            '<label>' +
+            '<div class="d-inline-block blue-rounded-btn text-white cursor-pointer p-2 ps-3 pe-3 ms-2">' +
+            '<span style="user-select:none;" class="text-white">Unblock</span>' +
+            '<input checked id="block-sp-' + spId + '" class="d-none" type="checkbox" onclick="addToBlockUnblock(\'' + spId + '\')">' +
+            '</div>'
           '</label>';
-      }
-      else {
-        cell5_fev =
-          '<label>' +
-          '<div class="d-inline-block blue-rounded-btn text-white cursor-pointer p-2 ps-3 pe-3">' +
-          '<span style="user-select:none;" class="text-white">Favourite</span>' +
-          '<input id="fev-sp-' + spId + '" name="favourite-sp" class="d-none" type="checkbox" onclick="addToFavouriteUnFavourite(\'' + spId + '\')">' +
-          '</div>' +
+        }
+        else {
+          cell5_block =
+            '<label>' +
+            '<div class="d-inline-block blue-rounded-btn text-white cursor-pointer p-2 ps-3 pe-3 ms-2 bg-danger">' +
+            '<span style="user-select:none;" class="text-white">Block</span>' +
+            '<input  id="block-sp-' + spId + '" class="d-none" type="checkbox" onclick="addToBlockUnblock(\'' + spId + '\')">' +
+            '</div>'
           '</label>';
+        }
+        cell5.innerHTML = cell5_fev + cell5_block;
+  
       }
-      var cell5_block = "";
-      if (fevPros[i].IsBlocked) {
-        cell5_block =
-          '<label>' +
-          '<div class="d-inline-block blue-rounded-btn text-white cursor-pointer p-2 ps-3 pe-3 ms-2">' +
-          '<span style="user-select:none;" class="text-white">Unblock</span>' +
-          '<input checked id="block-sp-' + spId + '" class="d-none" type="checkbox" onclick="addToBlockUnblock(\'' + spId + '\')">' +
-          '</div>'
-        '</label>';
-      }
-      else {
-        cell5_block =
-          '<label>' +
-          '<div class="d-inline-block blue-rounded-btn text-white cursor-pointer p-2 ps-3 pe-3 ms-2 bg-danger">' +
-          '<span style="user-select:none;" class="text-white">Block</span>' +
-          '<input  id="block-sp-' + spId + '" class="d-none" type="checkbox" onclick="addToBlockUnblock(\'' + spId + '\')">' +
-          '</div>'
-        '</label>';
-      }
-      cell5.innerHTML = cell5_fev + cell5_block;
-
+      
+    }
+    else{
+      $("#table-fev-pros_wrapper").addClass("d-none");
+      $("#no-sp-found-div").removeClass("d-none");
     }
   });
 
