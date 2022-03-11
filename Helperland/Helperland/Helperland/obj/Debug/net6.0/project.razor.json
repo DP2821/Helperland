@@ -16378,6 +16378,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\ServiceProvider\\Dashboard.cshtml",
+      "TargetPath": "Views\\ServiceProvider\\Dashboard.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "s:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Views\\Account\\TempServiceProvider.cshtml",
       "TargetPath": "Views\\Account\\TempServiceProvider.cshtml",
       "FileKind": "mvc"

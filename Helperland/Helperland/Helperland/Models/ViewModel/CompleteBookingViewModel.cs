@@ -11,7 +11,7 @@ namespace Helperland.Models.ViewModel
         [Required]
         public double ServiceHours { get; set; }
         public int[]? ExtraHoursList { get; set; }
-        public string Comments { get; set; } = null!;
+        public string? Comments { get; set; }
         public bool HasPets { get; set; }
         [Required]
         public int AddressId { get; set; }

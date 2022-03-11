@@ -21,7 +21,8 @@
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.js"></script>
 
-    <title>Book Service</title>
+    @* OpenStreetMap *@
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 
     <asp:contentPlaceholder id="css" runat="server" />
     <link rel="stylesheet" href="~/assets/css/style.css">
@@ -98,7 +99,7 @@
 
                                         <div class="popover__content">
                                             <p class="ps-3 pe-3">
-                                                <small>Welcome</small>
+                                                <small>Welcome</small><br>
                                                 <b>@CurrentUserName</b>
                                             </p>
                                             <hr>

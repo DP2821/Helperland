@@ -7,7 +7,7 @@
 #dashboard-nav-right {
   display: none;
 }
-.vertical-navbar{
+.vertical-navbar {
   height: 100%;
   border: 1px solid #1d7a8c;
   background-color: #1d7a8c;
@@ -16,29 +16,32 @@
   border-bottom: 1px solid white;
   padding-left: 10px;
 }
-.active-tab{
+.li-left:hover {
   background-color: #146371;
+}
+.active-tab {
+  background-color: #146371 !important;
 }
 ul {
   list-style: none;
 }
 .user-icon {
   padding-left: 10px;
-  border-left: 2px solid #e1e1e1;  
+  border-left: 2px solid #e1e1e1;
 }
 
 .welcome-user {
   padding: 25px;
   background-color: #f9f9f9;
 }
-.welcome{
+.welcome {
   font-weight: normal;
 }
-.sp-name{
+.sp-name {
   font-size: 30px;
   font-weight: bold;
 }
-.export{
+.export {
   width: fit-content;
   padding: 5px 14px 5px 16px;
   color: white;
@@ -57,6 +60,25 @@ td {
   font-size: 16px;
   color: #646464;
 }
+.cap-border {
+  border: 2px solid #aaaaaa;
+  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 50%;
+}
+.blue-price {
+  font-size: 24px;
+  color: #1d7a8c;
+}
+.btn-SP {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #6da9b5;
+  color: white;
+}
 .btn-cancel {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -65,74 +87,146 @@ td {
   background-color: #ff6b6b;
   color: white;
 }
+.table-service-request tr {
+  cursor: pointer;
+}
+.table-service-request td:nth-child(5) {
+  cursor: auto;
+}
+.table-service-request tr:hover{
+  background-color: #e4e2e2;
+}
 
+/* 
+SP Rating table
+*/
+.table-my-ratings {
+  border: 0;
+  margin: 0px;
+  width: 100% !important;
+  display: flex;
+}
+
+.table-my-ratings thead {
+  border: none;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+.table-my-ratings tr {
+  display: inline-block;
+  width: 70vw;
+  border: 1px solid #dddcdc;
+  margin-bottom: 1em;
+}
+.table-my-ratings td{
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+.table-my-ratings td:nth-child(1) {
+  width: 10vw;
+}
+
+.table-my-ratings td:nth-child(2) {
+  width: 60vw;
+}
+
+.table-my-ratings td:nth-child(3) {
+  width: 25vw;
+}
+
+.table-my-ratings td:last-child {
+  border-top: 1px solid #dddcdc;
+  display: block;
+  text-align: start !important;
+  padding-left: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.table-my-ratings td:last-child {
+  text-align: center;
+  border-bottom: 0;
+}
 
 /* Data Table class */
 table.dataTable thead th,
 table.dataTable thead td {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #efefef;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  border-bottom: 1px solid #efefef !important;
 }
-table.dataTable thead th{
-  padding-top: 15px;
-  padding-bottom: 15px;
+table.dataTable thead th {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
 }
 table.dataTable thead .sorting {
-  background-image: url("../images/sort.png");
-  background-position: center right 25px;
+  background-image: url("../images/sort.png") !important;
+  /* background-position: center right 10px; */
 }
 table.dataTable thead .sorting_asc {
   background-image: url("../images/acendingSort.png") !important;
-  background-position: center right 25px;
+  /* background-position: center right 10px; */
 }
 table.dataTable thead .sorting_desc {
   background-image: url("../images/decendingSort.png") !important;
-  background-position: center right 25px;
+  /* background-position: center right 10px; */
 }
 table.dataTable tbody td {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
   border-top: 1px solid #efefef;
 }
 .dataTables_wrapper .dataTables_filter {
-  display: none;
+  display: none !important;
 }
 .dataTables_wrapper .dataTables_paginate {
-  margin-top: 5px;
+  margin-top: 5px !important;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
-  border: 1px solid #e1e1e1;
-  margin-left: 10px;
-  border-radius: 50%;
+  border: 1px solid #e1e1e1 !important;
+  margin-left: 10px !important;
+  border-radius: 50% !important;
 }
-.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-  color: #FFFFFF !important;
-  border: 1px solid #1d7a8c;
-  background: #1d7a8c;
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #ffffff !important;
+  border: 1px solid #1d7a8c !important;
+  background: #1d7a8c !important;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
   color: white !important;
-  border: 1px solid #1d7a8c;
-  background: #1d7a8c;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  color: white !important;
+  border: 1px solid #1d7a8c !important;
+  background: #1d7a8c !important;
 }
 #table-main_previous,
-#table-main_next{
+#table-main_next {
   border: none;
   border-radius: 3%;
 }
-#table-main_last, #table-main_next, #table-main_previous, #table-main_first{
+#table-main_last,
+#table-main_next,
+#table-main_previous,
+#table-main_first {
   border: 1px solid #e1e1e1;
   border-radius: 50%;
 }
 
-.dataTables_wrapper .dataTables_info{
+.dataTables_wrapper .dataTables_info {
   float: left;
   clear: none;
   padding-top: 15px;
   padding-left: 8px;
 }
-.dataTables_wrapper .dataTables_length{
+.dataTables_wrapper .dataTables_length {
   padding-top: 12px;
 }
 
@@ -158,14 +252,16 @@ table.dataTable tbody td {
   #dashboard-nav-left {
     display: none;
   }
+  .table-my-ratings tr {
+    width: 90vw;
+  }
 }
-
 
 @media screen and (max-width: 769px) {
   table {
     border: 0;
   }
-  
+
   table thead {
     border: none;
     clip: rect(0 0 0 0);
@@ -176,27 +272,26 @@ table.dataTable tbody td {
     position: absolute;
     width: 1px;
   }
-  
+
   table tr {
     display: block;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: .625em;
-  
+    margin-bottom: 0.625em;
   }
 
   table td {
     border-bottom: 1px solid #ddd;
     display: block;
-    font-size: .8em;
+    font-size: 0.8em;
     text-align: right;
   }
 
-  table td::before{
+  table td::before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
   }
-  
+
   table td:last-child {
     text-align: center;
     border-bottom: 0;

@@ -1,0 +1,523 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_StaticLayout";
+    string? CurrentUserName = new CurrentLoggedInUser().GetName(Context.Request.Cookies["keepMeLoggedInToken"]);
+}
+
+<asp:content contentplaceholder id="css" runat="server">
+    <link href="~/assets/css/service-provider-upcoming-service.css" rel="stylesheet" />
+</asp:content>
+
+<section>
+    <div class="container-fluid welcome-user">
+        <h3 class="text-center welcome">Welcome, <span class="sp-name">@CurrentUserName!</span></h3>
+    </div>
+</section>
+
+<section>
+    <div class="ms-auto me-auto" style="width: 95%;">
+        <div class="row mt-3 mb-5">
+            <div class="col-lg-3" id="dashboard-nav-left">
+                <div class="vertical-navbar">
+                    <ul class="nav navbar-nav" role="tablist">
+                        <li class="nav-item li-left m-0 active-tab" role="presentation" id="pills-dashboard-list">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-dashboard" type="button" role="tab"
+                                aria-controls="pills-dashboard" aria-selected="true">Dashboard</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-new-service-request" type="button" role="tab"
+                                aria-controls="pills-new-service-request" aria-selected="false">New Service Request</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-upcoming-services" type="button" role="tab"
+                                aria-controls="pills-upcoming-services" aria-selected="false">Upcoming Services</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-service-schedule" type="button" role="tab"
+                                aria-controls="pills-service-schedule" aria-selected="false">Service Schedule</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-service-history" type="button" role="tab"
+                                aria-controls="pills-service-history" aria-selected="false">Service History</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-my-ratings" type="button" role="tab"
+                                aria-controls="pills-my-ratings" aria-selected="false">My ratings</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-block-customer" type="button" role="tab"
+                                aria-controls="pills-block-customer" aria-selected="false">Block Customer</a>
+                        </li>
+                        <li class="d-none nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-my-account" type="button" role="tab"
+                                aria-controls="pills-my-account" aria-selected="false" id="pills-my-account-a-tag">My
+                                Account</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-9 tab-content" id="pills-tabContent">
+
+                <div class="tab-pane fade show active" id="pills-dashboard" role="tabpanel"
+                    aria-labelledby="pills-dashboard-tab">
+                    Dashboard
+                </div>
+
+                <div class="tab-pane fade" id="pills-new-service-request" role="tabpanel"
+                    aria-labelledby="pills-service-schedule-tab">
+                    <div class="row mb-1">
+                        <div class="col-auto">
+                            <p>Service area</p>
+                        </div>
+                        <div class="col-auto">
+                            <p>Include pet at Home</p>
+                        </div>
+                    </div>
+
+                    <table class="table-service-request" id="table-service-request">
+                        <thead>
+                            <tr style="background-color: #efefef;">
+                                <th style="width: 12%;">Service Id</th>
+                                <th style="width: 95px;">Service date</th>
+                                <th style="width: 150px;">Customer details</th>
+                                <th style="width: 75px;">Payment</th>
+                                <th style="width: 75px;">Time conflict</th>
+
+                                <th>Actions</th>
+                                <th hidden>Extras</th>
+                                <th hidden>Service Address</th>
+                                <th hidden>Phone</th>
+                                <th hidden>Email</th>
+
+                                <th hidden>Comments</th>
+                                <th hidden>Duration</th>
+                                <th hidden>HavePet</th>
+                                <th hidden>Customer name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr hidden>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="pills-upcoming-services" role="tabpanel"
+                    aria-labelledby="pills-upcoming-services-tab">
+
+                    <table class="table-upcoming-services" id="table-upcoming-services">
+                        <thead>
+                            <tr style="background-color: #efefef;">
+                                <th style="width: 12%;">Service Id</th>
+                                <th style="width: 95px;">Service date</th>
+                                <th style="width: 150px;">Customer details</th>
+                                <th style="width: 75px;">Payment</th>
+                                <th style="width: 25px;">Distance</th>
+
+                                <th style="width: 140px;">Actions</th>
+                                <th hidden>Extras</th>
+                                <th hidden>Service Address</th>
+                                <th hidden>Phone</th>
+                                <th hidden>Email</th>
+
+                                <th hidden>Comments</th>
+                                <th hidden>Duration</th>
+                                <th hidden>HavePet</th>
+                                <th hidden>Customer name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr hidden>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade" id="pills-service-schedule" role="tabpanel"
+                    aria-labelledby="pills-service-schedule-tab">
+                    <h2>Service Schedule</h2>
+                </div>
+
+                <div class="tab-pane fade" id="pills-service-history" role="tabpanel"
+                    aria-labelledby="pills-service-history-tab">
+                    <div class="row mb-1">
+                        <div class="col-6">
+                            <h4>Service History</h4>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button class="blue-rounded-btn text-white p-2" onclick="export_excel()">
+                                Export
+                            </button>
+                        </div>
+                    </div>
+                    <table class="table-service-history" id="table-service-history">
+                        <thead>
+                            <tr style="background-color: #efefef;">
+                                <th style="width: 150px;">Service Id</th>
+                                <th style="width: 195px;">Service date</th>
+                                <th style="width: 250px;">Customer details</th>
+                                <th hidden>Payment</th>
+                                <th hidden>Distance</th>
+
+                                <th hidden>Actions</th>
+                                <th hidden>Extras</th>
+                                <th hidden>Service Address</th>
+                                <th hidden>Phone</th>
+                                <th hidden>Email</th>
+
+                                <th hidden>Comments</th>
+                                <th hidden>Duration</th>
+                                <th hidden>HavePet</th>
+                                <th hidden>Customer name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr hidden>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade" id="pills-my-ratings" role="tabpanel" aria-labelledby="pills-my-ratings-tab">
+                    <table class="table-my-ratings" id="table-my-ratings">
+                        <thead>
+                            <tr style="background-color: #efefef;">
+                                <th>Service Id and Customer Name</th>
+                                <th>Service Date</th>
+                                <th>Rating star</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr hidden>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            @* <tr>
+                                <td>
+                                    <p class="mt-2 mb-2">8319</p>
+                                    <p class="mt-2 mb-2"><b>Gaurang Patel</b></p>
+                                </td>
+                                <td>
+                                    <img src="./assets/images/calendar2.png" alt="">
+                                    <p class="m-0"><b id="date"> 06/09/2021</b></p>
+                                    <img src="./assets/images/layer-14.png" alt="">
+                                    <span id="time">12:00 - 6:00</span>
+                                </td>
+                                <td>
+                                    <p class="m-0">Rating</p>
+                                    <span>
+                                        <img src="star1.png" alt="">
+                                        <img src="star1.png" alt="">
+                                        <img src="star1.png" alt="">
+                                        <img src="star1.png" alt="">
+                                        <img src="star2.png" alt="">
+                                        <span>Very Good</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <p class="m-0"><b>Customer Comment</b></p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, excepturi!
+                                </td>
+                            </tr> *@
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade" id="pills-block-customer" role="tabpanel"
+                    aria-labelledby="pills-block-customer-tab">
+                    <h2>Block Customer</h2>
+                </div>
+
+                <div class="tab-pane fade" id="pills-my-account" role="tabpanel" aria-labelledby="pills-my-account-tab">
+                    <section>
+                        <ul class="nav nav-pills mb-3 my-details-ul" id="pills-tab" role="tablist">
+                            <li style="border-bottom: 3px solid #1d7a8c;" class="text-center col-sm-4 nav-item"
+                                role="presentation">
+                                <button class="border-0 bg-white" id="pills-my-details-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-my-details" type="button" role="tab"
+                                    aria-controls="pills-my-details" aria-selected="true"><b style="color: #1d7a8c;">My
+                                        Details</b></button>
+                            </li>
+                            <li class="text-center col-sm-4 nav-item" role="presentation">
+                                <button class="border-0 bg-white" id="pills-my-address-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-my-address" type="button" role="tab"
+                                    aria-controls="pills-my-address" aria-selected="false"><b>My Address</b></button>
+                            </li>
+                            <li class="text-center col-sm-4 nav-item" role="presentation">
+                                <button class="border-0 bg-white" id="pills-change-password-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-change-password" type="button" role="tab"
+                                    aria-controls="pills-change-password" aria-selected="false"><b>Change
+                                        Password</b></button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-my-details" role="tabpanel"
+                                aria-labelledby="pills-my-details-tab">
+                                <div class="row">
+                                    <div class="col-sm-4 mt-3">
+                                        <label for="my-details-first-name">First name</label>
+                                        <input class="form-control" type="text" name="" id="my-details-first-name"
+                                            placeholder="First name">
+                                    </div>
+                                    <div class="col-sm-4 mt-3">
+                                        <label for="my-details-last-name">Last name</label>
+                                        <input class="form-control" type="text" name="" id="my-details-last-name"
+                                            placeholder="Last name">
+                                    </div>
+                                    <div class="col-sm-4 mt-3">
+                                        <label for="my-details-email">E-mail address</label>
+                                        <input disabled class="form-control" type="email" name="" id="my-details-email"
+                                            placeholder="E-mail address">
+                                    </div>
+                                    <div class="col-sm-4 mt-3">
+                                        <label for="my-details-mobile">Mobile number</label>
+                                        <div class="input-group mb-3 input-number">
+                                            <span class="input-group-text" id="basic-addon1">+46</span>
+                                            <input type="number" class="form-control" placeholder="Mobile Number"
+                                                id="my-details-mobile">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 mt-3">
+                                        <label for="my-details-dob">Date of Birth</label>
+                                        <div class="date-div">
+                                            <img class="img-calendar" src="~/assets/images/calendar-setup-service.png"
+                                                alt="">
+                                            <input class="input-date" type="date" name="" id="my-details-dob">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row">
+                                    <label for="my-details-lan">My Preferred Language</label>
+                                    <div class="col-auto mt-1">
+                                        <select class="form-select" id="my-details-lan">
+                                            <option value="english">
+                                                English
+                                            </option>
+                                            <option value="french">
+                                                French
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button class="blue-rounded-btn text-white p-2 mt-3 ps-4 pe-4"
+                                    id="my-details-save-btn">Save</button>
+
+                            </div>
+
+                            <div class="tab-pane fade" id="pills-my-address" role="tabpanel"
+                                aria-labelledby="pills-my-address-tab">
+                                <div class="my-address-main-div" id="my-address-main-div">
+                                    <div class="my-address-row my-address-row-header">
+                                        <div class="col">
+                                            Address
+                                        </div>
+                                        <div class="col-2">
+                                            Action
+                                        </div>
+                                    </div>
+
+                                    <div id="my-address-list-of-address">
+                                        <div class="my-address-row">
+                                            <div class="col">
+                                                <b>Address: </b>New primary school, Sakariya <br>
+                                                <b>Phone number: </b>99663355887
+                                            </div>
+                                            <div class="col-2">
+                                                <a class="text-decoration-none" href="#">
+                                                    <img src="~/assets/images/edit-address.png" alt="edit" width="20px">
+                                                </a>
+                                                <a class="text-decoration-none" href="#">
+                                                    <img src="~/assets/images/remove-address.png" alt="remove"
+                                                        width="20px">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="blue-rounded-btn text-white p-2 mt-3 ps-4 pe-4"
+                                    id="my-details-add-new-address-btn">Add new address</button>
+                            </div>
+
+
+                            <div class="tab-pane fade show" id="pills-change-password" role="tabpanel"
+                                aria-labelledby="pills-change-password-tab">
+
+                                <div class="row">
+                                    <div class="col-md-12" style="max-width: 350px">
+                                        <div>
+                                            <label for="old-password">Old Password</label>
+                                            <input type="password" class="form-control" placeholder="Current Password"
+                                                id="old-password">
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="new-password">New Password</label>
+                                            <input type="password" class="form-control" placeholder="Password"
+                                                id="new-password">
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="confirm-password">Confirm Password</label>
+                                            <input type="password" class="form-control" placeholder="Confirm Password"
+                                                id="confirm-password">
+                                        </div>
+                                        <div class="mt-3">
+                                            <button type="submit" class="blue-rounded-btn text-white p-2 ps-4 pe-4"
+                                                id="change-password-btn-save">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- New Service Request Modal -->
+<section>
+    <a href="#" class="modallink d-none" data-bs-toggle="modal" data-bs-target="#new-service-request-details-modal"
+        id="new-service-request-details-a-tag"></a>
+    <div class="modal fade" id="new-service-request-details-modal" tabindex="-1"
+        aria-labelledby="dashboardServiceDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="width: 700px;">
+                <div class="container mt-1 ms-1 d-flex">
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0" style="width: 700px;">
+                    <div class="row">
+                        <div class="col-6">
+                            <p>Service Details</p>
+                            <h4 class="m-1" id="new-service-request-modal-date">05/10/2021 08:00 - 11:30</h4>
+                            <p class="m-1"><b>Duration:</b> <span id="new-service-request-modal-duration">3.5</span> Hrs
+                            </p>
+                            <hr class="m-2">
+
+                            <p class="m-1"><b>Service Id: </b><span id="new-service-request-modal-serviceId">8485</span>
+                            </p>
+                            <p class="m-1">
+                                <b>Extras: </b><span id="new-service-request-modal-extras">Inside cabinates</span>
+                            </p>
+                            <p class="m-1">
+                                <b>Net Amount: </b><span class="fs-2 text-primary">
+                                    <span class="fs-3 text-primary" id="new-service-request-modal-amount"></span>
+                                    &euro;
+                                </span>
+                            </p>
+                            <hr class="m-2">
+
+                            <p class="m-1"><b>Customer Name: </b><span
+                                    id="new-service-request-modal-customer-name"></span></p>
+                            <p class="m-1"><b>Service Address: </b><span id="new-service-request-modal-address"></span>
+                            </p>
+                            <p class="m-1"><b>Distance: </b><span id="new-service-request-modal-phone"></span></p>
+                            <hr class="m-2">
+
+                            <p class="m-1"><b>Comments </b></p>
+                            <!-- <img src="" alt="red-cross-img">  -->
+                            <p class="m-1"><span id="new-service-request-modal-comments">&nbsp;</span></p>
+                            <p class="m-1"><span id="new-service-request-modal-havePet">&nbsp;</span></p>
+
+                            <div id="new-service-request-modal-btns-div">
+                                <hr class="m-2">
+                                <button class="blue-rounded-btn text-white p-2 bg-success"
+                                    id="new-service-request-modal-accept">Accept</button>
+                            </div>
+
+                            <div id="upcoming-service-modal-btns-div">
+                                <hr class="m-2">
+                                <button class="blue-rounded-btn bg-danger text-white p-2 bg-success"
+                                    id="upcoming-service-modal-cancel">Cancel</button>
+                                <button class="blue-rounded-btn text-white p-2 bg-success"
+                                    id="upcoming-service-modal-complete">Complete</button>
+                            </div>
+                        </div>
+                        <div class="col-6" id="service-request-modal-map-div"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@* OpenStreetMap *@
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script src="~/assets/js/service-provider-upcoming-service.js"></script>
+<link href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section Scripts {
+@{
+    <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

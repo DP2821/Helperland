@@ -79,7 +79,7 @@ namespace Helperland.Controllers
                         }
                         else if (user.UserTypeId == globalData.SpTypeId)
                         {
-                            return RedirectToAction("TempServiceProvider");
+                            return RedirectToAction("Dashboard", "ServiceProvider");
                         }
                         else
                         {
