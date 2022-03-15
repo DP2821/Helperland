@@ -2,6 +2,7 @@
 using Helperland.Functionality;
 using Helperland.GlobalVariable;
 using Helperland.Models;
+using Helperland.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 using System.Text.Json;
@@ -221,6 +222,10 @@ namespace Helperland.Controllers
                     service.ModifiedDate = DateTime.Now;
                     _helperlandContext.ServiceRequests.Update(service);
                     _helperlandContext.SaveChanges();
+
+                    // FavoriteAndBlocked favoriteAndBlocked = new FavoriteAndBlocked();
+                    // favoriteAndBlocked.UserId = 
+                    // _helperlandContext.FavoriteAndBlockeds.Add();
                 }
                 else
                 {
@@ -292,6 +297,171 @@ namespace Helperland.Controllers
                              }).ToList();
 
             return JsonSerializer.Serialize(myRatings);
+        }
+
+        public string GetFevouriteBlockedCustomerList()
+        {
+            int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
+
+
+            var x = (from sr in _helperlandContext.ServiceRequests
+                     join u in _helperlandContext.Users on sr.UserId equals u.UserId
+                     where sr.ServiceProviderId == userId
+                     select new
+                     {
+                         CustomerId = sr.UserId,
+                         CustomerName = u.FirstName + " " + u.LastName,
+                         IsBlocked = _helperlandContext.FavoriteAndBlockeds.Where(fv => fv.UserId == userId && fv.TargetUserId == sr.UserId).Select(fv => fv.IsBlocked).FirstOrDefault()
+                     }).Distinct().ToList();
+            return JsonSerializer.Serialize(x);
+
+        }
+
+        public string UpdateBlockedCustomer(int TargetUserId, bool IsBlocked)
+        {
+
+            int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
+            FavoriteAndBlocked? favoriteAndBlocked = _helperlandContext.FavoriteAndBlockeds.Where(u => u.UserId == userId && u.TargetUserId == TargetUserId).FirstOrDefault();
+            if (favoriteAndBlocked != null)
+            {
+                System.Console.WriteLine(">>>>>>>>>>>>>>>Sara");
+                favoriteAndBlocked.IsBlocked = IsBlocked;
+                _helperlandContext.FavoriteAndBlockeds.Update(favoriteAndBlocked);
+                _helperlandContext.SaveChanges();
+            }
+            else
+            {
+                FavoriteAndBlocked addfavoriteAndBlocked = new FavoriteAndBlocked();
+                addfavoriteAndBlocked.UserId = userId;
+                addfavoriteAndBlocked.TargetUserId = TargetUserId;
+                addfavoriteAndBlocked.IsBlocked = IsBlocked;
+                _helperlandContext.FavoriteAndBlockeds.Add(addfavoriteAndBlocked);
+                _helperlandContext.SaveChanges();
+
+            }
+            return "true";
+        }
+
+        public string ChnagePassword(string OldPassword, string NewPassword)
+        {
+            int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
+
+            var user = _helperlandContext.Users.Where(u => u.UserId == userId).FirstOrDefault();
+
+            if (user != null)
+            {
+                string oldPassMd5 = new MD5Hashing().GetMd5Hash(md5Hash, OldPassword);
+
+                if (oldPassMd5.Equals(user.Password))
+                {
+                    string newPassHash = new MD5Hashing().GetMd5Hash(md5Hash, NewPassword);
+                    user.Password = newPassHash;
+                    _helperlandContext.Users.Update(user);
+                    _helperlandContext.SaveChanges();
+                }
+                else
+                {
+                    return "Incorrect old password";
+                }
+            }
+            else
+            {
+                return "Something is wrong";
+            }
+            return "true";
+        }
+
+        public string SPDetails()
+        {
+            int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
+            var user = (from u in _helperlandContext.Users
+                            // join a in _helperlandContext.UserAddresses on u.UserId equals a.UserId
+                        where u.UserId == userId
+                        select new
+                        {
+                            FirstName = u.FirstName,
+                            LastName = u.LastName,
+                            Email = u.Email,
+                            Mobile = u.Mobile,
+                            DateOfBirth = u.DateOfBirth,
+                            Gender = u.Gender,
+
+                            Address = _helperlandContext.UserAddresses.Where(ua => ua.UserId == userId).FirstOrDefault()
+
+                        });
+            if (user != null)
+            {
+                return JsonSerializer.Serialize(user);
+            }
+            else
+            {
+                return "false";
+            }
+        }
+        public string GetCityByZipCode(string postalcode)
+        {
+            var city = (from z in _helperlandContext.Zipcodes
+                        join c in _helperlandContext.Cities on z.CityId equals c.Id
+                        where z.ZipcodeValue == postalcode
+                        select new
+                        {
+                            cityName = c.CityName
+                        }).FirstOrDefault();
+            if (city != null)
+                return city.cityName;
+            else
+                return "false";
+        }
+
+        public string UpdateSPDetails(UpdateSPDetailsViewModel updateSPDetailsViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
+                User? user = _helperlandContext.Users.Find(userId);
+                if (user != null)
+                {
+                    user.FirstName = updateSPDetailsViewModel.FirstName;
+                    user.LastName = updateSPDetailsViewModel.LastName;
+                    user.Mobile = updateSPDetailsViewModel.Mobile;
+                    user.DateOfBirth = DateTime.ParseExact(updateSPDetailsViewModel.DateOfBirth, "yyyy-MM-dd", null);
+
+                    user.Gender = updateSPDetailsViewModel.Gender;
+                    _helperlandContext.Users.Update(user);
+                    _helperlandContext.SaveChanges();
+
+                    UserAddress? userAddress = _helperlandContext.UserAddresses.Where(ua => ua.UserId == userId).FirstOrDefault();
+
+                    if(userAddress != null){
+                        userAddress.AddressLine1 = updateSPDetailsViewModel.AddressLine1;
+                        userAddress.AddressLine2 = updateSPDetailsViewModel.AddressLine2;
+                        userAddress.PostalCode = updateSPDetailsViewModel.ZipCode;
+                        userAddress.City = updateSPDetailsViewModel.City;
+                        _helperlandContext.Update(userAddress);
+                        _helperlandContext.SaveChanges();
+                    }
+                    else{
+                        userAddress = new UserAddress();
+                        userAddress.UserId = userId;
+                        userAddress.AddressLine1 = updateSPDetailsViewModel.AddressLine1;
+                        userAddress.AddressLine2 = updateSPDetailsViewModel.AddressLine2;
+                        userAddress.PostalCode = updateSPDetailsViewModel.ZipCode;
+                        userAddress.City = updateSPDetailsViewModel.City;
+
+                        _helperlandContext.Add(userAddress);
+                        _helperlandContext.SaveChanges();
+                    }   
+                }
+                else
+                {
+                    return "User not found";
+                }
+            }
+            else
+            {
+                return "Something is missing";
+            }
+            return "true";
         }
     }
 }

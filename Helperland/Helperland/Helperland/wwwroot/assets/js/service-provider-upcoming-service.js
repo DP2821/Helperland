@@ -4,8 +4,14 @@ $(document).ready(function () {
   updateUpcomingServicesTable();
   upateServieHistory();
   updateMyRatingTable();
+  updateBlockCuatomer();
   // loadMapInModal();
 
+  if (document.location.search.includes("my-account=true")) {
+    document.getElementById("pills-my-account-a-tag").click();
+    $("#pills-dashboard-list").removeClass("active-tab");
+    updateMyDetails();
+  }
   $(".vertical-navbar-a-tag").click(function () {
     $(this).parent().siblings().removeClass("active-tab");
     $(this).parent().addClass("active-tab");
@@ -22,6 +28,124 @@ $(document).ready(function () {
   $("#upcoming-service-modal-complete").click(function () {
     var serviceId = $("#new-service-request-modal-serviceId").html();
     completeService(serviceId);
+  });
+
+  $("#pop-over-my-setting-a-tag").click(function (event) {
+
+    event.preventDefault();
+    document.getElementById("pills-my-account-a-tag").click();
+    $("#pills-dashboard-list").removeClass("active-tab");
+    updateMyDetails();
+
+  });
+  $("#pills-my-details-tab").click(function () {
+    $(".my-details-ul").children().css("border-bottom", "3px solid grey");
+    $(".my-details-ul").children().children().children().css("color", "#565656");
+    $(this).children().css("color", "#1d7a8c");
+    $(this).parent().css("border-bottom", "3px solid #1d7a8c");
+  });
+  $("#pills-change-password-tab").click(function () {
+    $(".my-details-ul").children().css("border-bottom", "3px solid grey");
+    $(".my-details-ul").children().children().children().css("color", "#565656");
+    $(this).children().css("color", "#1d7a8c");
+    $(this).parent().css("border-bottom", "3px solid #1d7a8c");
+  });
+
+  $("#change-password-btn-save").click(function () {
+    var oldPass = $("#old-password").val();
+    var newPass = $("#new-password").val();
+    var confPass = $("#confirm-password").val();
+
+    if (oldPass != "" && newPass != "" && confPass != "") {
+      if (newPass == confPass) {
+        var model = {
+          OldPassword: oldPass,
+          NewPassword: newPass,
+        }
+
+        $.post("ChnagePassword", model, function (data) {
+          if (data == "true") {
+            alert("Password changed successfully");
+          }
+          else {
+            alert(data);
+          }
+        });
+      }
+      else {
+        alert("Both Password are not same");
+      }
+    }
+    else {
+      alert("Please fill all field");
+    }
+  });
+
+  $("#address-postal-code").change(function () {
+    var postalcode = $(this).val();
+
+    $.post("GetCityByZipCode", { postalcode: postalcode }, function (data) {
+      if (data != "false") {
+        $("#address-city").val(data);
+      }
+      else {
+        $("#address-city").val("");
+        alert("Invalid Zipcode");
+      }
+    });
+  });
+
+  $("#my-details-save-btn").click(function () {
+
+    var fname = $("#my-details-first-name").val();
+    var lname = $("#my-details-last-name").val();
+    var email = $("#my-details-email").val();
+    var mobile = $("#my-details-mobile").val();
+    var dob = $("#my-details-dob").val();
+    var gender = $("input:radio[name=gender]:checked").val();
+    var addressLine1 = $("#address-street-name").val();
+    var addressLine2 = $("#address-house-number").val();
+    var zipCode = $("#address-postal-code").val();
+    var city = $("#address-city").val();
+
+
+    if (fname != "" && lname != "" && email != "" && mobile != "" && dob != "") {
+      if (!isNaN(mobile)) {
+        if (mobile.length == 10) {
+          var modal = {
+            FirstName: fname,
+            LastName: lname,
+            Mobile: mobile,
+            DateOfBirth: dob,
+            Gender: gender,
+            AddressLine1: addressLine1,
+            AddressLine2: addressLine2,
+            ZipCode: zipCode,
+            City: city
+          }
+
+          $.post("UpdateSPDetails", modal, function (data) {
+            if (data == "true") {
+              updateMyDetails();
+              alert("Profile successfully updated");
+            }
+            else {
+              alert(data);
+            }
+          });
+        }
+        else {
+          alert("Mobile number should be 10 digit");
+        }
+      }
+      else {
+        alert("Number should be only digit")
+      }
+    }
+    else {
+      alert("Plaease fill all field");
+    }
+
   });
 
   $('#table-service-request').on('click', 'td:nth-child(1)', function () {
@@ -59,8 +183,28 @@ $(document).ready(function () {
   $('#table-service-history').on('click', 'td:nth-child(3)', function () {
     getDataFromServiceRequestTable(this, "serviceHistory");
   });
+  $("#table-block-customer").DataTable({
+    dom: "tlip",
+    pagingType: "full_numbers",
+    language: {
+      lengthMenu: "Show _MENU_ Entries",
+      info: "",
+      paginate: {
+        first: "<img src='/assets/images/first-page-ic.svg' alt='first' />",
+        previous:
+          "<img style='transform: rotate(90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
+        next: "<img style='transform: rotate(-90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
+        last: "<img style='transform: rotate(180deg);' src='/assets/images/first-page-ic.svg' alt='first' />",
+      },
+    },
+    columnDefs: [
+      {
+        "defaultContent": "-",
+        "targets": "_all",
+      }
+    ],
+  });
 });
-
 
 function export_excel() {
   $("#table-service-history").table2excel({
@@ -629,7 +773,7 @@ function updateMyRatingTable() {
 
 
       var averageRatings = myRatings[i].Ratings;
-      
+
       temp_middle_cell3 = "";
       for (let i = 0; i < averageRatings; i++) {
         temp_middle_cell3 =
@@ -641,7 +785,7 @@ function updateMyRatingTable() {
       }
       cell3.innerHTML = '<p class="m-0">Rating</p>' + temp_middle_cell3 + '<span>Very Good</span>';
 
-      cell4.innerHTML = '<p class="m-0"><b>Customer Comment</b></p><p>'+ myRatings[i].Comments +'<p/>';
+      cell4.innerHTML = '<p class="m-0"><b>Customer Comment</b></p><p>' + myRatings[i].Comments + '<p/>';
     }
 
 
@@ -763,11 +907,137 @@ function getTime(d) {
   return new Date(d.split("-").reverse().join("-")).getTime()
 }
 
+function updateBlockCuatomer() {
 
+  $.post("GetFevouriteBlockedCustomerList", {}, function (data) {
+    var blockCustomers = JSON.parse(data);
 
+    if (blockCustomers.length > 0) {
 
+      // var SON.parse(data);
+      $("#table-block-customer tr").remove();
+      for (i = 0; i < blockCustomers.length; i++) {
+        var table = document.getElementById("table-block-customer");
+        var row = table.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
 
+        var CustomerId = blockCustomers[i].CustomerId;
+        var name = blockCustomers[i].CustomerName;
+        var IsBlocked = blockCustomers[i].IsBlocked;
 
+        cell1.innerHTML = '<img class="block-customer-cap-border" src="/assets/images/cap.png" alt="">';
+        cell2.innerHTML = '<b>' + name + '</b>';
+
+        var cell3_block = "";
+        if (IsBlocked) {
+          cell3_block =
+            '<label>' +
+            '<div class="d-inline-block blue-rounded-btn text-white cursor-pointer p-2 ps-3 pe-3 ms-2">' +
+            '<span style="user-select:none;" class="text-white">Unblock</span>' +
+            '<input checked id="block-sp-' + CustomerId + '" class="d-none" type="checkbox" onclick="addToBlockUnblock(\'' + CustomerId + '\')">' +
+            '</div>'
+          '</label>';
+        }
+        else {
+          cell3_block =
+            '<label>' +
+            '<div class="d-inline-block blue-rounded-btn text-white cursor-pointer p-2 ps-3 pe-3 ms-2 bg-danger">' +
+            '<span style="user-select:none;" class="text-white">Block</span>' +
+            '<input  id="block-sp-' + CustomerId + '" class="d-none" type="checkbox" onclick="addToBlockUnblock(\'' + CustomerId + '\')">' +
+            '</div>'
+          '</label>';
+        }
+        cell3.innerHTML = cell3_block;
+
+      }
+    }
+    else {
+      $("#table-block-customer_wrapper").addClass("d-none");
+      $("#no-customer-found-div").removeClass("d-none");
+    }
+  });
+}
+
+function addToBlockUnblock(customerId) {
+  var id = 'block-sp-' + customerId;
+
+  if (document.getElementById(id).checked == true) {
+    document.getElementById(id).disabled = true;
+    var model = {
+      TargetUserId: parseInt(customerId),
+      IsBlocked: true
+    }
+    $.post("UpdateBlockedCustomer", model, function (data) {
+      if (data == "true") {
+        document.getElementById(id).parentElement.classList.remove('bg-danger');
+        var x = document.getElementById(id).parentNode.firstChild;
+        x.innerHTML = "Unblock";
+        document.getElementById(id).disabled = false;
+      }
+      else {
+        alert(data);
+      }
+    });
+
+  }
+  else {
+
+    document.getElementById(id).disabled = true;
+
+    var model = {
+      TargetUserId: parseInt(customerId),
+      IsBlocked: false
+    }
+    $.post("UpdateBlockedCustomer", model, function (data) {
+      if (data == "true") {
+        document.getElementById(id).parentElement.classList.add('bg-danger');
+        var x = document.getElementById(id).parentNode.firstChild;
+        x.innerHTML = "Block";
+        document.getElementById(id).disabled = false;
+      }
+      else {
+        alert(data);
+      }
+    });
+
+  }
+}
+
+function updateMyDetails() {
+  var modal = {}
+  $.post("SPDetails", modal, function (data) {
+    var myDetails = JSON.parse(data);
+
+    if (data != false) {
+
+      $("#my-details-first-name").val(myDetails[0].FirstName);
+      $("#my-details-last-name").val(myDetails[0].LastName);
+      $("#my-details-email").val(myDetails[0].Email);
+      $("#my-details-mobile").val(myDetails[0].Mobile);
+      $("#my-details-dob").val(myDetails[0].DateOfBirth.split("T")[0]);
+
+      if (myDetails[0].Gender == 1) {
+        document.getElementById("gender-male").checked = true;
+      }
+      else if (myDetails[0].Gender == 1) {
+        document.getElementById("gender-female").checked = true;
+      }
+      else {
+        document.getElementById("gender-not-to-say").checked = true;
+      }
+      if(myDetails[0].Address != null){
+        $("#address-street-name").val(myDetails[0].Address.AddressLine1);
+        $("#address-house-number").val(myDetails[0].Address.AddressLine2);
+        $("#address-postal-code").val(myDetails[0].Address.PostalCode);
+      }
+    }
+    else {
+      alert("Something went wrong")
+    }
+  });
+}
 
 
 // function loadMapInModal() {
@@ -777,6 +1047,7 @@ function getTime(d) {
 //   $("#service-request-modal-map-div").html($('<iframe src="' + url + '" title="W3Schools Free Online Web Tutorials"></iframe>'));
 //   // $("#service-request-modal-map-div").html("<h2>Hello</h2>");
 // }
+
 mapLoad();
 function mapLoad() {
   var mapOptions = {

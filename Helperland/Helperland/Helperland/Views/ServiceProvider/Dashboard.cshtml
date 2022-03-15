@@ -254,31 +254,31 @@
 
                             @* <tr>
                                 <td>
-                                    <p class="mt-2 mb-2">8319</p>
-                                    <p class="mt-2 mb-2"><b>Gaurang Patel</b></p>
+                                <p class="mt-2 mb-2">8319</p>
+                                <p class="mt-2 mb-2"><b>Gaurang Patel</b></p>
                                 </td>
                                 <td>
-                                    <img src="./assets/images/calendar2.png" alt="">
-                                    <p class="m-0"><b id="date"> 06/09/2021</b></p>
-                                    <img src="./assets/images/layer-14.png" alt="">
-                                    <span id="time">12:00 - 6:00</span>
+                                <img src="./assets/images/calendar2.png" alt="">
+                                <p class="m-0"><b id="date"> 06/09/2021</b></p>
+                                <img src="./assets/images/layer-14.png" alt="">
+                                <span id="time">12:00 - 6:00</span>
                                 </td>
                                 <td>
-                                    <p class="m-0">Rating</p>
-                                    <span>
-                                        <img src="star1.png" alt="">
-                                        <img src="star1.png" alt="">
-                                        <img src="star1.png" alt="">
-                                        <img src="star1.png" alt="">
-                                        <img src="star2.png" alt="">
-                                        <span>Very Good</span>
-                                    </span>
+                                <p class="m-0">Rating</p>
+                                <span>
+                                <img src="star1.png" alt="">
+                                <img src="star1.png" alt="">
+                                <img src="star1.png" alt="">
+                                <img src="star1.png" alt="">
+                                <img src="star2.png" alt="">
+                                <span>Very Good</span>
+                                </span>
                                 </td>
                                 <td>
-                                    <p class="m-0"><b>Customer Comment</b></p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, excepturi!
+                                <p class="m-0"><b>Customer Comment</b></p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, excepturi!
                                 </td>
-                            </tr> *@
+                                </tr> *@
 
                         </tbody>
                     </table>
@@ -286,7 +286,29 @@
 
                 <div class="tab-pane fade" id="pills-block-customer" role="tabpanel"
                     aria-labelledby="pills-block-customer-tab">
-                    <h2>Block Customer</h2>
+                    <table class="table-block-customer" id="table-block-customer">
+                        <thead>
+                            <tr style="background-color: #efefef">
+                                <th>Image</th>
+                                <th>SP name</th>
+                                <th>Rating star</th>
+                                <th>Num of Cleaning</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr hidden>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-none" id="no-customer-found-div">
+                        <h2>No Customer found...</h2>
+                    </div>
                 </div>
 
                 <div class="tab-pane fade" id="pills-my-account" role="tabpanel" aria-labelledby="pills-my-account-tab">
@@ -300,11 +322,6 @@
                                         Details</b></button>
                             </li>
                             <li class="text-center col-sm-4 nav-item" role="presentation">
-                                <button class="border-0 bg-white" id="pills-my-address-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-my-address" type="button" role="tab"
-                                    aria-controls="pills-my-address" aria-selected="false"><b>My Address</b></button>
-                            </li>
-                            <li class="text-center col-sm-4 nav-item" role="presentation">
                                 <button class="border-0 bg-white" id="pills-change-password-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-change-password" type="button" role="tab"
                                     aria-controls="pills-change-password" aria-selected="false"><b>Change
@@ -314,23 +331,35 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-my-details" role="tabpanel"
                                 aria-labelledby="pills-my-details-tab">
+
+                                <p>Account Status: <span class="text-success">Active</span></p>
                                 <div class="row">
-                                    <div class="col-sm-4 mt-3">
+                                    <div class="col">
+                                        <p class="m-0">Basic details</p>
+                                        <hr>
+                                    </div>
+                                    <div class="col-auto">
+                                        <img class="block-customer-cap-border" src="~/assets/images/cap.png" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4 mb-3">
                                         <label for="my-details-first-name">First name</label>
                                         <input class="form-control" type="text" name="" id="my-details-first-name"
                                             placeholder="First name">
                                     </div>
-                                    <div class="col-sm-4 mt-3">
+                                    <div class="col-sm-4 mb-3">
                                         <label for="my-details-last-name">Last name</label>
                                         <input class="form-control" type="text" name="" id="my-details-last-name"
                                             placeholder="Last name">
                                     </div>
-                                    <div class="col-sm-4 mt-3">
+                                    <div class="col-sm-4 mb-3">
                                         <label for="my-details-email">E-mail address</label>
                                         <input disabled class="form-control" type="email" name="" id="my-details-email"
                                             placeholder="E-mail address">
                                     </div>
-                                    <div class="col-sm-4 mt-3">
+                                    <div class="col-sm-4 mb-3">
                                         <label for="my-details-mobile">Mobile number</label>
                                         <div class="input-group mb-3 input-number">
                                             <span class="input-group-text" id="basic-addon1">+46</span>
@@ -338,7 +367,7 @@
                                                 id="my-details-mobile">
                                         </div>
                                     </div>
-                                    <div class="col-sm-4 mt-3">
+                                    <div class="col-sm-4 mb-3">
                                         <label for="my-details-dob">Date of Birth</label>
                                         <div class="date-div">
                                             <img class="img-calendar" src="~/assets/images/calendar-setup-service.png"
@@ -346,63 +375,116 @@
                                             <input class="input-date" type="date" name="" id="my-details-dob">
                                         </div>
                                     </div>
-                                </div>
-
-                                <hr>
-
-                                <div class="row">
-                                    <label for="my-details-lan">My Preferred Language</label>
-                                    <div class="col-auto mt-1">
-                                        <select class="form-select" id="my-details-lan">
-                                            <option value="english">
-                                                English
+                                    <div class="col-sm-4 mb-3">
+                                        <label for="my-details-nationality">Nationality</label>
+                                        <select class="form-select" id="my-details-nationality">
+                                            <option value="German">
+                                                German
                                             </option>
-                                            <option value="french">
-                                                French
+                                            <option value="India">
+                                                India
                                             </option>
                                         </select>
                                     </div>
+                                    <div class="col-12">
+                                        <p class="m-0">Gender</p>
+                                        <input type="radio" name="gender" id="gender-male" value="1">
+                                        <label for="gender-male">Male</label>
+
+                                        <input class="ms-3" type="radio" name="gender" id="gender-female" value="2">
+                                        <label for="gender-female">Female</label>
+
+                                        <input class="ms-3" type="radio" name="gender" id="gender-not-to-say" value="3">
+                                        <label for="gender-not-to-say">Rather not to say</label>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <p class="mb-0 mt-3">Select Avatar</p>
+
+                                        <div class="row">
+                                            <div class="col-auto text-center">
+                                                <label>
+                                                    <div class="rounded-grey-box mb-2">
+                                                        <input class="d-none checkbox-extra-service" type="radio"
+                                                            id="myCheckbox1" value="1" name="extra-services" />
+                                                        <img class="img-extra-service" src="~/assets/images/cap.png"
+                                                            alt="" width="40px">
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-auto text-center">
+                                                <label>
+                                                    <div class="rounded-grey-box mb-2">
+                                                        <input class="d-none checkbox-extra-service" type="radio"
+                                                            id="myCheckbox1" value="2" name="extra-services" />
+                                                        <img class="img-extra-service" src="~/assets/images/cap.png"
+                                                            alt="" width="40px">
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-auto text-center">
+                                                <label>
+                                                    <div class="rounded-grey-box mb-2">
+                                                        <input class="d-none checkbox-extra-service" type="radio"
+                                                            id="myCheckbox1" value="3" name="extra-services" />
+                                                        <img class="img-extra-service" src="~/assets/images/cap.png"
+                                                            alt="" width="40px">
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-auto text-center">
+                                                <label>
+                                                    <div class="rounded-grey-box mb-2">
+                                                        <input class="d-none checkbox-extra-service" type="radio"
+                                                            id="myCheckbox1" value="4" name="extra-services" />
+                                                        <img class="img-extra-service" src="~/assets/images/cap.png"
+                                                            alt="" width="40px">
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-auto text-center">
+                                                <label>
+                                                    <div class="rounded-grey-box mb-2">
+                                                        <input class="d-none checkbox-extra-service" type="radio"
+                                                            id="myCheckbox1" value="5" name="extra-services" />
+                                                        <img class="img-extra-service" src="~/assets/images/cap.png"
+                                                            alt="" width="40px">
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
+                                <div class="mt-3">
+                                    <p class="m-0">My address</p>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <label for="street-name">Street name</label>
+                                            <input type="text" class="form-control mb-3" placeholder="Street name"
+                                                id="address-street-name">
+                                        </div>
+                                        <div class="col-4">
+                                            <label for="house-number">House number</label>
+                                            <input type="text" class="form-control mb-3" placeholder="House number"
+                                                id="address-house-number">
+                                        </div>
+                                        <div class="col-4">
+                                            <label for="address-postal-code">Postal code</label>
+                                            <input type="number" class="form-control mb-3" placeholder="Postal code"
+                                                id="address-postal-code">
+                                        </div>
+                                        <div class="col-4">
+                                            <label for="city">City</label>
+                                            <input disabled type="text" class="form-control mb-3" placeholder="City"
+                                                id="address-city">
+                                        </div>
+                                    </div>
+                                </div>
                                 <button class="blue-rounded-btn text-white p-2 mt-3 ps-4 pe-4"
                                     id="my-details-save-btn">Save</button>
-
                             </div>
-
-                            <div class="tab-pane fade" id="pills-my-address" role="tabpanel"
-                                aria-labelledby="pills-my-address-tab">
-                                <div class="my-address-main-div" id="my-address-main-div">
-                                    <div class="my-address-row my-address-row-header">
-                                        <div class="col">
-                                            Address
-                                        </div>
-                                        <div class="col-2">
-                                            Action
-                                        </div>
-                                    </div>
-
-                                    <div id="my-address-list-of-address">
-                                        <div class="my-address-row">
-                                            <div class="col">
-                                                <b>Address: </b>New primary school, Sakariya <br>
-                                                <b>Phone number: </b>99663355887
-                                            </div>
-                                            <div class="col-2">
-                                                <a class="text-decoration-none" href="#">
-                                                    <img src="~/assets/images/edit-address.png" alt="edit" width="20px">
-                                                </a>
-                                                <a class="text-decoration-none" href="#">
-                                                    <img src="~/assets/images/remove-address.png" alt="remove"
-                                                        width="20px">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="blue-rounded-btn text-white p-2 mt-3 ps-4 pe-4"
-                                    id="my-details-add-new-address-btn">Add new address</button>
-                            </div>
-
 
                             <div class="tab-pane fade show" id="pills-change-password" role="tabpanel"
                                 aria-labelledby="pills-change-password-tab">

@@ -153,7 +153,112 @@ SP Rating table
   text-align: center;
   border-bottom: 0;
 }
+/*
+  Block Customer table
+*/
+.table-block-customer {
+  border: 0;
+  margin: 0px;
+  width: 100% !important;
+  display: flex;
+}
 
+.table-block-customer thead {
+  border: none;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  /* width: 1px; */
+}
+
+.table-block-customer tr {
+  display: inline-block;
+  width: 21vw;
+  margin: 1vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 0.625em;
+}
+
+.table-block-customer td {
+  /* border-bottom: 1px solid #ddd; */
+  border: none !important;
+  display: block;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.table-block-customer td::before {
+  content: attr(data-label);
+  float: left;
+  font-weight: bold;
+}
+
+.table-block-customer td:last-child {
+  text-align: center;
+  border-bottom: 0;
+}
+
+.block-customer-cap-border {
+  border: 2px solid #aaaaaa;
+  width: 60px;
+  padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 50%;
+}
+
+.date-div {
+  position: relative;
+}
+.img-calendar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+}
+.input-date {
+  z-index: 2;
+  position: relative;
+  padding-left: 40px;
+}
+.input-date{
+  border: 1px solid #dedddd;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border-radius: 4px;
+}
+.form-control{
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+.input-date:focus{
+  border: 1px solid #1d7a8c;
+}
+.input-date:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.rounded-grey-box {
+  cursor: pointer;
+  margin-left: 50%;
+  margin-top: 10%;
+  transform: translate(-50%);
+  height: 70px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #dcdcdc;
+  border-radius: 50%;
+}
+.rounded-grey-box-active {
+  border: 3px solid #1d7a8c !important;
+}
 /* Data Table class */
 table.dataTable thead th,
 table.dataTable thead td {
