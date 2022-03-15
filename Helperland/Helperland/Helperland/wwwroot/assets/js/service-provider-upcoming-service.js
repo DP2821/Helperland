@@ -928,7 +928,7 @@ function updateBlockCuatomer() {
         var IsBlocked = blockCustomers[i].IsBlocked;
 
         cell1.innerHTML = '<img class="block-customer-cap-border" src="/assets/images/cap.png" alt="">';
-        cell2.innerHTML = '<b>' + name + '</b>';
+        cell2.innerHTML = '<p><b>' + name + '</b></p>';
 
         var cell3_block = "";
         if (IsBlocked) {

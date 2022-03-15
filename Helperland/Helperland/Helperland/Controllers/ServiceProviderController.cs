@@ -50,7 +50,9 @@ namespace Helperland.Controllers
             var serviceRequests = (from sReq in _helperlandContext.ServiceRequests
                                    join sa in _helperlandContext.ServiceRequestAddresses on sReq.ServiceRequestId equals sa.ServiceRequestId
                                    join u in _helperlandContext.Users on sReq.UserId equals u.UserId
-                                   where sReq.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW
+                                   where sReq.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW && 
+                                   (bool)_helperlandContext.FavoriteAndBlockeds.Where(fv => fv.UserId == u.UserId && fv.TargetUserId == userId).Select(fv => fv.IsBlocked).FirstOrDefault() == false &&
+                                   (bool)_helperlandContext.FavoriteAndBlockeds.Where(fv => fv.UserId == userId && fv.TargetUserId == u.UserId).Select(fv => fv.IsBlocked).FirstOrDefault() == false
                                    select new
                                    {
                                        ServiceId = sReq.ServiceRequestId,
@@ -126,6 +128,29 @@ namespace Helperland.Controllers
                         newService.ModifiedDate = DateTime.Now;
                         _helperlandContext.ServiceRequests.Update(newService);
                         _helperlandContext.SaveChanges();
+
+                        var blockList = _helperlandContext.FavoriteAndBlockeds.Where(u => u.UserId == newService.UserId && u.IsBlocked == true).Select(u => u.TargetUserId).ToList();
+
+                        var spList = _helperlandContext.Users.Where(u => u.ZipCode == newService.ZipCode && u.UserTypeId == new GlobalData().SpTypeId && u.UserId != userId).Select(u => new { u.UserId, u.Email, u.FirstName, u.LastName }).ToList();
+                        for (int i = 0; i < spList.Count; i++)
+                        {
+                            var serviceProviders = spList[i];
+                            if (!blockList.Contains(serviceProviders.UserId))
+                            {
+                                SendMailViewModel sendMailViewModel = new SendMailViewModel();
+                                sendMailViewModel.Email = serviceProviders.Email;
+                                sendMailViewModel.Name = serviceProviders.FirstName + " " + serviceProviders.LastName;
+                                sendMailViewModel.Subject = "Service unavailable";
+                                sendMailViewModel.Body = 
+                                "Hello,\n" +
+                                serviceProviders.FirstName + " " + serviceProviders.LastName + "\n\n" +
+                                "Service ID: " + newService.ServiceRequestId + "\n" +
+                                "this service request has already been accepted by someone and is no more available";
+
+                                Thread threadSendMail = new Thread(mailRequest.SendEmail);
+                                threadSendMail.Start(sendMailViewModel);
+                            }
+                        }
                     }
                     else
                     {

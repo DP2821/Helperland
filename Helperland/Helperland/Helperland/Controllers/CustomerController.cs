@@ -120,7 +120,7 @@ namespace Helperland.Controllers
             var fevSPListBookServiceViewModel = (from f in _helperlandContext.FavoriteAndBlockeds
                                                  join u in _helperlandContext.Users
                                                  on f.TargetUserId equals u.UserId
-                                                 where f.UserId == userId && f.IsFavorite == true && f.IsBlocked == false
+                                                 where f.UserId == userId && f.IsFavorite == true && f.IsBlocked == false && (f.TargetUserId != userId && f.IsBlocked == false)
                                                  select new
                                                  {
                                                      TargetUserID = u.UserId,
@@ -188,13 +188,28 @@ namespace Helperland.Controllers
 
                         if (fevSP != null)
                         {
-                            mailRequest.SendEmail(fevSP.Email, fevSP.FirstName + " " + fevSP.LastName, "New Service Request",
+                            SendMailViewModel sendMailViewModel = new SendMailViewModel();
+                            sendMailViewModel.Email = fevSP.Email;
+                            sendMailViewModel.Name = fevSP.FirstName + " " + fevSP.LastName;
+                            sendMailViewModel.Subject = "New Service Request";
+                            sendMailViewModel.Body = 
                             "Hello,\n" +
                             fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
                             userName + " has booked service at:\n" +
                             userAddress.AddressLine1 + ", " + userAddress.AddressLine2 + "\n" +
                             userAddress.City + "-" + userAddress.PostalCode + "\n" +
-                            "Phone: " + userAddress.Mobile);
+                            "Phone: " + userAddress.Mobile;
+
+                            Thread threadSendMail = new Thread(mailRequest.SendEmail);
+                            threadSendMail.Start(sendMailViewModel);
+
+                            // mailRequest.SendEmail(fevSP.Email, fevSP.FirstName + " " + fevSP.LastName, "New Service Request",
+                            // "Hello,\n" +
+                            // fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
+                            // userName + " has booked service at:\n" +
+                            // userAddress.AddressLine1 + ", " + userAddress.AddressLine2 + "\n" +
+                            // userAddress.City + "-" + userAddress.PostalCode + "\n" +
+                            // "Phone: " + userAddress.Mobile);
                         }
                         else
                         {
@@ -205,20 +220,36 @@ namespace Helperland.Controllers
                     {
                         var blockList = _helperlandContext.FavoriteAndBlockeds.Where(u => u.UserId == userId && u.IsBlocked == true).Select(u => u.TargetUserId).ToList();
 
+                        var SPBlockCustomerList = _helperlandContext.FavoriteAndBlockeds.Where(u => u.TargetUserId == userId).Select(u => u.UserId).ToList();
                         var spList = _helperlandContext.Users.Where(u => u.ZipCode == userAddress.PostalCode && u.UserTypeId == new GlobalData().SpTypeId).Select(u => new { u.UserId, u.Email, u.FirstName, u.LastName }).ToList();
 
                         for (int i = 0; i < spList.Count; i++)
                         {
                             var fevSP = spList[i];
-                            if (!blockList.Contains(fevSP.UserId))
+                            if (!blockList.Contains(fevSP.UserId) && !SPBlockCustomerList.Contains(fevSP.UserId))
                             {
-                                mailRequest.SendEmail(fevSP.Email, fevSP.FirstName + " " + fevSP.LastName, "New Service Request",
+                                SendMailViewModel sendMailViewModel = new SendMailViewModel();
+                                sendMailViewModel.Email = fevSP.Email;
+                                sendMailViewModel.Name = fevSP.FirstName + " " + fevSP.LastName;
+                                sendMailViewModel.Subject = "New Service Request";
+                                sendMailViewModel.Body = 
                                 "Hello,\n" +
                                 fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
                                 userName + " has booked service at:\n" +
                                 userAddress.AddressLine1 + ", " + userAddress.AddressLine2 + "\n" +
                                 userAddress.City + "-" + userAddress.PostalCode + "\n" +
-                                "Phone: " + userAddress.Mobile);
+                                "Phone: " + userAddress.Mobile;
+
+                                Thread threadSendMail = new Thread(mailRequest.SendEmail);
+                                threadSendMail.Start(sendMailViewModel);
+
+                                // mailRequest.SendEmail(fevSP.Email, fevSP.FirstName + " " + fevSP.LastName, "New Service Request",
+                                // "Hello,\n" +
+                                // fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
+                                // userName + " has booked service at:\n" +
+                                // userAddress.AddressLine1 + ", " + userAddress.AddressLine2 + "\n" +
+                                // userAddress.City + "-" + userAddress.PostalCode + "\n" +
+                                // "Phone: " + userAddress.Mobile);
                             }
                         }
                     }
@@ -244,7 +275,7 @@ namespace Helperland.Controllers
             var serviceRequests = (from sr in _helperlandContext.ServiceRequests
                                    join sa in _helperlandContext.ServiceRequestAddresses on sr.ServiceRequestId equals sa.ServiceRequestId
                                    // join se in _helperlandContext.ServiceRequestExtras on sr.ServiceRequestId equals se.ServiceRequestId
-                                   where sr.UserId == userId && (sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW || sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_ACCEPTED) 
+                                   where sr.UserId == userId && (sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW || sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_ACCEPTED)
                                    select new
                                    {
                                        ServiceId = sr.ServiceRequestId,
@@ -589,14 +620,16 @@ namespace Helperland.Controllers
             return "true";
         }
 
-        public string GetCityByZipCode(string postalcode){
+        public string GetCityByZipCode(string postalcode)
+        {
             var city = (from z in _helperlandContext.Zipcodes
-                               join c in _helperlandContext.Cities on z.CityId equals c.Id
-                               where z.ZipcodeValue == postalcode
-                               select new{
-                                   cityName = c.CityName
-                               }).FirstOrDefault();
-            if(city != null)
+                        join c in _helperlandContext.Cities on z.CityId equals c.Id
+                        where z.ZipcodeValue == postalcode
+                        select new
+                        {
+                            cityName = c.CityName
+                        }).FirstOrDefault();
+            if (city != null)
                 return city.cityName;
             else
                 return "false";

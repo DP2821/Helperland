@@ -150,23 +150,52 @@
                                                         <b>@CurrentUserName</b>
                                                     </p>
                                                     <hr>
-                                                    <ul class="ps-0 popover-ul">
-                                                        <li>
-                                                            <a class="nav-link" asp-action="ServiceHistory" asp-controller="Customer">
-                                                                <span>Overview</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" asp-action="ServiceHistory" asp-controller="Customer" asp-route-my-account="true">
-                                                                <span>My&nbsp;Settings</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="Account/LogOut">
-                                                                <span>Logout</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
+                                                    @if (UserTypeID == new GlobalData().CustomerTypeId)
+                                                    {
+                                                        <ul class="ps-0 popover-ul">
+                                                            <li>
+                                                                <a class="nav-link" asp-action="ServiceHistory"
+                                                            asp-controller="Customer">
+                                                                    <span>Overview</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="nav-link" asp-action="ServiceHistory"
+                                                            asp-controller="Customer" asp-route-my-account="true"
+                                                            id="pop-over-my-setting-a-tag">
+                                                                    <span>My&nbsp;Settings</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="nav-link" asp-action="LogOut" asp-controller="Account">
+                                                                    <span>Logout</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    }
+                                                    else if (UserTypeID == new GlobalData().SpTypeId)
+                                                    {
+                                                        <ul class="ps-0 popover-ul">
+                                                            <li>
+                                                                <a class="nav-link" asp-action="Dashboard"
+                                                            asp-controller="ServiceProvider">
+                                                                    <span>My&nbsp;Dashboard</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="nav-link" asp-action="Dashboard"
+                                                            asp-controller="ServiceProvider" asp-route-my-account="true"
+                                                            id="pop-over-my-setting-a-tag">
+                                                                    <span>My&nbsp;Settings</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="nav-link" asp-action="LogOut" asp-controller="Account">
+                                                                    <span>Logout</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    }
                                                 </div>
                                             </div>
                                         </li>
