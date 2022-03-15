@@ -192,7 +192,7 @@ namespace Helperland.Controllers
                             sendMailViewModel.Email = fevSP.Email;
                             sendMailViewModel.Name = fevSP.FirstName + " " + fevSP.LastName;
                             sendMailViewModel.Subject = "New Service Request";
-                            sendMailViewModel.Body = 
+                            sendMailViewModel.Body =
                             "Hello,\n" +
                             fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
                             userName + " has booked service at:\n" +
@@ -232,7 +232,7 @@ namespace Helperland.Controllers
                                 sendMailViewModel.Email = fevSP.Email;
                                 sendMailViewModel.Name = fevSP.FirstName + " " + fevSP.LastName;
                                 sendMailViewModel.Subject = "New Service Request";
-                                sendMailViewModel.Body = 
+                                sendMailViewModel.Body =
                                 "Hello,\n" +
                                 fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
                                 userName + " has booked service at:\n" +
@@ -352,73 +352,98 @@ namespace Helperland.Controllers
 
             if (ModelState.IsValid)
             {
-                ServiceRequest? serviceRequest = _helperlandContext.ServiceRequests.Find(rescheduleServiceViewModel.ServiceId);
+                ServiceRequest? serviceRequest = _helperlandContext.ServiceRequests.Where(sr => sr.ServiceRequestId == rescheduleServiceViewModel.ServiceId).FirstOrDefault();
 
                 if (serviceRequest != null)
                 {
 
                     if (serviceRequest.ServiceProviderId != null)
                     {
+                        var noOfServiceConflicting = _helperlandContext.ServiceRequests.Where(sr => sr.ServiceProviderId == serviceRequest.ServiceProviderId &&
+                        sr.ServiceRequestId != serviceRequest.ServiceRequestId &&
+                        (sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW || sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_ACCEPTED) &&
+                        DateTime.Compare(sr.ServiceStartDate.Date, DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime, "yyyy-MM-dd HH:mm", null).Date) == 0 && !(
+                            (TimeSpan.Compare(sr.ServiceStartDate.AddHours(sr.ServiceHours + (double)sr.ExtraHours + 1.0).TimeOfDay,
+                                DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime, "yyyy-MM-dd HH:mm", null).TimeOfDay) <= 0 &&
+                            TimeSpan.Compare(sr.ServiceStartDate.AddHours(sr.ServiceHours + (double)sr.ExtraHours + 1.0).TimeOfDay,
+                                DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime, "yyyy-MM-dd HH:mm", null).AddHours(serviceRequest.ServiceHours + (double)serviceRequest.ExtraHours + 1.0).TimeOfDay) <= 0
+                            ) ||
+                            (TimeSpan.Compare(sr.ServiceStartDate.TimeOfDay,
+                                DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime, "yyyy-MM-dd HH:mm", null).TimeOfDay) >= 0) &&
+                            TimeSpan.Compare(sr.ServiceStartDate.TimeOfDay,
+                                DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime, "yyyy-MM-dd HH:mm", null).AddHours(serviceRequest.ServiceHours + (double)serviceRequest.ExtraHours + 1.0).TimeOfDay) >= 0
+                            )
+                        ).FirstOrDefault();
 
-                        // int noOfServiceConflicting = _helperlandContext.ServiceRequests.Where(u => u.ServiceProviderId == serviceRequest.ServiceProviderId &&
-                        //         (
-                        //             u.ServiceStartDate.Date == DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate, "yyyy-MM-dd", null).Date &&
-                        //             (
-                        //                 u.ServiceStartDate.Hour >
-                        //                 (
-                        //                     DateTime.ParseExact(rescheduleServiceViewModel.NewServicetime, "HH:mm", null).Hour +
-                        //                     DateTime.ParseExact(Math.Round(serviceRequest.ServiceHours) + "", "HH", null).Hour +
-                        //                     DateTime.ParseExact(Math.Round(serviceRequest.ExtraHours == null ? (double)serviceRequest.ExtraHours : 0.0) + "", "HH", null).Hour
-                        //                 ) ||
-                        //                 DateTime.ParseExact(rescheduleServiceViewModel.NewServicetime, "HH:mm", null).Hour >
-                        //                 (
-                        //                     u.ServiceStartDate.Hour +
-                        //                     DateTime.ParseExact(Math.Round(u.ServiceHours) + "", "HH", null).Hour +
-                        //                     DateTime.ParseExact(Math.Round(u.ExtraHours == null ? (double)u.ExtraHours : 0.0) + "", "HH", null).Hour
-                        //                 )
-                        //             )
-                        //         )
-                        //     ).Count();
-                        var sameDateServices = _helperlandContext.ServiceRequests.Where(u => u.ServiceProviderId == serviceRequest.ServiceProviderId && u.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW && u.ServiceRequestId != serviceRequest.ServiceRequestId &&
-                                    u.ServiceStartDate.Date == DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate, "yyyy-MM-dd", null).Date
-                            ).Select(u => new { u.ServiceStartDate, u.ServiceHours, u.ExtraHours }).ToList();
-
-                        for (int i = 0; i < sameDateServices.Count; i++)
+                        if (noOfServiceConflicting != null)
                         {
-                            if (!(sameDateServices[i].ServiceStartDate.Hour >
-                                        DateTime.ParseExact(rescheduleServiceViewModel.NewServicetime, "HH:mm", null).AddHours(serviceRequest.ServiceHours + (double)serviceRequest.ExtraHours).Hour
-                                ||
-                                DateTime.ParseExact(rescheduleServiceViewModel.NewServicetime, "HH:mm", null).Hour >
-                                        sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Hour
-                                ))
+                            string startMinute = noOfServiceConflicting.ServiceStartDate.Minute + "";
+                            string endMinute = noOfServiceConflicting.ServiceStartDate.AddHours(noOfServiceConflicting.ServiceHours + (double)noOfServiceConflicting.ExtraHours).Minute + "";
+                            if (noOfServiceConflicting.ServiceStartDate.Minute == 0)
                             {
-                                string startMinute = sameDateServices[i].ServiceStartDate.Minute + "";
-                                string endMinute = sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Minute + "";
-                                if (sameDateServices[i].ServiceStartDate.Minute == 0)
-                                {
-                                    startMinute = "00";
-                                }
-                                if (sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Minute == 0)
-                                {
-                                    endMinute = "00";
-                                }
-                                return $"Another service request has been assigned to the service provider on {sameDateServices[i].ServiceStartDate.Day}-{sameDateServices[i].ServiceStartDate.Month}-{sameDateServices[i].ServiceStartDate.Year} from {sameDateServices[i].ServiceStartDate.Hour}:{startMinute} to {sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Hour}:{endMinute}. Either choose another date or pick up a different time slot";
+                                startMinute = "00";
                             }
+                            if (noOfServiceConflicting.ServiceStartDate.AddHours(noOfServiceConflicting.ServiceHours + (double)noOfServiceConflicting.ExtraHours).Minute == 0)
+                            {
+                                endMinute = "00";
+                            }
+                            return $"Another service request has been assigned to the service provider on {noOfServiceConflicting.ServiceStartDate.Day}-{noOfServiceConflicting.ServiceStartDate.Month}-{noOfServiceConflicting.ServiceStartDate.Year} from {noOfServiceConflicting.ServiceStartDate.Hour}:{startMinute} to {noOfServiceConflicting.ServiceStartDate.AddHours(noOfServiceConflicting.ServiceHours + (double)noOfServiceConflicting.ExtraHours).Hour}:{endMinute}. Either choose another date or pick up a different time slot";
                         }
+                        // System.Console.WriteLine("\n\n\n\n###################### " + noOfServiceConflicting + " ++++++++++++++++++++\n\n\n");
+
+                        // var sameDateServices = _helperlandContext.ServiceRequests.Where(u => u.ServiceProviderId == serviceRequest.ServiceProviderId && u.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW && u.ServiceRequestId != serviceRequest.ServiceRequestId &&
+                        //             u.ServiceStartDate.Date == DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate, "yyyy-MM-dd", null).Date
+                        //     ).Select(u => new { u.ServiceStartDate, u.ServiceHours, u.ExtraHours }).ToList();
+
+                        // for (int i = 0; i < sameDateServices.Count; i++)
+                        // {
+                        //     if (!(sameDateServices[i].ServiceStartDate.Hour >
+                        //                 DateTime.ParseExact(rescheduleServiceViewModel.NewServicetime, "HH:mm", null).AddHours(serviceRequest.ServiceHours + (double)serviceRequest.ExtraHours).Hour
+                        //         ||
+                        //         DateTime.ParseExact(rescheduleServiceViewModel.NewServicetime, "HH:mm", null).Hour >
+                        //                 sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Hour
+                        //         ))
+                        //     {
+                        //         string startMinute = sameDateServices[i].ServiceStartDate.Minute + "";
+                        //         string endMinute = sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Minute + "";
+                        //         if (sameDateServices[i].ServiceStartDate.Minute == 0)
+                        //         {
+                        //             startMinute = "00";
+                        //         }
+                        //         if (sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Minute == 0)
+                        //         {
+                        //             endMinute = "00";
+                        //         }
+                        //         return $"Another service request has been assigned to the service provider on {sameDateServices[i].ServiceStartDate.Day}-{sameDateServices[i].ServiceStartDate.Month}-{sameDateServices[i].ServiceStartDate.Year} from {sameDateServices[i].ServiceStartDate.Hour}:{startMinute} to {sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Hour}:{endMinute}. Either choose another date or pick up a different time slot";
+                        //     }
+                        // }
 
                         string? userName = new CurrentLoggedInUser().GetName(Request.Cookies["keepMeLoggedInToken"]);
-
                         var fevSP = _helperlandContext.Users.Where(u => u.UserId == serviceRequest.ServiceProviderId).Select(u => new { u.Email, u.FirstName, u.LastName }).FirstOrDefault();
 
                         if (fevSP != null)
                         {
-                            mailRequest.SendEmail(fevSP.Email, fevSP.FirstName + " " + fevSP.LastName, "Service Rescheduled",
-                                "Hello,\n" +
-                                fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
-                                userName + " has rescheduled service on\n" +
-                                rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime + "\n" +
-                                "Service ID: " + rescheduleServiceViewModel.ServiceId
-                            );
+                            SendMailViewModel sendMailViewModel = new SendMailViewModel();
+                            sendMailViewModel.Email = fevSP.Email;
+                            sendMailViewModel.Name = fevSP.FirstName + " " + fevSP.LastName;
+                            sendMailViewModel.Subject = "Service Rescheduled";
+                            sendMailViewModel.Body =
+                            "Hello,\n" +
+                            fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
+                            userName + " has rescheduled service on\n" +
+                            rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime + "\n" +
+                            "Service ID: " + rescheduleServiceViewModel.ServiceId;
+
+                            Thread threadSendMail = new Thread(mailRequest.SendEmail);
+                            threadSendMail.Start(sendMailViewModel);
+
+                            // mailRequest.SendEmail(fevSP.Email, fevSP.FirstName + " " + fevSP.LastName, "Service Rescheduled",
+                            //     "Hello,\n" +
+                            //     fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
+                            //     userName + " has rescheduled service on\n" +
+                            //     rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime + "\n" +
+                            //     "Service ID: " + rescheduleServiceViewModel.ServiceId
+                            // );
                         }
                     }
 
