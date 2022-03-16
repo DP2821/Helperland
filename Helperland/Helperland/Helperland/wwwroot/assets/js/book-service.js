@@ -216,7 +216,7 @@ $(document).ready(function () {
         }
         else {
             document.getElementById("pill-yourDetails-tab").disabled = true;
-            alert("Please select date...")
+            showErrorAlertMessage("Please select date...");
         }
     });
 
@@ -244,7 +244,7 @@ $(document).ready(function () {
         var streetName = $("#add-new-address-form-street-name").val();
         var houseNumber = $("#add-new-address-form-house-number").val();
         var postalCode = $("#add-new-address-form-postal-code").val();
-        // var city = $("#add-new-address-form-city").val();
+        var city = $("#add-new-address-form-city").val();
         var phone = $("#add-new-address-form-phone").val();
 
         if (streetName != "" && houseNumber != "" && city != "" && phone != "") {
@@ -265,22 +265,23 @@ $(document).ready(function () {
                             updateAddressList();
                         }
                         else {
-                            alert("Something went wrong")
+                            showErrorAlertMessage("Something went wrong");
                         }
                     });
                 }
                 else {
-                    alert("Phone number should be all digit");
+                    showErrorAlertMessage("Phone number should be all digit");
+                    
                 }
 
             }
             else {
-                alert("Phone number should be 10 digit");
+                showErrorAlertMessage("Phone number should be 10 digit");
             }
 
         }
         else {
-            alert("Please insert all fields");
+            showErrorAlertMessage("Please insert all fields");
         }
 
 
@@ -302,7 +303,7 @@ $(document).ready(function () {
         }
         else {
             document.getElementById("pill-payment-tab").disabled = true;
-            alert('Please select address first!');
+            showErrorAlertMessage("Please select address first!");
         }
     });
 
@@ -350,15 +351,15 @@ $(document).ready(function () {
                 $("#booking-service-span-service-id").html(parseInt(data));
 
                 document.getElementById("booking-modal-link").click();
-
+                
                 $("#booking-modal-btn-ok").click(function () {
                     document.getElementById("helperland-logo-big").click();
                 })
             }
             else {
-                alert("Error"); //remove this alert
                 $("#booking-modal-right-arrow-div").addClass("bg-danger");
                 $("#booking-modal-content-div").html('<h3 class="text-danger">Error</h3>');
+                document.getElementById("booking-modal-link").click();
             }
         });
     });

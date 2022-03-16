@@ -482,12 +482,25 @@ namespace Helperland.Controllers
                         var serviceProvider = _helperlandContext.Users.Where(u => u.UserId == serviceRequest.ServiceProviderId).Select(u => new { u.Email, u.FirstName, u.LastName }).FirstOrDefault();
                         if (serviceProvider != null)
                         {
-                            mailRequest.SendEmail(serviceProvider.Email, serviceProvider.FirstName + " " + serviceProvider.LastName, "Service Cancelled",
-                           "Hello,\n" +
+                            SendMailViewModel sendMailViewModel = new SendMailViewModel();
+                            sendMailViewModel.Email = serviceProvider.Email;
+                            sendMailViewModel.Name = serviceProvider.FirstName + " " + serviceProvider.LastName;
+                            sendMailViewModel.Subject = "Service Cancelled";
+                            sendMailViewModel.Body =
+                            "Hello,\n" +
                            serviceProvider.FirstName + " " + serviceProvider.LastName + "\n\n" +
                            userName + " has cancelled service\n" +
-                           "Service ID: " + ServiceId
-                           );
+                           "Service ID: " + ServiceId;
+
+                            Thread threadSendMail = new Thread(mailRequest.SendEmail);
+                            threadSendMail.Start(sendMailViewModel);
+
+                        //     mailRequest.SendEmail(serviceProvider.Email, serviceProvider.FirstName + " " + serviceProvider.LastName, "Service Cancelled",
+                        //    "Hello,\n" +
+                        //    serviceProvider.FirstName + " " + serviceProvider.LastName + "\n\n" +
+                        //    userName + " has cancelled service\n" +
+                        //    "Service ID: " + ServiceId
+                        //    );
                         }
                     }
                     int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);

@@ -17,6 +17,14 @@ $(document).ready(function () {
     $(this).parent().addClass("active-tab");
 
   });
+  $("#have-pet").change(function () {
+    if (document.getElementById("have-pet").checked) {
+      updateServiceRequestTable(true);
+    }
+    else {
+      updateServiceRequestTable(false);
+    }
+  });
   $("#new-service-request-modal-accept").click(function () {
     var serviceId = $("#new-service-request-modal-serviceId").html();
     acceptService(serviceId);
@@ -65,19 +73,19 @@ $(document).ready(function () {
 
         $.post("ChnagePassword", model, function (data) {
           if (data == "true") {
-            alert("Password changed successfully");
+            showSuccessAlertMessage("Password changed successfully");
           }
           else {
-            alert(data);
+            showErrorAlertMessage(data);
           }
         });
       }
       else {
-        alert("Both Password are not same");
+        showErrorAlertMessage("Both Password are not same");
       }
     }
     else {
-      alert("Please fill all field");
+      showErrorAlertMessage("Please fill all field");
     }
   });
 
@@ -90,7 +98,7 @@ $(document).ready(function () {
       }
       else {
         $("#address-city").val("");
-        alert("Invalid Zipcode");
+        showErrorAlertMessage("Invalid Zipcode");
       }
     });
   });
@@ -127,23 +135,23 @@ $(document).ready(function () {
           $.post("UpdateSPDetails", modal, function (data) {
             if (data == "true") {
               updateMyDetails();
-              alert("Profile successfully updated");
+              showSuccessAlertMessage("Profile successfully updated");
             }
             else {
-              alert(data);
+              showErrorAlertMessage(data);
             }
           });
         }
         else {
-          alert("Mobile number should be 10 digit");
+          showErrorAlertMessage("Mobile number should be 10 digit");
         }
       }
       else {
-        alert("Number should be only digit")
+        showErrorAlertMessage("Number should be only digit");
       }
     }
     else {
-      alert("Plaease fill all field");
+      showErrorAlertMessage("Plaease fill all field");
     }
 
   });
@@ -213,151 +221,152 @@ function export_excel() {
 }
 
 var isServiceRequestUpdated = false;
-function updateServiceRequestTable() {
+function updateServiceRequestTable(hasPet) {
   $.post("GetNewServices", {}, function (data) {
     var serviceRequests = JSON.parse(data);
 
 
     $("#table-service-request td").remove();
     for (i = 0; i < serviceRequests.length; i++) {
-      var table = document.getElementById("table-service-request");
+      if (!hasPet || serviceRequests[i].HasPets) {
+        var table = document.getElementById("table-service-request");
 
-      var row = table.insertRow();
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3);
-      var cell5 = row.insertCell(4);
-      var cell6 = row.insertCell(5);
-      var cell7 = row.insertCell(6);
-      var cell8 = row.insertCell(7);
-      var cell9 = row.insertCell(8);
-      var cell10 = row.insertCell(9);
-      var cell11 = row.insertCell(10);
-      var cell12 = row.insertCell(11);
-      var cell13 = row.insertCell(12);
-      var cell14 = row.insertCell(13);
+        var row = table.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
+        var cell8 = row.insertCell(7);
+        var cell9 = row.insertCell(8);
+        var cell10 = row.insertCell(9);
+        var cell11 = row.insertCell(10);
+        var cell12 = row.insertCell(11);
+        var cell13 = row.insertCell(12);
+        var cell14 = row.insertCell(13);
 
-      cell1.setAttribute("data-label", "Service Id");
-      cell2.setAttribute("data-label", "Service date");
-      cell3.setAttribute("data-label", "Customer details");
-      cell4.setAttribute("data-label", "Payment");
-      cell5.setAttribute("data-label", "Time conflict");
-      cell5.setAttribute("data-label", "Actions");
+        cell1.setAttribute("data-label", "Service Id");
+        cell2.setAttribute("data-label", "Service date");
+        cell3.setAttribute("data-label", "Customer details");
+        cell4.setAttribute("data-label", "Payment");
+        cell5.setAttribute("data-label", "Time conflict");
+        cell5.setAttribute("data-label", "Actions");
 
-      var customerName = serviceRequests[i].CustomerName;
-      var startDate = serviceRequests[i].ServiceStartDate;
-      var duration = serviceRequests[i].ServiceTotalHour;
-      var startTime = serviceRequests[i].ServiceStartTime;
+        var customerName = serviceRequests[i].CustomerName;
+        var startDate = serviceRequests[i].ServiceStartDate;
+        var duration = serviceRequests[i].ServiceTotalHour;
+        var startTime = serviceRequests[i].ServiceStartTime;
 
-      var endTime = '';
-      if (startTime.split(":")[1] == '30') {
-        endTime = parseFloat(startTime.split(":")[0]) + duration + 0.5;
-      }
-      else {
-        endTime = parseFloat(startTime.split(":")[0]) + duration;
-      }
-      if ((endTime + "").split(".")[1] == 5) {
-        endTime = (endTime + "").split(".")[0] + ":30";
-      }
-      else {
-        endTime = (endTime + "").split(".")[0] + ":00";
-      }
-
-      var payment = serviceRequests[i].TotalCost;
-      var extras = "";
-      for (var e = 0; e < serviceRequests[i].ServiceExtraId.length; e++) {
-        switch (serviceRequests[i].ServiceExtraId[e]) {
-          case 1:
-            extras += "Inside cabinate, ";
-            break;
-          case 2:
-            extras += "Inside fridge, ";
-            break;
-          case 3:
-            extras += "Inside oven, ";
-            break;
-          case 4:
-            extras += "Laundry wash & dry, ";
-            break;
-          case 5:
-            extras += "Interior window, ";
-            break;
+        var endTime = '';
+        if (startTime.split(":")[1] == '30') {
+          endTime = parseFloat(startTime.split(":")[0]) + duration + 0.5;
         }
+        else {
+          endTime = parseFloat(startTime.split(":")[0]) + duration;
+        }
+        if ((endTime + "").split(".")[1] == 5) {
+          endTime = (endTime + "").split(".")[0] + ":30";
+        }
+        else {
+          endTime = (endTime + "").split(".")[0] + ":00";
+        }
+
+        var payment = serviceRequests[i].TotalCost;
+        var extras = "";
+        for (var e = 0; e < serviceRequests[i].ServiceExtraId.length; e++) {
+          switch (serviceRequests[i].ServiceExtraId[e]) {
+            case 1:
+              extras += "Inside cabinate, ";
+              break;
+            case 2:
+              extras += "Inside fridge, ";
+              break;
+            case 3:
+              extras += "Inside oven, ";
+              break;
+            case 4:
+              extras += "Laundry wash & dry, ";
+              break;
+            case 5:
+              extras += "Interior window, ";
+              break;
+          }
+        }
+        //For remove extra coma at the end
+        extras = extras.substring(0, extras.length - 2);
+
+        var address = serviceRequests[i].AddressLine1 + " " + serviceRequests[i].AddressLine2 + " <br>" + serviceRequests[i].PostalCode + " " + serviceRequests[i].City;
+        var phone = serviceRequests[i].Mobile;
+        var email = serviceRequests[i].Email;
+        var comment = serviceRequests[i].Comments;
+        var havePet = serviceRequests[i].HasPets;
+        var conflict = serviceRequests[i].Conflict;
+
+
+
+        cell1.innerHTML = '<p>' + serviceRequests[i].ServiceId + '</p>';
+
+
+        cell2.innerHTML =
+          '<img src="/assets/images/calendar2.png" alt="">' +
+          '<strong id="date"></strong> ' + startDate + '<br>' +
+          '<img src="/assets/images/layer-14.png" alt="">' +
+          '<span id="time"> ' + startTime + ' - ' + endTime + '</span>';
+
+        cell3.innerHTML =
+          '<div class="row">' +
+          '<div class="col-auto p-0">' +
+          '<img style="margin-top: 37px;" src="/assets/images/layer-15.png" alt="">' +
+          '</div>' +
+          '<div class="col">' +
+          '<p class="mt-2 mb-2">' + customerName + '</p>' +
+          '<div class="d-inline-block">' + address + '</div>'
+        '</div>'
+        '</div>';
+
+
+        cell4.innerHTML =
+          '<span class="blue-price">' + payment + '</span>';
+
+        if (conflict != null) {
+          var conflictDateTemp = conflict.ServiceStartDate.split("T")[0].split("-");
+          var conflictDate = conflictDateTemp[2] + '-' + conflictDateTemp[1] + '-' + conflictDateTemp[0];
+          cell5.innerHTML = conflictDate + " " + conflict.ServiceStartDate.split("T")[1];
+        }
+
+        cell6.innerHTML =
+          '<button class="blue-rounded-btn text-white p-2" onclick="acceptService(\'' + serviceRequests[i].ServiceId + '\')">Accept</button>';
+
+
+        cell7.innerHTML = extras;
+        cell7.setAttribute("hidden", true);
+
+        cell8.innerHTML = address;
+        cell8.setAttribute("hidden", true);
+
+        cell9.innerHTML = phone;
+        cell9.setAttribute("hidden", true);
+
+        cell10.innerHTML = email;
+        cell10.setAttribute("hidden", true);
+
+        cell11.innerHTML = comment;
+        cell11.setAttribute("hidden", true);
+
+        cell12.innerHTML = duration;
+        cell12.setAttribute("hidden", true);
+
+        if (havePet)
+          cell13.innerHTML = "I have pets at home";
+        else
+          cell13.innerHTML = "I don't have pets at home";
+        cell13.setAttribute("hidden", true);
+
+        cell14.innerHTML = customerName;
+        cell14.setAttribute("hidden", true);
       }
-      //For remove extra coma at the end
-      extras = extras.substring(0, extras.length - 2);
-
-      var address = serviceRequests[i].AddressLine1 + " " + serviceRequests[i].AddressLine2 + " <br>" + serviceRequests[i].PostalCode + " " + serviceRequests[i].City;
-      var phone = serviceRequests[i].Mobile;
-      var email = serviceRequests[i].Email;
-      var comment = serviceRequests[i].Comments;
-      var havePet = serviceRequests[i].HasPets;
-      var conflict = serviceRequests[i].Conflict;
-
-
-
-      cell1.innerHTML = '<p>' + serviceRequests[i].ServiceId + '</p>';
-
-
-      cell2.innerHTML =
-        '<img src="/assets/images/calendar2.png" alt="">' +
-        '<strong id="date"></strong>' + startDate + '<br>' +
-        '<img src="/assets/images/layer-14.png" alt="">' +
-        '<span id="time"> ' + startTime + ' - ' + endTime + '</span>';
-
-      cell3.innerHTML =
-        '<div class="row">' +
-        '<div class="col-auto p-0">' +
-        '<img style="margin-top: 37px;" src="/assets/images/layer-15.png" alt="">' +
-        '</div>' +
-        '<div class="col">' +
-        '<p class="mt-2 mb-2">' + customerName + '</p>' +
-        '<div class="d-inline-block">' + address + '</div>'
-      '</div>'
-      '</div>';
-
-
-      cell4.innerHTML =
-        '<span class="blue-price">' + payment + '</span>';
-
-      if (conflict != null) {
-        var conflictDateTemp = conflict.ServiceStartDate.split("T")[0].split("-");
-        var conflictDate = conflictDateTemp[2] + '-' + conflictDateTemp[1] + '-' + conflictDateTemp[0];
-        cell5.innerHTML = conflictDate + " " + conflict.ServiceStartDate.split("T")[1];
-      }
-
-      cell6.innerHTML =
-        '<button class="blue-rounded-btn text-white p-2" onclick="acceptService(\'' + serviceRequests[i].ServiceId + '\')">Accept</button>';
-
-
-      cell7.innerHTML = extras;
-      cell7.setAttribute("hidden", true);
-
-      cell8.innerHTML = address;
-      cell8.setAttribute("hidden", true);
-
-      cell9.innerHTML = phone;
-      cell9.setAttribute("hidden", true);
-
-      cell10.innerHTML = email;
-      cell10.setAttribute("hidden", true);
-
-      cell11.innerHTML = comment;
-      cell11.setAttribute("hidden", true);
-
-      cell12.innerHTML = duration;
-      cell12.setAttribute("hidden", true);
-
-      if (havePet)
-        cell13.innerHTML = "I have pets at home";
-      else
-        cell13.innerHTML = "I don't have pets at home";
-      cell13.setAttribute("hidden", true);
-
-      cell14.innerHTML = customerName;
-      cell14.setAttribute("hidden", true);
-
     }
     if (!isServiceRequestUpdated) {
       isServiceRequestUpdated = true;
@@ -476,7 +485,7 @@ function updateUpcomingServicesTable() {
 
       cell2.innerHTML =
         '<img src="/assets/images/calendar2.png" alt="">' +
-        '<strong id="date"></strong>' + startDate + '<br>' +
+        '<strong id="date"></strong> ' + startDate + '<br>' +
         '<img src="/assets/images/layer-14.png" alt="">' +
         '<span id="time"> ' + startTime + ' - ' + endTime + '</span>';
 
@@ -502,7 +511,7 @@ function updateUpcomingServicesTable() {
       if (getTime(current_date) > getTime(startDate)) {
         cell6.innerHTML =
           '<button class="blue-rounded-btn bg-danger text-white p-2" onclick="cancelService(\'' + upcomingServices[i].ServiceId + '\')">Cancel</button>' +
-          '<button class="blue-rounded-btn text-white p-2 bg-success" onclick="completeService(\'' + upcomingServices[i].ServiceId + '\')">Complete</button>';
+          '<button class="blue-rounded-btn text-white p-2 bg-success ms-2" onclick="completeService(\'' + upcomingServices[i].ServiceId + '\')">Complete</button>';
       }
       else {
         cell6.innerHTML =
@@ -651,7 +660,7 @@ function upateServieHistory() {
 
       cell2.innerHTML =
         '<img src="/assets/images/calendar2.png" alt="">' +
-        '<strong id="date"></strong>' + startDate + '<br>' +
+        '<strong id="date"></strong> ' + startDate + '<br>' +
         '<img src="/assets/images/layer-14.png" alt="">' +
         '<span id="time"> ' + startTime + ' - ' + endTime + '</span>';
 
@@ -767,7 +776,7 @@ function updateMyRatingTable() {
 
       cell2.innerHTML =
         '<img src="/assets/images/calendar2.png" alt="">' +
-        '<strong id="date"></strong>' + startDate + '<br>' +
+        '<strong id="date"></strong> ' + startDate + '<br>' +
         '<img src="/assets/images/layer-14.png" alt="">' +
         '<span id="time"> ' + startTime + ' - ' + endTime + '</span>';
 
@@ -869,12 +878,12 @@ function getDataFromServiceRequestTable(thisTd, tableName) {
 function acceptService(serviceId) {
   $.post("AcceptService", { serviceId: parseInt(serviceId) }, function (data) {
     if (data == "true") {
-      alert("This service is successfully assigned to you");
+      showSuccessAlertMessage("This service is successfully assigned to you");
       updateServiceRequestTable();
       updateUpcomingServicesTable();
     }
     else {
-      alert(data);
+      showErrorAlertMessage(data);
     }
   });
 }
@@ -882,11 +891,11 @@ function acceptService(serviceId) {
 function cancelService(serviceId) {
   $.post("CancelService", { serviceId: parseInt(serviceId) }, function (data) {
     if (data == "true") {
-      alert("Service Cancelled!...");
+      showErrorAlertMessage("Service Cancelled!...");
       updateUpcomingServicesTable();
     }
     else {
-      alert(data);
+      showErrorAlertMessage(data);
     }
   });
 }
@@ -894,11 +903,11 @@ function cancelService(serviceId) {
 function completeService(serviceId) {
   $.post("CompleteService", { serviceId: parseInt(serviceId) }, function (data) {
     if (data == "true") {
-      alert("Service Completed");
+      showSuccessAlertMessage("Service Completed");
       updateUpcomingServicesTable();
     }
     else {
-      alert(data);
+      showErrorAlertMessage(data);
     }
   });
 }
@@ -977,7 +986,7 @@ function addToBlockUnblock(customerId) {
         document.getElementById(id).disabled = false;
       }
       else {
-        alert(data);
+        showErrorAlertMessage(data);
       }
     });
 
@@ -998,7 +1007,7 @@ function addToBlockUnblock(customerId) {
         document.getElementById(id).disabled = false;
       }
       else {
-        alert(data);
+        showErrorAlertMessage(data);
       }
     });
 
@@ -1027,14 +1036,14 @@ function updateMyDetails() {
       else {
         document.getElementById("gender-not-to-say").checked = true;
       }
-      if(myDetails[0].Address != null){
+      if (myDetails[0].Address != null) {
         $("#address-street-name").val(myDetails[0].Address.AddressLine1);
         $("#address-house-number").val(myDetails[0].Address.AddressLine2);
         $("#address-postal-code").val(myDetails[0].Address.PostalCode);
       }
     }
     else {
-      alert("Something went wrong")
+      showErrorAlertMessage("Something went wrong")
     }
   });
 }

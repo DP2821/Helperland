@@ -44,15 +44,15 @@ $(document).ready(function () {
         if (data == "true") {
           document.getElementById("reschedule-service-modal-btn-close").click();
           updateDashboardTable();
-          alert("Service has been successfully Rescheduled");
+          showSuccessAlertMessage("Service has been successfully Rescheduled");
         }
         else {
-          alert(data);
+          showErrorAlertMessage(data);
         }
       });
     }
     else {
-      alert("Please select date...");
+      showErrorAlertMessage("Please select date...");
     }
   });
 
@@ -71,15 +71,15 @@ $(document).ready(function () {
           document.getElementById("cancel-service-modal-btn-close").click();
           updateDashboardTable();
           updateServiceHistoryTabel();
-          alert("Service has been successfully Cancelled");
+          showSuccessAlertMessage("Service has been successfully Cancelled");
         }
         else {
-          alert("Something went wrong");
+          showErrorAlertMessage("Something went wrong");
         }
       });
     }
     else {
-      alert("Please write in brief, why you want to cancel service");
+      showErrorAlertMessage("Please write in brief, why you want to cancel service");
     }
   });
 
@@ -109,16 +109,16 @@ $(document).ready(function () {
         if (data == "true") {
           document.getElementById("rate-service-modal-btn-close").click();
           updateServiceHistoryTabel();
-          alert("Your response has been submmited");
+          showSuccessAlertMessage("Your response has been submmited");
         }
         else {
-          alert(data);
+          showErrorAlertMessage(data);
         }
       });
 
     }
     else {
-      alert("Please write in brief about service");
+      showErrorAlertMessage("Please write in brief about service");
     }
   });
 
@@ -156,23 +156,23 @@ $(document).ready(function () {
           $.post("UpdateCustomerDetails", modal, function (data) {
             if (data == "true") {
               updateMyDetails();
-              alert("Profile successfully updated");
+              showSuccessAlertMessage("Profile successfully updated");
             }
             else {
-              alert(data);
+              showErrorAlertMessage(data);
             }
           });
         }
         else {
-          alert("Mobile number should be 10 digit");
+          showErrorAlertMessage("Mobile number should be 10 digit");
         }
       }
       else {
-        alert("Number should be only digit")
+        showErrorAlertMessage("Number should be only digit")
       }
     }
     else {
-      alert("Plaease fill all field");
+      showErrorAlertMessage("Plaease fill all field");
     }
 
   });
@@ -207,10 +207,10 @@ $(document).ready(function () {
         if (parseInt(data) >= 1) {
           updateAddressList();
           document.getElementById("edit-address-modal-btn-close").click();
-          alert("Address is Successfully added");
+          showSuccessAlertMessage("Address is Successfully added");
         }
         else {
-          alert("No data changed");
+          showErrorAlertMessage("No data changed");
         }
 
       });
@@ -221,10 +221,10 @@ $(document).ready(function () {
         if (data == "true") {
           updateAddressList();
           document.getElementById("edit-address-modal-btn-close").click();
-          alert("Address is Successfully updated");
+          showSuccessAlertMessage("Address is Successfully updated");
         }
         else {
-          alert(data);
+          showErrorAlertMessage(data);
         }
 
       });
@@ -257,19 +257,19 @@ $(document).ready(function () {
 
         $.post("ChnagePassword", model, function (data) {
           if (data == "true") {
-            alert("Password changed successfully");
+            showSuccessAlertMessage("Password changed successfully");
           }
           else {
-            alert(data);
+            showErrorAlertMessage(data);
           }
         });
       }
       else {
-        alert("Both Password are not same");
+        showErrorAlertMessage("Both Password are not same");
       }
     }
     else {
-      alert("Please fill all field");
+      showErrorAlertMessage("Please fill all field");
     }
   });
 
@@ -286,7 +286,7 @@ $(document).ready(function () {
       }
       else {
         $("#edit-address-form-city").val("");
-        alert("Invalid Zipcode");
+        showErrorAlertMessage("Invalid Zipcode");
       }
     });
   });
@@ -1013,11 +1013,11 @@ function removeAddress(addressID) {
   }
   $.post("RemoveAddres", modal, function (data) {
     if (data == "true") {
-      alert("Address deleted successfully");
+      showSuccessAlertMessage("Address deleted successfully");
       updateAddressList();
     }
     else {
-      alert(data);
+      showErrorAlertMessage(data);
     }
   });
 }
@@ -1149,7 +1149,7 @@ function addToFavouriteUnFavourite(spId) {
         document.getElementById(id).disabled = false;
       }
       else {
-        alert(data);
+        showErrorAlertMessage(data);
       }
     });
 
@@ -1169,7 +1169,7 @@ function addToFavouriteUnFavourite(spId) {
         document.getElementById(id).disabled = false;
       }
       else {
-        alert(data);
+        showErrorAlertMessage(data);
       }
     });
   }
@@ -1193,7 +1193,7 @@ function addToBlockUnblock(spId) {
         document.getElementById(id).disabled = false;
       }
       else {
-        alert(data);
+        showErrorAlertMessage(data);
       }
     });
 
@@ -1213,7 +1213,7 @@ function addToBlockUnblock(spId) {
         document.getElementById(id).disabled = false;
       }
       else {
-        alert(data);
+        showErrorAlertMessage(data);
       }
     });
 
