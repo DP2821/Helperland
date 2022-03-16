@@ -410,6 +410,7 @@ namespace Helperland.Controllers
                             Mobile = u.Mobile,
                             DateOfBirth = u.DateOfBirth,
                             Gender = u.Gender,
+                            AvatarId = u.AvatarId,
 
                             Address = _helperlandContext.UserAddresses.Where(ua => ua.UserId == userId).FirstOrDefault()
 
@@ -450,6 +451,7 @@ namespace Helperland.Controllers
                     user.LastName = updateSPDetailsViewModel.LastName;
                     user.Mobile = updateSPDetailsViewModel.Mobile;
                     user.DateOfBirth = DateTime.ParseExact(updateSPDetailsViewModel.DateOfBirth, "yyyy-MM-dd", null);
+                    user.AvatarId = updateSPDetailsViewModel.AvatarId;
 
                     user.Gender = updateSPDetailsViewModel.Gender;
                     _helperlandContext.Users.Update(user);

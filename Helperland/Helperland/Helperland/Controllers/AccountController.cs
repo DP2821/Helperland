@@ -127,7 +127,7 @@ namespace Helperland.Controllers
             {
                 //Email is wrong
                 Console.WriteLine("User not found");
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Index", "Home");
             }
             return RedirectToAction("Index", "Home");
         }

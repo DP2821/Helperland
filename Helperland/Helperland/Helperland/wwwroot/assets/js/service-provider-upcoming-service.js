@@ -115,6 +115,7 @@ $(document).ready(function () {
     var addressLine2 = $("#address-house-number").val();
     var zipCode = $("#address-postal-code").val();
     var city = $("#address-city").val();
+    var avatarId = $("input:radio[name=sp-icons]:checked").val();
 
 
     if (fname != "" && lname != "" && email != "" && mobile != "" && dob != "") {
@@ -129,7 +130,8 @@ $(document).ready(function () {
             AddressLine1: addressLine1,
             AddressLine2: addressLine2,
             ZipCode: zipCode,
-            City: city
+            City: city,
+            AvatarId: avatarId
           }
 
           $.post("UpdateSPDetails", modal, function (data) {
@@ -155,6 +157,16 @@ $(document).ready(function () {
     }
 
   });
+
+  $("input:radio[name=sp-icons]").change(function () {
+
+    $("input:radio[name=sp-icons]").each(function () {
+      $(this).parent().removeClass("rounded-grey-box-active");
+    });
+
+    $("input:radio[name=sp-icons]:checked").parent().addClass("rounded-grey-box-active");
+    $("#sp-selected-icon").attr('src', $("input:radio[name=sp-icons]:checked").siblings().prop('src'));
+  })
 
   $('#table-service-request').on('click', 'td:nth-child(1)', function () {
     getDataFromServiceRequestTable(this, "newServices");
@@ -1025,8 +1037,31 @@ function updateMyDetails() {
       $("#my-details-last-name").val(myDetails[0].LastName);
       $("#my-details-email").val(myDetails[0].Email);
       $("#my-details-mobile").val(myDetails[0].Mobile);
-      $("#my-details-dob").val(myDetails[0].DateOfBirth.split("T")[0]);
+      if (myDetails[0].DateOfBirth != null)
+        $("#my-details-dob").val(myDetails[0].DateOfBirth.split("T")[0]);
 
+      if (myDetails[0].AvatarId != null) {
+        if (myDetails[0].AvatarId == 1) {
+          document.getElementById("sp-icon-1").checked = true;
+        }
+        else if (myDetails[0].AvatarId == 2) {
+          document.getElementById("sp-icon-2").checked = true;
+        }
+        else if (myDetails[0].AvatarId == 3) {
+          document.getElementById("sp-icon-3").checked = true;
+        }
+        else if (myDetails[0].AvatarId == 4) {
+          document.getElementById("sp-icon-4").checked = true;
+        }
+        else if (myDetails[0].AvatarId == 5) {
+          document.getElementById("sp-icon-5").checked = true;
+        }
+        else if (myDetails[0].AvatarId == 6) {
+          document.getElementById("sp-icon-6").checked = true;
+        }
+        $("input:radio[name=sp-icons]:checked").parent().addClass("rounded-grey-box-active");
+        $("#sp-selected-icon").attr('src', $("input:radio[name=sp-icons]:checked").siblings().prop('src'));
+      }
       if (myDetails[0].Gender == 1) {
         document.getElementById("gender-male").checked = true;
       }
@@ -1040,6 +1075,7 @@ function updateMyDetails() {
         $("#address-street-name").val(myDetails[0].Address.AddressLine1);
         $("#address-house-number").val(myDetails[0].Address.AddressLine2);
         $("#address-postal-code").val(myDetails[0].Address.PostalCode);
+        $("#address-city").val(myDetails[0].Address.City);
       }
     }
     else {

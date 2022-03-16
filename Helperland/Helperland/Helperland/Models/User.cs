@@ -38,6 +38,7 @@ namespace Helperland.Models
         public int? Status { get; set; }
         public string? ResetToken { get; set; }
         public string? KeepMeLoggedInToken { get; set; }
+        public int? AvatarId { get; set; }
 
         public virtual ICollection<FavoriteAndBlocked> FavoriteAndBlockedTargetUsers { get; set; }
         public virtual ICollection<FavoriteAndBlocked> FavoriteAndBlockedUsers { get; set; }

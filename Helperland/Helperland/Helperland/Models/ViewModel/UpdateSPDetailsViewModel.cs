@@ -17,5 +17,7 @@ namespace Helperland.Models.ViewModel
         public string AddressLine2 { get; set; } = null!;
         public string ZipCode { get; set; } = null!;
         public string City { get; set; } = null!;
+
+        public int? AvatarId { get; set; }
     }
 }
