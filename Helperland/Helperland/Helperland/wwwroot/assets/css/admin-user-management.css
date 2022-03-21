@@ -340,6 +340,9 @@ table.dataTable tbody td {
   }
 }
 @media screen and (max-width: 992px) {
+  .main{
+    position: fixed;
+  }
   .navbar-top {
     background: #1fb6ff;
   }
@@ -348,8 +351,13 @@ table.dataTable tbody td {
   } 
   #dashboard-nav-right {
     display: block;
+    /* background-color: #1fb6ff; */
+    background: none;
   }
   #dashboard-nav-left {
     display: none;
+  }
+  .vertical-navbar {
+    box-shadow: none;
   }
 }

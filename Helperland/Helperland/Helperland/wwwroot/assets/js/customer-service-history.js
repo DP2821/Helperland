@@ -1151,8 +1151,8 @@ function updateFevPros() {
           averageRatings = sum / fevPros[i].Ratings.length;
         }
 
-        temp_end_cell3 =
-          "</span>" + "<span>" + averageRatings + "</span>" + "</div>" + "</div>";
+        // temp_end_cell3 =
+        //   "</span>" + "<span>" + averageRatings + "</span>" + "</div>" + "</div>";
 
         temp_middle_cell3 = "";
         for (let i = 0; i < averageRatings; i++) {
@@ -1163,7 +1163,8 @@ function updateFevPros() {
           temp_middle_cell3 =
             temp_middle_cell3 + '<img src="/assets/images/star2.png" alt="">';
         }
-        cell3.innerHTML = temp_middle_cell3 + temp_end_cell3;
+        // cell3.innerHTML = temp_middle_cell3 + temp_end_cell3;
+        cell3.innerHTML = temp_middle_cell3;
 
         cell4.innerHTML =
           '<span class="">1 Cleaning</span>';
