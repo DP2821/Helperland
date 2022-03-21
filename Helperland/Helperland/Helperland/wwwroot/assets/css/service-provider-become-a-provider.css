@@ -34,12 +34,8 @@
 
 form input,
 form .input-number {
-  margin-left: 20px; 
   max-width: 359px;
   height: 46px;
-}
-form .input-check {
-  margin-left: 20px;
 }
 .text-blue {
   color: #1fb6ff;
@@ -63,8 +59,8 @@ form .input-check {
   background-color: #1d7a8c;
   border-radius: 27px;
   border: 1px solid #ffffff;
-  height: 40px;
-  line-height: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   color: #fff !important;
   text-decoration: none;
   min-width: 150px;

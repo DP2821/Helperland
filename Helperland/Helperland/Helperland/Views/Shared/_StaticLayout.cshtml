@@ -52,7 +52,7 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <div class="nav-ul-vertical-list">
                         <ul class="navbar-nav">
-                            @if (UserTypeID != 2 && UserTypeID != 3)
+                            @if (UserTypeID == 1)
                             {
                                 <li class="nav-item text-white book-a-cleaner blue-rounded-btn">
                                     <a class="nav-link text-white" asp-controller="Customer" asp-action="BookService">Book
@@ -96,7 +96,8 @@
                                     <div class="popover__wrapper">
                                         <img src="~/assets/images/user.png" class="usericon mt-auto mb-auto" alt=""
                                         id="myPopover" data-bs-toggle="popover">
-                                        <i class="fas fa-chevron-down" id="myPopover" data-bs-toggle="popover"></i>
+                                        @* <i class="fas fa-chevron-down" id="myPopover" data-bs-toggle="popover"></i> *@
+                                        <img style="transform: rotate(180deg);" width="15px" src="~/assets/images/forma-1.png" alt="">
 
                                         <div class="popover__content">
                                             <p class="ps-3 pe-3">
@@ -110,7 +111,7 @@
                                                     <li>
                                                         <a class="nav-link" asp-action="ServiceHistory"
                                                     asp-controller="Customer">
-                                                            <span>Overview</span>
+                                                            <span>My&nbsp;Dashboard</span>
                                                         </a>
                                                     </li>
                                                     <li>
@@ -150,7 +151,22 @@
                                                     </li>
                                                 </ul>
                                             }
-
+                                            else if (UserTypeID == new GlobalData().AdminTypeId)
+                                            {
+                                                <ul class="ps-0 popover-ul">
+                                                    <li>
+                                                        <a class="nav-link" asp-action="ServiceRequests"
+                                                    asp-controller="Admin">
+                                                            <span>Dashboard</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="nav-link" asp-action="LogOut" asp-controller="Account">
+                                                            <span>Logout</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            }
                                         </div>
                                     </div>
                                 </li>
@@ -224,6 +240,7 @@
 
     </footer>
 
+    @* Custome Alert *@
     <section>
         <a href="#" class="modallink d-none" data-bs-toggle="modal" data-bs-target="#custom-alert-modal"
             id="custom-alert-modal-link"></a>

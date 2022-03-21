@@ -69,7 +69,7 @@
 
                 <div class="tab-pane fade show active" id="pills-dashboard" role="tabpanel"
                     aria-labelledby="pills-dashboard-tab">
-                    Dashboard
+                    <h2>Dashboard</h2>
                 </div>
 
                 <div class="tab-pane fade" id="pills-new-service-request" role="tabpanel"
@@ -184,7 +184,31 @@
 
                 <div class="tab-pane fade" id="pills-service-schedule" role="tabpanel"
                     aria-labelledby="pills-service-schedule-tab">
-                    <h2>Service Schedule</h2>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <span><a class="calender-next-prev-link" id="calender-prev-month"><img style="transform: rotate(90deg);" src="~/assets/images/forma-1_3.png" alt=""></a></span>
+                            <span><a class="calender-next-prev-link" id="calender-next-month"><img style="transform: rotate(-90deg);" src="~/assets/images/forma-1_3.png" alt=""></a></span>
+                            <span id="calender-month-head"></span>
+                            <span id="calender-year-head"></span>
+                        </div>
+                        <div class="col-auto">
+                            <span><span class="m-1" style="background-color: #aaaaaa; padding: 3px; padding-right: 20px;"></span>Completed</span>
+                            <span><span class="m-1" style="background-color: #1d7a8c; padding: 3px; padding-right: 20px;"></span>Upcoming</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mt-2">
+                        <div class="text-center service-schedule-head" style="width: 14.28%;">Mon</div>
+                        <div class="text-center service-schedule-head" style="width: 14.28%;">Tue</div>
+                        <div class="text-center service-schedule-head" style="width: 14.28%;">Wed</div>
+                        <div class="text-center service-schedule-head" style="width: 14.28%;">Thu</div>
+                        <div class="text-center service-schedule-head" style="width: 14.28%;">Fri</div>
+                        <div class="text-center service-schedule-head" style="width: 14.28%;">Sat</div>
+                        <div class="text-center service-schedule-head" style="width: 14.28%;">Sun</div>
+                    </div>
+
+                    <div class="d-flex" style="flex-wrap: wrap;" id="calender-date-div"></div>
+
                 </div>
 
                 <div class="tab-pane fade" id="pills-service-history" role="tabpanel"
@@ -205,19 +229,19 @@
                                 <th style="width: 150px;">Service Id</th>
                                 <th style="width: 195px;">Service date</th>
                                 <th style="width: 250px;">Customer details</th>
-                                <th hidden>Payment</th>
-                                <th hidden>Distance</th>
+                                <th hidden class="noExl">Payment</th>
+                                <th hidden class="noExl">Distance</th>
 
-                                <th hidden>Actions</th>
-                                <th hidden>Extras</th>
-                                <th hidden>Service Address</th>
-                                <th hidden>Phone</th>
-                                <th hidden>Email</th>
-
-                                <th hidden>Comments</th>
-                                <th hidden>Duration</th>
-                                <th hidden>HavePet</th>
-                                <th hidden>Customer name</th>
+                                <th hidden class="noExl">Actions</th>
+                                <th hidden class="noExl">Extras</th>
+                                <th hidden class="noExl">Service Address</th>
+                                <th hidden class="noExl">Phone</th>
+                                <th hidden class="noExl">Email</th>
+ 
+                                <th hidden class="noExl">Comments</th>
+                                <th hidden class="noExl">Duration</th>
+                                <th hidden class="noExl">HavePet</th>
+                                <th hidden class="noExl">Customer name</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -594,15 +618,15 @@
                             <div id="new-service-request-modal-btns-div">
                                 <hr class="m-2">
                                 <button class="blue-rounded-btn text-white p-2 bg-success"
-                                    id="new-service-request-modal-accept">Accept</button>
+                                    id="new-service-request-modal-accept">&nbsp;✓ &nbsp;Accept &nbsp;</button>
                             </div>
 
                             <div id="upcoming-service-modal-btns-div">
                                 <hr class="m-2">
                                 <button class="blue-rounded-btn bg-danger text-white p-2 bg-success"
-                                    id="upcoming-service-modal-cancel">Cancel</button>
-                                <button class="blue-rounded-btn text-white p-2 bg-success"
-                                    id="upcoming-service-modal-complete">Complete</button>
+                                    id="upcoming-service-modal-cancel">&nbsp;✕ &nbsp; Cancel &nbsp;</button>
+                                <button class="blue-rounded-btn text-white p-2 bg-helperland-blue"
+                                    id="upcoming-service-modal-complete">&nbsp;✓ &nbsp; Complete &nbsp;</button>
                             </div>
                         </div>
                         <div class="col-6" id="service-request-modal-map-div"></div>

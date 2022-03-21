@@ -22,7 +22,6 @@ namespace Helperland.Controllers
 
         public IActionResult Dashboard()
         {
-
             int UsertypeId = new CurrentLoggedInUser().GetUserTypeId(Request.Cookies["keepMeLoggedInToken"]);
             if (UsertypeId != -1)
             {
@@ -50,7 +49,7 @@ namespace Helperland.Controllers
             var serviceRequests = (from sReq in _helperlandContext.ServiceRequests
                                    join sa in _helperlandContext.ServiceRequestAddresses on sReq.ServiceRequestId equals sa.ServiceRequestId
                                    join u in _helperlandContext.Users on sReq.UserId equals u.UserId
-                                   where sReq.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW && 
+                                   where sReq.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW &&
                                    (bool)_helperlandContext.FavoriteAndBlockeds.Where(fv => fv.UserId == u.UserId && fv.TargetUserId == userId).Select(fv => fv.IsBlocked).FirstOrDefault() == false &&
                                    (bool)_helperlandContext.FavoriteAndBlockeds.Where(fv => fv.UserId == userId && fv.TargetUserId == u.UserId).Select(fv => fv.IsBlocked).FirstOrDefault() == false
                                    select new
@@ -141,7 +140,7 @@ namespace Helperland.Controllers
                                 sendMailViewModel.Email = serviceProviders.Email;
                                 sendMailViewModel.Name = serviceProviders.FirstName + " " + serviceProviders.LastName;
                                 sendMailViewModel.Subject = "Service unavailable";
-                                sendMailViewModel.Body = 
+                                sendMailViewModel.Body =
                                 "Hello,\n" +
                                 serviceProviders.FirstName + " " + serviceProviders.LastName + "\n\n" +
                                 "Service ID: " + newService.ServiceRequestId + "\n" +
@@ -246,6 +245,15 @@ namespace Helperland.Controllers
                     service.ModifiedBy = userId;
                     service.ModifiedDate = DateTime.Now;
                     _helperlandContext.ServiceRequests.Update(service);
+                    int noOfRowForThisCustomerAndSpInFevBlockedTabel = _helperlandContext.FavoriteAndBlockeds.Where(fb => fb.UserId == service.UserId && fb.TargetUserId == userId).Count();
+                    System.Console.WriteLine("noOfRowForThisCustomerAndSpInFevBlockedTabel: " + noOfRowForThisCustomerAndSpInFevBlockedTabel);
+                    if (noOfRowForThisCustomerAndSpInFevBlockedTabel == 0)
+                    {
+                        FavoriteAndBlocked favoriteAndBlocked = new FavoriteAndBlocked();
+                        favoriteAndBlocked.UserId = service.UserId;
+                        favoriteAndBlocked.TargetUserId = userId;
+                        _helperlandContext.FavoriteAndBlockeds.Add(favoriteAndBlocked);
+                    }
                     _helperlandContext.SaveChanges();
 
                     // FavoriteAndBlocked favoriteAndBlocked = new FavoriteAndBlocked();
@@ -367,31 +375,38 @@ namespace Helperland.Controllers
             return "true";
         }
 
-        public string ChnagePassword(string OldPassword, string NewPassword)
+        public string ChnagePassword(CustomerChangePasswordViewModel customerChangePasswordViewModel)
         {
-            int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
-
-            var user = _helperlandContext.Users.Where(u => u.UserId == userId).FirstOrDefault();
-
-            if (user != null)
+            if (ModelState.IsValid)
             {
-                string oldPassMd5 = new MD5Hashing().GetMd5Hash(md5Hash, OldPassword);
+                int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
 
-                if (oldPassMd5.Equals(user.Password))
+                var user = _helperlandContext.Users.Where(u => u.UserId == userId).FirstOrDefault();
+
+                if (user != null)
                 {
-                    string newPassHash = new MD5Hashing().GetMd5Hash(md5Hash, NewPassword);
-                    user.Password = newPassHash;
-                    _helperlandContext.Users.Update(user);
-                    _helperlandContext.SaveChanges();
+                    string oldPassMd5 = new MD5Hashing().GetMd5Hash(md5Hash, customerChangePasswordViewModel.OldPassword);
+
+                    if (oldPassMd5.Equals(user.Password))
+                    {
+                        string newPassHash = new MD5Hashing().GetMd5Hash(md5Hash, customerChangePasswordViewModel.NewPassword);
+                        user.Password = newPassHash;
+                        _helperlandContext.Users.Update(user);
+                        _helperlandContext.SaveChanges();
+                    }
+                    else
+                    {
+                        return "Incorrect old password";
+                    }
                 }
                 else
                 {
-                    return "Incorrect old password";
+                    return "Something is wrong";
                 }
             }
             else
             {
-                return "Something is wrong";
+                return "Password does not meet minimum requirment";
             }
             return "true";
         }
@@ -452,6 +467,7 @@ namespace Helperland.Controllers
                     user.Mobile = updateSPDetailsViewModel.Mobile;
                     user.DateOfBirth = DateTime.ParseExact(updateSPDetailsViewModel.DateOfBirth, "yyyy-MM-dd", null);
                     user.AvatarId = updateSPDetailsViewModel.AvatarId;
+                    user.ZipCode = updateSPDetailsViewModel.ZipCode;
 
                     user.Gender = updateSPDetailsViewModel.Gender;
                     _helperlandContext.Users.Update(user);
@@ -459,7 +475,8 @@ namespace Helperland.Controllers
 
                     UserAddress? userAddress = _helperlandContext.UserAddresses.Where(ua => ua.UserId == userId).FirstOrDefault();
 
-                    if(userAddress != null){
+                    if (userAddress != null)
+                    {
                         userAddress.AddressLine1 = updateSPDetailsViewModel.AddressLine1;
                         userAddress.AddressLine2 = updateSPDetailsViewModel.AddressLine2;
                         userAddress.PostalCode = updateSPDetailsViewModel.ZipCode;
@@ -467,7 +484,8 @@ namespace Helperland.Controllers
                         _helperlandContext.Update(userAddress);
                         _helperlandContext.SaveChanges();
                     }
-                    else{
+                    else
+                    {
                         userAddress = new UserAddress();
                         userAddress.UserId = userId;
                         userAddress.AddressLine1 = updateSPDetailsViewModel.AddressLine1;
@@ -477,7 +495,7 @@ namespace Helperland.Controllers
 
                         _helperlandContext.Add(userAddress);
                         _helperlandContext.SaveChanges();
-                    }   
+                    }
                 }
                 else
                 {
@@ -490,5 +508,75 @@ namespace Helperland.Controllers
             }
             return "true";
         }
+
+        public string GetServiceSchedule(int CurrentMonthNo)
+        {
+
+            int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
+
+            var serviceReuest = (from sr in _helperlandContext.ServiceRequests
+                                 where sr.ServiceProviderId == userId && (sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_COMPLETED || sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_ACCEPTED)
+                                 select new
+                                 {
+                                     Status = sr.Status,
+                                     StartTime = sr.ServiceStartDate,
+                                     EndTime = sr.ServiceStartDate.AddHours((double)sr.ExtraHours + sr.ServiceHours),
+                                     ServiceDate = sr.ServiceStartDate.Date
+                                 }).OrderBy(sr => sr.ServiceDate).ToList();
+
+
+
+            DateTime currentDateTime = DateTime.Now;
+
+            DateTime dateTime = new DateTime(currentDateTime.Year, currentDateTime.Month, 1);
+            dateTime = dateTime.AddMonths(CurrentMonthNo);
+
+            int startOfDay = (int)dateTime.DayOfWeek;
+
+            if(startOfDay == 0)
+                startOfDay = 7;
+
+            List<CalenderViewModel> li = new List<CalenderViewModel>();
+            DateTime startDate = dateTime.AddDays(1 - startOfDay);
+            for (int i = 1; i <= 42; i++)
+            {
+
+                CalenderViewModel c = new CalenderViewModel();
+                c.Day = startDate.Day;
+                for (int j = 0; j < serviceReuest.Count; j++)
+                {
+                    if (DateTime.Compare(serviceReuest[j].ServiceDate, startDate) == 0)
+                    {
+                        c.Status = serviceReuest[j].Status;
+                        c.StartTime = serviceReuest[j].StartTime.ToString("HH:mm");
+                        c.EndTime = serviceReuest[j].EndTime.ToString("HH:mm");
+                    }
+                }
+
+                li.Add(c);
+
+                startDate = startDate.AddDays(1);
+            }
+
+            var x = new
+            {
+                Month = dateTime.ToString("MMM"),
+                Year = dateTime.Year,
+                DayArray = li
+            };
+
+            return JsonSerializer.Serialize(x);
+        }
+    }
+
+    public class CalenderViewModel
+    {
+        public int? Status { get; set; }
+        public string? StartTime { get; set; }
+        public string? EndTime { get; set; }
+        public int Day { get; set; }
+
     }
 }
+
+

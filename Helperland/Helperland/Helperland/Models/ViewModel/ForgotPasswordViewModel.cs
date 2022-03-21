@@ -7,6 +7,6 @@ namespace Helperland.Models.ViewModel
         [Required]
         [Display(Name = "E-mail")]
         [EmailAddress]
-        public string? Email { get; set; }
+        public string Email { get; set; } = null!;
     }
 }

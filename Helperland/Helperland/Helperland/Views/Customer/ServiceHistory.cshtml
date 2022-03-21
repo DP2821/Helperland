@@ -136,15 +136,15 @@
                                 <th style="width: 107px;">Payment</th>
                                 <th>Status</th>
 
-                                <th>Rate SP</th>
-                                <th hidden>Service Address</th>
-                                <th hidden>Phone</th>
-                                <th hidden>Email</th>
-                                <th hidden>Comments</th>
-
-                                <th hidden>Duration</th>
-                                <th hidden>Extras</th>
-                                <th hidden>HavePet</th>
+                                <th class="noExl">Rate SP</th>
+                                <th hidden class="noExl">Service Address</th>
+                                <th hidden class="noExl">Phone</th>
+                                <th hidden class="noExl">Email</th>
+                                <th hidden class="noExl">Comments</th>
+ 
+                                <th hidden class="noExl">Duration</th>
+                                <th hidden class="noExl">Extras</th>
+                                <th hidden class="noExl">HavePet</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -388,7 +388,6 @@
                     <p class="m-1">
                         <b>Net Amount: </b><span class="ms-5 fs-2 text-primary">
                             <span class="ms-5 fs-3 text-primary" id="dashboard-service-modal-amount"></span>
-                            &euro;
                         </span>
                     </p>
                     <hr class="m-2">
@@ -406,10 +405,10 @@
                     <div id="dashboard-service-modal-btns-div">
                         <hr class="m-2">
 
-                        <button class="blue-rounded-btn text-white p-2"
-                            id="dashboard-service-modal-reschedule">Reschedule</button>
+                        <button class="blue-rounded-btn text-white ps-2 pe-2 pb-2"
+                            id="dashboard-service-modal-reschedule"> &nbsp;<span class="fs-4 text-white">↻</span>&nbsp; Reschedule &nbsp;</button>
                         <button class="blue-rounded-btn text-white p-2 bg-danger"
-                            id="dashboard-service-modal-cancel">Cancel</button>
+                            id="dashboard-service-modal-cancel"> &nbsp;✕ &nbsp; Cancel &nbsp;</button>
                     </div>
 
                 </div>
@@ -527,8 +526,8 @@
                 </div>
                 <div class="modal-body pt-0">
                     <div class="row">
-                        <div class="col-2">
-                            <img width="65px" class="cap-border" src="~/assets/images/cap.png" alt="">
+                        <div class="col-2" id="rate-sp-modal-sp-avatar-div">
+                            @* <img width="65px" class="cap-border" src="~/assets/images/cap.png" alt=""> *@
                         </div>
                         <div class="col-10">
                             <p id="rating-modal-sp-name"></p>
@@ -761,7 +760,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="address-postal-code">Postal code</label>
-                                <input disabled type="number" class="form-control mb-3" placeholder="Postal code"
+                                <input type="number" class="form-control mb-3" placeholder="Postal code"
                                     id="edit-address-form-postal-code">
                             </div>
                             <div class="col-6">

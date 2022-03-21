@@ -60,9 +60,7 @@ td {
 }
 .cap-border {
   border: 2px solid #aaaaaa;
-  padding: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  width: 40px;
   border-radius: 50%;
 }
 .blue-price {
@@ -181,9 +179,6 @@ textarea {
   padding-left: 40px;
   padding-right: 0px;
   border: 1px solid #dcdcdc;
-}
-.cursor-pointer{
-  cursor: pointer;
 }
 
 /*

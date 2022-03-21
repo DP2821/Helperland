@@ -5,6 +5,7 @@ $(document).ready(function () {
   upateServieHistory();
   updateMyRatingTable();
   updateBlockCuatomer();
+  updateServiceSchedule();
   // loadMapInModal();
 
   if (document.location.search.includes("my-account=true")) {
@@ -64,7 +65,7 @@ $(document).ready(function () {
     var newPass = $("#new-password").val();
     var confPass = $("#confirm-password").val();
 
-    if (oldPass != "" && newPass != "" && confPass != "") {
+    if (oldPass != "" && newPass.length >= 6 && newPass.length <= 14) {
       if (newPass == confPass) {
         var model = {
           OldPassword: oldPass,
@@ -85,7 +86,7 @@ $(document).ready(function () {
       }
     }
     else {
-      showErrorAlertMessage("Please fill all field");
+      showErrorAlertMessage("Please fill all the fields properly");
     }
   });
 
@@ -168,6 +169,17 @@ $(document).ready(function () {
     $("#sp-selected-icon").attr('src', $("input:radio[name=sp-icons]:checked").siblings().prop('src'));
   })
 
+  $("#calender-prev-month").click(function(){
+    var monthNo = sessionStorage.getItem("service-schedule-current-calender-month");
+    sessionStorage.setItem("service-schedule-current-calender-month",--monthNo);
+    updateServiceSchedule();
+  });
+  $("#calender-next-month").click(function(){
+    var monthNo = sessionStorage.getItem("service-schedule-current-calender-month");
+    sessionStorage.setItem("service-schedule-current-calender-month",++monthNo);
+    updateServiceSchedule();
+  });
+
   $('#table-service-request').on('click', 'td:nth-child(1)', function () {
     getDataFromServiceRequestTable(this, "newServices");
   });
@@ -228,6 +240,7 @@ $(document).ready(function () {
 
 function export_excel() {
   $("#table-service-history").table2excel({
+    exclude: ".noExl",
     filename: "Service History.xls"
   });
 }
@@ -373,7 +386,7 @@ function updateServiceRequestTable(hasPet) {
         if (havePet)
           cell13.innerHTML = "I have pets at home";
         else
-          cell13.innerHTML = "I don't have pets at home";
+        cell13.innerHTML = '<span class="bg-danger text-white p-1 ps-2 rounded-circle">✕ </span>&nbsp;I don\'t have pets at home';
         cell13.setAttribute("hidden", true);
 
         cell14.innerHTML = customerName;
@@ -519,11 +532,13 @@ function updateUpcomingServicesTable() {
 
       var currentDateTime = new Date();
       var current_date = currentDateTime.getDate() + '-' + (currentDateTime.getMonth() + 1) + '-' + currentDateTime.getFullYear();
+      var serviceStartDateTime = new Date(startDate.split("-")[2] + '-' + startDate.split("-")[1] + '-' + startDate.split("-")[0] + ' ' + endTime);
 
-      if (getTime(current_date) > getTime(startDate)) {
+      
+      if (currentDateTime.getTime() > serviceStartDateTime.getTime()) {
         cell6.innerHTML =
           '<button class="blue-rounded-btn bg-danger text-white p-2" onclick="cancelService(\'' + upcomingServices[i].ServiceId + '\')">Cancel</button>' +
-          '<button class="blue-rounded-btn text-white p-2 bg-success ms-2" onclick="completeService(\'' + upcomingServices[i].ServiceId + '\')">Complete</button>';
+          '<button class="blue-rounded-btn text-white p-2 bg-helperland-blue ms-2" onclick="completeService(\'' + upcomingServices[i].ServiceId + '\')">Complete</button>';
       }
       else {
         cell6.innerHTML =
@@ -552,7 +567,7 @@ function updateUpcomingServicesTable() {
       if (havePet)
         cell13.innerHTML = "I have pets at home";
       else
-        cell13.innerHTML = "I don't have pets at home";
+      cell13.innerHTML = '<span class="bg-danger text-white p-1 ps-2 rounded-circle">✕ </span>&nbsp;I don\'t have pets at home';
       cell13.setAttribute("hidden", true);
 
       cell14.innerHTML = customerName;
@@ -691,34 +706,45 @@ function upateServieHistory() {
       cell4.innerHTML =
         '<span class="blue-price">' + payment + '</span>';
       cell4.setAttribute("hidden", true);
+      cell4.classList.add("noExl");
       cell5.setAttribute("hidden", true);
+      cell5.classList.add("noExl");
       cell6.setAttribute("hidden", true);
-
+      cell6.classList.add("noExl");
+      
       cell7.innerHTML = extras;
+      cell7.classList.add("noExl");
       cell7.setAttribute("hidden", true);
-
+      
       cell8.innerHTML = address;
+      cell8.classList.add("noExl");
       cell8.setAttribute("hidden", true);
-
+      
       cell9.innerHTML = phone;
+      cell9.classList.add("noExl");
       cell9.setAttribute("hidden", true);
-
+      
       cell10.innerHTML = email;
+      cell10.classList.add("noExl");
       cell10.setAttribute("hidden", true);
-
+      
       cell11.innerHTML = comment;
+      cell11.classList.add("noExl");
       cell11.setAttribute("hidden", true);
-
+      
       cell12.innerHTML = duration;
+      cell12.classList.add("noExl");
       cell12.setAttribute("hidden", true);
-
+      
       if (havePet)
-        cell13.innerHTML = "I have pets at home";
+      cell13.innerHTML = "I have pets at home";
       else
-        cell13.innerHTML = "I don't have pets at home";
+      cell13.innerHTML = '<span class="bg-danger text-white p-1 ps-2 rounded-circle">✕ </span>&nbsp;I don\'t have pets at home';
+      cell13.classList.add("noExl");
       cell13.setAttribute("hidden", true);
-
+      
       cell14.innerHTML = customerName;
+      cell14.classList.add("noExl");
       cell14.setAttribute("hidden", true);
 
     }
@@ -804,7 +830,23 @@ function updateMyRatingTable() {
         temp_middle_cell3 =
           temp_middle_cell3 + '<img src="/assets/images/star2.png" alt="">';
       }
-      cell3.innerHTML = '<p class="m-0">Rating</p>' + temp_middle_cell3 + '<span>Very Good</span>';
+      var ratingStatement = "Bad";
+      if(parseInt(averageRatings) == 5){
+        ratingStatement = "Excellent"
+      }
+      else if(parseInt(averageRatings) == 4){
+        ratingStatement = "Very Good"
+      }
+      else if(parseInt(averageRatings) == 3){
+        ratingStatement = "Good"
+      }
+      else if(parseInt(averageRatings) == 2){
+        ratingStatement = "Bad"
+      }
+      else if(parseInt(averageRatings) == 1){
+        ratingStatement = "Very Bad"
+      }
+      cell3.innerHTML = '<p class="m-0">Rating</p>' + temp_middle_cell3 + '<span>'+ ratingStatement +'</span>';
 
       cell4.innerHTML = '<p class="m-0"><b>Customer Comment</b></p><p>' + myRatings[i].Comments + '<p/>';
     }
@@ -849,7 +891,7 @@ function getDataFromServiceRequestTable(thisTd, tableName) {
   var col8_Address = currentRow.find("td:eq(7)").text();
   var col11_Comments = currentRow.find("td:eq(10)").text();
   var col11_Duration = currentRow.find("td:eq(11)").text();
-  var col13_HavePet = currentRow.find("td:eq(12)").text();
+  var col13_HavePet = currentRow.find("td:eq(12)").html();
   var col14_CustomerName = currentRow.find("td:eq(13)").text();
 
   $("#new-service-request-modal-date").html(col2_ServiceDate);
@@ -870,7 +912,7 @@ function getDataFromServiceRequestTable(thisTd, tableName) {
     var currentDateTime = new Date();
     var current_date = currentDateTime.getDate() + '-' + (currentDateTime.getMonth() + 1) + '-' + currentDateTime.getFullYear();
 
-    if (getTime(current_date) > getTime(col2_ServiceDate.split(" ")[0])) {
+    if (getTime(current_date) > getTime(col2_ServiceDate.split(" ")[1])) {
       $("#upcoming-service-modal-complete").removeClass("d-none");
     }
     else {
@@ -1084,9 +1126,54 @@ function updateMyDetails() {
   });
 }
 
+function updateServiceSchedule(){
+  var currentMonth = sessionStorage.getItem("service-schedule-current-calender-month");
+  if(currentMonth == null){
+    sessionStorage.setItem("service-schedule-current-calender-month",0);
+    currentMonth = 0;
+  }
 
-// function loadMapInModal() {
-//   zipcode = 383315;
+  $.post("GetServiceSchedule",{CurrentMonthNo: currentMonth},function(data){
+
+    var json = JSON.parse(data);
+
+    $("#calender-month-head").html(json.Month);
+    $("#calender-year-head").html(json.Year);
+
+    isPrevMonthDate = true;
+    isNextMonth = false;
+    document.getElementById("calender-date-div").innerHTML = '';
+    for(var i=0;i<json.DayArray.length;i++){
+      var spanDay;
+      if(json.DayArray[i].Day == 1 && isPrevMonthDate == false){
+        isNextMonth = true;
+      }
+      if(json.DayArray[i].Day == 1){
+        isPrevMonthDate = false;
+      }
+      if(isPrevMonthDate || isNextMonth){
+        spanDay = '<span style="color: #a1a1a1">'+ json.DayArray[i].Day +'</span>'
+      }
+      else{
+        spanDay = '<span>'+ json.DayArray[i].Day +'</span>'
+      }
+      if(json.DayArray[i].StartTime != null){
+        if(json.DayArray[i].Status == 2){
+          document.getElementById("calender-date-div").innerHTML += '<div class="service-schedule-td" style="width: 14.28%;">'+ spanDay +'<p class="text-center" style="background-color: #aaaaaa;">'+ json.DayArray[i].StartTime + '-' + json.DayArray[i].EndTime +'</p></div>';
+        }
+        else{
+          document.getElementById("calender-date-div").innerHTML += '<div class="service-schedule-td" style="width: 14.28%;">'+ spanDay +'<p class="text-white text-center" style="background-color: #1d7a8c;">'+ json.DayArray[i].StartTime + '-' + json.DayArray[i].EndTime +'</p></div>';
+        }
+      }
+      else{
+        document.getElementById("calender-date-div").innerHTML += '<div class="service-schedule-td" style="width: 14.28%;">'+ spanDay +'</div>';
+      }
+    }
+  });
+}
+
+
+
 //   url = "https://www.openstreetmap.org/search?query=" + zipcode;
 //   // url = "https://www.w3schools.com"
 //   $("#service-request-modal-map-div").html($('<iframe src="' + url + '" title="W3Schools Free Online Web Tutorials"></iframe>'));

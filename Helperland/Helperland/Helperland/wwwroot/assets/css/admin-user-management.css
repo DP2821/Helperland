@@ -23,9 +23,21 @@ a {
 }
 .btn-clear {
   border: 1px solid #646464;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
 }
-.temp {
-  border: 5px solid red;
+.pagination-page-num-a-tag{
+  padding: 15px;
+  border: 1px solid #e1e1e1;
+  color: #565656;
+}
+.pagination-page-num-a-tag-active{
+  background-color: #565656 !important;
+  color: white;
+}
+.pagination-page-num-a-tag:hover{
+  background-color: #565656;
+  color: white;
 }
 /* .helperland-header {
   display: inline-block;
@@ -122,9 +134,99 @@ span {
   color: white;
 }
 table td:last-child {
-  text-align: center;
+  /* text-align: center; */
 }
 
+/*
+Popover
+
+*/
+.popover__wrapper-three-dot {
+  position: relative;
+  display: inline-block;
+}
+.popover__content-three-dot {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 55px;
+  right: -15px;
+  transform: translate(0, 10px);
+  background-color: white;
+  padding-top: 15px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  width: auto;
+}
+.popover__content-three-dot:before {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  right: calc(20% - 10px);
+  top: -8px;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent white transparent;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+.popover__wrapper-three-dot:hover .popover__content-three-dot {
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -20px);
+  transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+
+.popover-ul {
+  list-style: none;
+}
+
+.popover-ul li:hover {
+  background-color: #e4e2e2;
+}
+.popover-ul li{
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+}
+
+.date-div {
+  position: relative;
+}
+.img-calendar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+}
+.input-date {
+  z-index: 2;
+  position: relative;
+  padding-left: 40px;
+  width: 100%;
+}
+.input-date {
+  border: 1px solid #dedddd;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border-radius: 4px;
+}
+.input-date:focus {
+  border: 1px solid #1d7a8c;
+}
+.input-date:focus {
+  outline: none;
+  box-shadow: none;
+}
+.form-control, .form-select, .btn-submit-form{
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+textarea {
+  height: 100px;
+  resize: none;
+}
 /* Data Table class */
 table.dataTable thead th,
 table.dataTable thead td {
@@ -211,7 +313,7 @@ table.dataTable tbody td {
   }
 
   table tr {
-    display: block;
+    /* display: block; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 0.625em;
   }

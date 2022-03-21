@@ -184,52 +184,67 @@ $(document).ready(function () {
     var postalCode = $("#edit-address-form-postal-code").val();
     var city = $("#edit-address-form-city").val();
     var mobile = $("#edit-address-form-phone").val();
-    var modal = {
-      AddressId: parseInt(addressID),
-      AddressLine1: addressLine1,
-      AddressLine2: addressLine2,
-      PostalCode: postalCode,
-      City: city,
-      Mobile: mobile
-    }
 
+    if (addressLine1 != "" && addressLine2 != "" && postalCode != "" && city != "" && mobile != "") {
+      if (!isNaN(mobile)) {
+        if (mobile.length == 10) {
 
-    if (addressID == "") {
-      var model2 = {
-        StreetName: addressLine1,
-        HouseNumber: addressLine2,
-        PostalCode: postalCode,
-        City: city,
-        Phone: mobile
-      }
-      $.post("SaveUserAddress", model2, function (data) {
+          var modal = {
+            AddressId: parseInt(addressID),
+            AddressLine1: addressLine1,
+            AddressLine2: addressLine2,
+            PostalCode: postalCode,
+            City: city,
+            Mobile: mobile
+          }
+          if (addressID == "") {
+            var model2 = {
+              StreetName: addressLine1,
+              HouseNumber: addressLine2,
+              PostalCode: postalCode,
+              City: city,
+              Phone: mobile
+            }
+            $.post("SaveUserAddress", model2, function (data) {
 
-        if (parseInt(data) >= 1) {
-          updateAddressList();
-          document.getElementById("edit-address-modal-btn-close").click();
-          showSuccessAlertMessage("Address is Successfully added");
+              if (parseInt(data) >= 1) {
+                updateAddressList();
+                document.getElementById("edit-address-modal-btn-close").click();
+                showSuccessAlertMessage("Address is Successfully added");
+              }
+              else {
+                showErrorAlertMessage("No data changed");
+              }
+
+            });
+          }
+          else {
+            $.post("UpdateEditAddress", modal, function (data) {
+
+              if (data == "true") {
+                updateAddressList();
+                document.getElementById("edit-address-modal-btn-close").click();
+                showSuccessAlertMessage("Address is Successfully updated");
+              }
+              else {
+                showErrorAlertMessage(data);
+              }
+
+            });
+          }
         }
         else {
-          showErrorAlertMessage("No data changed");
+          showErrorAlertMessage("Mobile number should be 10 digit");
         }
+      }
+      else {
+        showErrorAlertMessage("Number should be only digit")
 
-      });
+      }
     }
     else {
-      $.post("UpdateEditAddress", modal, function (data) {
-
-        if (data == "true") {
-          updateAddressList();
-          document.getElementById("edit-address-modal-btn-close").click();
-          showSuccessAlertMessage("Address is Successfully updated");
-        }
-        else {
-          showErrorAlertMessage(data);
-        }
-
-      });
+      showErrorAlertMessage("Plaease fill all field");
     }
-
   });
 
   $("#my-details-add-new-address-btn").click(function () {
@@ -248,7 +263,7 @@ $(document).ready(function () {
     var newPass = $("#new-password").val();
     var confPass = $("#confirm-password").val();
 
-    if (oldPass != "" && newPass != "" && confPass != "") {
+    if (oldPass != "" && newPass.length >= 6 && newPass.length <= 14) {
       if (newPass == confPass) {
         var model = {
           OldPassword: oldPass,
@@ -269,7 +284,7 @@ $(document).ready(function () {
       }
     }
     else {
-      showErrorAlertMessage("Please fill all field");
+      showErrorAlertMessage("Please fill all the fields properly");
     }
   });
 
@@ -426,12 +441,14 @@ $(document).ready(function () {
     $(this).children().css("color", "#1d7a8c");
     $(this).parent().css("border-bottom", "3px solid #1d7a8c");
   });
+
   $("#pills-my-address-tab").click(function () {
     $(".my-details-ul").children().css("border-bottom", "3px solid grey");
     $(".my-details-ul").children().children().children().css("color", "#565656");
     $(this).children().css("color", "#1d7a8c");
     $(this).parent().css("border-bottom", "3px solid #1d7a8c");
   });
+
   $("#pills-change-password-tab").click(function () {
     $(".my-details-ul").children().css("border-bottom", "3px solid grey");
     $(".my-details-ul").children().children().children().css("color", "#565656");
@@ -473,23 +490,24 @@ $(document).ready(function () {
       lengthMenu: "Show _MENU_ Entries",
       info: "Total Reocrd : _MAX_",
       paginate: {
-        first: "<img src='./assets/images/first-page-ic.svg' alt='first' />",
+        first: "<img src='/assets/images/first-page-ic.svg' alt='first' />",
         previous:
-          "<img style='transform: rotate(90deg);' src='./assets/images/keyboard-right-arrow-button.png' alt='previous' />",
-        next: "<img style='transform: rotate(-90deg);' src='./assets/images/keyboard-right-arrow-button.png' alt='previous' />",
-        last: "<img style='transform: rotate(180deg);' src='./assets/images/first-page-ic.svg' alt='first' />",
+          "<img style='transform: rotate(90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
+        next: "<img style='transform: rotate(-90deg);' src='/assets/images/keyboard-right-arrow-button.png' alt='previous' />",
+        last: "<img style='transform: rotate(180deg);' src='/assets/images/first-page-ic.svg' alt='first' />",
       },
     },
     columnDefs: [
       {
-        "defaultContent": "-", 
-        "targets": "_all", 
+        "defaultContent": "-",
+        "targets": "_all",
       }
     ],
   });
 });
 function export_excel() {
   $("#table-service-history").table2excel({
+    exclude: ".noExl",
     filename: "Service history.xls"
   });
 }
@@ -509,7 +527,7 @@ function getDataFromDashboardTable(thisTd, tableName) {
   var col9_Email = currentRow.find("td:eq(8)").text();
   var col10_Comments = currentRow.find("td:eq(9)").text();
   var col11_Duration = currentRow.find("td:eq(10)").text();
-  var col12_HavePet = currentRow.find("td:eq(11)").text();
+  var col12_HavePet = currentRow.find("td:eq(11)").html();
 
   $("#dashboard-service-modal-date").html(col2_ServiceDate);
   $("#dashboard-service-modal-duration").html(col11_Duration);
@@ -570,10 +588,32 @@ function resetRateToOneStar() {
 
 }
 
-function rateService(serviceId, serviceProviderId, serviceProviderName) {
+function rateService(serviceId, serviceProviderId, serviceProviderName, avatarId) {
   $("#rate-service-service-id").val(serviceId);
   $("#rate-service-service-provider-id").val(serviceProviderId);
   $("#rating-modal-sp-name").html(serviceProviderName);
+
+  var avatarImg = '/assets/images/cap-sp-icon.png';
+  if (avatarId == 1) {
+    avatarImg = '/assets/images/car-sp-icon.png';
+  }
+  else if (avatarId == 2) {
+    avatarImg = '/assets/images/iron-sp-icon.png';
+  }
+  else if (avatarId == 3) {
+    avatarImg = '/assets/images/male-sp-icon.png';
+  }
+  else if (avatarId == 4) {
+    avatarImg = '/assets/images/female-sp-icon.png';
+  }
+  else if (avatarId == 5) {
+    avatarImg = '/assets/images/boat-sp-icon.png';
+  }
+  else if (avatarId == 6) {
+    avatarImg = '/assets/images/cap-sp-icon.png';
+  }
+
+  $("#rate-sp-modal-sp-avatar-div").html('<img class="cap-border" style="width: 65px;" src="' + avatarImg + '" alt="">');
   document.getElementById("rating-service-modal-a-tag").click();
 }
 
@@ -674,11 +714,31 @@ function updateDashboardTable() {
         if (serviceRequests[i].AverageRatings.length != 0) {
           averageRatings = sum / serviceRequests[i].AverageRatings.length;
         }
-        // const averageRatings = 3.0;
+
+        var avatarImg = '/assets/images/cap-sp-icon.png';
+        if (serviceRequests[i].SPAvatarID == 1) {
+          avatarImg = '/assets/images/car-sp-icon.png';
+        }
+        else if (serviceRequests[i].SPAvatarID == 2) {
+          avatarImg = '/assets/images/iron-sp-icon.png';
+        }
+        else if (serviceRequests[i].SPAvatarID == 3) {
+          avatarImg = '/assets/images/male-sp-icon.png';
+        }
+        else if (serviceRequests[i].SPAvatarID == 4) {
+          avatarImg = '/assets/images/female-sp-icon.png';
+        }
+        else if (serviceRequests[i].SPAvatarID == 5) {
+          avatarImg = '/assets/images/boat-sp-icon.png';
+        }
+        else if (serviceRequests[i].SPAvatarID == 6) {
+          avatarImg = '/assets/images/cap-sp-icon.png';
+        }
+
         temp_start_cell3 =
           '<div class="row">' +
           '<div class="col-3 ">' +
-          '<img class="cap-border" src="/assets/images/cap.png" alt="">' +
+          '<img class="cap-border" src="' + avatarImg + '" alt="" width="100%">' +
           "</div>" +
           '<div class="col-9">' +
           "" + serviceRequests[i].ServiceProviderFirstName + " " + serviceRequests[i].ServiceProviderLastName + " <br>" +
@@ -702,7 +762,7 @@ function updateDashboardTable() {
 
 
       cell4.innerHTML =
-        '<span class="blue-price">' + payment + '</span>';
+        '<span class="blue-price fw-bold">' + payment + '&euro;</span>';
 
 
       cell5.innerHTML =
@@ -731,10 +791,10 @@ function updateDashboardTable() {
       if (havePet)
         cell12.innerHTML = "I have pets at home";
       else
-        cell12.innerHTML = "I don't have pets at home";
+        cell12.innerHTML = '<span class="bg-danger text-white p-1 ps-2 rounded-circle">✕ </span>&nbsp;I don\'t have pets at home';
       cell12.setAttribute("hidden", true);
     }
-    if(!isDashboardUpdated){
+    if (!isDashboardUpdated) {
       isDashboardUpdated = true;
       $("#table-dashboard").DataTable({
         dom: "tlip",
@@ -752,8 +812,8 @@ function updateDashboardTable() {
         },
         columnDefs: [
           {
-            "defaultContent": "-", 
-            "targets": "_all", 
+            "defaultContent": "-",
+            "targets": "_all",
           },
           { orderable: false, targets: 4 }
         ]
@@ -862,11 +922,31 @@ function updateServiceHistoryTabel() {
         if (serviceRequests[i].AverageRatings.length != 0) {
           averageRatings = sum / serviceRequests[i].AverageRatings.length;
         }
-        // const averageRatings = 3.0;
+
+        var avatarImg = '/assets/images/cap-sp-icon.png';
+        if (serviceRequests[i].SPAvatarID == 1) {
+          avatarImg = '/assets/images/car-sp-icon.png';
+        }
+        else if (serviceRequests[i].SPAvatarID == 2) {
+          avatarImg = '/assets/images/iron-sp-icon.png';
+        }
+        else if (serviceRequests[i].SPAvatarID == 3) {
+          avatarImg = '/assets/images/male-sp-icon.png';
+        }
+        else if (serviceRequests[i].SPAvatarID == 4) {
+          avatarImg = '/assets/images/female-sp-icon.png';
+        }
+        else if (serviceRequests[i].SPAvatarID == 5) {
+          avatarImg = '/assets/images/boat-sp-icon.png';
+        }
+        else if (serviceRequests[i].SPAvatarID == 6) {
+          avatarImg = '/assets/images/cap-sp-icon.png';
+        }
+
         temp_start_cell3 =
           '<div class="row">' +
           '<div class="col-3 ">' +
-          '<img class="cap-border" src="/assets/images/cap.png" alt="">' +
+          '<img class="cap-border" src="' + avatarImg + '" alt="" width="100%">' +
           "</div>" +
           '<div class="col-9">' +
           "" + serviceRequests[i].ServiceProviderFirstName + " " + serviceRequests[i].ServiceProviderLastName + " <br>" +
@@ -890,7 +970,7 @@ function updateServiceHistoryTabel() {
 
 
       cell4.innerHTML =
-        '<span class="blue-price">' + payment + '</span>';
+        '<span class="blue-price fw-bold">' + payment + '&euro;</span>';
 
 
       //0 --> Canceled
@@ -908,37 +988,44 @@ function updateServiceHistoryTabel() {
           '<button disabled href="#" class="status-complete text-white">Completed</button>';
 
         cell13.innerHTML =
-          '<input class="blue-rounded-btn btn-SP" type="button" value="Rate SP"   onclick="rateService(\'' + serviceRequests[i].ServiceId + '\',\'' + serviceRequests[i].ServiceProviderId + '\',\'' + serviceRequests[i].ServiceProviderFirstName + " " + serviceRequests[i].ServiceProviderLastName + '\')">';
+          '<input class="blue-rounded-btn btn-SP" type="button" value="Rate SP"   onclick="rateService(\'' + serviceRequests[i].ServiceId + '\',\'' + serviceRequests[i].ServiceProviderId + '\',\'' + serviceRequests[i].ServiceProviderFirstName + " " + serviceRequests[i].ServiceProviderLastName + '\',\'' + serviceRequests[i].SPAvatarID + '\')">';
 
       }
 
 
       cell7.innerHTML = address;
+      cell7.classList.add("noExl");
       cell7.setAttribute("hidden", true);
 
       cell8.innerHTML = phone;
+      cell8.classList.add("noExl");
       cell8.setAttribute("hidden", true);
 
       cell9.innerHTML = email;
+      cell9.classList.add("noExl");
       cell9.setAttribute("hidden", true);
 
       cell10.innerHTML = comment;
+      cell10.classList.add("noExl");
       cell10.setAttribute("hidden", true);
 
       cell11.innerHTML = duration;
+      cell11.classList.add("noExl");
       cell11.setAttribute("hidden", true);
 
       cell6.innerHTML = extras;
+      cell6.classList.add("noExl");
       cell6.setAttribute("hidden", true);
 
 
       if (havePet)
         cell12.innerHTML = "I have pets at home";
       else
-        cell12.innerHTML = "I don't have pets at home";
+        cell12.innerHTML = '<span class="bg-danger text-white p-1 ps-2 rounded-circle">✕ </span>&nbsp;I don\'t have pets at home';
+      cell12.classList.add("noExl");
       cell12.setAttribute("hidden", true);
     }
-    if(!isServiceHistoryUpdated){
+    if (!isServiceHistoryUpdated) {
       isServiceHistoryUpdated = true;
       $("#table-service-history").DataTable({
         dom: "tlip",
@@ -956,8 +1043,8 @@ function updateServiceHistoryTabel() {
         },
         columnDefs: [
           {
-            "defaultContent": "-", 
-            "targets": "_all", 
+            "defaultContent": "-",
+            "targets": "_all",
           },
           { orderable: false, targets: 4 }
         ],
@@ -1037,8 +1124,8 @@ function updateFevPros() {
   $.post("GetFevouriteBlockedSPList", {}, function (data) {
     var fevPros = JSON.parse(data);
 
-    if(fevPros.length > 0){
-    
+    if (fevPros.length > 0) {
+
       $("#table-fev-pros tr").remove();
       for (i = 0; i < fevPros.length; i++) {
         var table = document.getElementById("table-fev-pros");
@@ -1048,13 +1135,13 @@ function updateFevPros() {
         var cell3 = row.insertCell(2);
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
-  
+
         var name = fevPros[i].FirstName + ' ' + fevPros[i].LastName;
         var spId = fevPros[i].SpId;
-  
+
         cell1.innerHTML = '<img class="fev-pros-cap-border" src="/assets/images/cap.png" alt="">';
         cell2.innerHTML = '<b>' + name + '</b>';
-  
+
         var sum = 0.0;
         for (var rat = 0; rat < fevPros[i].Ratings.length; rat++) {
           sum += parseFloat(fevPros[i].Ratings[rat]);
@@ -1063,10 +1150,10 @@ function updateFevPros() {
         if (fevPros[i].Ratings.length != 0) {
           averageRatings = sum / fevPros[i].Ratings.length;
         }
-  
+
         temp_end_cell3 =
           "</span>" + "<span>" + averageRatings + "</span>" + "</div>" + "</div>";
-  
+
         temp_middle_cell3 = "";
         for (let i = 0; i < averageRatings; i++) {
           temp_middle_cell3 =
@@ -1077,10 +1164,10 @@ function updateFevPros() {
             temp_middle_cell3 + '<img src="/assets/images/star2.png" alt="">';
         }
         cell3.innerHTML = temp_middle_cell3 + temp_end_cell3;
-  
+
         cell4.innerHTML =
           '<span class="">1 Cleaning</span>';
-  
+
         var cell5_fev = "";
         if (fevPros[i].IsFavorite) {
           cell5_fev =
@@ -1120,11 +1207,11 @@ function updateFevPros() {
           '</label>';
         }
         cell5.innerHTML = cell5_fev + cell5_block;
-  
+
       }
-      
+
     }
-    else{
+    else {
       $("#table-fev-pros_wrapper").addClass("d-none");
       $("#no-sp-found-div").removeClass("d-none");
     }

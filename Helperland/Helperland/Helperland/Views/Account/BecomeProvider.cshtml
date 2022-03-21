@@ -13,15 +13,14 @@
 
     <div class=" container register-now mb-5">
         <h4 class="text-center pt-3 mb-4">Register Now!</h4>
-        <form asp-controller="Account" asp-action="BecomeProvider" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
+        <form asp-controller="Account" asp-action="BecomeProvider" method="post" id="form-sp-sign-up">
+            @* <div asp-validation-summary="All" class="text-danger"></div> *@
 
-            <div class="row justify-content-center">
+            <div class="row ms-2 justify-content-center">
                 <div class="col">
                     <div class="mb-3">
                         <input asp-for="FirstName" type="text" class="form-control" placeholder="First name" id="first-name-be-a-pro">
-                        <span asp-validation-for="FirstName" 
-                        class="text-danger"></span>
+                        <span asp-validation-for="FirstName" class="text-center text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <input asp-for="LastName" type="text" class="form-control" placeholder="Last name" id="last-name-be-a-pro">
@@ -56,23 +55,23 @@
 
                     <div class="mb-2">
                         <div class="form-check input-check">
-                            <input asp-for="IsTermsAndCondition" class="form-check-input" type="checkbox" value="" id="terms">
+                            <input class="form-check-input" type="checkbox" value="" id="terms-condition">
                             <label class="form-check-label" for="terms">
                                 I accept <span class="text-blue">terms and conditions</span> & <span class="text-blue">privacy policy</span>
                             </label>
                         </div>
-                        <span asp-validation-for="IsTermsAndCondition" class="text-danger"></span>
+                        @* <span asp-validation-for="IsTermsAndCondition" class="text-danger"></span> *@
                     </div>
 
                     <div class="mb-2">
                         <div class="form-check captcha input-check">
-                            <input asp-for="IsRobot" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="not-bot-captcha">
                             <label class="form-check-label" for="flexCheckDefault">
                                 &nbsp; I'm not a robot <img src="./assets/images/RecaptchaLogo.png" alt=""
                                                             width="32px">
                             </label>
                         </div>
-                        <span asp-validation-for="IsRobot" class="text-danger"></span>
+                        @* <span asp-validation-for="IsRobot" class="text-danger"></span> *@
                     </div>
                     <div class="text-center pb-3 mt-3">
                          <div class="col text-center">
@@ -176,6 +175,27 @@
         </div>
     </section>
 </section>
+
+<script>
+    $("#form-sp-sign-up").submit(function (event) {
+        event.preventDefault();
+
+        var isTerms = document.getElementById("terms-condition").checked;
+        var isHuman = document.getElementById("not-bot-captcha").checked;
+
+        if(isTerms && isHuman){
+            $('#form-sp-sign-up').submit();
+        }
+        else{
+            if(!isTerms)
+                showErrorAlertMessage("Please accept term and condition");
+            if(!isHuman)
+                showErrorAlertMessage("Please verify you are human");
+
+        }
+
+    });
+</script>
 
 
 <asp:content contentplaceholder id="script" runat="server">

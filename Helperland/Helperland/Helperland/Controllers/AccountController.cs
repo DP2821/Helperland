@@ -12,6 +12,8 @@ namespace Helperland.Controllers
     public class AccountController : Controller
     {
         HelperlandContext _helperlandContext;
+        MailRequest mailRequest = new MailRequest();
+
         MD5 md5Hash = MD5.Create();
         public AccountController(HelperlandContext helperlandContext)
         {
@@ -28,11 +30,28 @@ namespace Helperland.Controllers
         [Route("become-a-service-provider")]
         public IActionResult BecomeProvider(BecomeProviderViewModel becomeProviderViewModel)
         {
-            BecomeProviderRepository becomeProviderRepository = new BecomeProviderRepository();
-            User user = becomeProviderRepository.GetUser(becomeProviderViewModel);
-            _helperlandContext.Users.Add(user);
-            _helperlandContext.SaveChanges();
-            return RedirectToAction("Index", "Home", new { loginModal = "true" });
+            if (ModelState.IsValid)
+            {
+                BecomeProviderRepository becomeProviderRepository = new BecomeProviderRepository();
+                User user = becomeProviderRepository.GetUser(becomeProviderViewModel);
+                int noOfSameAccountWithEmail = _helperlandContext.Users.Where(u => u.Email == becomeProviderViewModel.Email).Count();
+                if (noOfSameAccountWithEmail == 0)
+                {
+                    user.Status = new GlobalData().ACCOUNT_STATUS_DEACTIVE;
+                    _helperlandContext.Users.Add(user);
+                    _helperlandContext.SaveChanges();
+                    return RedirectToAction("Index", "Home", new { loginModal = "true" });
+                }
+                else
+                {
+                    System.Console.WriteLine("Email already exists");
+                }
+            }
+            else
+            {
+                System.Console.WriteLine("Data missing");
+            }
+            return RedirectToAction("SignUp", "Account", new { spSignUpError = "true" });
         }
 
 
@@ -45,11 +64,27 @@ namespace Helperland.Controllers
         [Route("signup")]
         public IActionResult SignUp(SignUpViewModel signUpViewModel)
         {
-            SignUpRepository signUpRepository = new SignUpRepository();
-            User user = signUpRepository.GetUser(signUpViewModel);
-            _helperlandContext.Users.Add(user);
-            _helperlandContext.SaveChanges();
-            return RedirectToAction("Index", "Home", new { loginModal = "true" });
+            if (ModelState.IsValid)
+            {
+                SignUpRepository signUpRepository = new SignUpRepository();
+                User user = signUpRepository.GetUser(signUpViewModel);
+                int noOfSameAccountWithEmail = _helperlandContext.Users.Where(u => u.Email == signUpViewModel.Email).Count();
+                if (noOfSameAccountWithEmail == 0)
+                {
+                    _helperlandContext.Users.Add(user);
+                    _helperlandContext.SaveChanges();
+                    return RedirectToAction("Index", "Home", new { loginModal = "true" });
+                }
+                else
+                {
+                    System.Console.WriteLine("Email already exists");
+                }
+            }
+            else
+            {
+                System.Console.WriteLine("Data missing");
+            }
+            return RedirectToAction("SignUp", "Account", new { signUpError = "true" });
         }
 
 
@@ -64,7 +99,7 @@ namespace Helperland.Controllers
                 if (user.Password == hashPassword)
                 {
                     GlobalData globalData = new GlobalData();
-                    if (user.UserTypeId == globalData.CustomerTypeId || user.UserTypeId == globalData.SpTypeId || user.UserTypeId == globalData.AdminTypeId)
+                    if ((user.UserTypeId == globalData.CustomerTypeId || user.UserTypeId == globalData.SpTypeId || user.UserTypeId == globalData.AdminTypeId) && user.Status == new GlobalData().ACCOUNT_STATUS_ACTIVE)
                     {
                         String token = new TokenGenerator().GetToken();
                         user.KeepMeLoggedInToken = token;
@@ -83,28 +118,28 @@ namespace Helperland.Controllers
                         }
                         else
                         {
-                            return RedirectToAction("TempAdmin");
+                            return RedirectToAction("ServiceRequests", "Admin");
                         }
                     }
                     else
                     {
                         //In case of UserId is not 1 2 3
-                        Console.WriteLine("UserId is not valid");
-                        return RedirectToAction("Error", "Home");
+                        Console.WriteLine("UserId is not valid or you are not approved");
+                        return RedirectToAction("Index", "Home", new { notApproved = "true" });
                     }
                 }
                 else
                 {
                     //Password is wrong
                     Console.WriteLine("Email or password is wrong");
-                    return RedirectToAction("Index", "Home", new { loginModal = "true" });
+                    return RedirectToAction("Index", "Home", new { emailPass = "wrong" });
                 }
             }
             else
             {
                 //Email is wrong
                 Console.WriteLine("User not found");
-                return RedirectToAction("Index", "Home", new { loginModal = "true" });
+                return RedirectToAction("Index", "Home", new { emailPass = "wrong" });
             }
         }
 
@@ -122,6 +157,20 @@ namespace Helperland.Controllers
                 var passwordResetLink = Url.Action("ResetPassword", "Account",
                     new { email = homeViewModel.Forgot.Email, token = token }, Request.Scheme);
                 Console.WriteLine(passwordResetLink);
+
+
+                SendMailViewModel sendMailViewModel = new SendMailViewModel();
+                sendMailViewModel.Email = homeViewModel.Forgot.Email;
+                sendMailViewModel.Name = user.FirstName + " " + user.LastName;
+                sendMailViewModel.Subject = "Reset Password";
+                sendMailViewModel.Body =
+                "Hello,\n" +
+                user.FirstName + " " + user.LastName + "\n\n" +
+                "Your password reset link is:\n" +
+                passwordResetLink;
+
+                Thread threadSendMail = new Thread(mailRequest.SendEmail);
+                threadSendMail.Start(sendMailViewModel);
             }
             else
             {
@@ -129,7 +178,7 @@ namespace Helperland.Controllers
                 Console.WriteLine("User not found");
                 return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { resetLinkSent = "true" });
         }
 
 

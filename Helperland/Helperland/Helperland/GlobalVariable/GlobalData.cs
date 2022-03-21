@@ -13,5 +13,8 @@
         public int SERVICE_REQUEST_STATUS_CANCELLED { get; } = 3;
         public int SERVICE_REQUEST_STATUS_ACCEPTED { get; } = 4;
 
+        public int ACCOUNT_STATUS_ACTIVE { get; } = 1;
+        public int ACCOUNT_STATUS_DEACTIVE { get; } = 2;
+
     }
 }

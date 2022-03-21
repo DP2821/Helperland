@@ -202,14 +202,7 @@ namespace Helperland.Controllers
 
                             Thread threadSendMail = new Thread(mailRequest.SendEmail);
                             threadSendMail.Start(sendMailViewModel);
-
-                            // mailRequest.SendEmail(fevSP.Email, fevSP.FirstName + " " + fevSP.LastName, "New Service Request",
-                            // "Hello,\n" +
-                            // fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
-                            // userName + " has booked service at:\n" +
-                            // userAddress.AddressLine1 + ", " + userAddress.AddressLine2 + "\n" +
-                            // userAddress.City + "-" + userAddress.PostalCode + "\n" +
-                            // "Phone: " + userAddress.Mobile);
+                            System.Console.WriteLine("Mail sent to: " + fevSP.FirstName);
                         }
                         else
                         {
@@ -228,6 +221,7 @@ namespace Helperland.Controllers
                             var fevSP = spList[i];
                             if (!blockList.Contains(fevSP.UserId) && !SPBlockCustomerList.Contains(fevSP.UserId))
                             {
+
                                 SendMailViewModel sendMailViewModel = new SendMailViewModel();
                                 sendMailViewModel.Email = fevSP.Email;
                                 sendMailViewModel.Name = fevSP.FirstName + " " + fevSP.LastName;
@@ -242,14 +236,7 @@ namespace Helperland.Controllers
 
                                 Thread threadSendMail = new Thread(mailRequest.SendEmail);
                                 threadSendMail.Start(sendMailViewModel);
-
-                                // mailRequest.SendEmail(fevSP.Email, fevSP.FirstName + " " + fevSP.LastName, "New Service Request",
-                                // "Hello,\n" +
-                                // fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
-                                // userName + " has booked service at:\n" +
-                                // userAddress.AddressLine1 + ", " + userAddress.AddressLine2 + "\n" +
-                                // userAddress.City + "-" + userAddress.PostalCode + "\n" +
-                                // "Phone: " + userAddress.Mobile);
+                                System.Console.WriteLine("Mail sent to: " + fevSP.FirstName);
                             }
                         }
                     }
@@ -284,9 +271,11 @@ namespace Helperland.Controllers
                                        ServiceTotalHour = sr.ServiceHours + sr.ExtraHours,
                                        TotalCost = sr.TotalCost,
                                        Comments = sr.Comments,
+
                                        ServiceProviderId = sr.ServiceProviderId,
                                        ServiceProviderFirstName = _helperlandContext.Users.Where(u => u.UserId == sr.ServiceProviderId).Select(u => u.FirstName).FirstOrDefault(),
                                        ServiceProviderLastName = _helperlandContext.Users.Where(u => u.UserId == sr.ServiceProviderId).Select(u => u.LastName).FirstOrDefault(),
+                                       SPAvatarID = _helperlandContext.Users.Where(u => u.UserId == sr.ServiceProviderId).Select(u => u.AvatarId).FirstOrDefault(),
                                        HasPets = sr.HasPets,
 
                                        AverageRatings = _helperlandContext.Ratings.Where(u => u.RatingTo == sr.ServiceProviderId).Select(u => u.Ratings).ToList(),
@@ -326,6 +315,7 @@ namespace Helperland.Controllers
                                        ServiceProviderId = sr.ServiceProviderId,
                                        ServiceProviderFirstName = _helperlandContext.Users.Where(u => u.UserId == sr.ServiceProviderId).Select(u => u.FirstName).FirstOrDefault(),
                                        ServiceProviderLastName = _helperlandContext.Users.Where(u => u.UserId == sr.ServiceProviderId).Select(u => u.LastName).FirstOrDefault(),
+                                       SPAvatarID = _helperlandContext.Users.Where(u => u.UserId == sr.ServiceProviderId).Select(u => u.AvatarId).FirstOrDefault(),
                                        HasPets = sr.HasPets,
                                        Status = sr.Status,
 
@@ -495,12 +485,12 @@ namespace Helperland.Controllers
                             Thread threadSendMail = new Thread(mailRequest.SendEmail);
                             threadSendMail.Start(sendMailViewModel);
 
-                        //     mailRequest.SendEmail(serviceProvider.Email, serviceProvider.FirstName + " " + serviceProvider.LastName, "Service Cancelled",
-                        //    "Hello,\n" +
-                        //    serviceProvider.FirstName + " " + serviceProvider.LastName + "\n\n" +
-                        //    userName + " has cancelled service\n" +
-                        //    "Service ID: " + ServiceId
-                        //    );
+                            //     mailRequest.SendEmail(serviceProvider.Email, serviceProvider.FirstName + " " + serviceProvider.LastName, "Service Cancelled",
+                            //    "Hello,\n" +
+                            //    serviceProvider.FirstName + " " + serviceProvider.LastName + "\n\n" +
+                            //    userName + " has cancelled service\n" +
+                            //    "Service ID: " + ServiceId
+                            //    );
                         }
                     }
                     int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
@@ -673,32 +663,37 @@ namespace Helperland.Controllers
                 return "false";
         }
 
-        public string ChnagePassword(string OldPassword, string NewPassword)
+        public string ChnagePassword(CustomerChangePasswordViewModel customerChangePasswordViewModel)
         {
-            int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
-
-            var user = _helperlandContext.Users.Where(u => u.UserId == userId).FirstOrDefault();
-
-            if (user != null)
+            if (ModelState.IsValid)
             {
-                string oldPassMd5 = new MD5Hashing().GetMd5Hash(md5Hash, OldPassword);
+                int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);
 
-                if (oldPassMd5.Equals(user.Password))
+                var user = _helperlandContext.Users.Where(u => u.UserId == userId).FirstOrDefault();
+
+                if (user != null)
                 {
-                    string newPassHash = new MD5Hashing().GetMd5Hash(md5Hash, NewPassword);
-                    user.Password = newPassHash;
-                    _helperlandContext.Users.Update(user);
-                    _helperlandContext.SaveChanges();
+                    string oldPassMd5 = new MD5Hashing().GetMd5Hash(md5Hash, customerChangePasswordViewModel.OldPassword);
+
+                    if (oldPassMd5.Equals(user.Password))
+                    {
+                        string newPassHash = new MD5Hashing().GetMd5Hash(md5Hash, customerChangePasswordViewModel.NewPassword);
+                        user.Password = newPassHash;
+                        _helperlandContext.Users.Update(user);
+                        _helperlandContext.SaveChanges();
+                    }
+                    else
+                    {
+                        return "Incorrect old password";
+                    }
                 }
                 else
                 {
-                    return "Incorrect old password";
+                    return "Something is wrong";
                 }
-
             }
-            else
-            {
-                return "Something is wrong";
+            else{
+                return "Password does not meet minimum requirment";
             }
             return "true";
         }
@@ -721,6 +716,22 @@ namespace Helperland.Controllers
                          IsFavorite = fb.IsFavorite,
                          IsBlocked = fb.IsBlocked
                      }).ToList();
+
+            // var x = (from sr in _helperlandContext.ServiceRequests
+            //          join u in _helperlandContext.Users on sr.ServiceProviderId equals u.UserId
+            //          where sr.UserId == userId
+            //          select new
+            //          {
+            //             SpId = sr.ServiceProviderId,
+            //             FirstName = u.FirstName,
+            //             LastName = u.LastName,
+
+            //             Ratings = _helperlandContext.Ratings.Where(u => u.RatingTo == sr.ServiceProviderId).Select(u => u.Ratings).ToList(),
+
+            //             IsBlocked = _helperlandContext.FavoriteAndBlockeds.Where(fv => fv.UserId == userId && fv.TargetUserId == sr.UserId).Select(fv => fv.IsBlocked).FirstOrDefault(),
+            //             IsFavorite = _helperlandContext.FavoriteAndBlockeds.Where(fv => fv.UserId == userId && fv.TargetUserId == sr.UserId).Select(fv => fv.IsFavorite).FirstOrDefault()
+
+            //          }).Distinct().ToList();
             return JsonSerializer.Serialize(x);
         }
 

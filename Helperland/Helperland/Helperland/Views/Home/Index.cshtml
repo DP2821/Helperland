@@ -7,16 +7,18 @@
 @section headerBgAndContent{
     <section>
         <div class="container">
-            <h1 class="text-white lorem-random-text ">Lorem, ipsum dolor.</h1>
+            <h2 class="text-white lorem-random-text ">Do not feel like housework?</h2>
+            <h4 class="text-white">Great! Book now for Helperland and enjoy the benefits</h4>
             <ul>
-                <li class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing.</li>
-                <li class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing.</li>
-                <li class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing.</li>
+                <li class="text-white">certified & insured helper</li>
+                <li class="text-white">certified & insured helper</li>
+                <li class="text-white">friendly customer service</li>
+                <li class="text-white">secure online payment method</li>
             </ul>
         </div>
 
         <div class="btn-wrapper text-center">
-            <a href="#" title="Let's Book a Cleaner" class="blue-btn">Let's Book a Cleaner</a>
+            <a asp-controller="Customer" asp-action="BookService" title="Let's Book a Cleaner" class="blue-btn">Let's Book a Cleaner</a>
         </div>
 
         <div class="container step-to-enroll">
@@ -358,7 +360,58 @@
     </div>
 </section>
 
+@* Custome Alert *@
+    <section>
+        <a href="#" class="modallink d-none" data-bs-toggle="modal" data-bs-target="#custom-alert-modal"
+            id="custom-alert-modal-link"></a>
+        <div class="modal fade" id="custom-alert-modal" tabindex="-1" aria-labelledby="customAlertModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="max-width: 350px; margin-left: 100px;">
 
+                    <div class="container mt-3 ms-1 d-flex">
+                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <div class="rounded-circle d-inline-block bg-success" style="width: 60px; height: 60px;" id="custom-alert-modal-arrow-div">
+                                <p class="text-white fs-4 p-1 pt-2 pb-2 mt-1" id="custom-alert-modal-sign">✓</p>
+                            </div>
+                            <div id="custom-alert-modal-content-div">
+                                <h4 class="mt-3 fw-normal" id="custom-alert-modal-alert-message">Alert message</h4>
+                            </div>
+                            <button type="button" class="modal-btn w-auto ps-4 pe-4" id="custom-alert-modal-btn-ok" data-bs-dismiss="modal"
+                            aria-label="Close">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+    function showSuccessAlertMessage(message){
+  $("#custom-alert-modal-arrow-div").removeClass("bg-danger");
+  $("#custom-alert-modal-arrow-div").addClass("bg-success");
+
+  $("#custom-alert-modal-sign").html("✓");
+
+  $("#custom-alert-modal-alert-message").html(message);
+  
+  document.getElementById("custom-alert-modal-link").click();
+}
+
+function showErrorAlertMessage(message){
+  $("#custom-alert-modal-arrow-div").removeClass("bg-success");
+  $("#custom-alert-modal-arrow-div").addClass("bg-danger");
+
+  $("#custom-alert-modal-sign").html("✕");
+
+  $("#custom-alert-modal-alert-message").html(message);
+
+  document.getElementById("custom-alert-modal-link").click();
+}
+</script>
 
 <asp:content contentplaceholder id="script" runat="server">
     <script src="~/assets/js/home.js"></script>

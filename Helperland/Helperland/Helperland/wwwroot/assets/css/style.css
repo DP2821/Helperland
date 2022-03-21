@@ -136,8 +136,16 @@ nav {
   padding-top: 18px;
   padding-bottom: 18px;
 }
+.cursor-pointer{
+  cursor: pointer;
+}
 
-
+form span span{
+  color: #dc3545;
+}
+.bg-helperland-blue{
+  background-color: #1d7a8c;
+}
 /* Modal */
 
 .login-email,

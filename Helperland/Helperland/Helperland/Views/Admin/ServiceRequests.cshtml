@@ -1,0 +1,700 @@
+﻿@{
+    Layout = "";
+    string? CurrentUserName = new CurrentLoggedInUser().GetName(Context.Request.Cookies["keepMeLoggedInToken"]);
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Service request</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link href="~/assets/css/admin-user-management.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <header>
+        <div class="main">
+            <a asp-controller="Home" asp-action="Index" title="Home">
+                <span class="helperland-name text-white ms-2 mt-3">helperland</span>
+            </a>
+            <nav class="navbar navbar-expand-lg navbar-dark navbar-top">
+
+                <div class="container-fluid nav-1">
+                    <div class="nav-btn">
+                        <button style="float: right;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapsibleNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <div class="nav-ul-vertical-list">
+
+                            <div class="vertical-navbar" id="dashboard-nav-right">
+                                <ul class="navbar-nav">
+                                    @* <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Service Management</a>
+                                        </li>
+                                        <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Role Management</a>
+                                        </li>
+                                        <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Coupon Code Management <img
+                                        class="admin-arrow" src="./assets/images/admin-small-arrow.png"
+                                        alt=""></a>
+                                        </li>
+                                        <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Escalation Management</a>
+                                        </li> *@
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Service Requests</a>
+                                    </li>
+                                    @* <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Service Providers</a>
+                                        </li> *@
+                                    <li class="nav-item li-left m-0">
+                                        <a class="nav-link active-tab" href="#">User Management</a>
+                                    </li>
+                                    @* <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Finance Module <img class="admin-arrow"
+                                        src="./assets/images/admin-small-arrow.png" alt=""></a>
+                                        </li>
+                                        <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Zip Code Management</a>
+                                        </li>
+                                        <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Rating Management</a>
+                                        </li>
+                                        <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Inquiry Management</a>
+                                        </li>
+                                        <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Newsletter Management</a>
+                                        </li>
+                                        <li class="nav-item li-left m-0">
+                                        <a class="nav-link text-white" href="#">Content Management</a>
+                                        </li> *@
+                                </ul>
+                            </div>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <div class="popover__wrapper">
+                                        <img style="margin-top: -5px;" src="~/assets/images/user.png" alt=""
+                                            id="myPopover" data-bs-toggle="popover">
+                                        @* <i class="fas fa-chevron-down" id="myPopover" data-bs-toggle="popover"></i>
+                                        *@
+
+                                        <div class="popover__content">
+                                            <p class="ps-3 pe-3">
+                                                <small>Welcome</small><br>
+                                                <b>@CurrentUserName</b>
+                                            </p>
+                                            <hr>
+                                            <ul class="ps-0 popover-ul">
+                                                <li>
+                                                    <a class="nav-link" asp-action="ServiceRequests"
+                                                        asp-controller="Admin">
+                                                        <span>Dashboard</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="nav-link" asp-action="LogOut" asp-controller="Account">
+                                                        <span>Logout</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#"><img src="./assets/images/user.png" alt="">
+                                        <span class="text-white ms-2 me-2">@CurrentUserName</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+    <div><br></div>
+
+    <section>
+        <div class="row mt-3 mb-5">
+            <div class="col-lg-2" id="dashboard-nav-left">
+                <div class="vertical-navbar">
+                    <ul class="nav navbar-nav" role="tablist">
+                        @* <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Service Management</a>
+                            </li>
+                            <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Role Management</a>
+                            </li>
+                            <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Coupon Code Management <img class="admin-arrow"
+                            src="./assets/images/admin-small-arrow.png" alt=""></a>
+                            </li>
+                            <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Escalation Management</a>
+                            </li>
+                            <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Service Providers</a>
+                            </li> *@
+                        <li class="nav-item li-left m-0 active-tab" role="presentation">
+                            <a class="nav-link text-grey vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-service-request" type="button" role="tab"
+                                aria-controls="pills-service-request" aria-selected="true">Service Requests</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-grey vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-user-management" type="button" role="tab"
+                                aria-controls="pills-user-management" aria-selected="false">User Management</a>
+                        </li>
+                        @* <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Finance Module <img class="admin-arrow"
+                            src="./assets/images/admin-small-arrow.png" alt=""></a>
+                            </li>
+                            <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Zip Code Management</a>
+                            </li>
+                            <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Rating Management</a>
+                            </li>
+                            <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Inquiry Management</a>
+                            </li>
+                            <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Newsletter Management</a>
+                            </li>
+                            <li class="nav-item li-left m-0">
+                            <a class="nav-link text-grey" href="#">Content Management <img class="admin-arrow"
+                            src="./assets/images/admin-small-arrow.png" alt=""></a>
+                            </li> *@
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-10 tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-service-request" role="tabpanel"
+                    aria-labelledby="pills-service-request-tab">
+                    <div class="row me-2">
+                        <div class="col">
+                            <h4 class="text-grey">Service Requests</h4>
+                        </div>
+                    </div>
+                    <div class="row bg-white mt-2 mb-2 me-3 ms-0 pt-3 pb-2">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-auto mb-3">
+                                    <input type="number" class="form-control" placeholder="Service ID"
+                                        id="search-service-id">
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <input type="number" class="form-control" placeholder="Postal code"
+                                        id="search-postal-code">
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <input type="email" class="form-control" placeholder="Email" id="search-email">
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <select class="form-select" aria-label="Default select example"
+                                        id="search-customer">
+                                        <option value="" selected>Select Customer</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <select class="form-select" aria-label="Default select example" id="search-sp">
+                                        <option value="" selected>Select Service Provider</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <select class="form-select" aria-label="Default select example" id="search-status">
+                                        <option value="" selected>Select Status</option>
+                                        <option value="1">New</option>
+                                        <option value="2">Complete</option>
+                                        <option value="3">Cancelled</option>
+                                        <option value="4">Accepted</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <div class="date-div">
+                                        <img class="img-calendar" src="~/assets/images/admin-calendar-blue.png"
+                                            alt="">
+                                        <input class="input-date" type="date" name="" id="search-start-date">
+                                    </div>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <div class="date-div">
+                                        <img class="img-calendar" src="~/assets/images/admin-calendar-blue.png"
+                                            alt="">
+                                        <input class="input-date" type="date" name="" id="search-end-date">
+                                    </div>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <button type="submit" class="btn btn-primary btn-submit-form btn-blue-adminPage"
+                                        id="search-btn-search">Search</button>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <button type="submit" class="btn btn-submit-form btn-clear"
+                                        id="search-btn-clear">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row me-2">
+                        <table class="" id="table-service-request">
+                            <thead>
+                                <tr style="background-color: #F9F9F9;">
+                                    <th style="width: 8%;">Service ID</th>
+                                    <th style="width: 150px;">Service date</th>
+                                    <th style="width: 200px;">Customer details</th>
+                                    <th style="width: 275px;">Service Provider</th>
+                                    <th>Gross Amount</th>
+
+                                    <th>Net Amount</th>
+                                    <th>Discount</th>
+                                    <th>Status</th>
+                                    <th>Payment status</th>
+                                    <th style="width: 8%;">Action </th>
+
+                                    <th hidden></th>
+                                    <th hidden></th>
+                                    <th hidden></th>
+                                    <th hidden></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr hidden>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                @* <tr>
+                                    <td data-label="Service ID">
+                                    <span>323436</span>
+                                    </td>
+                                    <td data-label="Service date">
+                                    <img src="./assets/images/calendar2.png" alt="">
+                                    <span id="date">06/09/2021</span><br>
+                                    <img src="./assets/images/layer-14.png" alt="">
+                                    <span id="time">12:00 - 6:00</span>
+                                    </td>
+                                    <td data-label="Customer details">
+                                    John wick <br>
+                                    <img src="./assets/images/layer-15.png" alt="">
+                                    <span>131 Pearl Street, New York</span>
+                                    </td>
+                                    <td data-label="Service provider">
+                                    <div class="row">
+                                    <div class="col-6 col-md-3">
+                                    <img class="cap-border" src="./assets/images/cap.png" alt="">
+                                    </div>
+                                    <div class="col-6 col-md-9">
+                                    John wick <br>
+                                    <span><img src="./assets/images/star1.png" alt=""><img
+                                    src="./assets/images/star1.png" alt=""><img
+                                    src="./assets/images/star1.png" alt=""><img
+                                    src="./assets/images/star1.png" alt=""><img
+                                    src="./assets/images/star2.png" alt="">4</span>
+                                    </div>
+                                    </div>
+                                    </td>
+                                    <td data-label="Status">
+                                    <input class="btn-user-status-active" type="button" value="New">
+                                    </td>
+                                    <td data-label="Action">
+                                    <a href="#"><img class="mt-2" src="./assets/images/group-38.png" alt=""></a>
+                                    </td>
+                                    </tr> *@
+                            </tbody>
+                        </table>
+
+                        <div class="text-end mt-3" id="my-pagination"></div>
+
+                    </div>
+                    <div class="mt-3">
+                        <span style="color: #737381;">
+                            ©2018Helperland. All rights reserved.</span>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-user-management" role="tabpanel"
+                    aria-labelledby="pills-user-management-tab">
+                    <div class="row me-2 ">
+                        <div class="col-6">
+                            <h4 class="text-grey">User Management</h4>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button type="submit" class="btn btn-primary btn-submit-form btn-blue-adminPage"><img
+                                    class="mb-1" src="./assets/images/add.png" alt="">Add New Call center</button>
+                        </div>
+                    </div>
+                    <div class="row bg-white mt-2 mb-2 me-3 ms-0 pt-3 pb-2">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-auto mb-3">
+                                    <select class="form-select" aria-label="Default select example"
+                                        id="user-management-search-user-name">
+                                        <option value="" selected>User name</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <select class="form-select" aria-label="Default select example"
+                                        id="user-management-search-user-role">
+                                        <option value="" selected>User Type</option>
+                                        <option value="1">Customer</option>
+                                        <option value="2">Service Provider</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text" id="basic-addon1">+49</span>
+                                        <input type="number" class="form-control" placeholder="Phone number"
+                                            id="user-management-search-phone-number">
+                                    </div>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <input type="number" class="form-control" placeholder="Zipcode"
+                                        id="user-management-search-postal-code">
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <input type="email" class="form-control" placeholder="Email"
+                                        id="user-management-search-email">
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <div class="date-div">
+                                        <img class="img-calendar" src="~/assets/images/admin-calendar-blue.png"
+                                            alt="">
+                                        <input class="input-date" type="date" name=""
+                                            id="user-management-search-start-date">
+                                    </div>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <div class="date-div">
+                                        <img class="img-calendar" src="~/assets/images/admin-calendar-blue.png"
+                                            alt="">
+                                        <input class="input-date" type="date" name=""
+                                            id="user-management-search-end-date">
+                                    </div>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <button type="submit" class="btn btn-primary btn-submit-form btn-blue-adminPage"
+                                        id="user-management-search-btn-search">Search</button>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <button type="submit" class="btn btn-submit-form btn-clear"
+                                        id="user-management-search-btn-clear">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                        </div>
+
+                    </div>
+                    <div class="row me-2">
+                        <div class="text-end">
+                            <button class="btn btn-primary btn-submit-form btn-blue-adminPage" onclick="export_excel()">
+                                Export
+                            </button>
+                        </div>
+                        <table class="" id="table-user-management">
+                            <thead>
+                                <tr style="background-color: #F9F9F9;">
+                                    <th>User Name</th>
+                                    <th>Role</th>
+                                    <th>Date of Registration</th>
+                                    <th>User Type</th>
+                                    <th>Phone</th>
+
+                                    <th>Postal Code</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr hidden>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="text-end mt-3" id="user-pagination"></div>
+
+                    </div>
+                    <div class="mt-3">
+                        <span style="color: #737381;">
+                            ©2018Helperland. All rights reserved.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Edit & Reschedule Service Modal -->
+    <section>
+        <a href="#" class="modallink d-none" data-bs-toggle="modal" data-bs-target="#reschedule-service-modal"
+            id="reschedule-service-modal-a-tag"></a>
+
+        <div class="modal fade" id="reschedule-service-modal" tabindex="-1"
+            aria-labelledby="rescheduleServiceModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="container mt-1 ms-1 d-flex">
+                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"
+                            id="reschedule-service-modal-btn-close"></button>
+                    </div>
+                    <div class="modal-body pt-0">
+                        <h4>Edit Service Request</h4>
+
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <b>Date</b>
+                                <!-- Input type date -->
+                                <div class="date-div">
+                                    <img class="img-calendar" src="~/assets/images/admin-calendar-blue.png" alt="">
+                                    <input class="input-date" type="date" name="" id="start-date-reschedule-service">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <b>Time</b>
+                                <select class="input-start-time form-select" aria-label="Default select example"
+                                    id="start-time-reschedule-service">
+                                    <option value="08:00" selected>8:00</option>
+                                    <option value="08:30">8:30</option>
+                                    <option value="09:00">9:00</option>
+                                    <option value="09:30">9:30</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="10:30">10:30</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="11:30">11:30</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="12:30">12:30</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="13:30">13:30</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="14:30">14:30</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="15:30">15:30</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="16:30">16:30</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="17:30">17:30</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="18:30">18:30</option>
+
+                                </select>
+
+                                <input hidden type="number" id="serviceId-reschedule-service">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <p class="mb-0"><b>Service Address</b></p>
+                            <div class="row">
+                                <input hidden type="text" id="edit-address-form-addres-id">
+                                <div class="col-6">
+                                    <label for="street-name">Street name</label>
+                                    <input type="text" class="form-control mb-3" placeholder="Street name"
+                                        id="edit-address-form-street-name">
+                                </div>
+                                <div class="col-6">
+                                    <label for="house-number">House number</label>
+                                    <input type="text" class="form-control mb-3" placeholder="House number"
+                                        id="edit-address-form-house-number">
+                                </div>
+                                <div class="col-6">
+                                    <label for="address-postal-code">Postal code</label>
+                                    <input type="number" class="form-control mb-3" placeholder="Postal code"
+                                        id="edit-address-form-postal-code">
+                                </div>
+                                <div class="col-6">
+                                    <label for="city">City</label>
+                                    <input disabled type="text" class="form-control mb-3" placeholder="City"
+                                        id="edit-address-form-city">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <p class="mb-0"><b>Invoice Address</b></p>
+                            <div class="row">
+                                <input hidden type="text" id="invoice-edit-address-form-addres-id">
+                                <div class="col-6">
+                                    <label for="street-name">Street name</label>
+                                    <input type="text" class="form-control mb-3" placeholder="Street name"
+                                        id="invoice-edit-address-form-street-name">
+                                </div>
+                                <div class="col-6">
+                                    <label for="house-number">House number</label>
+                                    <input type="text" class="form-control mb-3" placeholder="House number"
+                                        id="invoice-edit-address-form-house-number">
+                                </div>
+                                <div class="col-6">
+                                    <label for="address-postal-code">Postal code</label>
+                                    <input type="number" class="form-control mb-3" placeholder="Postal code"
+                                        id="invoice-edit-address-form-postal-code">
+                                </div>
+                                <div class="col-6">
+                                    <label for="city">City</label>
+                                    <input disabled type="text" class="form-control mb-3" placeholder="City"
+                                        id="invoice-edit-address-form-city">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="mt-4 mb-0"><b>Why you want to reschedule service request?</b></p>
+                                <textarea class="form-control" id="reschedule-service-modal-reason"
+                                    placeholder="Why you want to reschedule service request?"></textarea>
+
+                            </div>
+                            <div class="col-12">
+                                <p class="mt-4 mb-0"><b>Call center EMP Notes?</b></p>
+                                <textarea class="form-control" id="call-center-notes-service-modal-reason"
+                                    placeholder="Enter notes"></textarea>
+
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <button class="btn btn-primary btn-submit-form btn-blue-adminPage w-100"
+                                id="reschedule-service-modal-update">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cancel Service Modal -->
+    <section>
+        <a href="#" class="modallink d-none" data-bs-toggle="modal" data-bs-target="#cancel-service-modal"
+            id="cancel-service-modal-a-tag">Cancel</a>
+        <div class="modal fade" id="cancel-service-modal" tabindex="-1" aria-labelledby="cancelServiceModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="max-width: 350px; margin-left: 100px;">
+                    <div class="container mt-1 ms-1 d-flex">
+                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"
+                            id="cancel-service-modal-btn-close"></button>
+                    </div>
+                    <div class="modal-body pt-0">
+                        <h4>Cancel Service Request</h4>
+
+                        <p class="mt-4 mb-0">Why you want to cancel the service request?</p>
+                        <textarea class="form-control" id="cancel-service-modal-reason"></textarea>
+                        <input hidden type="number" id="serviceId-cancel-service">
+                        <div class="text-center mt-3">
+                            <button class="btn btn-primary btn-submit-form btn-blue-adminPage bg-danger w-100"
+                                id="cancel-service-modal-cancel-now">Cancel Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @* Custome Alert *@
+    <section>
+        <a href="#" class="modallink d-none" data-bs-toggle="modal" data-bs-target="#custom-alert-modal"
+            id="custom-alert-modal-link"></a>
+        <div class="modal fade" id="custom-alert-modal" tabindex="-1" aria-labelledby="customAlertModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="max-width: 350px; margin-left: 100px;">
+
+                    <div class="container mt-3 ms-1 d-flex">
+                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <div class="rounded-circle d-inline-block bg-success" style="width: 60px; height: 60px;"
+                                id="custom-alert-modal-arrow-div">
+                                <p class="text-white fs-4 p-1 pt-2 pb-2 mt-1" id="custom-alert-modal-sign">✓</p>
+                            </div>
+                            <div id="custom-alert-modal-content-div">
+                                <h4 class="mt-3 fw-normal" id="custom-alert-modal-alert-message">Alert message</h4>
+                            </div>
+                            <button type="button" class="modal-btn w-auto ps-4 pe-4" id="custom-alert-modal-btn-ok"
+                                data-bs-dismiss="modal" aria-label="Close">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function showSuccessAlertMessage(message) {
+            $("#custom-alert-modal-arrow-div").removeClass("bg-danger");
+            $("#custom-alert-modal-arrow-div").addClass("bg-success");
+
+            $("#custom-alert-modal-sign").html("✓");
+
+            $("#custom-alert-modal-alert-message").html(message);
+
+            document.getElementById("custom-alert-modal-link").click();
+        }
+
+        function showErrorAlertMessage(message) {
+            $("#custom-alert-modal-arrow-div").removeClass("bg-success");
+            $("#custom-alert-modal-arrow-div").addClass("bg-danger");
+
+            $("#custom-alert-modal-sign").html("✕");
+
+            $("#custom-alert-modal-alert-message").html(message);
+
+            document.getElementById("custom-alert-modal-link").click();
+        }
+    </script>
+
+    <script src="~/assets/js/admin-service-requests.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+
+</body>
+
+</html>

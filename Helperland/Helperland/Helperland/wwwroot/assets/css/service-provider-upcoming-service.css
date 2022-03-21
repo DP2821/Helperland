@@ -259,6 +259,25 @@ SP Rating table
 .rounded-grey-box-active {
   border: 3px solid #1d7a8c !important;
 }
+.service-schedule-head{
+  border: 1px solid #aaaaaa;
+  background-color: #dcdcdc;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.service-schedule-td{
+  border: 1px solid #aaaaaa;
+  text-align: right;
+  /* padding-bottom: 40px; */
+  height: 80px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+.calender-next-prev-link{
+  border: 1px solid #aaaaaa;
+  padding: 8px;
+}
 /* Data Table class */
 table.dataTable thead th,
 table.dataTable thead td {

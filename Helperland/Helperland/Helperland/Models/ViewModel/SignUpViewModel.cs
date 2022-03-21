@@ -6,9 +6,13 @@ namespace Helperland.Models.ViewModel
     {
         [Required]
         [Display(Name = "First name")]
+        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", 
+         ErrorMessage = "Characters are not allowed.")]
         public string FirstName { get; set; } = null!;
 
         [Required]
+        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", 
+         ErrorMessage = "Characters are not allowed.")]
         [Display(Name = "Last name")]
         public string LastName { get; set; } = null!;
 
@@ -20,6 +24,7 @@ namespace Helperland.Models.ViewModel
         [Required]
         [Display(Name = "Phone number")]
         [DataType(DataType.PhoneNumber)]
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "Phone number should be 10 digit only.")]
         public string PhoneNumber { get; set; } = null!;
 
         [Required]
