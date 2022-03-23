@@ -306,9 +306,9 @@ Popover
     height: 40px;
     padding-bottom: 5px;
   }
-    .blue-rounded-btn:hover {
+    /* .blue-rounded-btn:hover {
         background: none;
-    }
+    } */
   .navbar-top {
     width: 100%;
   }

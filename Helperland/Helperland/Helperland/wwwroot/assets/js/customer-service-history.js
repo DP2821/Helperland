@@ -745,7 +745,7 @@ function updateDashboardTable() {
           "<span>";
 
         temp_end_cell3 =
-          "</span>" + "<span>" + averageRatings + "</span>" + "</div>" + "</div>";
+          "</span>" + "<small> " + averageRatings + "</small> " + "</div>" + "</div>";
 
         temp_middle_cell3 = "";
         for (let i = 0; i < averageRatings; i++) {
@@ -767,7 +767,7 @@ function updateDashboardTable() {
 
       cell5.innerHTML =
         '<button class="blue-rounded-btn text-white p-2" onclick="rescheduleService(\'' + serviceRequests[i].ServiceId + '\',\'' + startDate + '\',\'' + startTime + '\')">Reschedule</button>' +
-        '<button class="blue-rounded-btn text-white p-2 bg-danger" onclick="cancelService(\'' + serviceRequests[i].ServiceId + '\')">Cancel</button>';
+        '<button class="blue-rounded-btn text-white p-2 bg-danger ms-2" onclick="cancelService(\'' + serviceRequests[i].ServiceId + '\')">Cancel</button>';
 
 
       cell6.innerHTML = extras;
@@ -953,7 +953,7 @@ function updateServiceHistoryTabel() {
           "<span>";
 
         temp_end_cell3 =
-          "</span>" + "<span>" + averageRatings + "</span>" + "</div>" + "</div>";
+          "</span>" + "<small> " + averageRatings + "</small>" + "</div>" + "</div>";
 
         temp_middle_cell3 = "";
         for (let i = 0; i < averageRatings; i++) {

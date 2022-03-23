@@ -846,7 +846,7 @@ function updateMyRatingTable() {
       else if(parseInt(averageRatings) == 1){
         ratingStatement = "Very Bad"
       }
-      cell3.innerHTML = '<p class="m-0">Rating</p>' + temp_middle_cell3 + '<span>'+ ratingStatement +'</span>';
+      cell3.innerHTML = '<p class="m-0">Rating</p>' + temp_middle_cell3 + '<small> '+ ratingStatement +'</small>';
 
       cell4.innerHTML = '<p class="m-0"><b>Customer Comment</b></p><p>' + myRatings[i].Comments + '<p/>';
     }

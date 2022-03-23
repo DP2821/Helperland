@@ -349,9 +349,10 @@ namespace Helperland.Controllers
 
                     if (serviceRequest.ServiceProviderId != null)
                     {
-                        var noOfServiceConflicting = _helperlandContext.ServiceRequests.Where(sr => sr.ServiceProviderId == serviceRequest.ServiceProviderId &&
+                        var noOfServiceConflicting = _helperlandContext.ServiceRequests.Where(sr => 
+                        sr.ServiceProviderId == serviceRequest.ServiceProviderId &&
                         sr.ServiceRequestId != serviceRequest.ServiceRequestId &&
-                        (sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW || sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_ACCEPTED) &&
+                        sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_ACCEPTED &&
                         DateTime.Compare(sr.ServiceStartDate.Date, DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime, "yyyy-MM-dd HH:mm", null).Date) == 0 && !(
                             (TimeSpan.Compare(sr.ServiceStartDate.AddHours(sr.ServiceHours + (double)sr.ExtraHours + 1.0).TimeOfDay,
                                 DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime, "yyyy-MM-dd HH:mm", null).TimeOfDay) <= 0 &&
@@ -367,6 +368,8 @@ namespace Helperland.Controllers
 
                         if (noOfServiceConflicting != null)
                         {
+                            System.Console.WriteLine("This service is Conflicting\nService ID: " + noOfServiceConflicting.ServiceId);
+                            System.Console.WriteLine(DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime, "yyyy-MM-dd HH:mm", null).Date);
                             string startMinute = noOfServiceConflicting.ServiceStartDate.Minute + "";
                             string endMinute = noOfServiceConflicting.ServiceStartDate.AddHours(noOfServiceConflicting.ServiceHours + (double)noOfServiceConflicting.ExtraHours).Minute + "";
                             if (noOfServiceConflicting.ServiceStartDate.Minute == 0)
@@ -426,14 +429,6 @@ namespace Helperland.Controllers
 
                             Thread threadSendMail = new Thread(mailRequest.SendEmail);
                             threadSendMail.Start(sendMailViewModel);
-
-                            // mailRequest.SendEmail(fevSP.Email, fevSP.FirstName + " " + fevSP.LastName, "Service Rescheduled",
-                            //     "Hello,\n" +
-                            //     fevSP.FirstName + " " + fevSP.LastName + "\n\n" +
-                            //     userName + " has rescheduled service on\n" +
-                            //     rescheduleServiceViewModel.NewServiceDate + " " + rescheduleServiceViewModel.NewServicetime + "\n" +
-                            //     "Service ID: " + rescheduleServiceViewModel.ServiceId
-                            // );
                         }
                     }
 
@@ -484,13 +479,6 @@ namespace Helperland.Controllers
 
                             Thread threadSendMail = new Thread(mailRequest.SendEmail);
                             threadSendMail.Start(sendMailViewModel);
-
-                            //     mailRequest.SendEmail(serviceProvider.Email, serviceProvider.FirstName + " " + serviceProvider.LastName, "Service Cancelled",
-                            //    "Hello,\n" +
-                            //    serviceProvider.FirstName + " " + serviceProvider.LastName + "\n\n" +
-                            //    userName + " has cancelled service\n" +
-                            //    "Service ID: " + ServiceId
-                            //    );
                         }
                     }
                     int userId = new CurrentLoggedInUser().GetUserId(Request.Cookies["keepMeLoggedInToken"]);

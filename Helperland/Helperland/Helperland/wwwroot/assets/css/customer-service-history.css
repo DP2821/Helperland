@@ -322,10 +322,14 @@ table.dataTable tbody td {
   .contact-us,
   .login,
   .become-a-helper {
+    background: none;
     padding: 0px;
     margin: 0px;
   }
-
+  .book-a-cleaner:hover,
+  .prices:hover{
+    background: none;
+  }
   .vertical-navbar {
     margin-top: 5px;
     background-color: #525252;

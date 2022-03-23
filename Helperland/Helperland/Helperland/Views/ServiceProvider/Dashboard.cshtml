@@ -7,7 +7,53 @@
 <asp:content contentplaceholder id="css" runat="server">
     <link href="~/assets/css/service-provider-upcoming-service.css" rel="stylesheet" />
 </asp:content>
-
+@section leftNavOnRightSide{
+<section id="dashboard-nav-right">
+    <ul class="nav navbar-nav" role="tablist">
+                        <li class="nav-item li-left m-0 active-tab" role="presentation" id="pills-dashboard-list">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-dashboard" type="button" role="tab"
+                                aria-controls="pills-dashboard" aria-selected="false">Dashboard</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-new-service-request" type="button" role="tab"
+                                aria-controls="pills-new-service-request" aria-selected="false">New Service Request</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-upcoming-services" type="button" role="tab"
+                                aria-controls="pills-upcoming-services" aria-selected="false">Upcoming Services</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-service-schedule" type="button" role="tab"
+                                aria-controls="pills-service-schedule" aria-selected="false">Service Schedule</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-service-history" type="button" role="tab"
+                                aria-controls="pills-service-history" aria-selected="false">Service History</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-my-ratings" type="button" role="tab"
+                                aria-controls="pills-my-ratings" aria-selected="false">My ratings</a>
+                        </li>
+                        <li class="nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-block-customer" type="button" role="tab"
+                                aria-controls="pills-block-customer" aria-selected="false">Block Customer</a>
+                        </li>
+                        <li class="d-none nav-item li-left m-0" role="presentation">
+                            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                                data-bs-target="#pills-my-account" type="button" role="tab"
+                                aria-controls="pills-my-account" aria-selected="false" id="pills-my-account-a-tag">My
+                                Account</a>
+                        </li>
+                    </ul>
+</section>
+}
 <section>
     <div class="container-fluid welcome-user">
         <h3 class="text-center welcome">Welcome, <span class="sp-name">@CurrentUserName!</span></h3>
@@ -185,15 +231,27 @@
                 <div class="tab-pane fade" id="pills-service-schedule" role="tabpanel"
                     aria-labelledby="pills-service-schedule-tab">
                     <div class="row mb-2">
-                        <div class="col">
-                            <span><a class="calender-next-prev-link" id="calender-prev-month"><img style="transform: rotate(90deg);" src="~/assets/images/forma-1_3.png" alt=""></a></span>
-                            <span><a class="calender-next-prev-link" id="calender-next-month"><img style="transform: rotate(-90deg);" src="~/assets/images/forma-1_3.png" alt=""></a></span>
-                            <span id="calender-month-head"></span>
-                            <span id="calender-year-head"></span>
+                        <div class="col-6 col-sm">
+                            <div class="row">
+                                <div class="col-12 col-sm-auto mb-2">
+                                    <span><a class="calender-next-prev-link" id="calender-prev-month"><img style="transform: rotate(90deg);" src="~/assets/images/forma-1_3.png" alt=""></a></span>
+                                    <span><a class="calender-next-prev-link" id="calender-next-month"><img style="transform: rotate(-90deg);" src="~/assets/images/forma-1_3.png" alt=""></a></span>
+                                </div>
+                                <div class="col-12 col-sm-auto">
+                                    <span id="calender-month-head"></span>
+                                    <span id="calender-year-head"></span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-auto">
-                            <span><span class="m-1" style="background-color: #aaaaaa; padding: 3px; padding-right: 20px;"></span>Completed</span>
-                            <span><span class="m-1" style="background-color: #1d7a8c; padding: 3px; padding-right: 20px;"></span>Upcoming</span>
+                        <div class="col-6 col-sm-auto">
+                            <div class="row text-end">
+                                <div class="col-12 col-sm-auto mb-2">
+                                    <span><span class="m-1" style="background-color: #aaaaaa; padding: 3px; padding-right: 20px;"></span>Completed</span>
+                                </div>
+                                <div class="col-12 col-sm-auto">
+                                    <span><span class="m-1" style="background-color: #1d7a8c; padding: 3px; padding-right: 20px;"></span>Upcoming&nbsp;</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

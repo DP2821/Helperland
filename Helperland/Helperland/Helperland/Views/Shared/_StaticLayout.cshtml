@@ -51,6 +51,7 @@
 
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <div class="nav-ul-vertical-list">
+                        @RenderSection("leftNavOnRightSide", required: false)
                         <ul class="navbar-nav">
                             @if (UserTypeID == 1)
                             {

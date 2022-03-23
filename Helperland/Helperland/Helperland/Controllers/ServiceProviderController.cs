@@ -102,10 +102,12 @@ namespace Helperland.Controllers
             if (userId != -1)
             {
 
-                var newService = _helperlandContext.ServiceRequests.Where(sr => sr.ServiceRequestId == serviceId && sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW).FirstOrDefault();
+                var newService = _helperlandContext.ServiceRequests.Where(sr => sr.ServiceRequestId == serviceId).FirstOrDefault();
                 if (newService != null)
                 {
-                    int noOfServiceConflicting = _helperlandContext.ServiceRequests.Where(sr => sr.ServiceProviderId == userId && sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_ACCEPTED &&
+                    int noOfServiceConflicting = _helperlandContext.ServiceRequests.Where(sr => 
+                    sr.ServiceProviderId == userId && 
+                    sr.Status == new GlobalData().SERVICE_REQUEST_STATUS_ACCEPTED &&
                     DateTime.Compare(sr.ServiceStartDate.Date, newService.ServiceStartDate.Date) == 0 && !(
                         (TimeSpan.Compare(sr.ServiceStartDate.AddHours(sr.ServiceHours + (double)sr.ExtraHours + 1.0).TimeOfDay,
                             newService.ServiceStartDate.TimeOfDay) <= 0 &&
@@ -569,14 +571,6 @@ namespace Helperland.Controllers
         }
     }
 
-    public class CalenderViewModel
-    {
-        public int? Status { get; set; }
-        public string? StartTime { get; set; }
-        public string? EndTime { get; set; }
-        public int Day { get; set; }
-
-    }
 }
 
 

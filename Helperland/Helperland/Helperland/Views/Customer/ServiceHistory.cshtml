@@ -6,7 +6,48 @@
 <asp:content contentplaceholder id="css" runat="server">
     <link href="~/assets/css/customer-service-history.css" rel="stylesheet" />
 </asp:content>
-
+@section leftNavOnRightSide{
+<section id="dashboard-nav-right">
+    <ul class="nav navbar-nav mb-3" role="tablist">
+        <li class="nav-item li-left m-0 active-tab" role="presentation" id="pills-dashboard-list">
+            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                data-bs-target="#pills-dashboard" type="button" role="tab" aria-controls="pills-dashboard"
+                aria-selected="false">Dashboard</a>
+        </li>
+        <li class="nav-item li-left m-0" role="presentation">
+            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                data-bs-target="#pills-service-history" type="button" role="tab" aria-controls="pills-service-history"
+                aria-selected="false">Service History</a>
+        </li>
+        <li class="nav-item li-left m-0" role="presentation">
+            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                data-bs-target="#pills-service-schedule" type="button" role="tab" aria-controls="pills-service-schedule"
+                aria-selected="false">Service Schedule</a>
+        </li>
+        <li class="nav-item li-left m-0" role="presentation">
+            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                data-bs-target="#pills-fev-pros" type="button" role="tab" aria-controls="pills-fev-pros"
+                aria-selected="false" id="pills-fev-pros-a-tag">Favorite Pros</a>
+        </li>
+        <li class="nav-item li-left m-0" role="presentation">
+            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                data-bs-target="#pills-invoices" type="button" role="tab" aria-controls="pills-invoices"
+                aria-selected="false">Invoices</a>
+        </li>
+        <li class="nav-item li-left m-0" role="presentation">
+            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                data-bs-target="#pills-notifications" type="button" role="tab" aria-controls="pills-notifications"
+                aria-selected="false">Notifications</a>
+        </li>
+        <li class="d-none nav-item li-left m-0" role="presentation">
+            <a class="nav-link text-white vertical-navbar-a-tag" href="#" data-bs-toggle="pill"
+                data-bs-target="#pills-my-account" type="button" role="tab" aria-controls="pills-my-account"
+                aria-selected="false" id="pills-my-account-a-tag">My
+                Account</a>
+        </li>
+    </ul>
+</section>
+}
 <section>
     <div class="container-fluid welcome-user">
         <h3 class="text-center welcome">Welcome, <span class="customer-name">@CurrentUserName!</span></h3>
@@ -64,13 +105,13 @@
                 <div class="tab-pane fade show active" id="pills-dashboard" role="tabpanel"
                     aria-labelledby="pills-dashboard-tab">
                     <div class="row mb-1">
-                        <div class="col-6">
+                        <div class="col-12 col-sm-6">
                             <h4>Current Service Request</h4>
                         </div>
-                        <div class="col-6 text-end">
+                        <div class="col-12 col-sm-6 text-end mb-3 mb-sm-0">
                             <a class="blue-rounded-btn text-decoration-none text-white p-2 ps-3 pe-3"
                                 asp-action="BookService" , asp-controller="Customer">
-                                Add New Service Request
+                                Add&nbsp;New&nbsp;Service&nbsp;Request
                             </a>
                         </div>
                     </div>
@@ -141,7 +182,7 @@
                                 <th hidden class="noExl">Phone</th>
                                 <th hidden class="noExl">Email</th>
                                 <th hidden class="noExl">Comments</th>
- 
+
                                 <th hidden class="noExl">Duration</th>
                                 <th hidden class="noExl">Extras</th>
                                 <th hidden class="noExl">HavePet</th>
@@ -208,7 +249,7 @@
                     aria-labelledby="pills-notifications-tab">
                     <h2>Notifications</h2>
                 </div>
-                
+
                 <div class="tab-pane fade" id="pills-my-account" role="tabpanel" aria-labelledby="pills-my-account-tab">
                     <section>
                         <ul class="nav nav-pills mb-3 my-details-ul" id="pills-tab" role="tablist">
@@ -216,19 +257,19 @@
                                 role="presentation">
                                 <button class="border-0 bg-white" id="pills-my-details-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-my-details" type="button" role="tab"
-                                    aria-controls="pills-my-details" aria-selected="true"><b style="color: #1d7a8c;">My Details</b></button>
+                                    aria-controls="pills-my-details" aria-selected="true"><b style="color: #1d7a8c;">My
+                                        Details</b></button>
                             </li>
-                            <li class="text-center col-sm-4 nav-item"
-                                role="presentation">
+                            <li class="text-center col-sm-4 nav-item" role="presentation">
                                 <button class="border-0 bg-white" id="pills-my-address-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-my-address" type="button" role="tab"
                                     aria-controls="pills-my-address" aria-selected="false"><b>My Address</b></button>
                             </li>
-                            <li class="text-center col-sm-4 nav-item"
-                                role="presentation">
+                            <li class="text-center col-sm-4 nav-item" role="presentation">
                                 <button class="border-0 bg-white" id="pills-change-password-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-change-password" type="button" role="tab"
-                                    aria-controls="pills-change-password" aria-selected="false"><b>Change Password</b></button>
+                                    aria-controls="pills-change-password" aria-selected="false"><b>Change
+                                        Password</b></button>
                             </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
@@ -323,7 +364,7 @@
                                     id="my-details-add-new-address-btn">Add new address</button>
                             </div>
 
-                            
+
                             <div class="tab-pane fade show" id="pills-change-password" role="tabpanel"
                                 aria-labelledby="pills-change-password-tab">
 
@@ -406,9 +447,10 @@
                         <hr class="m-2">
 
                         <button class="blue-rounded-btn text-white ps-2 pe-2 pb-2"
-                            id="dashboard-service-modal-reschedule"> &nbsp;<span class="fs-4 text-white">↻</span>&nbsp; Reschedule &nbsp;</button>
-                        <button class="blue-rounded-btn text-white p-2 bg-danger"
-                            id="dashboard-service-modal-cancel"> &nbsp;✕ &nbsp; Cancel &nbsp;</button>
+                            id="dashboard-service-modal-reschedule"> &nbsp;<span class="fs-4 text-white">↻</span>&nbsp;
+                            Reschedule &nbsp;</button>
+                        <button class="blue-rounded-btn text-white p-2 bg-danger" id="dashboard-service-modal-cancel">
+                            &nbsp;✕ &nbsp; Cancel &nbsp;</button>
                     </div>
 
                 </div>
