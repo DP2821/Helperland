@@ -382,34 +382,7 @@ namespace Helperland.Controllers
                             }
                             return $"Another service request has been assigned to the service provider on {noOfServiceConflicting.ServiceStartDate.Day}-{noOfServiceConflicting.ServiceStartDate.Month}-{noOfServiceConflicting.ServiceStartDate.Year} from {noOfServiceConflicting.ServiceStartDate.Hour}:{startMinute} to {noOfServiceConflicting.ServiceStartDate.AddHours(noOfServiceConflicting.ServiceHours + (double)noOfServiceConflicting.ExtraHours).Hour}:{endMinute}. Either choose another date or pick up a different time slot";
                         }
-                        // System.Console.WriteLine("\n\n\n\n###################### " + noOfServiceConflicting + " ++++++++++++++++++++\n\n\n");
 
-                        // var sameDateServices = _helperlandContext.ServiceRequests.Where(u => u.ServiceProviderId == serviceRequest.ServiceProviderId && u.Status == new GlobalData().SERVICE_REQUEST_STATUS_NEW && u.ServiceRequestId != serviceRequest.ServiceRequestId &&
-                        //             u.ServiceStartDate.Date == DateTime.ParseExact(rescheduleServiceViewModel.NewServiceDate, "yyyy-MM-dd", null).Date
-                        //     ).Select(u => new { u.ServiceStartDate, u.ServiceHours, u.ExtraHours }).ToList();
-
-                        // for (int i = 0; i < sameDateServices.Count; i++)
-                        // {
-                        //     if (!(sameDateServices[i].ServiceStartDate.Hour >
-                        //                 DateTime.ParseExact(rescheduleServiceViewModel.NewServicetime, "HH:mm", null).AddHours(serviceRequest.ServiceHours + (double)serviceRequest.ExtraHours).Hour
-                        //         ||
-                        //         DateTime.ParseExact(rescheduleServiceViewModel.NewServicetime, "HH:mm", null).Hour >
-                        //                 sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Hour
-                        //         ))
-                        //     {
-                        //         string startMinute = sameDateServices[i].ServiceStartDate.Minute + "";
-                        //         string endMinute = sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Minute + "";
-                        //         if (sameDateServices[i].ServiceStartDate.Minute == 0)
-                        //         {
-                        //             startMinute = "00";
-                        //         }
-                        //         if (sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Minute == 0)
-                        //         {
-                        //             endMinute = "00";
-                        //         }
-                        //         return $"Another service request has been assigned to the service provider on {sameDateServices[i].ServiceStartDate.Day}-{sameDateServices[i].ServiceStartDate.Month}-{sameDateServices[i].ServiceStartDate.Year} from {sameDateServices[i].ServiceStartDate.Hour}:{startMinute} to {sameDateServices[i].ServiceStartDate.AddHours(sameDateServices[i].ServiceHours + (double)sameDateServices[i].ExtraHours).Hour}:{endMinute}. Either choose another date or pick up a different time slot";
-                        //     }
-                        // }
 
                         string? userName = new CurrentLoggedInUser().GetName(Request.Cookies["keepMeLoggedInToken"]);
                         var fevSP = _helperlandContext.Users.Where(u => u.UserId == serviceRequest.ServiceProviderId).Select(u => new { u.Email, u.FirstName, u.LastName }).FirstOrDefault();
@@ -705,21 +678,6 @@ namespace Helperland.Controllers
                          IsBlocked = fb.IsBlocked
                      }).ToList();
 
-            // var x = (from sr in _helperlandContext.ServiceRequests
-            //          join u in _helperlandContext.Users on sr.ServiceProviderId equals u.UserId
-            //          where sr.UserId == userId
-            //          select new
-            //          {
-            //             SpId = sr.ServiceProviderId,
-            //             FirstName = u.FirstName,
-            //             LastName = u.LastName,
-
-            //             Ratings = _helperlandContext.Ratings.Where(u => u.RatingTo == sr.ServiceProviderId).Select(u => u.Ratings).ToList(),
-
-            //             IsBlocked = _helperlandContext.FavoriteAndBlockeds.Where(fv => fv.UserId == userId && fv.TargetUserId == sr.UserId).Select(fv => fv.IsBlocked).FirstOrDefault(),
-            //             IsFavorite = _helperlandContext.FavoriteAndBlockeds.Where(fv => fv.UserId == userId && fv.TargetUserId == sr.UserId).Select(fv => fv.IsFavorite).FirstOrDefault()
-
-            //          }).Distinct().ToList();
             return JsonSerializer.Serialize(x);
         }
 

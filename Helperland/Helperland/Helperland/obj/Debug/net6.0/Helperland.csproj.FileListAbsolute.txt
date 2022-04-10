@@ -65,7 +65,6 @@ S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\n
 S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Helperland.deps.json
 S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Helperland.runtimeconfig.json
 S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Helperland.dll
-S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\ref\Helperland.dll
 S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Helperland.pdb
 S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Humanizer.dll
 S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
@@ -325,3 +324,7 @@ S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\n
 S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\obj\Debug\net6.0\refint\Helperland.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\MediatR.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\MediatR.Contracts.dll
+S:\Tatvasoft\PSD to HTML\Helperland\Helperland\Helperland\Helperland\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

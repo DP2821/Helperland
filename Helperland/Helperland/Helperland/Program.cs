@@ -1,10 +1,12 @@
 using Helperland.Data;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<HelperlandContext>();
+builder.Services.AddMediatR(typeof(Program));
 
 var app = builder.Build();
 

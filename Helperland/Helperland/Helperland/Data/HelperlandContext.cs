@@ -34,7 +34,7 @@ namespace Helperland.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data source=DP;initial catalog=Helperland;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Data Source=SQL5063.site4now.net,1433;Initial Catalog=db_a855b2_helperland;User Id=db_a855b2_helperland_admin;Password=0208dhruvil;");
             }
         }
 
@@ -289,4 +289,5 @@ namespace Helperland.Data
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
+
 }

@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "R+1Yo4fbWSN2RZ3BxQOBW7NPxzM3koRVfczdNctgb3C7e/K+cT9eQMimbeVUs4IF/HSD1zl1k0OSsYAzt91/Ng==",
+  "dgSpecHash": "Fb66u51dJIH63dtWc3wZesxzUISmHuzvFE+jKjQSz66FjWaoPkSQGxZIXRgWsyvG6DBz27i1tEJZcbAJDuaAKg==",
   "success": true,
   "projectFilePath": "S:\\Tatvasoft\\PSD to HTML\\Helperland\\Helperland\\Helperland\\Helperland\\Helperland.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\patel\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\patel\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\patel\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\patel\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
     "C:\\Users\\patel\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\patel\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\patel\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
